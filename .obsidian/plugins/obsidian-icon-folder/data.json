@@ -1,0 +1,70 @@
+{
+  "settings": {
+    "migrated": 6,
+    "iconPacksPath": ".obsidian/icons",
+    "fontSize": 16,
+    "emojiStyle": "native",
+    "iconColor": null,
+    "recentlyUsedIcons": [
+      "BoBxsMagicWand",
+      "SiIntegromat",
+      "RiContractLeftRightLine",
+      "SiInstructure",
+      "SiServerless"
+    ],
+    "recentlyUsedIconsSize": 5,
+    "rules": [],
+    "extraMargin": {
+      "top": 0,
+      "right": 4,
+      "bottom": 0,
+      "left": 0
+    },
+    "iconInTabsEnabled": true,
+    "iconInTitleEnabled": true,
+    "iconInFrontmatterEnabled": true,
+    "iconsBackgroundCheckEnabled": false,
+    "iconsInNotesEnabled": true,
+    "iconIdentifier": ":",
+    "iconInTitlePosition": "above",
+    "iconInFrontmatterFieldName": "icon",
+    "iconColorInFrontmatterFieldName": "iconColor",
+    "iconsInLinksEnabled": true,
+    "lucideIconPackType": "native",
+    "debugMode": false,
+    "useInternalPlugins": false
+  },
+  "Devops/操作系统.md": "LiComputer",
+  "Devops/编程语言.md": "TiLanguage",
+  "常用工具/常用 Git 命令.md": {
+    "iconName": "SiAngular",
+    "iconColor": "#be4141"
+  },
+  "Devops/版本管理.md": "SiGit",
+  "Devops/命令行工具.md": "RiCommandLine",
+  "Devops/Bash Scripting.md": "TiScript",
+  "Devops/PowerShell.md": "TiScript",
+  "Devops/Repo Github.md": "FiGithub",
+  "Devops/Repo Gitlab.md": "FiGitlab",
+  "Devops/Repo Bitbucket.md": "SiBitbucket",
+  "Devops/Repo Azure.md": "SiAzuredevops",
+  "Devops/Nginx.md": "SiNginx",
+  "Devops/Tomcat.md": "SiApachetomcat",
+  "Devops/Apache.md": "SiApache",
+  "Devops/Caching服务.md": "SiGeocaching",
+  "Devops/IIS服务.md": "RiInformationLine",
+  "Devops/负载均衡.md": "TiLoadBalancer",
+  "Devops/正反向代理.md": "SiEnvoyproxy",
+  "Devops/防火墙.md": "SiFirewalla",
+  "Devops/容器.md": "LiContainer",
+  "Devops/云服务.md": "SiAzuredevops",
+  "Devops/网络协议.md": "LiNetwork",
+  "Devops/无服务器架构.md": "SiServerless",
+  "Devops/基础设施即代码.md": "SiInstructure",
+  "Devops/配置管理.md": "RiContractLeftRightLine",
+  "Devops/CICD.md": "SiIntegromat",
+  "AI+DA/AI+DA - 这个非常典型的职位要求，重要参考.md": {
+    "iconName": "LiNetwork",
+    "iconColor": "#b10b64"
+  }
+}

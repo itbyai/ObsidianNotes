@@ -1,0 +1,20 @@
+{
+  "selectedVoice": "en-US-AvaNeural",
+  "customVoice": "zh-CN-YunxiNeural",
+  "playbackSpeed": 1,
+  "showNotices": true,
+  "showStatusBarButton": true,
+  "showMenuItems": true,
+  "generateMP3": true,
+  "outputFolder": "Note Narration Audio",
+  "embedInNote": false,
+  "replaceSpacesInFilenames": false,
+  "overrideAmpersandEscape": false,
+  "floatingPlayerPosition": null,
+  "disablePlaybackControlPopover": false,
+  "enableReplayOption": true,
+  "enableQueueFeature": true,
+  "queueManagerPosition": null,
+  "autoPauseOnWindowBlur": false,
+  "chunkSize": 9000
+}

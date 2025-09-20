@@ -1,0 +1,61 @@
+/* ===========================
+   Obsidian Custom Colors
+   文件: colors.css
+   =========================== */
+
+/* --- 基础文字颜色 --- */
+.text-red    { color: #e74c3c; }   /* 红色 */
+.text-green  { color: #27ae60; }   /* 绿色 */
+.text-blue   { color: #3498db; }   /* 蓝色 */
+.text-orange { color: #e67e22; }   /* 橙色 */
+.text-purple { color: #9b59b6; }   /* 紫色 */
+.text-gray   { color: #7f8c8d; }   /* 灰色 */
+
+/* --- 背景高亮 --- */
+.bg-yellow  { background-color: #fff3b0; padding: 2px 4px; border-radius: 4px; }
+.bg-pink    { background-color: #ffb3c6; padding: 2px 4px; border-radius: 4px; }
+.bg-cyan    { background-color: #a0e7e5; padding: 2px 4px; border-radius: 4px; }
+
+/* --- 强调标记（文字+背景） --- */
+.note-info {
+  color: #1565c0;
+  background-color: #e3f2fd;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+.note-warning {
+  color: #f57c00;
+  background-color: #fff3e0;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+.note-danger {
+  color: #c62828;
+  background-color: #ffebee;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+/* --- 彩色边框框 --- */
+.box-blue {
+  border-left: 4px solid #3498db;
+  padding: 6px 10px;
+  margin: 6px 0;
+  background: #ecf6fb;
+}
+.box-green {
+  border-left: 4px solid #27ae60;
+  padding: 6px 10px;
+  margin: 6px 0;
+  background: #eafaf1;
+}
+.box-red {
+  border-left: 4px solid #e74c3c;
+  padding: 6px 10px;
+  margin: 6px 0;
+  background: #fdecea;
+}
+

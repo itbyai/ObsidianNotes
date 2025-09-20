@@ -1,0 +1,233 @@
+{
+  "main": {
+    "id": "129d6beb03b1eef4",
+    "type": "split",
+    "children": [
+      {
+        "id": "10f4a2cebf0a0380",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f312f1f0aac00647",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "面试-自动化/Untitled 1.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Untitled 1"
+            }
+          }
+        ],
+        "stacked": true
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "44813161548eeda6",
+    "type": "split",
+    "children": [
+      {
+        "id": "719c4d92e3ffa0ef",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "a0d18d5279274813",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "6fb8ba1dac07dd9d",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "obsidian",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "0cde61a2a00ccc2d",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 519.5
+  },
+  "right": {
+    "id": "b1e9b199d12547cd",
+    "type": "split",
+    "children": [
+      {
+        "id": "5e2e059292b5e9de",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "095d3ee22edc76ff",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Mac/env.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for env"
+            }
+          },
+          {
+            "id": "a35e8cb65c6c95ae",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Mac/env.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from env"
+            }
+          },
+          {
+            "id": "a59038c7e7905c68",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "51c882ab52dc4ee0",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "面试-自动化/Untitled 1.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of Untitled 1"
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200.5
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "edge-tts:Read note aloud": false,
+      "handwritten-notes:Create empty handwritten note": false,
+      "card-note:Search Notes": false,
+      "bases:Create new base": false,
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "f312f1f0aac00647",
+  "lastOpenFiles": [
+    "面试-自动化/Untitled.md",
+    "面试-自动化/Entain.md",
+    "面试-自动化/Untitled 1.md",
+    "Chatgpt模版/输出markdown.md",
+    "面试-自动化/interview Q&A.md",
+    "面试-自动化/Fitness and life group.md",
+    "Git 命令.md",
+    "interview/ABC news.md",
+    "interview/AI工作的技术要点.md",
+    "interview/AI面试问题.md",
+    "interview/AWS面试问题.md",
+    "interview/Deswik-questions.md",
+    "CV/Feng Xiaos CV.md",
+    "面试-自动化/澳洲 IT 测试类工作渠道.md",
+    "CV",
+    "Web3/区块链的直观数据展示方式.md",
+    "Web3/Untitled.md",
+    "logo.md",
+    "Code.md",
+    "AI需要学习的东西.md",
+    "AI Quality Engineer.md",
+    "2025-09-12.md",
+    "processon.md",
+    "test.md",
+    "多账号运营.md",
+    "Vector Databases, Embedding Models & RAG.md",
+    "如何获得一个小目标.md",
+    "Web3",
+    "Chatgpt模版",
+    "Machine learning",
+    "Stocks",
+    "interview/Pasted image 20250907092244.png",
+    "interview/Pasted image 20250907092605.png",
+    "interview/Pasted image 20250907092614.png",
+    "加密货币",
+    "Untitled 3",
+    "Untitled 2",
+    "Untitled 1",
+    "LangChain-StepByStep",
+    "AI-pics/Pasted image 20250116092435.png",
+    "Untitled 4.canvas",
+    "Untitled 3.canvas",
+    "Untitled 2.canvas",
+    "Untitled 1.canvas",
+    "Untitled.canvas",
+    "assets/Pasted image 20240528223257.png",
+    "assets/Pasted image 20240221234058.png",
+    "未命名 2.canvas",
+    "未命名.canvas",
+    "未命名 1.canvas",
+    "未命名 4.canvas",
+    "未命名 3.canvas",
+    "Pasted image 20241016153924.png",
+    "interview/Pasted image 20250907092440.png",
+    "Pasted image 20250827234422.png",
+    "Pasted image 20250827222527.png"
+  ]
+}
