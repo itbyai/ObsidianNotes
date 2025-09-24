@@ -1,0 +1,24 @@
+/* 容器自适应父级宽度 */
+.markmap-container {
+    width: 100% !important;
+    height: 100% !important;
+    max-height: 600px; /* 可选，防止过高 */
+    overflow: hidden;  /* 防止溢出显示滚动条 */
+}
+
+/* SVG 自适应容器 */
+.markmap-container svg {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* 保证节点文字自动换行 */
+.markmap-container svg text {
+    white-space: normal !important;
+}
+
+/* 可选：缩放整个图，让它完全适应容器 */
+.markmap-container svg > g {
+    transform-origin: 0 0;        /* 原点在左上角 */
+    transform: scale(0.8);        /* 调整缩放比例，根据需求调节 */
+}

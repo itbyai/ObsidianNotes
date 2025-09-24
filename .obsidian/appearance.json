@@ -1,3 +1,6 @@
 {
-  "cssTheme": "Obsidian Nord"
+  "cssTheme": "Obsidian Nord",
+  "enabledCssSnippets": [
+    "markmap-auto"
+  ]
 }

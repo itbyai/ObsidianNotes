@@ -1,8 +1,11 @@
 [
   "obsidian-icon-folder",
-  "obsidian-enhancing-mindmap",
   "edge-tts",
   "handwritten-notes",
   "card-note",
-  "obsidian-plugin-prettier"
+  "obsidian-plugin-prettier",
+  "customjs",
+  "obsidian-mindmap-nextgen",
+  "obsidian-custom-frames",
+  "obsidian-html-plugin"
 ]

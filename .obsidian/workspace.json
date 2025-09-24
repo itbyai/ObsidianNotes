@@ -11,14 +11,10 @@
             "id": "f312f1f0aac00647",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "面试-自动化/Untitled 1.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Untitled 1"
+              "title": "New tab"
             }
           }
         ],
@@ -79,7 +75,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 519.5
+    "width": 229.5
   },
   "right": {
     "id": "b1e9b199d12547cd",
@@ -141,13 +137,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "面试-自动化/Untitled 1.md",
-                "followCursor": false,
-                "showSearch": false,
+                "file": "面试-自动化/Untitled 2.md",
+                "followCursor": true,
+                "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Untitled 1"
+              "title": "Outline of Untitled 2"
             }
           }
         ],
@@ -155,7 +151,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200.5
+    "width": 200,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -171,63 +168,62 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "f312f1f0aac00647",
+  "active": "a0d18d5279274813",
   "lastOpenFiles": [
+    "面试-自动化/Untitled 2.md",
+    "locust 4.svg",
+    "locust 3.svg",
+    "xmind/locust.html",
+    "xmind/locust 1.html",
+    "xmind/locust.svg",
     "面试-自动化/Untitled.md",
-    "面试-自动化/Entain.md",
+    "locust 2.svg",
+    "locust 2.html",
+    "xmind/test.md",
+    "locust 1.html",
+    "locust.html",
+    "xmind",
+    "面试-自动化/Untitled mindmap.md",
     "面试-自动化/Untitled 1.md",
-    "Chatgpt模版/输出markdown.md",
+    "markmap-auto.css",
+    "Pasted image 20250924092443.png",
+    "Pasted image 20250924091934.png",
+    "locust 1.svg",
+    "locust.svg",
+    "面试-自动化/Locust性能测试的提示词.md",
     "面试-自动化/interview Q&A.md",
     "面试-自动化/Fitness and life group.md",
+    "面试-自动化/Entain.md",
+    "面试-自动化/appium.md",
+    "面试-自动化/AI面试题.md",
+    "Stocks/研究美国股票的结构框架.md",
+    "Stocks/学习美股知识路径.md",
+    "Stocks/M2指标解释.md",
+    "solutions/order system.md",
+    "AI Quality Engineer.md",
+    "面试-自动化/小众的应聘.md",
+    "AI工作/AI的应用.md",
+    "AI Infrastructure and Operations Fundamentals for free/unit2.md",
+    "AI工作",
+    "面试-自动化/Locust 性能测试 思维导图.md",
+    "Chatgpt模版/输出markdown.md",
     "Git 命令.md",
     "interview/ABC news.md",
     "interview/AI工作的技术要点.md",
     "interview/AI面试问题.md",
-    "interview/AWS面试问题.md",
-    "interview/Deswik-questions.md",
-    "CV/Feng Xiaos CV.md",
-    "面试-自动化/澳洲 IT 测试类工作渠道.md",
     "CV",
-    "Web3/区块链的直观数据展示方式.md",
-    "Web3/Untitled.md",
-    "logo.md",
-    "Code.md",
-    "AI需要学习的东西.md",
-    "AI Quality Engineer.md",
-    "2025-09-12.md",
-    "processon.md",
-    "test.md",
-    "多账号运营.md",
-    "Vector Databases, Embedding Models & RAG.md",
-    "如何获得一个小目标.md",
     "Web3",
-    "Chatgpt模版",
-    "Machine learning",
-    "Stocks",
     "interview/Pasted image 20250907092244.png",
     "interview/Pasted image 20250907092605.png",
-    "interview/Pasted image 20250907092614.png",
-    "加密货币",
-    "Untitled 3",
-    "Untitled 2",
-    "Untitled 1",
-    "LangChain-StepByStep",
-    "AI-pics/Pasted image 20250116092435.png",
     "Untitled 4.canvas",
     "Untitled 3.canvas",
     "Untitled 2.canvas",
     "Untitled 1.canvas",
     "Untitled.canvas",
-    "assets/Pasted image 20240528223257.png",
-    "assets/Pasted image 20240221234058.png",
     "未命名 2.canvas",
     "未命名.canvas",
     "未命名 1.canvas",
     "未命名 4.canvas",
-    "未命名 3.canvas",
-    "Pasted image 20241016153924.png",
-    "interview/Pasted image 20250907092440.png",
-    "Pasted image 20250827234422.png",
-    "Pasted image 20250827222527.png"
+    "未命名 3.canvas"
   ]
 }
