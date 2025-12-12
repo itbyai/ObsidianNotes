@@ -9,12 +9,43 @@
   "outputFolder": "Note Narration Audio",
   "embedInNote": false,
   "replaceSpacesInFilenames": false,
-  "overrideAmpersandEscape": false,
-  "floatingPlayerPosition": null,
+  "textFiltering": {
+    "filterFrontmatter": true,
+    "filterMarkdownLinks": false,
+    "filterCodeBlocks": true,
+    "filterInlineCode": true,
+    "filterHtmlTags": true,
+    "filterTables": true,
+    "filterImages": true,
+    "filterFootnotes": true,
+    "filterComments": true,
+    "filterMathExpressions": false,
+    "filterWikiLinks": false,
+    "filterHighlights": true,
+    "filterCallouts": false,
+    "replaceComparisonSymbols": true
+  },
+  "symbolReplacement": {
+    "enableCustomReplacements": false,
+    "language": "auto",
+    "customReplacements": {
+      "greaterThan": " greater than ",
+      "lessThan": " less than ",
+      "greaterThanOrEqual": " greater than or equal to ",
+      "lessThanOrEqual": " less than or equal to "
+    }
+  },
+  "floatingPlayerPosition": {
+    "x": 1863,
+    "y": 1030
+  },
   "disablePlaybackControlPopover": false,
   "enableReplayOption": true,
   "enableQueueFeature": true,
   "queueManagerPosition": null,
   "autoPauseOnWindowBlur": false,
+  "enableExperimentalFeatures": false,
+  "reducedNoticesOnMobile": true,
+  "overrideAmpersandEscape": false,
   "chunkSize": 9000
 }

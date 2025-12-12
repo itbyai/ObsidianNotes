@@ -28,13 +28,9 @@ sequenceDiagram
 - **How it works**:
     
     - WebdriverIO sends commands (e.g., `click`, `findElement`) →
-        
     - Appium/Selenium server receives them →
-        
     - Server forwards them to the browser driver (e.g., `chromedriver`, `geckodriver`) →
-        
     - Browser executes the command and responds via HTTP →
-        
     - The response travels back the same way.
         
 - **Flow (multi-hop communication)**

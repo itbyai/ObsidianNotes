@@ -298,11 +298,8 @@ CSS 选择器的写法非常多，从**最基础**的 tag/class/id，到**属性
     - class `.class` → 常用
         
     - 标签 + class `div.btn` → 精确
-        
     - 属性 `[type="text"]` → 针对表单元素
-        
     - 伪类 `:nth-child()` → 定位特定列表项
-        
     - 组合选择器 `div > ul > li` → 层级明确
         
 

@@ -1,0 +1,7 @@
+/* 让内容区域更宽 */
+.markdown-preview-view,
+.markdown-source-view {
+    max-width: 1200px;  /* 根据屏幕调节宽度 */
+    margin-left: auto;
+    margin-right: auto;
+}

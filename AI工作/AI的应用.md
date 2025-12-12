@@ -56,4 +56,69 @@
 
 ---
 
-要不要我帮你把这个 JD 的 **核心技能点精简成 4–5 条面试可用的“技能亮点”**？这样你能快速对应回答。
+非常好的问题！👏  
+在人工智能（AI）领域，“**工作流（workflow）创建工具**”是非常关键的一环 —— 它们帮助我们把多个 **AI模型、数据处理、自动化任务** 串联起来，形成一条完整的“智能流水线”。
+
+下面我给你系统地分成几类讲（含英文对照和用途示例）：
+
+---
+
+## 🧩 一、专注于 AI/LLM 工作流编排（LLM-Oriented Workflow Tools）
+
+|工具|简介|特点与用途|
+|---|---|---|
+|**LangChain**|Python/JS 框架，用于构建基于 LLM 的应用|✦ 模块化结构（Prompt、Memory、Tools）✦ 可轻松连接 GPT、Claude、LLaMA 等模型✦ 适合开发聊天机器人、智能分析助手|
+|**LlamaIndex (原名 GPT Index)**|连接 LLM 与结构化/非结构化数据的框架|✦ 快速构建知识问答系统（RAG）✦ 支持数据库、PDF、API 数据接入|
+|**Flowise AI**|开源可视化 LLM 工作流工具（低代码）|✦ 类似“AI版 Node-RED”✦ 拖拽式组件构建工作流✦ 与 LangChain 兼容，可连接 GPT、Claude 等|
+|**Dust.tt**|企业级 LLM 流程编排平台|✦ 无代码界面✦ 可配置 Prompt、工具调用、API 集成✦ 适合企业构建内部 AI 助手|
+|**Composio / SuperAGI / CrewAI**|新兴“多Agent”框架|✦ 可创建多个智能体协作（如任务分工）✦ 自动执行复杂任务，如测试、数据处理|
+|**OpenDevin (GitHub)**|面向开发者的“AI DevOps工作流”|✦ 模拟开发者行为，自动执行任务（写代码、调试）✦ 工作流可自定义|
+
+---
+
+## 🧠 二、通用的自动化工作流平台（AI + Automation）
+
+|工具|简介|特点与AI结合方式|
+|---|---|---|
+|**Airflow (Apache)**|数据管道调度框架|✦ 管理机器学习训练与部署流程（如ETL → Train → Deploy）|
+|**Prefect / Dagster**|新一代数据工作流工具|✦ 可嵌入AI模型推理、数据清洗、监控流程|
+|**n8n**|可视化自动化工具|✦ 支持 OpenAI、LangChain 集成✦ 通过 HTTP Node 连接自定义 AI 服务|
+|**Zapier / Make (Integromat)**|无代码自动化平台|✦ 可将 ChatGPT、Google Sheets、Slack 等连接成工作流|
+|**Temporal.io**|分布式工作流引擎|✦ 稳定可靠，适合大型AI系统后台逻辑执行|
+
+---
+
+## 🤖 三、机器学习与MLOps工作流平台
+
+|工具|简介|特点|
+|---|---|---|
+|**Kubeflow**|Google开源的机器学习工作流平台|✦ 在Kubernetes上管理模型训练、部署|
+|**MLflow**|Databricks 开源项目|✦ 跟踪实验、模型版本和部署流水线|
+|**Weights & Biases (W&B)**|模型训练监控与实验管理|✦ 与LLM微调结合良好|
+|**Vertex AI / Azure ML / AWS SageMaker**|云平台AI工作流|✦ 端到端支持数据、训练、部署、监控|
+
+---
+
+## 💬 四、专注于“多Agent协作”型 AI 工作流（新趋势）
+
+|工具|特点|
+|---|---|
+|**AutoGen (Microsoft)**|多智能体框架，可定义任务协作、工具调用|
+|**CrewAI / LangGraph / AgentGPT / ChatDev**|模拟团队式协作（例如：PM + Developer + Tester 角色）|
+|**MCP Agents (OpenAI)**|让 LLM 直接调用外部系统（数据库、API、代码执行）形成动态工作流|
+
+---
+
+## 🌟 举例说明（比如测试领域）：
+
+如果你要做一个自动化测试工作流，可以用：
+
+- **LangChain + Flowise** 来定义 AI 测试策略生成；
+- **n8n** 来自动触发测试任务；
+- **Azure DevOps / Airflow** 来管理 CI/CD；
+- **MLflow** 跟踪 AI 测试模型效果。
+
+---
+
+是否希望我帮你画一个 “AI工作流生态图” 或 “自动化测试工作流示意图”？  
+我可以帮你把这些工具的关系可视化（比如：数据 → 模型 → 测试 → 报告）。

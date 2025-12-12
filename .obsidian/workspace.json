@@ -8,13 +8,17 @@
         "type": "tabs",
         "children": [
           {
-            "id": "f312f1f0aac00647",
+            "id": "8aad7d16cd082b4f",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Python/Python学习资料.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Python学习资料"
             }
           }
         ],
@@ -50,7 +54,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "obsidian",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -75,7 +79,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 229.5
+    "width": 556.5
   },
   "right": {
     "id": "b1e9b199d12547cd",
@@ -137,13 +141,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "面试-自动化/Untitled 2.md",
+                "file": "Python/Python学习资料.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Untitled 2"
+              "title": "Outline of Python学习资料"
             }
           }
         ],
@@ -151,11 +155,11 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 284.5
   },
   "left-ribbon": {
     "hiddenItems": {
+      "obsidian-git:Open Git source control": false,
       "edge-tts:Read note aloud": false,
       "handwritten-notes:Create empty handwritten note": false,
       "card-note:Search Notes": false,
@@ -168,53 +172,54 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "a0d18d5279274813",
+  "active": "8aad7d16cd082b4f",
   "lastOpenFiles": [
-    "面试-自动化/Untitled 2.md",
+    "Python/Python2 vs Python3.md",
+    "Python/Python学习资料.md",
+    "Stocks/a股短线技巧.md",
+    "Stocks/Untitled.md",
+    "DataBricks/Roles.md",
+    "DataBricks/DW和DL.md",
+    "加密货币/加密货币的币种价值.md",
+    "加密货币/Untitled.md",
+    "自我认知/复盘.md",
+    "Devops/DevOps?.md",
+    "Devops/Bash Scripting.md",
+    "Devops/Azure CI and CD.md",
+    "Stocks/2025-11-13 回顾分析.md",
+    "DataBricks",
+    "English/常用疑问句.md",
+    "English/短语.md",
+    "English/学习要领.md",
+    "English/Patten.md",
+    "面试-自动化/政府工面试.md",
+    "Python",
+    "租房/租房合同.md",
+    "Tosca/Tosca知识点.md",
+    "租房",
+    "Stocks/2025-10-30 回顾分析.md",
+    "Tosca",
+    "Stocks/2025-10-31 回顾分析.md",
+    "AI/企业级的AI.md",
+    "报税/2025年报税.md",
+    "面试-自动化/Typescript学习.md",
+    "Stocks/交易策略.md",
+    "Data Pipeline",
+    "English",
+    "自我认知",
+    "报税",
+    "AI-pics/Pasted image 20250116092435.png",
+    "面试-自动化/Untitled",
+    "面试-自动化/开发面试",
+    "Pasted image 20250924135905.png",
+    "Pasted image 20250924135845.png",
+    "Pasted image 20250924135823.png",
+    "Pasted image 20250924135630.png",
     "locust 4.svg",
     "locust 3.svg",
-    "xmind/locust.html",
-    "xmind/locust 1.html",
     "xmind/locust.svg",
-    "面试-自动化/Untitled.md",
     "locust 2.svg",
-    "locust 2.html",
-    "xmind/test.md",
-    "locust 1.html",
-    "locust.html",
-    "xmind",
-    "面试-自动化/Untitled mindmap.md",
-    "面试-自动化/Untitled 1.md",
-    "markmap-auto.css",
     "Pasted image 20250924092443.png",
-    "Pasted image 20250924091934.png",
-    "locust 1.svg",
-    "locust.svg",
-    "面试-自动化/Locust性能测试的提示词.md",
-    "面试-自动化/interview Q&A.md",
-    "面试-自动化/Fitness and life group.md",
-    "面试-自动化/Entain.md",
-    "面试-自动化/appium.md",
-    "面试-自动化/AI面试题.md",
-    "Stocks/研究美国股票的结构框架.md",
-    "Stocks/学习美股知识路径.md",
-    "Stocks/M2指标解释.md",
-    "solutions/order system.md",
-    "AI Quality Engineer.md",
-    "面试-自动化/小众的应聘.md",
-    "AI工作/AI的应用.md",
-    "AI Infrastructure and Operations Fundamentals for free/unit2.md",
-    "AI工作",
-    "面试-自动化/Locust 性能测试 思维导图.md",
-    "Chatgpt模版/输出markdown.md",
-    "Git 命令.md",
-    "interview/ABC news.md",
-    "interview/AI工作的技术要点.md",
-    "interview/AI面试问题.md",
-    "CV",
-    "Web3",
-    "interview/Pasted image 20250907092244.png",
-    "interview/Pasted image 20250907092605.png",
     "Untitled 4.canvas",
     "Untitled 3.canvas",
     "Untitled 2.canvas",

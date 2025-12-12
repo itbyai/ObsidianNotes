@@ -2,5 +2,6 @@
   "cssTheme": "Obsidian Nord",
   "enabledCssSnippets": [
     "markmap-auto"
-  ]
+  ],
+  "baseFontSize": 16
 }

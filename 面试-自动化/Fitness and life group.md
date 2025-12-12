@@ -69,9 +69,7 @@ describe yourself?
 💡 **额外提示**：
 
 - 澳洲面试很看重 **STAR 法则**（Situation, Task, Action, Result），回答时最好给具体实例。
-    
 - 用词尽量简洁、自然、正面。
-    
 - 针对离岸团队管理或策略问题，展示你能 **跨团队协作、灵活应变**。
     
 
@@ -80,3 +78,9 @@ describe yourself?
 如果你愿意，我可以帮你把这些回答 **改写成更口语化、更适合口头面试的版本**，大概每条回答 30–50 秒左右，便于你直接面试时使用。
 
 你希望我帮你做这个优化吗？
+
+🚀 In 2025, QA is more than testing. It’s risk management, customer experience, and business value.
+
+![[Pasted image 20250924135630.png]]![[Pasted image 20250924135823.png]]
+![[Pasted image 20250924135845.png]]
+![[Pasted image 20250924135905.png]]
