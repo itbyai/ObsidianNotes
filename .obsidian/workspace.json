@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Python/Python学习资料.md",
+                "file": "面试要点.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Python学习资料"
+              "title": "面试要点"
             }
           }
         ],
@@ -141,13 +141,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Python/Python学习资料.md",
+                "file": "面试要点.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Python学习资料"
+              "title": "Outline of 面试要点"
             }
           }
         ],
@@ -174,8 +174,19 @@
   },
   "active": "8aad7d16cd082b4f",
   "lastOpenFiles": [
-    "Python/Python2 vs Python3.md",
+    "Westpac面试.md",
+    "Untitled 1.md",
+    "Untitled 1.canvas",
+    "Untitled 1.base",
+    "Untitled.canvas",
+    "Untitled.base",
+    "test.md",
+    "React.html",
+    "assets/Pasted image 20241016153924.png",
+    "AI/1、大语言模型文件的内容LLAMA为例.md",
+    "assets/Pasted image 20240221234058.png",
     "Python/Python学习资料.md",
+    "Python/Python2 vs Python3.md",
     "Stocks/a股短线技巧.md",
     "Stocks/Untitled.md",
     "DataBricks/Roles.md",
@@ -200,31 +211,20 @@
     "Stocks/2025-10-30 回顾分析.md",
     "Tosca",
     "Stocks/2025-10-31 回顾分析.md",
-    "AI/企业级的AI.md",
-    "报税/2025年报税.md",
-    "面试-自动化/Typescript学习.md",
-    "Stocks/交易策略.md",
     "Data Pipeline",
     "English",
     "自我认知",
-    "报税",
     "AI-pics/Pasted image 20250116092435.png",
-    "面试-自动化/Untitled",
-    "面试-自动化/开发面试",
-    "Pasted image 20250924135905.png",
-    "Pasted image 20250924135845.png",
-    "Pasted image 20250924135823.png",
-    "Pasted image 20250924135630.png",
+    "assets/Pasted image 20250924135905.png",
+    "assets/Pasted image 20250924135845.png",
+    "assets/Pasted image 20250924135823.png",
+    "assets/Pasted image 20250924135630.png",
     "locust 4.svg",
     "locust 3.svg",
     "xmind/locust.svg",
-    "locust 2.svg",
-    "Pasted image 20250924092443.png",
     "Untitled 4.canvas",
     "Untitled 3.canvas",
     "Untitled 2.canvas",
-    "Untitled 1.canvas",
-    "Untitled.canvas",
     "未命名 2.canvas",
     "未命名.canvas",
     "未命名 1.canvas",
