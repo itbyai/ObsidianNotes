@@ -263,11 +263,3 @@ Power BI Dataset / Reports
 > **Raw data → Curated data 建立可信事实 → Business View 统一业务口径 → Power BI 实现自助分析**
 
 ---
-
-如果你愿意，下一步我可以帮你：
-
-- 把这个流程 **画成架构图**
-- 或 **按 QA 视角列完整测试矩阵**
-- 或 **给你一个真实 SQL / Databricks 示例**
-
-你更想往 **架构 / 测试 / 实现** 哪个方向深入？
