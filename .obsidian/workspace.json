@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "小红书.md",
+                "file": "QH/Project whole life.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "小红书"
+              "title": "Project whole life"
             }
           }
         ],
@@ -141,13 +141,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "小红书.md",
+                "file": "QH/Project whole life.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 小红书"
+              "title": "Outline of Project whole life"
             }
           }
         ],
@@ -174,8 +174,10 @@
   },
   "active": "8aad7d16cd082b4f",
   "lastOpenFiles": [
-    "当前3个月目标.md",
     "小红书.md",
+    "QH/Project whole life.md",
+    "QH",
+    "当前3个月目标.md",
     "Untitled 8.base",
     "面试要点.md",
     "Westpac面试.md",
@@ -209,11 +211,9 @@
     "English/Patten.md",
     "面试-自动化/政府工面试.md",
     "Python",
-    "租房/租房合同.md",
     "租房",
     "Tosca",
     "Data Pipeline",
-    "English",
     "AI-pics/Pasted image 20250116092435.png",
     "assets/Pasted image 20250924135905.png",
     "assets/Pasted image 20250924135845.png",
