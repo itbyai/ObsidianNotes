@@ -261,5 +261,3 @@ Power BI Dataset / Reports
 # 五、一句话总结（给管理层用）
 
 > **Raw data → Curated data 建立可信事实 → Business View 统一业务口径 → Power BI 实现自助分析**
-
----
