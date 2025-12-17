@@ -114,28 +114,17 @@ Power BI Dataset / Reports
 ### 做什么
 
 - 建立 **事实表（Fact）**
-    
 - 建立 **维度表（Dimension）**
-    
 - 确定：
-    
     - Grain（粒度）
-        
     - Business Key / Surrogate Key
-        
     - 历史处理（SCD）
-        
-
 ### 角色
 
 - Data Architect（主导）
-    
 - Data Engineer
-    
 - Analytics Engineer
-    
 - Data Tester
-    
 
 ### Output（核心资产）
 
@@ -157,22 +146,15 @@ Power BI Dataset / Reports
 ### 做什么
 
 - 基于 curated data 建 View
-    
 - 封装业务口径
-    
 - 屏蔽复杂 join
-    
 - 提供稳定接口给 BI
-    
 
 ### 角色
 
 - Analytics Engineer（主导）
-    
 - Data Architect
-    
 - Data Tester
-    
 
 ### Output
 
@@ -186,9 +168,7 @@ Power BI Dataset / Reports
 📌 **Business View ≠ Curated Table**
 
 - Curated 是“数据资产”
-    
-- View 是“业务接口”
-    
+- View 是“业务接口”    
 
 ---
 
@@ -197,26 +177,17 @@ Power BI Dataset / Reports
 ### 做什么
 
 - 从 Business View 或 Curated 表取数
-    
 - 建 Power BI Dataset
-    
 - 定义：
-    
     - Relationship
-        
     - Measure（DAX）
-        
     - Time Intelligence
-        
 
 ### 角色
 
 - BI Developer（主导）
-    
 - Analytics Engineer
-    
 - Business Owner
-    
 
 ### Output
 
@@ -234,20 +205,14 @@ Power BI Dataset / Reports
 ### 做什么
 
 - Row Level Security
-    
 - Column Level Security
-    
 - 数据权限分级
-    
 
 ### 角色
 
 - Security / Governance
-    
 - BI Developer
-    
 - Data Engineer
-    
 
 ### Output
 
@@ -264,7 +229,6 @@ Power BI Dataset / Reports
 ### 测试角色
 
 - Data Tester / QA（你熟悉的领域 😄）
-    
 
 ### 每一层的 Output
 
@@ -303,10 +267,7 @@ Power BI Dataset / Reports
 如果你愿意，下一步我可以帮你：
 
 - 把这个流程 **画成架构图**
-    
 - 或 **按 QA 视角列完整测试矩阵**
-    
 - 或 **给你一个真实 SQL / Databricks 示例**
-    
 
 你更想往 **架构 / 测试 / 实现** 哪个方向深入？
