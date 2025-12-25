@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "QH/Project whole life.md",
+                "file": "Data/Data Integrity.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Project whole life"
+              "title": "Data Integrity"
             }
           }
         ],
@@ -141,13 +141,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "QH/Project whole life.md",
+                "file": "Data/Data Integrity.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Project whole life"
+              "title": "Outline of Data Integrity"
             }
           }
         ],
@@ -174,8 +174,10 @@
   },
   "active": "8aad7d16cd082b4f",
   "lastOpenFiles": [
-    "小红书.md",
     "QH/Project whole life.md",
+    "Data/Data Integrity.md",
+    "Data",
+    "小红书.md",
     "QH",
     "当前3个月目标.md",
     "Untitled 8.base",
@@ -209,11 +211,9 @@
     "English/短语.md",
     "English/学习要领.md",
     "English/Patten.md",
-    "面试-自动化/政府工面试.md",
     "Python",
     "租房",
     "Tosca",
-    "Data Pipeline",
     "AI-pics/Pasted image 20250116092435.png",
     "assets/Pasted image 20250924135905.png",
     "assets/Pasted image 20250924135845.png",
