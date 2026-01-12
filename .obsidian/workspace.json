@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Data/Data Integrity.md",
+                "file": "Stocks/AI 相关的股票.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Data Integrity"
+              "title": "AI 相关的股票"
             }
           }
         ],
@@ -141,13 +141,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Data/Data Integrity.md",
+                "file": "Stocks/AI 相关的股票.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Data Integrity"
+              "title": "Outline of AI 相关的股票"
             }
           }
         ],
@@ -174,9 +174,10 @@
   },
   "active": "8aad7d16cd082b4f",
   "lastOpenFiles": [
+    "Data/Data Integrity.md",
+    "Stocks/AI 相关的股票.md",
     "报税/2025年报税.md",
     "Data/Q and A.md",
-    "Data/Data Integrity.md",
     "QH/Project whole life.md",
     "Data",
     "小红书.md",
@@ -210,7 +211,6 @@
     "Stocks/2025-11-13 回顾分析.md",
     "DataBricks",
     "English/常用疑问句.md",
-    "English/短语.md",
     "Python",
     "租房",
     "Tosca",
