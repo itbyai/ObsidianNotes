@@ -20,8 +20,21 @@
               "icon": "lucide-file",
               "title": "AI 相关的股票"
             }
+          },
+          {
+            "id": "c7b41f20d4f685a5",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.11.4"
+              },
+              "icon": "lucide-book-up",
+              "title": "Release Notes 1.11.4"
+            }
           }
         ],
+        "currentTab": 1,
         "stacked": true
       }
     ],
@@ -141,13 +154,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Stocks/AI 相关的股票.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of AI 相关的股票"
+              "title": "Outline"
             }
           }
         ],
@@ -172,7 +184,7 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "8aad7d16cd082b4f",
+  "active": "c7b41f20d4f685a5",
   "lastOpenFiles": [
     "Data/Data Integrity.md",
     "Stocks/AI 相关的股票.md",
