@@ -13,28 +13,15 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Stocks/AI 相关的股票.md",
-                "mode": "source",
+                "file": "Stocks/基本面分析.md",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "AI 相关的股票"
-            }
-          },
-          {
-            "id": "c7b41f20d4f685a5",
-            "type": "leaf",
-            "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.11.4"
-              },
-              "icon": "lucide-book-up",
-              "title": "Release Notes 1.11.4"
+              "title": "基本面分析"
             }
           }
         ],
-        "currentTab": 1,
         "stacked": true
       }
     ],
@@ -154,12 +141,13 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "Stocks/基本面分析.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline"
+              "title": "Outline of 基本面分析"
             }
           }
         ],
@@ -184,10 +172,11 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "c7b41f20d4f685a5",
+  "active": "8aad7d16cd082b4f",
   "lastOpenFiles": [
-    "Data/Data Integrity.md",
     "Stocks/AI 相关的股票.md",
+    "Stocks/基本面分析.md",
+    "Data/Data Integrity.md",
     "报税/2025年报税.md",
     "Data/Q and A.md",
     "QH/Project whole life.md",
@@ -222,7 +211,6 @@
     "Devops/Azure CI and CD.md",
     "Stocks/2025-11-13 回顾分析.md",
     "DataBricks",
-    "English/常用疑问句.md",
     "Python",
     "租房",
     "Tosca",
