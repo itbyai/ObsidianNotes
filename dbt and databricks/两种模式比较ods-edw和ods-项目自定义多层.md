@@ -401,6 +401,10 @@ models:
     👉 **全组织只有一个答案**
     
 
+> [!NOTE]
+> 
+> 详细了解什么是集中治理-[[centralised governance]]
+
 ---
 
 ### 🔹 项目 A（复用 EDW）
@@ -417,7 +421,7 @@ from {{ ref('edw_fact_encounter') }}
 where encounter_type = 'IP'
 group by 1
 ```
- [^2]---
+ [^2]---理解sql的执行顺序
 
 ### 🔹 项目 B（同样复用 EDW）
 
