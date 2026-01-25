@@ -417,8 +417,7 @@ from {{ ref('edw_fact_encounter') }}
 where encounter_type = 'IP'
 group by 1
 ```
-
----
+ [^2]---
 
 ### 🔹 项目 B（同样复用 EDW）
 
@@ -552,3 +551,14 @@ where status = 'ACTIVE'
 3️⃣ 按你们真实环境（ODS / EDW / IM）**帮你定命名规范**
 
 你想继续哪一个？
+
+[^1]: 
+
+[^2]:      SQL的执行顺序
+    1. FROM
+	2. WHERE
+	3. GROUP BY
+	4. 聚合函数（COUNT / SUM / AVG）
+	5. SELECT
+	6. ORDER BY
+	
