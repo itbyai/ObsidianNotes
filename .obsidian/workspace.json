@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "dbt and databricks/Basic concept.md",
-                "mode": "source",
+                "file": "dbt and databricks/End to end dbt and databricks projects.md",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Basic concept"
+              "title": "End to end dbt and databricks projects"
             }
           }
         ],
@@ -141,13 +141,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "dbt and databricks/Basic concept.md",
+                "file": "dbt and databricks/End to end dbt and databricks projects.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Basic concept"
+              "title": "Outline of End to end dbt and databricks projects"
             }
           }
         ],
@@ -174,10 +174,11 @@
   },
   "active": "8aad7d16cd082b4f",
   "lastOpenFiles": [
+    "dbt and databricks/Basic concept.md",
+    "dbt and databricks/End to end dbt and databricks projects.md",
     "Pasted image 20260124225824.png",
     "Pasted image 20260124225528.png",
     "Westpac面试.md",
-    "dbt and databricks/Basic concept.md",
     "dbt and databricks",
     "Untitled 7.base",
     "Untitled 2.canvas",
@@ -222,7 +223,6 @@
     "assets/Pasted image 20250924135823.png",
     "assets/Pasted image 20250924135630.png",
     "locust 4.svg",
-    "locust 3.svg",
     "Untitled 4.canvas",
     "Untitled 3.canvas",
     "未命名 2.canvas",
