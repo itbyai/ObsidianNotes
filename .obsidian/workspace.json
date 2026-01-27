@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "dbt and databricks/两种模式比较ods-edw和ods-项目自定义多层.md",
-                "mode": "preview",
+                "file": "Stocks/市值与股价.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "两种模式比较ods-edw和ods-项目自定义多层"
+              "title": "市值与股价"
             }
           }
         ],
@@ -141,13 +141,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "dbt and databricks/两种模式比较ods-edw和ods-项目自定义多层.md",
+                "file": "Stocks/市值与股价.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 两种模式比较ods-edw和ods-项目自定义多层"
+              "title": "Outline of 市值与股价"
             }
           }
         ],
@@ -174,10 +174,11 @@
   },
   "active": "8aad7d16cd082b4f",
   "lastOpenFiles": [
-    "centralised governance.md",
     "dbt and databricks/两种模式比较ods-edw和ods-项目自定义多层.md",
-    "dbt and databricks/End to end dbt and databricks projects.md",
+    "Stocks/市值与股价.md",
     "dbt and databricks/Basic concept.md",
+    "dbt and databricks/End to end dbt and databricks projects.md",
+    "centralised governance.md",
     "Pasted image 20260124225824.png",
     "Pasted image 20260124225528.png",
     "Westpac面试.md",
@@ -215,7 +216,6 @@
     "DataBricks/DW和DL.md",
     "加密货币/加密货币的币种价值.md",
     "加密货币/Untitled.md",
-    "自我认知/复盘.md",
     "DataBricks",
     "AI-pics/Pasted image 20250116092435.png",
     "assets/Pasted image 20250924135905.png",
