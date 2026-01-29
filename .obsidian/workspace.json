@@ -8,33 +8,20 @@
         "type": "tabs",
         "children": [
           {
-            "id": "8aad7d16cd082b4f",
+            "id": "e61636e6759db32d",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Stocks/股票研究表格.md",
+                "file": "NAPLAN/NAPLAN 学习.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "股票研究表格"
-            }
-          },
-          {
-            "id": "e61636e6759db32d",
-            "type": "leaf",
-            "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.11.5"
-              },
-              "icon": "lucide-book-up",
-              "title": "Release Notes 1.11.5"
+              "title": "NAPLAN 学习"
             }
           }
         ],
-        "currentTab": 1,
         "stacked": true
       }
     ],
@@ -154,12 +141,13 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "NAPLAN/NAPLAN 学习.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline"
+              "title": "Outline of NAPLAN 学习"
             }
           }
         ],
@@ -186,6 +174,8 @@
   },
   "active": "e61636e6759db32d",
   "lastOpenFiles": [
+    "NAPLAN/NAPLAN 学习.md",
+    "NAPLAN",
     "Stocks/市值与股价.md",
     "Stocks/股票研究表格.md",
     "dbt and databricks/两种模式比较ods-edw和ods-项目自定义多层.md",
@@ -227,8 +217,6 @@
     "Stocks/Untitled.md",
     "DataBricks/Roles.md",
     "DataBricks/DW和DL.md",
-    "加密货币/加密货币的币种价值.md",
-    "DataBricks",
     "AI-pics/Pasted image 20250116092435.png",
     "assets/Pasted image 20250924135905.png",
     "assets/Pasted image 20250924135845.png",
