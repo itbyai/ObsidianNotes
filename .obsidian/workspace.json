@@ -20,8 +20,21 @@
               "icon": "lucide-file",
               "title": "股票研究表格"
             }
+          },
+          {
+            "id": "e61636e6759db32d",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.11.5"
+              },
+              "icon": "lucide-book-up",
+              "title": "Release Notes 1.11.5"
+            }
           }
         ],
+        "currentTab": 1,
         "stacked": true
       }
     ],
@@ -141,13 +154,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Stocks/股票研究表格.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 股票研究表格"
+              "title": "Outline"
             }
           }
         ],
@@ -172,7 +184,7 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "8aad7d16cd082b4f",
+  "active": "e61636e6759db32d",
   "lastOpenFiles": [
     "Stocks/市值与股价.md",
     "Stocks/股票研究表格.md",
