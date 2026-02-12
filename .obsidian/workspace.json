@@ -8,33 +8,20 @@
         "type": "tabs",
         "children": [
           {
-            "id": "e61636e6759db32d",
+            "id": "7f3b93e6a6858bac",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "NAPLAN/NAPLAN 学习.md",
+                "file": "Stocks/2026-02-12.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "NAPLAN 学习"
-            }
-          },
-          {
-            "id": "7f3b93e6a6858bac",
-            "type": "leaf",
-            "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.11.7"
-              },
-              "icon": "lucide-book-up",
-              "title": "Release Notes 1.11.7"
+              "title": "2026-02-12"
             }
           }
         ],
-        "currentTab": 1,
         "stacked": true
       }
     ],
@@ -154,12 +141,13 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "Stocks/2026-02-12.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline"
+              "title": "Outline of 2026-02-12"
             }
           }
         ],
@@ -186,6 +174,7 @@
   },
   "active": "7f3b93e6a6858bac",
   "lastOpenFiles": [
+    "Stocks/2026-02-12.md",
     "NAPLAN/NAPLAN 学习.md",
     "NAPLAN",
     "Stocks/市值与股价.md",
@@ -228,7 +217,6 @@
     "Stocks/a股短线技巧.md",
     "Stocks/Untitled.md",
     "DataBricks/Roles.md",
-    "DataBricks/DW和DL.md",
     "AI-pics/Pasted image 20250116092435.png",
     "assets/Pasted image 20250924135905.png",
     "assets/Pasted image 20250924135845.png",
