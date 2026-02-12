@@ -20,8 +20,21 @@
               "icon": "lucide-file",
               "title": "NAPLAN 学习"
             }
+          },
+          {
+            "id": "7f3b93e6a6858bac",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.11.7"
+              },
+              "icon": "lucide-book-up",
+              "title": "Release Notes 1.11.7"
+            }
           }
         ],
+        "currentTab": 1,
         "stacked": true
       }
     ],
@@ -141,13 +154,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "NAPLAN/NAPLAN 学习.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of NAPLAN 学习"
+              "title": "Outline"
             }
           }
         ],
@@ -172,7 +184,7 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "e61636e6759db32d",
+  "active": "7f3b93e6a6858bac",
   "lastOpenFiles": [
     "NAPLAN/NAPLAN 学习.md",
     "NAPLAN",
