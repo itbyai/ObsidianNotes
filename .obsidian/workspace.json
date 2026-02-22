@@ -4,39 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "10f4a2cebf0a0380",
+        "id": "fbaa7dc2b13b474e",
         "type": "tabs",
         "children": [
           {
-            "id": "7f3b93e6a6858bac",
+            "id": "7bd1273953f0b55b",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Stocks/2026-02-12.md",
+                "file": "NAPLAN/1.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-02-12"
-            }
-          },
-          {
-            "id": "6e53ed9ba573c8f8",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "AI information.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "AI information"
+              "title": "1"
             }
           }
         ],
-        "currentTab": 1,
         "stacked": true
       }
     ],
@@ -156,13 +141,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "AI information.md",
+                "file": "NAPLAN/1.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of AI information"
+              "title": "Outline of 1"
             }
           }
         ],
@@ -187,10 +172,16 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "6e53ed9ba573c8f8",
+  "active": "7bd1273953f0b55b",
   "lastOpenFiles": [
+    "NAPLAN/2.md",
+    "NAPLAN/1.md",
+    "NAPLAN/3.md",
+    "NAPLAN/4.md",
+    "NAPLAN/5.md",
     "Stocks/2026-02-12.md",
     "AI information.md",
+    "Untitled 2.md",
     "NAPLAN/NAPLAN 学习.md",
     "NAPLAN",
     "Stocks/市值与股价.md",
@@ -223,15 +214,9 @@
     "Untitled 8.base",
     "面试要点.md",
     "Untitled 1.md",
-    "test.md",
     "React.html",
     "assets/Pasted image 20241016153924.png",
-    "AI/1、大语言模型文件的内容LLAMA为例.md",
     "assets/Pasted image 20240221234058.png",
-    "Python/Python学习资料.md",
-    "Python/Python2 vs Python3.md",
-    "Stocks/a股短线技巧.md",
-    "Stocks/Untitled.md",
     "AI-pics/Pasted image 20250116092435.png",
     "assets/Pasted image 20250924135905.png",
     "assets/Pasted image 20250924135845.png",
