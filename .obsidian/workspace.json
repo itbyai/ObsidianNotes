@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "NAPLAN/1.md",
+                "file": "NAPLAN/4.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "1"
+              "title": "4"
             }
           }
         ],
@@ -141,13 +141,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "NAPLAN/1.md",
+                "file": "NAPLAN/4.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 1"
+              "title": "Outline of 4"
             }
           }
         ],
@@ -174,9 +174,9 @@
   },
   "active": "7bd1273953f0b55b",
   "lastOpenFiles": [
+    "NAPLAN/3.md",
     "NAPLAN/2.md",
     "NAPLAN/1.md",
-    "NAPLAN/3.md",
     "NAPLAN/4.md",
     "NAPLAN/5.md",
     "Stocks/2026-02-12.md",
