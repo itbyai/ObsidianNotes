@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Stocks/2026-02-26.md",
-                "mode": "preview",
+                "file": "openclaw/Settings.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026-02-26"
+              "title": "Settings"
             }
           }
         ],
@@ -141,13 +141,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Stocks/2026-02-26.md",
+                "file": "openclaw/Settings.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 2026-02-26"
+              "title": "Outline of Settings"
             }
           }
         ],
@@ -174,8 +174,11 @@
   },
   "active": "7bd1273953f0b55b",
   "lastOpenFiles": [
-    "NAPLAN/4.md",
     "Stocks/2026-02-26.md",
+    "openclaw/Settings.md",
+    "openclaw",
+    "Untitled 3.md",
+    "NAPLAN/4.md",
     "NAPLAN/5.md",
     "NAPLAN/2.md",
     "NAPLAN/3.md",
@@ -211,10 +214,7 @@
     "Data",
     "小红书.md",
     "QH",
-    "当前3个月目标.md",
     "Untitled 8.base",
-    "面试要点.md",
-    "React.html",
     "assets/Pasted image 20241016153924.png",
     "assets/Pasted image 20240221234058.png",
     "AI-pics/Pasted image 20250116092435.png",
