@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "客服管理回复消息架构图.md",
+                "file": "Stocks/Untitled 1.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "客服管理回复消息架构图"
+              "title": "Untitled 1"
             }
           }
         ],
@@ -141,13 +141,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "客服管理回复消息架构图.md",
+                "file": "Stocks/Untitled 1.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 客服管理回复消息架构图"
+              "title": "Outline of Untitled 1"
             }
           }
         ],
@@ -174,8 +174,9 @@
   },
   "active": "783d764e656d7157",
   "lastOpenFiles": [
-    "AI Agentic Agent框架.md",
     "客服管理回复消息架构图.md",
+    "Stocks/Untitled 1.md",
+    "AI Agentic Agent框架.md",
     "openclaw/Settings.md",
     "Stocks/2026-02-26.md",
     "openclaw",
@@ -211,7 +212,6 @@
     "Stocks/AI 相关的股票.md",
     "Data/Data Integrity.md",
     "报税/2025年报税.md",
-    "Data/Q and A.md",
     "Data",
     "QH",
     "Untitled 8.base",
