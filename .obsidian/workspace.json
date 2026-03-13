@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Stocks/AI全产业链美股公司.md",
+                "file": "AI/Knack settings.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "AI全产业链美股公司"
+              "title": "Knack settings"
             }
           }
         ],
@@ -141,13 +141,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Stocks/AI全产业链美股公司.md",
+                "file": "AI/Knack settings.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of AI全产业链美股公司"
+              "title": "Outline of Knack settings"
             }
           }
         ],
@@ -174,8 +174,9 @@
   },
   "active": "783d764e656d7157",
   "lastOpenFiles": [
-    "客服管理回复消息架构图.md",
     "Stocks/AI全产业链美股公司.md",
+    "AI/Knack settings.md",
+    "客服管理回复消息架构图.md",
     "AI Agentic Agent框架.md",
     "openclaw/Settings.md",
     "Stocks/2026-02-26.md",
@@ -211,7 +212,6 @@
     "Stocks/基本面分析.md",
     "Stocks/AI 相关的股票.md",
     "Data/Data Integrity.md",
-    "报税/2025年报税.md",
     "Data",
     "QH",
     "Untitled 8.base",
