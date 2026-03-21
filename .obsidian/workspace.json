@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "AI/Knack settings.md",
+                "file": "English/口语.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Knack settings"
+              "title": "口语"
             }
           }
         ],
@@ -141,13 +141,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "AI/Knack settings.md",
+                "file": "English/口语.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Knack settings"
+              "title": "Outline of 口语"
             }
           }
         ],
@@ -174,8 +174,11 @@
   },
   "active": "783d764e656d7157",
   "lastOpenFiles": [
-    "Stocks/AI全产业链美股公司.md",
+    "English/Patten.md",
+    "English/口语.md",
+    "English/短语.md",
     "AI/Knack settings.md",
+    "Stocks/AI全产业链美股公司.md",
     "客服管理回复消息架构图.md",
     "AI Agentic Agent框架.md",
     "openclaw/Settings.md",
@@ -209,9 +212,6 @@
     "Untitled 1.base",
     "Untitled.canvas",
     "Untitled.base",
-    "Stocks/基本面分析.md",
-    "Stocks/AI 相关的股票.md",
-    "Data/Data Integrity.md",
     "Data",
     "QH",
     "Untitled 8.base",
