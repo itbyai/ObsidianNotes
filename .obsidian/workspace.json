@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "AI/最有用的ai证书.md",
+                "file": "English/口语.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "最有用的ai证书"
+              "title": "口语"
             }
           }
         ],
@@ -141,13 +141,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "AI/最有用的ai证书.md",
+                "file": "English/口语.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 最有用的ai证书"
+              "title": "Outline of 口语"
             }
           }
         ],
@@ -174,8 +174,8 @@
   },
   "active": "783d764e656d7157",
   "lastOpenFiles": [
-    "AI/学习资料.md",
     "AI/最有用的ai证书.md",
+    "AI/学习资料.md",
     "AI/企业级的AI.md",
     "AI/RAG-Python.md",
     "AI/transformer.md",
