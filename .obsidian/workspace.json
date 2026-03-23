@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "English/口语.md",
+                "file": "AI 学习/RAG.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "口语"
+              "title": "RAG"
             }
           }
         ],
@@ -141,13 +141,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "English/口语.md",
+                "file": "AI 学习/RAG.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 口语"
+              "title": "Outline of RAG"
             }
           }
         ],
@@ -174,13 +174,15 @@
   },
   "active": "783d764e656d7157",
   "lastOpenFiles": [
+    "AI 学习/学习资料.md",
+    "AI 学习/RAG.md",
+    "English/口语.md",
     "AI/最有用的ai证书.md",
     "AI/学习资料.md",
     "AI/企业级的AI.md",
     "AI/RAG-Python.md",
     "AI/transformer.md",
     "AI/2、Chatgpt如何理解语意.md",
-    "English/口语.md",
     "English/Patten.md",
     "English/短语.md",
     "AI/Knack settings.md",
@@ -199,9 +201,7 @@
     "Stocks/2026-02-12.md",
     "AI information.md",
     "Untitled 2.md",
-    "NAPLAN/NAPLAN 学习.md",
     "NAPLAN",
-    "Stocks/市值与股价.md",
     "Pasted image 20260124225824.png",
     "Pasted image 20260124225528.png",
     "dbt and databricks",
