@@ -3215,3 +3215,4 @@ Enter your employee ID... Complete MFA verification. If MFA fails...
 **它们一起平衡：信息完整性、检索准确率、成本和延迟**
 
 如果你愿意，我下一步可以直接给你画一个非常直观的 **RAG 示例表格**，把一个文档切成 chunks、附上 metadata、再展示 top-k 检索结果。
+
