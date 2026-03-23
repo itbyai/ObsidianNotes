@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "English/口语.md",
+                "file": "AI/最有用的ai证书.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "口语"
+              "title": "最有用的ai证书"
             }
           }
         ],
@@ -141,13 +141,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "English/口语.md",
+                "file": "AI/最有用的ai证书.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 口语"
+              "title": "Outline of 最有用的ai证书"
             }
           }
         ],
@@ -174,8 +174,14 @@
   },
   "active": "783d764e656d7157",
   "lastOpenFiles": [
-    "English/Patten.md",
+    "AI/学习资料.md",
+    "AI/最有用的ai证书.md",
+    "AI/企业级的AI.md",
+    "AI/RAG-Python.md",
+    "AI/transformer.md",
+    "AI/2、Chatgpt如何理解语意.md",
     "English/口语.md",
+    "English/Patten.md",
     "English/短语.md",
     "AI/Knack settings.md",
     "Stocks/AI全产业链美股公司.md",
@@ -196,14 +202,8 @@
     "NAPLAN/NAPLAN 学习.md",
     "NAPLAN",
     "Stocks/市值与股价.md",
-    "Stocks/股票研究表格.md",
-    "dbt and databricks/两种模式比较ods-edw和ods-项目自定义多层.md",
-    "dbt and databricks/Basic concept.md",
-    "dbt and databricks/End to end dbt and databricks projects.md",
-    "centralised governance.md",
     "Pasted image 20260124225824.png",
     "Pasted image 20260124225528.png",
-    "Westpac面试.md",
     "dbt and databricks",
     "Untitled 7.base",
     "Untitled 2.canvas",
