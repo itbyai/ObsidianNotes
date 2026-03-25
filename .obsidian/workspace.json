@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "AI 学习/RAG.md",
+                "file": "AI 学习/AI-Databricks-Exam.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "RAG"
+              "title": "AI-Databricks-Exam"
             }
           }
         ],
@@ -141,13 +141,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "AI 学习/RAG.md",
+                "file": "AI 学习/AI-Databricks-Exam.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of RAG"
+              "title": "Outline of AI-Databricks-Exam"
             }
           }
         ],
@@ -174,18 +174,24 @@
   },
   "active": "783d764e656d7157",
   "lastOpenFiles": [
-    "AI 学习/学习资料.md",
+    "Pasted image 20260325215424.png",
     "AI 学习/RAG.md",
-    "English/口语.md",
-    "AI/最有用的ai证书.md",
-    "AI/学习资料.md",
-    "AI/企业级的AI.md",
+    "AI 学习/AI-Databricks-Exam.md",
+    "AI 学习/1、大语言模型文件的内容LLAMA为例.md",
+    "AI/1、大语言模型文件的内容LLAMA为例.md",
+    "AI/2、Chatgpt如何理解语意.md",
+    "AI/Knack settings.md",
+    "AI/Layer Norm的作用.md",
     "AI/RAG-Python.md",
     "AI/transformer.md",
-    "AI/2、Chatgpt如何理解语意.md",
+    "AI/企业级的AI.md",
+    "AI/多头注意力机制.md",
+    "AI/学习资料.md",
+    "AI/最有用的ai证书.md",
+    "AI 学习/学习资料.md",
+    "English/口语.md",
     "English/Patten.md",
     "English/短语.md",
-    "AI/Knack settings.md",
     "Stocks/AI全产业链美股公司.md",
     "客服管理回复消息架构图.md",
     "AI Agentic Agent框架.md",
@@ -195,12 +201,6 @@
     "Untitled 3.md",
     "NAPLAN/4.md",
     "NAPLAN/5.md",
-    "NAPLAN/2.md",
-    "NAPLAN/3.md",
-    "NAPLAN/1.md",
-    "Stocks/2026-02-12.md",
-    "AI information.md",
-    "Untitled 2.md",
     "NAPLAN",
     "Pasted image 20260124225824.png",
     "Pasted image 20260124225528.png",
