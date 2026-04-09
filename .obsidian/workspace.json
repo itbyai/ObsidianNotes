@@ -20,8 +20,21 @@
               "icon": "lucide-file",
               "title": "AI-Databricks-Exam"
             }
+          },
+          {
+            "id": "9a0ea607ba2bf0f0",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.12.7"
+              },
+              "icon": "lucide-book-up",
+              "title": "Release Notes 1.12.7"
+            }
           }
         ],
+        "currentTab": 1,
         "stacked": true
       }
     ],
@@ -141,13 +154,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "AI 学习/AI-Databricks-Exam.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of AI-Databricks-Exam"
+              "title": "Outline"
             }
           }
         ],
@@ -172,7 +184,7 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "783d764e656d7157",
+  "active": "9a0ea607ba2bf0f0",
   "lastOpenFiles": [
     "Pasted image 20260325215424.png",
     "AI 学习/RAG.md",
