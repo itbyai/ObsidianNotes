@@ -35,3 +35,151 @@
 **最值得先考的是 Databricks Certified Generative AI Engineer Associate。** 因为它更贴近现在企业里 Databricks 的 AI 热点，也更容易和 RAG、LLM、agent、data platform 场景挂钩。([Databricks](https://www.databricks.com/learn/certification/genai-engineer-associate "Databricks Certified Generative AI Engineer Associate | Databricks"))
 
 如果你愿意，我可以下一条直接帮你整理一份：**Databricks GenAI Engineer Associate 备考路线 + 常见考点 + 去哪里练题**。
+
+
+可以，我给你整理成 **“大厂 AI 证书地图 + 含金量怎么选”** 这个版本。
+
+我先说结论：  
+如果你看的是 **全球认可度 + 技术含量 + 对 AI/数据工程岗位的帮助**，第一梯队我会放 **AWS、Google Cloud、Databricks、Microsoft**。其中 AWS 认证体系规模很大，官方披露截至 2025 年 1 月已有超过 142 万张有效 AWS Certification；Google Cloud 和 Microsoft 都有完整的官方认证体系；Databricks 在数据/AI 平台岗位里很强。([Amazon Web Services, Inc.](https://aws.amazon.com/certification/?utm_source=chatgpt.com "AWS Certification - Validate AWS Cloud Skills"))
+
+### 第一梯队：最值得优先考
+
+**1. AWS**
+
+- **AWS Certified Generative AI Developer – Professional**：偏 GenAI 工程落地，官方直接写明面向把 foundation models 集成进应用和业务流程的人，强调生产级 GenAI、RAG、向量库、Bedrock 这类能力。([Amazon Web Services, Inc.](https://aws.amazon.com/certification/certified-generative-ai-developer-professional/?utm_source=chatgpt.com "AWS Certified Generative AI Developer - Professional"))
+    
+- **AWS Certified Machine Learning Engineer – Associate**：偏传统 ML / MLOps / production ML。([AWS Documentation](https://docs.aws.amazon.com/aws-certification/latest/examguides/aws-certification-exam-guides.html?utm_source=chatgpt.com "AWS Certification Exam Guides"))
+    
+- **AWS Certified AI Practitioner**：入门级，适合先拿一张 AI 基础证书。官方标为 Foundational，90 分钟。([Amazon Web Services, Inc.](https://aws.amazon.com/certification/certified-ai-practitioner/?utm_source=chatgpt.com "AWS Certified AI Practitioner"))
+    
+
+**2. Google Cloud**
+
+- **Professional Machine Learning Engineer**：这是 Google Cloud 最硬的技术向 AI 证书之一，偏设计、训练、部署、运营化 ML 系统。([Google Cloud](https://cloud.google.com/learn/certification/machine-learning-engineer?utm_source=chatgpt.com "Professional ML Engineer Certification | Learn"))
+    
+- **Generative AI Leader**：偏业务和战略，不是纯开发岗，但它是 Google 官方专门为 GenAI 设的认证，90 分钟、99 美元。([Google Cloud](https://cloud.google.com/learn/certification/generative-ai-leader?utm_source=chatgpt.com "Generative AI Leader | Learn"))
+    
+
+**3. Databricks**
+
+- **Databricks Certified Generative AI Engineer Associate**：很适合做数据平台、RAG、LLM 应用、治理、部署的人，官方定义就是设计和实现 LLM-enabled solutions。([Databricks](https://www.databricks.com/learn/certification/genai-engineer-associate?utm_source=chatgpt.com "Databricks Certified Generative AI Engineer Associate"))
+    
+- **Databricks Certified Machine Learning Associate / Professional**：一个偏基础到中级，一个偏企业级 ML/MLOps。Databricks 官方把它们都放在 data + AI + ML 认证体系里。([Databricks](https://www.databricks.com/learn/training/home?utm_source=chatgpt.com "Databricks Training & Certification Programs"))
+    
+
+**4. Microsoft**
+
+- **Azure AI Engineer Associate**：一直是微软技术向 AI 主力证书，覆盖构建、管理和部署 Azure AI 解决方案。([Microsoft Learn](https://learn.microsoft.com/en-us/credentials/certifications/azure-ai-engineer/?utm_source=chatgpt.com "Azure AI Engineer Associate - Certifications"))
+    
+- **Azure AI Fundamentals**：入门级。([Microsoft Learn](https://learn.microsoft.com/en-us/credentials/certifications/azure-ai-fundamentals/?utm_source=chatgpt.com "Microsoft Certified: Azure AI Fundamentals - Certifications"))
+    
+
+不过微软这条线你要特别注意：  
+**AI-102 对应的 Azure AI Engineer Associate 将在 2026-06-30 retire；AI-900 也会在 2026-06-30 retire，但 Azure AI Fundamentals 这个认证本身会改由 AI-901 接续。** 也就是说微软现在处于换代期，临近报名一定要再看一次官方页。([Microsoft Learn](https://learn.microsoft.com/en-us/credentials/certifications/azure-ai-engineer/?utm_source=chatgpt.com "Azure AI Engineer Associate - Certifications"))
+
+### 第二梯队：有价值，但更偏细分方向
+
+**5. NVIDIA**
+
+- **NVIDIA-Certified Associate Generative AI LLM**：GenAI/LLM 入门证书，50 题，60 分钟。([NVIDIA](https://www.nvidia.com/en-us/learn/certification/generative-ai-llm-associate/?utm_source=chatgpt.com "Generative AI with LLMs Certification"))
+    
+- **Generative AI LLMs Certification for Professionals**：更进阶，偏设计、训练、微调和高性能 LLM。([NVIDIA](https://www.nvidia.com/en-us/learn/certification/generative-ai-llm-professional/?utm_source=chatgpt.com "Generative AI LLMs Certification for Professionals"))
+    
+
+**6. Snowflake**
+
+- **SnowPro Specialty: Gen AI**：如果你未来会做 Snowflake Cortex AI、Snowpark Container Services、Model Registry，这张证书是非常对口的，但它更平台化，不如 AWS/Google/Databricks 那么“通用”。([Snowflake Learning](https://learn.snowflake.com/en/certifications/snowpro-GenAI?utm_source=chatgpt.com "SnowPro® Specialty: Gen AI"))
+    
+
+**7. Oracle**
+
+- **OCI AI Foundations Associate**：适合想拿一张 Oracle 体系 AI 入门证书的人。Oracle 官方现在已经有 2026 版 OCI AI Foundations。([Oracle University](https://education.oracle.com/oracle-cloud-infrastructure-2026-certified-ai-foundations-associate/trackp_OCI26AICFA?utm_source=chatgpt.com "Oracle Cloud Infrastructure 2026 Certified AI Foundations ..."))
+    
+
+**8. Salesforce**
+
+- **Salesforce AI Associate**：偏 CRM + 负责任 AI + 业务应用，不是纯 AI 工程岗的硬技术证书，但如果你在做企业应用、客户服务、销售智能化，它是有价值的。([Trailhead](https://trailhead.salesforce.com/credentials/aiassociate?utm_source=chatgpt.com "AI Certification - AI Associate - Trailhead"))
+    
+
+**9. IBM**
+
+- **IBM Certified watsonx AI Assistant Engineer v1 - Professional**：属于 IBM watsonx 生态的 AI 证书，更适合 IBM stack。([IBM](https://www.ibm.com/training/certification/ibm-certified-watsonx-ai-assistant-engineer-v1-professional-C9006900?utm_source=chatgpt.com "IBM Certified watsonx AI Assistant Engineer v1 - Professional"))
+    
+
+### 第三梯队：新兴或还不够成熟
+
+**10. OpenAI**  
+OpenAI 已经正式推出了 **AI Foundations** 和更完整的 **OpenAI Certification** 路线，但它目前更像是“新启动的官方认证项目”，成熟度和市场普及度还在爬坡。帮助中心还写明 **OpenAI Certified app** 目前是 **ChatGPT Enterprise 和 Edu 工作区可用，且是 invite-only**。所以现阶段我会把它当成“值得关注”，但不放在你第一批必考清单里。([OpenAI](https://openai.com/index/openai-certificate-courses/?utm_source=chatgpt.com "Launching our first OpenAI Certifications courses"))
+
+### 如果按“含金量”给你一个实战排序
+
+如果你是 **技术岗 / AI工程 / 数据工程 / 自动化工程**，我会这样排：
+
+**最值得考的一组**
+
+1. **Google Cloud Professional Machine Learning Engineer**
+    
+2. **AWS Certified Generative AI Developer – Professional**
+    
+3. **Databricks Certified Generative AI Engineer Associate**
+    
+4. **AWS Machine Learning Engineer – Associate**
+    
+5. **Microsoft Azure AI Engineer Associate**（但要注意 2026-06-30 retire）  
+    ([Google Cloud](https://cloud.google.com/learn/certification/machine-learning-engineer?utm_source=chatgpt.com "Professional ML Engineer Certification | Learn"))
+    
+
+**适合补简历 / 快速入门的一组**
+
+1. **AWS Certified AI Practitioner**
+    
+2. **Azure AI Fundamentals / AI-901 新路线**
+    
+3. **Google Generative AI Leader**
+    
+4. **NVIDIA GenAI LLM Associate**  
+    ([Amazon Web Services, Inc.](https://aws.amazon.com/certification/certified-ai-practitioner/?utm_source=chatgpt.com "AWS Certified AI Practitioner"))
+    
+
+**只有在你公司技术栈匹配时才优先**
+
+- Snowflake Gen AI
+    
+- Oracle OCI AI Foundations
+    
+- Salesforce AI Associate
+    
+- IBM watsonx AI Assistant Engineer  
+    ([Snowflake Learning](https://learn.snowflake.com/en/certifications/snowpro-GenAI?utm_source=chatgpt.com "SnowPro® Specialty: Gen AI"))
+    
+
+### 结合你的背景，我会这样建议
+
+你偏 **自动化、数据平台、AI工程落地**，所以最实用的顺序不是“先拿最容易的”，而是：
+
+**路线 A：更贴近你现在工作价值**
+
+1. **Databricks GenAI Engineer Associate**
+    
+2. **AWS Generative AI Developer – Professional**
+    
+3. **Google Professional ML Engineer**
+    
+
+这条路线对 **RAG、agent、数据平台、模型部署、治理** 最有帮助。([Databricks](https://www.databricks.com/learn/certification/genai-engineer-associate?utm_source=chatgpt.com "Databricks Certified Generative AI Engineer Associate"))
+
+**路线 B：先拿快证，再冲硬证**
+
+1. **AWS AI Practitioner**
+    
+2. **Databricks GenAI Engineer Associate**
+    
+3. **Google Professional ML Engineer** 或 **AWS GenAI Developer – Professional**  
+    ([Amazon Web Services, Inc.](https://aws.amazon.com/certification/certified-ai-practitioner/?utm_source=chatgpt.com "AWS Certified AI Practitioner"))
+    
+
+### 我不太建议你优先投入的
+
+像 **纯业务领导类 GenAI 证书**，例如 Google Generative AI Leader，或者偏 CRM 的 Salesforce AI Associate，它们不是没用，只是对你这种偏工程背景的人，简历增益通常不如 Databricks / AWS / Google 的技术证书直接。这个判断是基于这些证书各自官方定位：前者更偏 business-level / CRM use cases，后者更偏构建、部署、运营 AI 系统。([Google Cloud](https://cloud.google.com/learn/certification/generative-ai-leader?utm_source=chatgpt.com "Generative AI Leader | Learn"))
+
+下一条我可以直接给你做一个 **“最适合你考的前 5 个 AI 证书 + 难度 + 备考顺序”**。
