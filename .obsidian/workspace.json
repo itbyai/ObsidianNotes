@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "AI Databricks Cert/考题.md",
+                "file": "AI Databricks Cert/Databricks AI 证书.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "考题"
+              "title": "Databricks AI 证书"
             }
           }
         ],
@@ -141,13 +141,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "AI Databricks Cert/考题.md",
+                "file": "AI Databricks Cert/Databricks AI 证书.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 考题"
+              "title": "Outline of Databricks AI 证书"
             }
           }
         ],
@@ -175,6 +175,7 @@
   "active": "9a0ea607ba2bf0f0",
   "lastOpenFiles": [
     "AI Databricks Cert/考题.md",
+    "AI Databricks Cert/Databricks AI 证书.md",
     "AI Databricks Cert",
     "Pasted image 20260325215424.png",
     "AI 学习/RAG.md",
@@ -202,7 +203,6 @@
     "openclaw",
     "Untitled 3.md",
     "NAPLAN/4.md",
-    "NAPLAN/5.md",
     "NAPLAN",
     "Pasted image 20260124225824.png",
     "Pasted image 20260124225528.png",
