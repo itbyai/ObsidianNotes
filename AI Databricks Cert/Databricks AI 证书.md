@@ -183,3 +183,49 @@ OpenAI 已经正式推出了 **AI Foundations** 和更完整的 **OpenAI Certifi
 像 **纯业务领导类 GenAI 证书**，例如 Google Generative AI Leader，或者偏 CRM 的 Salesforce AI Associate，它们不是没用，只是对你这种偏工程背景的人，简历增益通常不如 Databricks / AWS / Google 的技术证书直接。这个判断是基于这些证书各自官方定位：前者更偏 business-level / CRM use cases，后者更偏构建、部署、运营 AI 系统。([Google Cloud](https://cloud.google.com/learn/certification/generative-ai-leader?utm_source=chatgpt.com "Generative AI Leader | Learn"))
 
 下一条我可以直接给你做一个 **“最适合你考的前 5 个 AI 证书 + 难度 + 备考顺序”**。
+
+## 另外的证书
+
+基于你现在偏 **数据平台 / 自动化 / Databricks / AI 落地** 的方向，我会把证书这样排。最值得先考的是 **Databricks Certified Data Engineer Associate**，因为它直接对应 Lakehouse、Spark SQL / PySpark、ETL、平台理解这些核心能力；Databricks 官方给出的考试信息是 45 道题、90 分钟、$200、有效期 2 年。([Databricks](https://www.databricks.com/learn/certification/data-engineer-associate?utm_source=chatgpt.com "Databricks Certified Data Engineer Associate"))
+
+第二个我最推荐的是 **Databricks Certified Generative AI Engineer Associate**。这个证书更贴近现在的 RAG、LLM 应用、模型选择、应用组装与治理，官方说明它面向“设计和实现 LLM-enabled solutions”，考试也是 45 题、90 分钟、$200，且建议有 6 个月以上相关实操。对于想把 Databricks 和 AI 结合起来的人，这张证书的信号最强。([Databricks](https://www.databricks.com/learn/certification/genai-engineer-associate?utm_source=chatgpt.com "Databricks Certified Generative AI Engineer Associate"))
+
+第三个推荐 **Databricks Certified Machine Learning Associate**。它比 GenAI 更偏传统 ML 和基础 ML 平台能力，覆盖 Databricks ML、AutoML、Unity Catalog、MLflow、特征工程、训练评估等；考试 48 题、90 分钟、$200。假如你既想做 AI，又不想把自己只绑定在 GenAI 上，这张很稳。([Databricks](https://www.databricks.com/learn/certification/machine-learning-associate?utm_source=chatgpt.com "Databricks Certified Machine Learning Associate"))
+
+等你已经在 Databricks 上做到比较深的工程化和生产化，再考虑 **Databricks Data Engineer Professional** 或 **Databricks Machine Learning Professional**。前者更偏高级数据工程；后者已经明确覆盖 MLOps、Databricks Asset Bundles、自动重训、Lakehouse Monitoring、部署与 rollout 管理，更适合真正做生产级 ML/AI 平台的人。([Databricks](https://www.databricks.com/learn/certification/data-engineer-professional?utm_source=chatgpt.com "Databricks Certified Data Engineer Professional"))
+
+如果把范围放到 “AI 证书” 本身，而不只限 Databricks，我会再加 4 张：
+
+**1. Microsoft Certified: Azure AI Engineer Associate**  
+很适合企业环境，尤其是你如果会碰 Azure AI Search、Azure OpenAI、知识检索和 agentic solution。官方页面显示它当前仍可考，但 **AI-102 会在 2026 年 6 月 30 日退役**，所以这张证书要考就尽量在这之前。([Microsoft Learn](https://learn.microsoft.com/en-us/credentials/certifications/azure-ai-engineer/?utm_source=chatgpt.com "Azure AI Engineer Associate - Certifications"))
+
+**2. AWS Certified Machine Learning Engineer – Associate**  
+这是 AWS 现在更主流的 ML 工程证书，重点是把 ML 方案做成可运行、可部署、可维护的生产系统。相比只学概念，这张更像工程岗位证书。([Amazon Web Services, Inc.](https://aws.amazon.com/certification/certified-machine-learning-engineer-associate/?utm_source=chatgpt.com "AWS Certified Machine Learning Engineer – Associate"))
+
+**3. AWS Certified Generative AI Developer – Professional**  
+这张更偏高级，官方描述就是面向把 foundation models 集成到应用和业务流程，并落到生产环境的人。你如果后面要做 Bedrock、GenAI 应用工程化，这张很有价值。([Amazon Web Services, Inc.](https://aws.amazon.com/certification/certified-generative-ai-developer-professional/?utm_source=chatgpt.com "AWS Certified Generative AI Developer - Professional"))
+
+**4. Google Cloud Professional Machine Learning Engineer**  
+Google 这张一直是偏“正统 ML 工程”的证书，覆盖设计、训练、生产化和运维，适合想证明自己不仅会调用模型，而且懂完整 ML 生命周期的人。([Google Cloud](https://cloud.google.com/learn/certification/machine-learning-engineer?utm_source=chatgpt.com "Professional ML Engineer Certification | Learn"))
+
+还有一张可以当补充，但我不会把它排很前面：**AWS Certified AI Practitioner**。它是 foundational 级别，更适合想快速建立 AI / ML / GenAI 概念框架的人；对工程师来说，价值有，但不如上面几张“能证明交付能力”的证书。([Amazon Web Services, Inc.](https://aws.amazon.com/certification/certified-ai-practitioner/?utm_source=chatgpt.com "AWS Certified AI Practitioner"))
+
+给你一个最实用的顺序：
+
+1. **Databricks Data Engineer Associate**
+    
+2. **Databricks Generative AI Engineer Associate**
+    
+3. **Databricks Machine Learning Associate**
+    
+4. 二选一：**Azure AI Engineer Associate** 或 **AWS ML Engineer Associate**
+    
+5. 进阶再上：**Databricks ML Professional** 或 **AWS Generative AI Developer – Professional** ([Databricks](https://www.databricks.com/learn/certification/data-engineer-associate?utm_source=chatgpt.com "Databricks Certified Data Engineer Associate"))
+    
+
+另外提醒你一个容易踩坑的点：很多旧文章还会推荐 **AWS Machine Learning Specialty**，但 AWS 官方考试指南里写了它的 **最后考试日期是 2026 年 3 月 31 日**，按今天这个时间已经过去了，所以现在不该把它列进主计划。([AWS Documentation](https://docs.aws.amazon.com/aws-certification/latest/examguides/aws-certification-exam-guides.html?utm_source=chatgpt.com "AWS Certification Exam Guides"))
+
+如果按“投入产出比”只选 3 张，我给你的版本是：  
+**Databricks Data Engineer Associate + Databricks Generative AI Engineer Associate + Azure AI Engineer Associate**。([Databricks](https://www.databricks.com/learn/certification/data-engineer-associate?utm_source=chatgpt.com "Databricks Certified Data Engineer Associate"))
+
+你要的话，我可以下一条直接帮你排一个 **6 个月考证路线图**，按你的背景把每张证书的难度、学习顺序、资料来源和备考时间都列出来。
