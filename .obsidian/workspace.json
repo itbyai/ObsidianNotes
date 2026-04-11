@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "AI Databricks Cert/Untitled.md",
-                "mode": "source",
+                "file": "AI Databricks Cert/Data Preparation.md",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Untitled"
+              "title": "Data Preparation"
             }
           }
         ],
@@ -141,13 +141,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "AI Databricks Cert/Untitled.md",
+                "file": "AI Databricks Cert/Data Preparation.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Untitled"
+              "title": "Outline of Data Preparation"
             }
           }
         ],
@@ -175,7 +175,7 @@
   "active": "9a0ea607ba2bf0f0",
   "lastOpenFiles": [
     "AI Databricks Cert/Design Application.md",
-    "AI Databricks Cert/Untitled.md",
+    "AI Databricks Cert/Data Preparation.md",
     "AI Databricks Cert/study guide.md",
     "AI Databricks Cert/真题.md",
     "AI Databricks Cert/Databricks AI 证书.md",
