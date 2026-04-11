@@ -1,0 +1,616 @@
+# Assembling and Deploying Applications
+
+## 模块定位
+
+Assembling and Deploying Applications 聚焦于把前面已经设计好的模型、链路、检索组件和应用逻辑，真正组装成一个可以部署、调用、治理和批量运行的系统。
+
+这一部分的重点不只是“能不能跑起来”，而是：
+
+- 如何把模型封装成可部署接口
+    
+- 如何在 Databricks 中控制访问权限
+    
+- 如何组织链式调用
+    
+- 如何组装和部署 RAG 应用
+    
+- 如何注册模型到 Unity Catalog
+    
+- 如何使用 Vector Search 支持语义检索
+    
+- 如何高效地做批量推理
+    
+
+本模块涉及的核心能力包括：
+
+- 用 MLflow PyFunc 封装模型
+    
+- 用 Unity Catalog 做访问控制
+    
+- 用 LangChain 组织简单链和 LLM 链
+    
+- 识别基础 RAG 应用的必需组件
+    
+- 用 MLflow 注册模型到 Unity Catalog
+    
+- 了解 RAG 应用的典型部署顺序
+    
+- 正确查询 Mosaic AI Vector Search 索引
+    
+- 在 Databricks 中部署调用外部大模型 API 的应用
+    
+- 识别支撑 RAG 服务所需的基础资源
+    
+- 理解 Mosaic AI Vector Search 的边界
+    
+- 从 Delta 表上的 embeddings 构建向量搜索能力
+    
+- 在 Delta Lake 上执行高效批量推理
+    
+
+---
+
+# 1. 用 MLflow PyFunc 封装模型时，核心方法是 `load_context` 和 `predict`
+
+## 典型场景
+
+需要把一个机器学习模型封装在 **MLflow PyFunc wrapper** 中，并且要求：
+
+- 推理前做文本标准化
+    
+- 推理后做输出格式化
+    
+
+## 推荐实现方式
+
+在这种场景下，最核心的函数签名通常是：
+
+- **`load_context`**
+    
+- **`predict`**
+    
+
+## 原因
+
+这是 PyFunc 的典型封装模式：
+
+- `load_context` 用于加载模型依赖、工件、上下文资源
+    
+- `predict` 用于执行实际推理
+    
+
+而所谓的：
+
+- 预处理
+    
+- 后处理
+    
+
+通常都会写在 `predict` 方法内部，而不是作为 PyFunc 的标准独立接口暴露出来。
+
+## 核心原则
+
+**MLflow PyFunc 的标准封装重点不是拆成 preprocess / postprocess 两个公开方法，而是通过 `load_context` + `predict` 完成整体封装。**
+
+---
+
+# 2. Databricks 模型服务端点的访问控制依赖 Unity Catalog 权限
+
+## 典型问题
+
+如何控制对 Databricks model serving endpoints 的访问？
+
+## 正确答案
+
+**Unity Catalog permissions**
+
+## 原因
+
+Unity Catalog 不只管理表和数据，也管理模型、端点等对象的访问权限，能够提供更细粒度的安全控制。
+
+## 这意味着什么
+
+访问控制不是靠：
+
+- 普通 SQL 语句
+    
+- 简单 API key 习惯用法
+    
+- 临时目录权限
+    
+
+而是依赖统一的治理体系。
+
+## 核心原则
+
+**在 Databricks 里，模型、端点、数据的访问治理要放在 Unity Catalog 这一层来理解。**
+
+---
+
+# 3. 用 LangChain 构建简单转换链时，本质是“函数链封装为链”
+
+## 典型场景
+
+需要构建一个简单链，把用户输入转换为大写后返回。  
+示例逻辑类似：
+
+```python
+def to_upper(text):
+    return text.upper()
+```
+
+然后再把这个能力接入 `SimpleSequentialChain`。
+
+## 正确思路
+
+最匹配的模式是：
+
+**把函数封装成链，再由链组成顺序链。**
+
+## 原因
+
+`SimpleSequentialChain` 期望的是链式组件，而不是单独裸函数。  
+因此本质上是：
+
+- 先把函数包装成 chain
+    
+- 再把多个 chain 串起来
+    
+
+## 核心原则
+
+**顺序链的基本单位是 chain，不是普通 Python 函数本身。**
+
+---
+
+# 4. 能把 prompt 和 LLM 连接起来的核心组件是 LLM Chain
+
+## 典型问题
+
+哪个链式组件允许把 prompt 和 LLM 连接起来？
+
+## 正确答案
+
+**LLM Chain**
+
+## 原因
+
+LLM Chain 的作用就是：
+
+- 接收 prompt
+    
+- 调用 LLM
+    
+- 输出结果
+    
+
+它是顺序链、提示驱动链式应用中的基础组件之一。
+
+## 核心原则
+
+**当需求是“提示 + 模型输出”的标准组合时，优先想到 LLM Chain。**
+
+---
+
+# 5. 基础 RAG 应用的必需组件是 Embedding Model
+
+## 典型场景
+
+需要构建一个简单的 RAG 应用，问题是：哪些组件是必不可少的？
+
+## 正确答案
+
+**Embedding model**
+
+## 原因
+
+RAG 的基本前提是：
+
+- 把文档表示成向量
+    
+- 把查询表示成向量
+    
+- 在向量空间中做相似度检索
+    
+
+因此，embedding model 是基础前提。
+
+## 非必需项
+
+以下项目并不是“构建基础 RAG 应用”的强制组件：
+
+- SQL Warehouse
+    
+- Feature Store
+    
+- AutoML Experiments
+    
+
+这些可能在某些工程场景下有帮助，但不是最基础的刚需。
+
+## 核心原则
+
+**没有 embedding，就没有基于相似度的标准 RAG 检索。**
+
+---
+
+# 6. 用 MLflow 注册模型到 Unity Catalog，要使用标准的模型注册 API
+
+## 典型问题
+
+如何通过 MLflow 把模型注册到 Unity Catalog？
+
+## 正确思路
+
+应使用 **MLflow 的标准模型注册 API**，以注册模型 URI 和名称的方式完成注册。
+
+## 内容要点
+
+这一点强调的是：
+
+- 模型注册是正式的 registry 行为
+    
+- 注册对象进入 Unity Catalog 管理体系
+    
+- 之后可以继续结合 MLflow 管理模型生命周期
+    
+
+## 核心原则
+
+**模型要进入 Unity Catalog，不是简单保存文件，而是走正式的模型注册流程。**
+
+---
+
+# 7. RAG 应用端点的典型部署顺序是：文档处理 → 向量化/索引 → 检索器 → 模型注册 → 服务端点
+
+## 典型问题
+
+在 Databricks 中部署一个 RAG app endpoint，通常步骤顺序是什么？
+
+## 典型顺序
+
+可以概括为以下流程：
+
+1. **处理文档**
+    
+2. **生成 embeddings**
+    
+3. **建立索引**
+    
+4. **构建 retriever**
+    
+5. **注册模型**
+    
+6. **创建 serving endpoint**
+    
+
+## 原因
+
+RAG 应用的部署不是先开端点，而是先把底层检索能力搭好：
+
+- 文档先准备好
+    
+- 再做 embedding
+    
+- 再建立索引
+    
+- 再形成检索器
+    
+- 然后把应用/模型注册
+    
+- 最后对外提供服务
+    
+
+## 核心原则
+
+**RAG 部署顺序要从“知识准备”走到“服务暴露”，不能颠倒。**
+
+---
+
+# 8. 查询 Mosaic AI Vector Search 索引的标准方式是 Similarity Search
+
+## 典型问题
+
+哪个方式可以正确查询 Mosaic Vector Search index？
+
+## 正确答案
+
+**Similarity search**
+
+## 原因
+
+Vector Search 的核心就是基于向量相似度完成检索，因此标准查询方式是：
+
+- 输入 query vector
+    
+- 指定返回数量，例如 top-k
+    
+- 做 similarity search
+    
+
+## 核心原则
+
+**向量索引的标准访问方式是相似度检索，而不是普通 SQL 式查表。**
+
+---
+
+# 9. 在 Databricks 中部署调用 OpenAI GPT-4 API 的应用时，部署的是包装链或代理，而不是 GPT-4 本身
+
+## 典型场景
+
+要在 Databricks 里提供一个使用 OpenAI GPT-4 API 的应用服务。
+
+## 正确部署对象
+
+应部署的是：
+
+**wrapper chain 或 agent**
+
+而不是直接“部署 GPT-4 模型本体”。
+
+## 原因
+
+这里的 GPT-4 是外部 API 提供的能力，不是你托管在 Databricks 上的本地模型。  
+Databricks 中真正部署的，是负责：
+
+- 组织输入
+    
+- 调用外部 API
+    
+- 协调检索/工具调用
+    
+- 返回最终结果
+    
+
+的那一层应用封装。
+
+## 核心原则
+
+**外部模型 API 场景下，Databricks 服务的是应用包装层，不是第三方基础模型本体。**
+
+---
+
+# 10. 支撑 Databricks 上 RAG 应用服务的关键资源包括 Vector Search、MLflow Registry 和 Model Serving
+
+## 典型问题
+
+在 Databricks 上服务一个 RAG 应用，需要哪些关键资源？
+
+## 核心资源
+
+- **Vector Search**
+    
+- **MLflow Model Registry**
+    
+- **Model Serving**
+    
+
+## 作用划分
+
+这三者分别支撑：
+
+- Vector Search：语义检索
+    
+- MLflow Registry：模型/应用注册与版本管理
+    
+- Model Serving：对外提供推理服务
+    
+
+## 核心原则
+
+**RAG 服务不是单一组件完成的，而是检索、注册、服务三层一起支撑。**
+
+---
+
+# 11. Mosaic AI Vector Search 不负责动态生成 embeddings
+
+## 典型问题
+
+下面哪项**不是** Mosaic AI Vector Search 的功能？
+
+## 正确答案
+
+**动态生成 embeddings（on the fly）**
+
+## 原因
+
+Mosaic AI Vector Search 的前提是：
+
+- embeddings 已经预先计算好
+    
+- 再基于这些 embeddings 建索引并做相似度搜索
+    
+
+它支持的能力包括：
+
+- dense vector storage
+    
+- embedding indexing
+    
+- fast similarity search
+    
+
+但不负责在查询时临时替你生成全部 embeddings。
+
+## 核心原则
+
+**Vector Search 负责“存、索、搜”，不负责“现场生成 embedding”。**
+
+---
+
+# 12. 在 Delta Lake 中存好 embeddings 后，下一步是创建 Vector Search Index
+
+## 典型场景
+
+文档 embeddings 已经存进 Delta Lake 表，接下来想实现快速语义检索。
+
+## 正确下一步
+
+**在 embeddings 列上创建 vector search index**
+
+## 原因
+
+只有建立向量索引后，系统才能高效做：
+
+- similarity search
+    
+- semantic retrieval
+    
+- RAG 上下文召回
+    
+
+如果只是把向量存进 Delta 表而不建索引，检索效率和工程可用性都会不足。
+
+## 核心原则
+
+**embedding 存表只是第一步，真正的语义检索能力来自后续的向量索引。**
+
+---
+
+# 13. 对 Delta Lake 中的大批量记录运行摘要模型时，最有效的是用 AI Query 做批量推理
+
+## 典型场景
+
+要对 **10,000 条存储在 Delta Lake 中的 support tickets** 运行 summarization 模型。
+
+## 最有效的方法
+
+**使用 AI Query 在 SQL 中做 batch inference**
+
+## 原因
+
+AI Query 更适合这种场景，因为它：
+
+- 面向批量推理
+    
+- 直接作用于 Delta 表
+    
+- 比手工循环、逐条 notebook 调用、逐条 endpoint 顺序调用更高效
+    
+
+## 不够高效的做法
+
+以下做法都不如 AI Query 合适：
+
+- 手动循环遍历记录
+    
+- 在 notebook 中逐条请求
+    
+- 顺序调用端点逐条处理
+    
+
+## 核心原则
+
+**表上大规模批量推理，优先选择面向表和 SQL 的批处理能力，而不是逐条调用。**
+
+---
+
+# 14. 本模块的统一方法论
+
+虽然这一部分涉及模型封装、链式组件、RAG 部署、向量检索和批量推理，但背后的方法论非常统一。
+
+## 14.1 部署不是单点动作，而是完整装配流程
+
+一个可部署应用通常要经历：
+
+- 模型/逻辑封装
+    
+- 权限治理
+    
+- 检索能力装配
+    
+- 注册管理
+    
+- 服务暴露
+    
+- 运行优化
+    
+
+---
+
+## 14.2 RAG 服务依赖明确的底层基础设施
+
+要把 RAG 真正部署起来，不只是有模型就够了，还需要：
+
+- embeddings
+    
+- vector index
+    
+- retriever
+    
+- registry
+    
+- serving endpoint
+    
+
+---
+
+## 14.3 Databricks 中的“服务对象”常常是包装层
+
+很多时候真正部署的不是“基础模型本体”，而是：
+
+- chain
+    
+- agent
+    
+- wrapper
+    
+- orchestrated application logic
+    
+
+这在外部 API 模型场景中尤其重要。
+
+---
+
+## 14.4 批量推理与在线服务是两类不同问题
+
+这一部分也在隐含区分两种能力：
+
+- 在线服务：endpoint、实时调用
+    
+- 批量处理：AI Query、表上推理
+    
+
+它们适合不同的工作负载，不应混用。
+
+---
+
+# 15. 重点复习清单
+
+1. MLflow PyFunc 典型实现围绕 `load_context` 和 `predict`
+    
+2. 预处理和后处理通常写在 `predict` 内部
+    
+3. Databricks 模型服务端点的权限控制依赖 Unity Catalog
+    
+4. `SimpleSequentialChain` 的基础是把函数包装成 chain
+    
+5. prompt 与模型连接的核心组件是 LLM Chain
+    
+6. 基础 RAG 应用的必需组件是 embedding model
+    
+7. 注册模型到 Unity Catalog 要走标准 MLflow 模型注册流程
+    
+8. RAG 端点部署顺序应先处理知识与检索层，再注册和服务
+    
+9. Mosaic AI Vector Search 的标准查询方式是 similarity search
+    
+10. 调用 GPT-4 API 的 Databricks 应用，部署的是 wrapper chain/agent
+    
+11. RAG 服务关键资源包括 Vector Search、MLflow Registry、Model Serving
+    
+12. Mosaic AI Vector Search 不会动态生成 embeddings
+    
+13. embeddings 存入 Delta 后，应创建 vector search index
+    
+14. 对 Delta 表大批量推理，AI Query 比逐条调用更高效
+    
+
+---
+
+# 16. 一句话总结
+
+Assembling and Deploying Applications 的核心是：**把模型、检索、链路和服务治理真正装配成一个可上线、可访问、可扩展的应用系统。**  
+重点在于：**正确封装、正确注册、正确部署、正确检索，以及针对在线服务和批量推理选择合适执行方式。**
+
+我也可以继续把这四份内容合并成一份完整讲义。
