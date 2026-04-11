@@ -1,0 +1,572 @@
+# Evaluation and Monitoring
+
+## 模块定位
+
+Evaluation and Monitoring 是生成式 AI 应用生命周期中的最后一个核心模块，关注的是：**如何在上线前判断方案是否够好，以及在上线后持续确认系统是否依然稳定、准确、可控。**
+
+这一部分的重点不是搭建模型或检索链路，而是建立一套可比较、可追踪、可持续观察的质量体系。核心关注点包括：
+
+- 如何根据评估指标选择模型
+    
+- 哪些线上指标需要持续监控
+    
+- 如何用 MLflow 记录评估结果
+    
+- 为什么 inference logging 对生产环境很重要
+    
+- 如何控制 RAG 应用的推理成本
+    
+- Databricks 中 inference tables 和 agent monitoring 的作用
+    
+- 哪些评估方法依赖 ground truth
+    
+- evaluation 与 monitoring 的边界与分工
+    
+
+---
+
+# 1. 选择模型时，应让任务最关键的质量指标主导决策
+
+## 典型场景
+
+需要选择一个用于**法律文档摘要**的模型。  
+该任务要求：
+
+- 很高的事实准确性
+    
+- 可接受的延迟
+    
+- 能够使用多种评估指标进行比较
+    
+
+内容中提到的比较维度包括：
+
+- 一类文本质量指标（转写中出现类似 BLEU/ROUGE 一类的表述）
+    
+- factual consistency score
+    
+- latency
+    
+
+## 推荐选择原则
+
+在这种任务里，最重要的驱动因素应是：
+
+**事实一致性表现最好的模型，并且满足可接受的延迟要求。**
+
+## 为什么不是其他因素
+
+以下因素不应成为首要决定因素：
+
+- 模型大小
+    
+- 模型受欢迎程度
+    
+- 下载量
+    
+- 单纯看每千 token 的最低成本
+    
+
+因为在法律摘要场景中，最关键的业务要求是：
+
+- 内容不能失真
+    
+- 不能错误概括
+    
+- 需要尽可能忠于原文事实
+    
+
+## 核心原则
+
+**当任务核心要求是 factual accuracy 时，应优先让 factual consistency 这类评估指标主导模型选择，而不是让热度、体量或单纯成本主导。**
+
+---
+
+# 2. 面向客户的 LLM 应用，需要持续监控关键运营指标
+
+## 典型场景
+
+系统已经是 customer-facing 的生产级应用，需要长期稳定运行。
+
+## 需要持续关注的指标
+
+本部分强调的关键运营观察点包括：
+
+- **response time**
+    
+- **user engagement**
+    
+- 与完成情况相关的行为表现
+    
+
+在题目选项中还出现了类似：
+
+- token price fluctuations
+    
+- number of embeddings stored
+    
+- training data size
+    
+
+这些都不是这一题想强调的核心运营监控指标。
+
+## 为什么这些指标重要
+
+持续监控用户参与度和响应时间，可以帮助判断：
+
+- 应用是否稳定可靠
+    
+- 用户是否愿意持续使用
+    
+- 系统是否影响用户满意度
+    
+- 服务体验是否在退化
+    
+
+## 核心原则
+
+**上线后的运营监控，重点应放在用户体验和系统响应质量上，而不是只盯内部资源数量。**
+
+---
+
+# 3. 用 MLflow 评估 RAG 应用时，应记录结构化评估信息
+
+## 典型场景
+
+需要使用 MLflow 来评估和比较一个 RAG 应用。
+
+## 适合记录的内容
+
+MLflow 可以记录的关键内容包括：
+
+- **model latency**
+    
+- **accuracy / quality-related metrics**
+    
+- **example retrieval outputs**
+    
+- 应用级性能表现
+    
+
+## 为什么这很重要
+
+MLflow 的价值在于它不仅能记录模型本身，还能结构化记录评估相关信息，帮助团队：
+
+- 比较不同版本
+    
+- 对比不同配置
+    
+- 跟踪延迟变化
+    
+- 观察检索输出质量
+    
+- 回看应用表现
+    
+
+## 不应只记录的内容
+
+单独只看以下信息并不足以完整评估 RAG 应用：
+
+- GPU memory consumption
+    
+- 仅依赖 SQL history
+    
+- 仅看 endpoint health check
+    
+
+这些更像底层运行信息，而不是面向应用质量的完整评估记录。
+
+## 核心原则
+
+**评估 RAG 应用时，MLflow 应记录“延迟 + 质量指标 + 检索输出示例”这类可比较、可回放、可分析的信息。**
+
+---
+
+# 4. Inference Logging 对生产监控至关重要，因为它能持续记录真实运行表现
+
+## 典型问题
+
+为什么 inference logging 对部署后的应用监控非常关键？
+
+## 核心作用
+
+Inference logging 的关键价值在于，它能够持续捕获：
+
+- **queries**
+    
+- **responses**
+    
+- **retrieval quality over time**
+    
+- 线上真实表现数据
+    
+
+## 为什么重要
+
+有了这些日志，团队才能在生产环境中评估：
+
+- 输出质量是否下降
+    
+- 检索是否越来越不准
+    
+- 某类问题是否经常失败
+    
+- 数据分布是否变化
+    
+- 用户查询模式是否改变
+    
+
+## 不是它的作用
+
+Inference logging 不是为了：
+
+- 自动微调模型
+    
+- 直接加快检索速度
+    
+- 单纯统计 embedding 大小
+    
+
+它的主要价值是提供**可观察性**。
+
+## 核心原则
+
+**没有 inference logging，就很难真正知道系统在生产环境中的表现是否正在退化。**
+
+---
+
+# 5. 在 RAG 应用中，控制推理成本的重要抓手是 Serving Concurrency 与扩缩容控制
+
+## 典型问题
+
+在 RAG 应用中，Databricks 的哪个能力最能帮助控制 inference cost？
+
+## 正确方向
+
+这里强调的关键能力是：
+
+**model serving concurrency limits**
+
+并且配套强调了：
+
+- scaling control
+    
+- resource usage management
+    
+
+## 为什么这能控成本
+
+并发限制和服务扩缩容直接影响：
+
+- 同时处理多少请求
+    
+- 使用多少计算资源
+    
+- 峰值期间成本增长幅度
+    
+- 整体资源利用效率
+    
+
+## 不是核心成本控制工具的选项
+
+以下内容不是这一题关注的成本控制抓手：
+
+- Unity Catalog permissions
+    
+- Delta Live Tables
+    
+- Vector search index 本身
+    
+
+它们有各自价值，但不是这里的主要答案。
+
+## 核心原则
+
+**在线推理成本控制，本质上要靠服务层的并发与扩缩容治理，而不是只看数据层或权限层。**
+
+---
+
+# 6. Inference Tables 与 Agent Monitoring 的主要目的，是跟踪 LLM 行为和请求结果随时间的变化
+
+## 典型问题
+
+Databricks 中 inference tables 和 agent monitoring 的主要目的是什么？
+
+## 主要作用
+
+本部分给出的核心答案是：
+
+**监控 LLM performance，并跟踪 query success 和 errors over time。**
+
+## 具体可理解为
+
+它们帮助团队持续掌握：
+
+- 模型回答是否稳定
+    
+- 请求成功率是否下降
+    
+- 错误是否增多
+    
+- 某些代理步骤是否频繁失败
+    
+- 应用是否随着时间发生质量退化
+    
+
+## 不是它们的主要职责
+
+它们不是主要用于：
+
+- 存储 embeddings 做检索
+    
+- 自动阻断恶意输入
+    
+- 提供模型版本控制
+    
+
+这些分别属于检索、安全或 registry 治理范畴。
+
+## 核心原则
+
+**Inference tables 和 agent monitoring 的重点是观测应用运行质量，而不是替代索引、安全或模型注册功能。**
+
+---
+
+# 7. 依赖 Ground Truth 的评估方法，典型代表是 Precision / Recall
+
+## 典型问题
+
+哪类评估方法需要 ground truth data？
+
+## 正确答案
+
+需要 ground truth 的是：
+
+**precision and recall metrics**
+
+## 原因
+
+Precision 和 Recall 这类指标要想计算，前提是你已经知道：
+
+- 哪些结果本来就应该是正确的
+    
+- 哪些标签是真实标签
+    
+- 哪些召回内容属于相关项
+    
+
+也就是说，它们依赖**已知标注答案**。
+
+## 其他方法为什么不同
+
+以下方法不一定要求严格的 ground truth 标签：
+
+- human preference ranking
+    
+- LLM-as-a-judge
+    
+- user feedback（thumbs up / down）
+    
+
+这些方法可以作为评估信号，但和监督式、标签驱动的 precision/recall 体系不同。
+
+## 核心原则
+
+**凡是要计算精确率、召回率这类监督式指标，就必须先有 ground truth。**
+
+---
+
+# 8. Evaluation 与 Monitoring 的关键区别：前者多在上线前，后者是上线后的持续工作
+
+## 典型问题
+
+在生成式 AI 生命周期中，evaluation 和 monitoring 的关键区别是什么？
+
+## 核心区别
+
+本部分给出的标准理解是：
+
+- **Evaluation**：通常在部署前进行
+    
+- **Monitoring**：部署后持续进行
+    
+
+## 为什么要区分
+
+Evaluation 的目标通常是：
+
+- 比较方案
+    
+- 选择模型
+    
+- 判断某版系统是否达到上线标准
+    
+- 在受控环境下打分
+    
+
+Monitoring 的目标则是：
+
+- 持续观察线上表现
+    
+- 发现退化
+    
+- 发现错误
+    
+- 发现异常趋势
+    
+- 在生产中追踪长期变化
+    
+
+## 不准确的说法
+
+以下说法都不够准确：
+
+- evaluation 由用户做，monitoring 由工程师做
+    
+- monitoring 总是需要 ground truth
+    
+- evaluation 只看成本，monitoring 只看准确率
+    
+
+这些都过于片面。
+
+## 核心原则
+
+**Evaluation 更像“上线前验收”，Monitoring 更像“上线后体检”。**
+
+---
+
+# 9. 本模块的统一方法论
+
+虽然这一部分的题目覆盖模型选择、日志、指标、MLflow、Databricks 监控能力和 ground truth 评估，但背后的方法论非常统一。
+
+## 9.1 上线前要会“比较”
+
+在真正部署前，需要能系统比较：
+
+- 哪个模型更准
+    
+- 哪个配置更稳定
+    
+- 哪种方案更符合业务要求
+    
+- 哪些质量指标最重要
+    
+
+这属于 evaluation 的范畴。
+
+---
+
+## 9.2 上线后要会“观察”
+
+系统上线后，不能假设它会一直稳定。必须持续观察：
+
+- 响应时间是否变慢
+    
+- 用户参与度是否下降
+    
+- 检索是否退化
+    
+- 成功率是否下降
+    
+- 错误是否增多
+    
+
+这属于 monitoring 的范畴。
+
+---
+
+## 9.3 评估指标要贴任务本质
+
+这一部分反复强调一个很重要的思想：
+
+- 法律摘要看 factual consistency
+    
+- 检索/分类类问题看 precision / recall
+    
+- 运营层面看 response time 和 engagement
+    
+- 应用层面记录 retrieval outputs 和 latency
+    
+
+说明**不能拿错指标衡量任务**。
+
+---
+
+## 9.4 可观察性是生产系统的必要条件
+
+这一部分特别强调：
+
+- inference logging
+    
+- inference tables
+    
+- agent monitoring
+    
+- MLflow structured logging
+    
+
+这说明生成式 AI 进入生产后，**可观察性不是附加项，而是基础能力**。
+
+---
+
+## 9.5 成本监控也是监控的一部分
+
+除了质量和正确性，这一部分还明确提出：
+
+- serving concurrency
+    
+- scaling
+    
+- resource usage
+    
+
+这说明 production monitoring 不只是“看对不对”，也包括“看贵不贵、稳不稳”。
+
+---
+
+# 10. 重点复习清单
+
+1. 法律文档摘要任务中，应优先依据 factual consistency 等任务关键质量指标选模型
+    
+2. 面向客户的 LLM 应用要持续关注 response time、user engagement 等运营指标
+    
+3. MLflow 可记录 latency、accuracy、retrieval outputs 等结构化评估信息
+    
+4. inference logging 能持续捕获 query、response 和 retrieval quality 的变化
+    
+5. RAG 推理成本控制的重要抓手是 model serving concurrency limits 与扩缩容
+    
+6. inference tables 和 agent monitoring 主要用于观察 LLM 表现、请求成功率和错误趋势
+    
+7. precision / recall 这类指标依赖 ground truth
+    
+8. evaluation 通常在部署前，monitoring 是部署后的持续行为
+    
+9. 生产级 GenAI 应用必须同时具备质量评估、线上可观察性和成本治理能力
+    
+
+---
+
+# 11. 学习建议与模块收尾
+
+这一部分最后给出的学习方向很明确：
+
+- 系统回顾完整考试范围
+    
+- 继续查看配套资源
+    
+- 完成各个模块的 sectional quizzes
+    
+- 重点练习 mock tests
+    
+
+整体意图是帮助学习者把前面所有模块串起来，进入正式考试前的综合复习阶段。
+
+---
+
+# 12. 一句话总结
+
+Evaluation and Monitoring 的核心是：**上线前用正确指标做出正确选择，上线后用持续监控确保系统长期可靠、准确、稳定且成本可控。**
+
+如果你愿意，我可以把这六份内容合并成一份完整的 Databricks GenAI 认证讲义，并统一格式排版。
