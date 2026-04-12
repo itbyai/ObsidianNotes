@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "AI Databricks Cert/Databricks AI 证书.md",
+                "file": "AI Databricks Cert/study guide.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Databricks AI 证书"
+              "title": "study guide"
             }
           }
         ],
@@ -141,13 +141,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "AI Databricks Cert/Databricks AI 证书.md",
+                "file": "AI Databricks Cert/study guide.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Databricks AI 证书"
+              "title": "Outline of study guide"
             }
           }
         ],
@@ -174,15 +174,16 @@
   },
   "active": "9a0ea607ba2bf0f0",
   "lastOpenFiles": [
-    "AI Databricks Cert/Evaluation and Monitoring.md",
-    "AI Databricks Cert/Assembling and Deploying Applications.md",
-    "AI Databricks Cert/Application Development.md",
-    "AI Databricks Cert/Data Preparation.md",
-    "AI Databricks Cert/Design Application.md",
-    "AI Databricks Cert/study guide.md",
-    "AI Databricks Cert/真题.md",
     "AI Databricks Cert/Databricks AI 证书.md",
+    "AI Databricks Cert/6. Evaluation and Monitoring.md",
+    "AI Databricks Cert/5. Governance.md",
+    "AI Databricks Cert/4. Assembling and Deploying Applications.md",
+    "AI Databricks Cert/3. Application Development.md",
+    "AI Databricks Cert/2. Data Preparation.md",
+    "AI Databricks Cert/1. Design Application.md",
     "AI Databricks Cert/考题.md",
+    "AI Databricks Cert/真题.md",
+    "AI Databricks Cert/study guide.md",
     "AI Databricks Cert",
     "Pasted image 20260325215424.png",
     "AI 学习/RAG.md",
@@ -201,7 +202,6 @@
     "AI 学习/学习资料.md",
     "English/口语.md",
     "English/Patten.md",
-    "English/短语.md",
     "openclaw",
     "NAPLAN",
     "Pasted image 20260124225824.png",
