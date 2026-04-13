@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "AI Databricks Cert/2. Data Preparation.md",
-                "mode": "preview",
+                "file": "AI Databricks Cert/3. Application Development.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2. Data Preparation"
+              "title": "3. Application Development"
             }
           }
         ],
@@ -141,13 +141,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "AI Databricks Cert/2. Data Preparation.md",
+                "file": "AI Databricks Cert/3. Application Development.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 2. Data Preparation"
+              "title": "Outline of 3. Application Development"
             }
           }
         ],
@@ -174,8 +174,10 @@
   },
   "active": "9a0ea607ba2bf0f0",
   "lastOpenFiles": [
-    "retriever.md",
+    "Retrieval QA with Sources Chain.md",
+    "AI Databricks Cert/3. Application Development.md",
     "AI Databricks Cert/2. Data Preparation.md",
+    "retriever.md",
     "衡量指标.md",
     "Delta Lake 表.md",
     "AI Databricks Cert/Untitled.md",
@@ -205,8 +207,6 @@
     "AI+DA/AI+DA - 这个非常典型的职位要求，重要参考.md",
     "AI+DA/Azure上面的ai服务介绍.md",
     "AI+DA/Challenges and risks with AI.md",
-    "AI+DA/Face detection/facial analysis.md",
-    "AI+DA/Face detection/Azure面部分析.md",
     "Pasted image 20260124225528.png",
     "AI Databricks Cert",
     "Pasted image 20260325215424.png",
