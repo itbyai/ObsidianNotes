@@ -4,48 +4,25 @@
     "type": "split",
     "children": [
       {
-        "id": "ddbe550eda1306f6",
-        "type": "split",
+        "id": "fbaa7dc2b13b474e",
+        "type": "tabs",
         "children": [
           {
-            "id": "fbaa7dc2b13b474e",
-            "type": "tabs",
-            "children": [
-              {
-                "id": "9a0ea607ba2bf0f0",
-                "type": "leaf",
-                "state": {
-                  "type": "markdown",
-                  "state": {
-                    "file": "AI Databricks Cert/Untitled.md",
-                    "mode": "source",
-                    "source": false
-                  },
-                  "icon": "lucide-file",
-                  "title": "Untitled"
-                }
-              }
-            ],
-            "stacked": true
-          },
-          {
-            "id": "1a79abe5a620d245",
-            "type": "tabs",
-            "children": [
-              {
-                "id": "0c8ef7123f26a14a",
-                "type": "leaf",
-                "state": {
-                  "type": "mindmap-nextgen-plugin",
-                  "state": {},
-                  "icon": "dot-network",
-                  "title": "Mindmap"
-                }
-              }
-            ]
+            "id": "9a0ea607ba2bf0f0",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "AI Databricks Cert/2. Data Preparation.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "2. Data Preparation"
+            }
           }
         ],
-        "direction": "horizontal"
+        "stacked": true
       }
     ],
     "direction": "vertical"
@@ -164,13 +141,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "AI Databricks Cert/Untitled.md",
+                "file": "AI Databricks Cert/2. Data Preparation.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Untitled"
+              "title": "Outline of 2. Data Preparation"
             }
           }
         ],
@@ -195,10 +172,12 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "0c8ef7123f26a14a",
+  "active": "9a0ea607ba2bf0f0",
   "lastOpenFiles": [
-    "mindmap.md",
+    "Delta Lake 表.md",
+    "AI Databricks Cert/2. Data Preparation.md",
     "AI Databricks Cert/Untitled.md",
+    "mindmap.md",
     "如何获得一个小目标.md",
     "客服管理回复消息架构图.md",
     "小红书.md",
@@ -228,8 +207,6 @@
     "AI+DA/Face detection/Azure面部分析.md",
     "AI-JOBS/需要研究的学习方向.md",
     "AI-JOBS/AI job description.md",
-    "AI-agent课程/Better RAG Apps.md",
-    "AI-agent课程/2.9 Function Calling.md",
     "Pasted image 20260124225528.png",
     "AI Databricks Cert",
     "Pasted image 20260325215424.png",
