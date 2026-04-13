@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "如何获得一个小目标.md",
+                "file": "mindmap.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "如何获得一个小目标"
+              "title": "mindmap"
             }
           }
         ],
@@ -141,13 +141,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "如何获得一个小目标.md",
+                "file": "mindmap.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 如何获得一个小目标"
+              "title": "Outline of mindmap"
             }
           }
         ],
@@ -174,9 +174,11 @@
   },
   "active": "9a0ea607ba2bf0f0",
   "lastOpenFiles": [
+    "AI Databricks Cert/Untitled.md",
+    "mindmap.md",
+    "如何获得一个小目标.md",
     "客服管理回复消息架构图.md",
     "小红书.md",
-    "如何获得一个小目标.md",
     "创建 Csharp项目.md",
     "Westpac面试.md",
     "Untitled 8.base",
@@ -205,8 +207,6 @@
     "AI-JOBS/AI job description.md",
     "AI-agent课程/Better RAG Apps.md",
     "AI-agent课程/2.9 Function Calling.md",
-    "AI-agent课程/1.1 welcome.md",
-    "AI 学习/学习资料.md",
     "Pasted image 20260124225528.png",
     "AI Databricks Cert",
     "Pasted image 20260325215424.png",
