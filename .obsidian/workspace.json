@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "AI Databricks Cert/4. Assembling and Deploying Applications.md",
-                "mode": "preview",
+                "file": "Stocks/2026-04-15.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "4. Assembling and Deploying Applications"
+              "title": "2026-04-15"
             }
           }
         ],
@@ -141,13 +141,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "AI Databricks Cert/4. Assembling and Deploying Applications.md",
+                "file": "Stocks/2026-04-15.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 4. Assembling and Deploying Applications"
+              "title": "Outline of 2026-04-15"
             }
           }
         ],
@@ -174,8 +174,12 @@
   },
   "active": "9a0ea607ba2bf0f0",
   "lastOpenFiles": [
-    "使用方法.md",
+    "Stocks/AI主线的投资策略.md",
+    "Stocks/2026-04-15.md",
+    "Stocks/Untitled 1.md",
+    "AI Databricks Cert/5. Governance.md",
     "AI Databricks Cert/4. Assembling and Deploying Applications.md",
+    "使用方法.md",
     "MLflow 把模型注册到 Unity Catalog.md",
     "AI Databricks Cert/3. Application Development.md",
     "AI Databricks Cert/2. Data Preparation.md",
@@ -203,10 +207,6 @@
     "箭头函数.md",
     "运行测试.md",
     "面试要点.md",
-    "AI+DA/Understand document intelligence and knowledge mining.md",
-    "AI+DA/Understand computer vision.md",
-    "AI+DA/Responsible AI.md",
-    "AI+DA/Generative AI.md",
     "Pasted image 20260124225528.png",
     "AI Databricks Cert",
     "Pasted image 20260325215424.png",
