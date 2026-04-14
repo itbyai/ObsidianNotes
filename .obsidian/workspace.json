@@ -14,7 +14,7 @@
               "type": "markdown",
               "state": {
                 "file": "AI Databricks Cert/4. Assembling and Deploying Applications.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
@@ -174,8 +174,9 @@
   },
   "active": "9a0ea607ba2bf0f0",
   "lastOpenFiles": [
-    "MLflow 把模型注册到 Unity Catalog.md",
+    "使用方法.md",
     "AI Databricks Cert/4. Assembling and Deploying Applications.md",
+    "MLflow 把模型注册到 Unity Catalog.md",
     "AI Databricks Cert/3. Application Development.md",
     "AI Databricks Cert/2. Data Preparation.md",
     "Retrieval QA with Sources Chain.md",
@@ -206,7 +207,6 @@
     "AI+DA/Understand computer vision.md",
     "AI+DA/Responsible AI.md",
     "AI+DA/Generative AI.md",
-    "AI+DA/AI+DA - 这个非常典型的职位要求，重要参考.md",
     "Pasted image 20260124225528.png",
     "AI Databricks Cert",
     "Pasted image 20260325215424.png",
