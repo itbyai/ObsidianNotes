@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "AI Databricks Cert/5. Governance.md",
-                "mode": "source",
+                "file": "预处理过滤步骤.md",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "5. Governance"
+              "title": "预处理过滤步骤"
             }
           }
         ],
@@ -141,13 +141,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "AI Databricks Cert/5. Governance.md",
+                "file": "预处理过滤步骤.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 5. Governance"
+              "title": "Outline of 预处理过滤步骤"
             }
           }
         ],
@@ -174,8 +174,9 @@
   },
   "active": "9a0ea607ba2bf0f0",
   "lastOpenFiles": [
-    "步骤.md",
     "AI Databricks Cert/5. Governance.md",
+    "预处理过滤步骤.md",
+    "步骤.md",
     "Stocks/AI与量子计算重合的美股推荐.md",
     "Stocks/2026-04-15.md",
     "Stocks/AI主线的投资策略.md",
@@ -206,7 +207,6 @@
     "Code.md",
     "Git 命令.md",
     "Untitled.canvas",
-    "箭头函数.md",
     "Pasted image 20260124225528.png",
     "AI Databricks Cert",
     "Pasted image 20260325215424.png",
