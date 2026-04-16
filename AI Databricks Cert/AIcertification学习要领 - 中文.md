@@ -847,14 +847,9 @@ MLflow pyfunc 很重要。
 ---
 
 
+## 5. Governance
 
-# Databricks Generative AI Engineer Associate
-
-## Cleaned Study Notes (Part 2)
-
-## 1. Governance
-
-### 1.1 Use masking techniques as guardrails
+### 5.1 Use masking techniques as guardrails
 
 这一部分的核心是：为了避免敏感信息泄露，同时兼顾系统性能，需要在数据和推理流程中使用合适的 **masking** 技术。文中提到的典型方法包括：
 
@@ -879,7 +874,7 @@ MLflow pyfunc 很重要。
 
 ---
 
-### 1.2 Guardrails against malicious user input
+### 5.2 Guardrails against malicious user input
 
 这一点主要是防御恶意输入，尤其是 GenAI 应用中常见的：
 
@@ -909,7 +904,7 @@ MLflow pyfunc 很重要。
 
 ---
 
-### 1.3 Mitigating problematic text in RAG data sources
+### 5.3 Mitigating problematic text in RAG data sources
 
 如果 RAG 的知识源本身存在问题，比如：
 
@@ -936,7 +931,7 @@ MLflow pyfunc 很重要。
 
 ---
 
-### 1.4 Legal and licensing requirements for data sources
+### 5.4 Legal and licensing requirements for data sources
 
 这一点偏治理与合规，主要是防止使用数据时引发法律风险。
 
@@ -959,9 +954,9 @@ MLflow pyfunc 很重要。
 
 ---
 
-## 2. Evaluation and Monitoring
+## 6. Evaluation and Monitoring
 
-### 2.1 Select an LLM based on quantitative evaluation metrics
+### 6.1 Select an LLM based on quantitative evaluation metrics
 
 这一部分强调：模型选择不能只靠直觉，要基于量化指标。
 
@@ -1005,7 +1000,7 @@ MLflow pyfunc 很重要。
 
 ---
 
-### 2.2 Select monitoring metrics for a deployment scenario
+### 6.2 Select monitoring metrics for a deployment scenario
 
 部署后要持续监控，不然模型上线以后出问题很难及时发现。
 
@@ -1046,7 +1041,7 @@ MLflow pyfunc 很重要。
 
 ---
 
-### 2.3 Evaluate RAG performance using MLflow
+### 6.3 Evaluate RAG performance using MLflow
 
 这一点比较直接：  
 MLflow 可以用来评估 RAG 应用，并比较不同模型版本、参数配置、检索策略的效果。
@@ -1065,7 +1060,7 @@ MLflow 可用于记录：
 
 ---
 
-### 2.4 Use inference logging to assess deployed RAG applications
+### 6.4 Use inference logging to assess deployed RAG applications
 
 这是非常重要的一点。上线后的 RAG 应用不能只看“能不能回答”，还要通过推理日志分析真实表现。
 
@@ -1098,7 +1093,7 @@ MLflow 可用于记录：
 
 ---
 
-### 2.5 Understand Databricks monitoring types
+### 6.5 Understand Databricks monitoring types
 
 文中列了 3 种 monitoring 类型：
 
@@ -1132,7 +1127,7 @@ MLflow 可用于记录：
 
 ---
 
-### 2.6 Use Databricks features to control LLM cost
+### 6.6 Use Databricks features to control LLM cost
 
 成本控制是 GenAI 应用落地中的关键问题。
 
@@ -1157,22 +1152,6 @@ MLflow 可用于记录：
 
 ---
 
-# 3. 可以清理掉的无关内容
-
-以下内容对考试复习帮助不大，可以忽略：
-
-- Medium 订阅和邮箱输入提示
-    
-- 作者推广内容
-    
-- “stay tuned” 类运营文案
-    
-- 某些零散代码细节本身
-    
-- 重复强调“学习某某 solution”但没有展开的表述
-    
-
----
 
 # 4. 这部分真正要记住的高频主线
 
