@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "AI Databricks Cert/Untitled 1.md",
+                "file": "AI Databricks Cert/思维导图.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Untitled 1"
+              "title": "思维导图"
             }
           }
         ],
@@ -141,13 +141,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "AI Databricks Cert/Untitled 1.md",
+                "file": "AI Databricks Cert/思维导图.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Untitled 1"
+              "title": "Outline of 思维导图"
             }
           }
         ],
@@ -174,8 +174,8 @@
   },
   "active": "9a0ea607ba2bf0f0",
   "lastOpenFiles": [
-    "AI Databricks Cert/思维导图.md",
     "AI Databricks Cert/Untitled 1.md",
+    "AI Databricks Cert/思维导图.md",
     "AI Databricks Cert/学习要领英文.md",
     "AI Databricks Cert/AIcertification学习要领 - 中文.md",
     "AI Databricks Cert/Untitled.md",
