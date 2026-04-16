@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Inference Logging.md",
+                "file": "AI Databricks Cert/6. Evaluation and Monitoring.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Inference Logging"
+              "title": "6. Evaluation and Monitoring"
             }
           }
         ],
@@ -141,13 +141,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Inference Logging.md",
+                "file": "AI Databricks Cert/6. Evaluation and Monitoring.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Inference Logging"
+              "title": "Outline of 6. Evaluation and Monitoring"
             }
           }
         ],
@@ -174,8 +174,8 @@
   },
   "active": "9a0ea607ba2bf0f0",
   "lastOpenFiles": [
-    "AI Databricks Cert/6. Evaluation and Monitoring.md",
     "Inference Logging.md",
+    "AI Databricks Cert/6. Evaluation and Monitoring.md",
     "MLflow.md",
     "AI Databricks Cert/5. Governance.md",
     "自动检测并排除有问题的内容.md",

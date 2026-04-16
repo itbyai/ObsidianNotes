@@ -150,6 +150,9 @@ Inference logging 可能会把这些一起记下来：
 
 如果你要，我可以下一条继续给你讲 **Inference Logging、Inference Tables、Tracing 三者的区别**。
 
+
+## 如何启用
+
 现在最推荐的是 **AI Gateway-enabled inference tables**。Databricks 已说明：**legacy inference tables** 自 **2026-02-20** 起不能在新/现有端点上再启用，并将在 **2026-04-30** 停止支持；官方建议改用 AI Gateway-enabled inference tables，它适用于 **custom models、foundation models、external models 和 agent endpoints**。([Databricks Docs](https://docs.databricks.com/aws/en/machine-learning/model-serving/enable-model-serving-inference-tables "Enable inference tables on model serving endpoints using the API | Databricks on AWS"))
 
 **怎么配置**，本质上就是：在 **Serving endpoint** 上打开“自动抓取请求/响应并写入 UC Delta table”的开关，并指定 **catalog + schema**。前提条件是：工作区已启用 **Unity Catalog**，端点创建者和修改者对端点有 **Can Manage**，并且对目标 UC 位置有 **USE CATALOG、USE SCHEMA、CREATE TABLE** 权限；AI Gateway-enabled inference tables 还要求该工作区支持 **serverless compute**。([Databricks Docs](https://docs.databricks.com/aws/en/machine-learning/model-serving/inference-tables "Inference tables for monitoring and debugging models | Databricks on AWS"))
