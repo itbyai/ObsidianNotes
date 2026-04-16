@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "如何遮盖具体步骤.md",
+                "file": "AI Databricks Cert/5. Governance.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "如何遮盖具体步骤"
+              "title": "5. Governance"
             }
           }
         ],
@@ -141,13 +141,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "如何遮盖具体步骤.md",
+                "file": "AI Databricks Cert/5. Governance.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 如何遮盖具体步骤"
+              "title": "Outline of 5. Governance"
             }
           }
         ],
@@ -174,10 +174,11 @@
   },
   "active": "9a0ea607ba2bf0f0",
   "lastOpenFiles": [
+    "自动检测并排除有问题的内容.md",
     "AI Databricks Cert/5. Governance.md",
-    "如何遮盖具体步骤.md",
     "预处理过滤步骤.md",
     "步骤.md",
+    "如何遮盖具体步骤.md",
     "Stocks/AI与量子计算重合的美股推荐.md",
     "Stocks/2026-04-15.md",
     "Stocks/AI主线的投资策略.md",
@@ -205,7 +206,6 @@
     "Untitled 2.base",
     "Untitled 1.md",
     "Untitled 1.base",
-    "Code.md",
     "Untitled.canvas",
     "Pasted image 20260124225528.png",
     "AI Databricks Cert",
