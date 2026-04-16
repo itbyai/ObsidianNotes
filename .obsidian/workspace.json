@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "AI Databricks Cert/学习要领.md",
+                "file": "AI Databricks Cert/学习要领英文.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "学习要领"
+              "title": "学习要领英文"
             }
           }
         ],
@@ -141,13 +141,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "AI Databricks Cert/学习要领.md",
+                "file": "AI Databricks Cert/学习要领英文.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 学习要领"
+              "title": "Outline of 学习要领英文"
             }
           }
         ],
@@ -174,9 +174,10 @@
   },
   "active": "9a0ea607ba2bf0f0",
   "lastOpenFiles": [
+    "AI Databricks Cert/学习要领.md",
+    "AI Databricks Cert/学习要领英文.md",
     "AI Databricks Cert/Untitled.md",
     "AI Databricks Cert/study guide.md",
-    "AI Databricks Cert/学习要领.md",
     "AI Databricks Cert/Databricks Certified Generative AI Engineer Associate.md",
     "AI Databricks Cert/关键词.md",
     "AI Databricks Cert/0. 总体大纲.md",
@@ -199,7 +200,6 @@
     "MLflow 把模型注册到 Unity Catalog.md",
     "AI Databricks Cert/3. Application Development.md",
     "AI Databricks Cert/2. Data Preparation.md",
-    "Retrieval QA with Sources Chain.md",
     "Untitled 8.base",
     "Untitled 5.base",
     "Untitled 4.base",
