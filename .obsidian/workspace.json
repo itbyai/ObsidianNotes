@@ -4,50 +4,25 @@
     "type": "split",
     "children": [
       {
-        "id": "21c442af738f2c74",
-        "type": "split",
+        "id": "fbaa7dc2b13b474e",
+        "type": "tabs",
         "children": [
           {
-            "id": "fbaa7dc2b13b474e",
-            "type": "tabs",
-            "dimension": 58.40277777777778,
-            "children": [
-              {
-                "id": "9a0ea607ba2bf0f0",
-                "type": "leaf",
-                "state": {
-                  "type": "markdown",
-                  "state": {
-                    "file": "AI Databricks Cert/思维导图.md",
-                    "mode": "source",
-                    "source": false
-                  },
-                  "icon": "lucide-file",
-                  "title": "思维导图"
-                }
-              }
-            ],
-            "stacked": true
-          },
-          {
-            "id": "2f8cbf2f01b7147c",
-            "type": "tabs",
-            "dimension": 41.59722222222222,
-            "children": [
-              {
-                "id": "83f0271f85d854fa",
-                "type": "leaf",
-                "state": {
-                  "type": "mindmap-nextgen-plugin",
-                  "state": {},
-                  "icon": "dot-network",
-                  "title": "Mindmap"
-                }
-              }
-            ]
+            "id": "9a0ea607ba2bf0f0",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "AI Databricks Cert/Untitled 1.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "Untitled 1"
+            }
           }
         ],
-        "direction": "horizontal"
+        "stacked": true
       }
     ],
     "direction": "vertical"
@@ -166,13 +141,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "AI Databricks Cert/思维导图.md",
+                "file": "AI Databricks Cert/Untitled 1.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 思维导图"
+              "title": "Outline of Untitled 1"
             }
           }
         ],
@@ -197,11 +172,12 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "83f0271f85d854fa",
+  "active": "9a0ea607ba2bf0f0",
   "lastOpenFiles": [
-    "AI Databricks Cert/AIcertification学习要领 - 中文.md",
     "AI Databricks Cert/思维导图.md",
+    "AI Databricks Cert/Untitled 1.md",
     "AI Databricks Cert/学习要领英文.md",
+    "AI Databricks Cert/AIcertification学习要领 - 中文.md",
     "AI Databricks Cert/Untitled.md",
     "AI Databricks Cert/study guide.md",
     "AI Databricks Cert/Databricks Certified Generative AI Engineer Associate.md",
@@ -224,7 +200,6 @@
     "AI Databricks Cert/4. Assembling and Deploying Applications.md",
     "使用方法.md",
     "MLflow 把模型注册到 Unity Catalog.md",
-    "AI Databricks Cert/3. Application Development.md",
     "Untitled 8.base",
     "Untitled 5.base",
     "Untitled 4.base",
