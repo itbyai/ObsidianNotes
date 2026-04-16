@@ -174,8 +174,9 @@
   },
   "active": "9a0ea607ba2bf0f0",
   "lastOpenFiles": [
-    "MLflow.md",
+    "Inference Logging.md",
     "AI Databricks Cert/6. Evaluation and Monitoring.md",
+    "MLflow.md",
     "AI Databricks Cert/5. Governance.md",
     "自动检测并排除有问题的内容.md",
     "预处理过滤步骤.md",
@@ -199,7 +200,6 @@
     "如何获得一个小目标.md",
     "客服管理回复消息架构图.md",
     "小红书.md",
-    "创建 Csharp项目.md",
     "Untitled 8.base",
     "Untitled 5.base",
     "Untitled 4.base",
