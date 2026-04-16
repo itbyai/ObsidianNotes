@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "AI Databricks Cert/5. Governance.md",
+                "file": "AI Databricks Cert/6. Evaluation and Monitoring.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "5. Governance"
+              "title": "6. Evaluation and Monitoring"
             }
           }
         ],
@@ -141,13 +141,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "AI Databricks Cert/5. Governance.md",
+                "file": "AI Databricks Cert/6. Evaluation and Monitoring.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 5. Governance"
+              "title": "Outline of 6. Evaluation and Monitoring"
             }
           }
         ],
@@ -174,8 +174,10 @@
   },
   "active": "9a0ea607ba2bf0f0",
   "lastOpenFiles": [
-    "自动检测并排除有问题的内容.md",
+    "MLflow.md",
+    "AI Databricks Cert/6. Evaluation and Monitoring.md",
     "AI Databricks Cert/5. Governance.md",
+    "自动检测并排除有问题的内容.md",
     "预处理过滤步骤.md",
     "步骤.md",
     "如何遮盖具体步骤.md",
@@ -198,13 +200,11 @@
     "客服管理回复消息架构图.md",
     "小红书.md",
     "创建 Csharp项目.md",
-    "Westpac面试.md",
     "Untitled 8.base",
     "Untitled 5.base",
     "Untitled 4.base",
     "Untitled 3.base",
     "Untitled 2.base",
-    "Untitled 1.md",
     "Untitled 1.base",
     "Untitled.canvas",
     "Pasted image 20260124225528.png",
