@@ -1,6 +1,3 @@
-下面是我把这份内容**清洗、去重、结构化**后的版本。它本质上是一份**非官方的 Databricks Generative AI Engineer Associate 备考笔记（Part 1）**，覆盖考试前半部分的知识点，重点围绕：应用设计、数据准备、应用开发、部署上线。原文里有一些宣传、自我介绍、订阅引导、重复表述和零散代码，我已经去掉，只保留对学习和考试真正有用的内容。
-
----
 
 # Databricks Generative AI Engineer Associate 学习整理版（Part 1）
 
@@ -21,7 +18,7 @@
 6. **Evaluation and Monitoring** — 评估与监控
     
 
-原文强调，这个认证主要考察你是否能在 Databricks 上设计并实现 **LLM 应用、RAG 应用、链式调用、模型部署、向量检索、MLflow 生命周期管理，以及 Unity Catalog 治理**。
+这个认证主要考察你是否能在 Databricks 上设计并实现 **LLM 应用、RAG 应用、链式调用、模型部署、向量检索、MLflow 生命周期管理，以及 Unity Catalog 治理**。
 
 ---
 
