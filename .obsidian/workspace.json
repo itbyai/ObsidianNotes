@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "AI Databricks Cert/Databricks Certified Generative AI Engineer Associate.md",
-                "mode": "preview",
+                "file": "AI Databricks Cert/学习要领.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Databricks Certified Generative AI Engineer Associate"
+              "title": "学习要领"
             }
           }
         ],
@@ -141,13 +141,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "AI Databricks Cert/Databricks Certified Generative AI Engineer Associate.md",
+                "file": "AI Databricks Cert/学习要领.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Databricks Certified Generative AI Engineer Associate"
+              "title": "Outline of 学习要领"
             }
           }
         ],
@@ -174,8 +174,11 @@
   },
   "active": "9a0ea607ba2bf0f0",
   "lastOpenFiles": [
-    "AI Databricks Cert/关键词.md",
+    "AI Databricks Cert/Untitled.md",
+    "AI Databricks Cert/study guide.md",
+    "AI Databricks Cert/学习要领.md",
     "AI Databricks Cert/Databricks Certified Generative AI Engineer Associate.md",
+    "AI Databricks Cert/关键词.md",
     "AI Databricks Cert/0. 总体大纲.md",
     "AI Databricks Cert/6. Evaluation and Monitoring.md",
     "ground truth data.md",
@@ -197,9 +200,6 @@
     "AI Databricks Cert/3. Application Development.md",
     "AI Databricks Cert/2. Data Preparation.md",
     "Retrieval QA with Sources Chain.md",
-    "retriever.md",
-    "衡量指标.md",
-    "Delta Lake 表.md",
     "Untitled 8.base",
     "Untitled 5.base",
     "Untitled 4.base",
