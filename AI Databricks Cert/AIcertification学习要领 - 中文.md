@@ -1179,4 +1179,194 @@ MLflow 可用于记录：
     
 
 ---
+## 主要考点
+最该优先掌握的，是按考试权重排序的这几块：**Application Development（30%）**、**Assembling and Deploying Apps（22%）**、然后是 **Design Applications（14%）**、**Data Preparation（14%）**、**Evaluation and Monitoring（12%）**，最后是 **Governance（8%）**。官方也说明这张证书考的是用 Databricks 设计、构建和部署 LLM/RAG 方案的能力，考试是 **45 道选择题，90 分钟**。([Databricks](https://www.databricks.com/learn/certification/genai-engineer-associate "Databricks Certified Generative AI Engineer Associate | Databricks"))
 
+## 1. 最常考主线
+
+- **RAG 全链路**：文档抽取、chunking、embedding、Vector Search、重排、把检索结果注入 prompt、生成答案。([Databricks](https://www.databricks.com/learn/certification/genai-engineer-associate "Databricks Certified Generative AI Engineer Associate | Databricks"))
+    
+- **Databricks 原生组件**：Vector Search、Model Serving、MLflow、Unity Catalog，这四个几乎是主轴。官方考试介绍直接点名了这几项。([Databricks](https://www.databricks.com/learn/certification/genai-engineer-associate "Databricks Certified Generative AI Engineer Associate | Databricks"))
+    
+- **Agent / tools / chain 设计**：什么时候用简单链，什么时候用 RAG，什么时候用 tool-calling agent。([Databricks](https://www.databricks.com/learn/certification/genai-engineer-associate "Databricks Certified Generative AI Engineer Associate | Databricks"))
+    
+- **评估与监控**：上线前怎么评估，上线后怎么监控，包括 inference tables、AI Gateway、LLM judges 等。([Databricks](https://www.databricks.com/learn/certification/genai-engineer-associate "Databricks Certified Generative AI Engineer Associate | Databricks"))
+    
+
+## 2. Design Applications 常考点
+
+- **Prompt engineering**：zero-shot、few-shot、system prompt、structured output、temperature。
+    
+- **模型任务选择**：summarization、classification、QA、information extraction、token classification。
+    
+- **链式组件选择**：retriever、prompt template、LLM、parser、router、tool calling。
+    
+- **Agent Bricks / agent 模式**：Knowledge Assistant、Multiagent Supervisor、Information Extraction 这类场景题。
+    
+
+你要会判断：  
+“这个需求到底该用普通 prompt、RAG chain、还是带工具的 agent？”
+
+## 3. Data Preparation 常考点
+
+- **文档提取工具怎么选**：
+    
+    - 图片/扫描件 → OCR / `pytesseract`
+        
+    - PDF → `pypdf`
+        
+    - HTML → `beautifulsoup4`
+        
+    - 结构化数据 → Feature Store / 表查询
+        
+- **Chunking 策略**：fixed-size、token-based、structure-aware、hierarchical。
+    
+- **Chunking trade-off**：chunk 太大、太小、overlap 多寡分别会怎样影响检索。
+    
+- **去噪/预处理**：去页眉页脚、去模板字段、去和语义无关的结构化字段、PII masking、过滤低质量/有问题内容。
+    
+- **检索评估指标**：Precision@K、Recall@K、MRR、MAP@K、nDCG、context relevancy、context sufficiency。
+    
+
+这块很爱考“**给定一种文档结构/问题类型，选哪种 chunking 和提取方式**”。
+
+## 4. Application Development 是最重点
+
+- **LangChain / 类似框架的用途**：LangChain、LlamaIndex、OpenAI Agents 各自更适合什么。
+    
+- **RAG 实现细节**：query → retriever → prompt augmentation → LLM → output validation。
+    
+- **Prompt augmentation**：如何把上下文、用户状态、结构化数据加入 prompt。
+    
+- **Guardrails**：prompt injection detection、PII masking、unsafe output control。
+    
+- **Embedding model selection**：维度、上下文长度、语言覆盖、相似度度量。
+    
+- **Model selection from hub**：看 model card、license、benchmarks、支持的任务。
+    
+- **Agent framework**：`@tool`、tool calling、AgentExecutor、MLflow tracing。
+    
+- **Multi-agent / Genie**：结构化数据问答、工具路由、什么时候多 agent 有意义。
+    
+
+这块高频题不是死记 API，而是判断：  
+“**哪种方案最合适，为什么**”。
+
+## 5. Assembling and Deploying Apps 常考点
+
+- **MLflow PyFunc**：什么时候需要包装模型；预处理、推理、后处理如何统一封装。
+    
+- **注册到 Unity Catalog 的目的**：权限、治理、版本管理、共享、审计。
+    
+- **Vector Search index 类型**：Delta Sync vs Direct Vector Access。
+    
+- **Similarity search / ANN / hybrid search**：什么时候只用 similarity，什么时候更适合 hybrid。
+    
+- **RAG 部署链路**：chunk → Delta → index → chain → MLflow → UC → serving endpoint。
+    
+- **Foundation Model APIs**：pay-per-token vs provisioned throughput。
+    
+- **Persistent memory**：buffer、summary、structured memory。
+    
+- **Batch inference**：`ai_query()` 的使用场景。
+    
+- **CI/CD**：prompt registry、组件测试、dev/staging/prod。
+    
+- **MCP servers**：managed / external / custom 的区别。
+    
+- **Apps / endpoint**：custom model endpoint、foundation model endpoint、external model endpoint 分别适合什么。
+    
+- **Serving concurrency 与 autoscaling**：QPS、latency、并发、扩缩容、scale-to-zero。
+    
+
+这块特别爱考：  
+“**该怎么上线、该选哪种端点、权限怎么配、吞吐模式怎么选**”。
+
+## 6. Governance 常考点
+
+- **PII masking 方法**：静态预处理、占位符替换、部分遮盖、令牌化。
+    
+- **为什么通常在 embedding 前脱敏**：防止敏感信息进向量库和 prompt。
+    
+- **内容过滤**：如何用分类/审核模型过滤 offensive / harmful 内容。
+    
+- **Data licensing**：Apache 2.0、MIT、CC BY、CC BY-NC、CC BY-SA、proprietary。
+    
+- **GDPR / 合规思维**：最小化暴露、权限控制、审计。
+    
+
+这块题常是场景题：  
+“**哪种处理方式最安全 / 最合规 / 最适合生产**”。
+
+## 7. Evaluation and Monitoring 常考点
+
+- **Ground truth data**：什么是真实标签/标准答案。
+    
+- **Golden dataset**：为什么需要高质量评估集。
+    
+- **Reference-based vs reference-free evaluation**。
+    
+- **LLM judges / custom scorers**：什么时候用。
+    
+- **ROUGE-L、BLEU、人类偏好评估**。
+    
+- **Inference logging / inference tables / tracing 的区别**。
+    
+- **AI Gateway**：rate limiting、usage logging、inference tables。
+    
+- **SME feedback loop**：人工反馈如何回流到系统。
+    
+- **上线前评估 vs 上线后监控**。
+    
+
+这一块高频考法是：  
+“**哪个指标/机制最适合发现哪类问题**”。
+
+## 8. Databricks 平台基础也会穿插考
+
+- **Workspace / Compute / SQL Warehouse / Catalog / Schema / Table / View**
+    
+- **Delta Lake / Delta table / CDF / medallion architecture**
+    
+- **ETL vs ELT、Jobs vs Pipelines、dbt 在 Databricks 里的角色**
+    
+- **Unity Catalog 权限**：USE CATALOG、USE SCHEMA、CREATE MODEL、EXECUTE、GRANT。
+    
+
+## 9. 最值得死记的“高频判断题”
+
+- 什么时候用 **RAG**，什么时候用 **agent**
+    
+- 什么时候该用 **metadata filter**，什么时候该进正文做 embedding
+    
+- **chunking** 怎么选
+    
+- **retriever 指标** 怎么区分
+    
+- **PyFunc / UC / Serving endpoint** 分别解决什么问题
+    
+- **Similarity search / hybrid search** 怎么选
+    
+- **inference logging / inference tables / tracing** 怎么区分
+    
+- **guardrail / hallucination / grounding** 怎么区分
+    
+- **custom model endpoint / foundation model endpoint / external model endpoint** 怎么选
+    
+
+## 10. 备考优先级
+
+如果时间不多，按这个顺序最划算：
+
+1. **RAG + Vector Search + chunking + retrieval metrics**
+    
+2. **MLflow + PyFunc + Unity Catalog + Model Serving**
+    
+3. **Prompting + agent/tool calling + guardrails**
+    
+4. **Evaluation / monitoring / inference tables / AI Gateway**
+    
+5. **Governance / licensing / PII**
+    
+
+如果你要，我下一条可以直接给你整理成一份 **“考试高频知识点思维导图 Markdown”**。
