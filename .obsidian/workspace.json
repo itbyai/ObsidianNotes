@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Stocks/AI与量子计算重合的美股推荐.md",
+                "file": "AI Databricks Cert/5. Governance.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "AI与量子计算重合的美股推荐"
+              "title": "5. Governance"
             }
           }
         ],
@@ -141,13 +141,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Stocks/AI与量子计算重合的美股推荐.md",
+                "file": "AI Databricks Cert/5. Governance.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of AI与量子计算重合的美股推荐"
+              "title": "Outline of 5. Governance"
             }
           }
         ],
@@ -174,11 +174,12 @@
   },
   "active": "9a0ea607ba2bf0f0",
   "lastOpenFiles": [
-    "Stocks/2026-04-15.md",
+    "步骤.md",
+    "AI Databricks Cert/5. Governance.md",
     "Stocks/AI与量子计算重合的美股推荐.md",
+    "Stocks/2026-04-15.md",
     "Stocks/AI主线的投资策略.md",
     "Stocks/Untitled 1.md",
-    "AI Databricks Cert/5. Governance.md",
     "AI Databricks Cert/4. Assembling and Deploying Applications.md",
     "使用方法.md",
     "MLflow 把模型注册到 Unity Catalog.md",
@@ -206,7 +207,6 @@
     "Git 命令.md",
     "Untitled.canvas",
     "箭头函数.md",
-    "运行测试.md",
     "Pasted image 20260124225528.png",
     "AI Databricks Cert",
     "Pasted image 20260325215424.png",
