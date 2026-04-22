@@ -8,17 +8,17 @@
         "type": "tabs",
         "children": [
           {
-            "id": "9a0ea607ba2bf0f0",
+            "id": "15cf25c7aac0d93a",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "AI Databricks Cert/0. 总体大纲.md",
+                "file": "修房/如何弯头防水.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "0. 总体大纲"
+              "title": "如何弯头防水"
             }
           }
         ],
@@ -141,13 +141,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "AI Databricks Cert/0. 总体大纲.md",
+                "file": "修房/如何弯头防水.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 0. 总体大纲"
+              "title": "Outline of 如何弯头防水"
             }
           }
         ],
@@ -172,8 +172,12 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "9a0ea607ba2bf0f0",
+  "active": "15cf25c7aac0d93a",
   "lastOpenFiles": [
+    "Untitled 4.md",
+    "修房/如何弯头防水.md",
+    "修房",
+    "AI Databricks Cert/0. 总体大纲.md",
     "AI Databricks Cert/思维导图.md",
     "AI Databricks Cert/Untitled 1.md",
     "AI Databricks Cert/学习要领英文.md",
@@ -182,7 +186,6 @@
     "AI Databricks Cert/study guide.md",
     "AI Databricks Cert/Databricks Certified Generative AI Engineer Associate.md",
     "AI Databricks Cert/关键词.md",
-    "AI Databricks Cert/0. 总体大纲.md",
     "AI Databricks Cert/6. Evaluation and Monitoring.md",
     "ground truth data.md",
     "Serving Concurrency 与扩缩容控制.md",
@@ -198,8 +201,6 @@
     "Stocks/AI主线的投资策略.md",
     "Stocks/Untitled 1.md",
     "AI Databricks Cert/4. Assembling and Deploying Applications.md",
-    "使用方法.md",
-    "MLflow 把模型注册到 Unity Catalog.md",
     "Untitled 8.base",
     "Untitled 5.base",
     "Untitled 4.base",
@@ -213,7 +214,6 @@
     "openclaw",
     "NAPLAN",
     "Pasted image 20260124225824.png",
-    "dbt and databricks",
     "Untitled 2.canvas",
     "Untitled 1.canvas",
     "assets/Pasted image 20241016153924.png",
