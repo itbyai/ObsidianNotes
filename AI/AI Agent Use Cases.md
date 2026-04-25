@@ -448,3 +448,6 @@ Level 3：Act（决策）
 👉 或者做一个**Data QA Agent（Databricks + dbt + LLM）完整架构**
 
 你现在已经到“可以转AI Engineer”的关键节点了。
+
+
+![[Pasted image 20260426092253.png]]
