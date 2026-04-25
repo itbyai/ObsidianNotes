@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "AI/Untitled.md",
+                "file": "AI/AI Agent Use Cases.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Untitled"
+              "title": "AI Agent Use Cases"
             }
           }
         ],
@@ -141,13 +141,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "AI/Untitled.md",
+                "file": "AI/AI Agent Use Cases.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Untitled"
+              "title": "Outline of AI Agent Use Cases"
             }
           }
         ],
@@ -174,9 +174,13 @@
   },
   "active": "15cf25c7aac0d93a",
   "lastOpenFiles": [
+    "Pasted image 20260426092033.png",
+    "AI/A simple Agentic Example.md",
+    "AI/AI Agent Use Cases.md",
+    "Pasted image 20260426091823.png",
+    "AI/AI Agent Systems.md",
     "Pasted image 20260426091337.png",
     "AI/AI Agent and non-agentic.md",
-    "AI/Untitled.md",
     "Pasted image 20260426090837.png",
     "AI/From GenAI to AI Agents.md",
     "AI/databricks ai centification.md",
@@ -201,16 +205,12 @@
     "AI Databricks Cert/study guide.md",
     "AI Databricks Cert/关键词.md",
     "AI Databricks Cert/内容提取工具大全.md",
-    "AI Databricks Cert/学习要领英文.md",
-    "AI Databricks Cert/思维导图例子.md",
     "DBT/Detailed pages",
     "assets/Pasted image 20260209100715.png",
     "assets/Pasted image 20260203162600.png",
     "assets/Pasted image 20260106101212.png",
     "assets/Pasted image 20260106101201.png",
     "assets/Pasted image 20251223093150.png",
-    "assets/Pasted image 20251217085958.png",
-    "assets/Pasted image 20251215112452.png",
     "Test Cases",
     "Terminology",
     "SQL",
