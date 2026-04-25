@@ -1,303 +1,367 @@
-![[Pasted image 20260426090837.png]]
+![[Pasted image 20260426091337.png]]
 
-这张图其实是**AI Agent（智能体系统）最核心的一张入门+面试高频图**，基本可以拆成3层来理解：**概念 → 架构差异 → 考点**。我给你按“能考、能用、能讲清”的方式拆一下。
+这张图是上一张的**进阶版（真正面试会深挖的那一张）**——从“有没有Agent”升级到：
 
----
+> 👉 **Agent到底由什么组成？每个组件干嘛？**
 
-# 一、核心概念（必须掌握）
-
-## 1️⃣ Non-agentic（非智能体）
-
-关键词：**固定流程 / deterministic**
-
-本质是：
-
-> LLM 只是一个“函数”，整个流程是人为写死的
-
-典型形式：
-
-- Prompt → LLM → 输出
-    
-- 或 pipeline：
-    
-    ```
-    Prompt → Step1 → Step2 → Output
-    ```
-    
-
-特点：
-
-- 流程固定（hardcoded）
-    
-- 顺序固定
-    
-- 没有“决策能力”
-    
-- 每次执行结果基本一致（deterministic）
-    
-
-👉 类似你现在做的数据pipeline / ETL测试流程
+我帮你按**“能讲架构 + 能答面试 + 能落地设计”**拆清楚。
 
 ---
 
-## 2️⃣ Agentic（智能体）
+# 一、核心结构（一句话先记住）
 
-关键词：**自主决策 / 动态执行 / tool calling**
+> **Agent = LLM（脑） + Tools（手） + Planning（大脑思考） + Memory（记忆）**
 
-本质是：
+这是100%高频考点。
 
-> LLM 不只是执行，而是“决定下一步做什么”
+---
 
-核心能力：
+# 二、逐个组件拆解（重点）
 
-- Planning（规划）
+---
+
+## 1️⃣ LLM（Brain 🧠）
+
+### 图里说的：
+
+- 控制核心逻辑
     
-- Tool calling（调用工具）
+- 决定执行顺序
     
-- Reflection（反思）
-    
-- Iteration（迭代）
+- 可以调用其他模型
     
 
-流程变成：
+---
 
-```
-User Prompt
-   ↓
-Agent（LLM）
-   ↓（决定）
-Action 1（可能调用工具）
-   ↓
-Action 2（再决策）
-   ↓
-Final Output
-```
+### 本质理解（面试用）：
+
+> LLM ≠ 只是生成文本  
+> 👉 是 **决策引擎（Decision Engine）**
+
+---
+
+### 实际职责：
+
+- 解析用户意图
+    
+- 决定下一步做什么
+    
+- 选择工具
+    
+- 生成中间推理（chain of thought / reasoning）
+    
+- 控制流程走向
+    
+
+---
+
+### 你可以这样讲（加分）：
+
+> The LLM acts as the orchestrator that decides what actions to take and in what order.
+
+---
+
+### ⚠️ 常见考点：
+
+- 单LLM vs 多LLM（router / specialist models）
+    
+- reasoning vs execution model
+    
+
+---
+
+---
+
+## 2️⃣ Tools（手 🔧）
+
+### 图里说的：
+
+> External resources via tool calling
+
+---
+
+### 本质：
+
+> LLM自己什么都做不了  
+> 👉 必须靠工具“扩展能力”
+
+---
+
+### 常见工具：
+
+|类型|示例|
+|---|---|
+|数据|SQL / Databricks|
+|API|REST / GraphQL|
+|计算|Python|
+|检索|RAG / vector DB|
+|操作|浏览器 / UI automation|
+
+---
+
+### 你熟悉的场景（结合你）：
+
+👉 直接命中你现在工作：
+
+- SQL validation
+    
+- 数据对账
+    
+- schema check
+    
+
+👉 全都可以变成 Tool
+
+---
+
+### 面试一句话：
+
+> Tools extend the capabilities of the LLM beyond text generation.
+
+---
+
+---
+
+## 3️⃣ Planning（规划 🧭）
+
+### 图里说的：
+
+> Complex goals → manageable tasks
+
+---
+
+### 本质：
+
+> 把一个大任务拆成多个步骤
+
+---
+
+### 举例：
+
+用户说：
+
+> “帮我分析这个股票”
+
+Agent会拆：
+
+1. 获取数据（tool）
+    
+2. 计算指标（tool）
+    
+3. 分析趋势（LLM）
+    
+4. 输出结论
+    
+
+---
+
+### 常见实现方式：
+
+- ReAct（最经典）
+    
+- Plan → Execute → Reflect
+    
+- Tree of Thoughts（高级考点）
+    
+
+---
+
+### 面试一句话：
+
+> Planning decomposes complex tasks into smaller actionable steps.
+
+---
+
+---
+
+## 4️⃣ Memory（记忆 🧠💾）
+
+这是最容易被忽略，但最容易拉开差距的点。
+
+---
+
+### 图里分两类：
+
+### ✅ Short-term memory（短期）
+
+- 当前对话上下文
+    
+- 当前任务状态
+    
 
 👉 类似：
 
-- AutoGPT
+- Chat history
     
-- LangChain Agent
-    
-- OpenAI function calling / MCP
+- 当前变量状态
     
 
 ---
 
-# 二、图里真正的区别（重点考点）
+### ✅ Long-term memory（长期）
 
-## 对比总结（面试高频）
-
-|维度|Non-agentic|Agentic|
-|---|---|---|
-|控制方式|人写死流程|AI决定流程|
-|行为|固定|动态|
-|是否可规划|❌|✅|
-|是否可调用工具|❌（预定义）|✅（自主选择）|
-|是否迭代|❌|✅|
-|稳定性|高|低|
-|灵活性|低|高|
-
----
-
-## 图里每个点逐条解释（可能被问）
-
-### 左边（Non-agentic）
-
-### ✅ Hardcoded prompt response
-
-👉 Prompt写死，例如：
-
-```python
-response = llm("Summarize this text")
-```
-
----
-
-### ✅ Fixed pipelines
-
-👉 类似你现在做的：
-
-- dbt → SQL → BI → 输出
+- 用户偏好
+    
+- 历史数据
+    
+- 知识积累
     
 
----
+👉 类型（面试可能问）：
 
-### ✅ Deterministic actions
-
-👉 输入一样 → 输出几乎一样
-
----
-
----
-
-### 右边（Agentic）
-
-### ✅ Planning and execution by AI
-
-👉 LLM会先想：
-
-- 我需要做什么？
-    
-- 用什么工具？
-    
-
----
-
-### ✅ Tool calling by AI
-
-👉 重点考点（一定会问）
-
-例如：
-
-- 调数据库
-    
-- 调API
-    
-- 调Python
-    
-- 调浏览器
-    
-
-👉 这就是你之前问的：
-
-> MCP / tool calling 本质
-
----
-
-### ✅ Non-deterministic actions
-
-👉 同一个问题：
-
-- 路径可能不同
-    
-- 结果可能不同
-    
-
----
-
-### ✅ Iterative workflows
-
-👉 会循环：
-
-```
-思考 → 行动 → 观察 → 再思考
-```
-
-👉 经典模式：
-
-- ReAct（Reason + Act）
-    
-
----
-
-# 三、隐藏知识点（真正考点）
-
-## 1️⃣ Agent = LLM + Tools + Memory + Loop
-
-标准结构：
-
-```
-Agent
- ├── LLM（大脑）
- ├── Tools（手）
- ├── Memory（记忆）
- └── Loop（循环决策）
-```
-
----
-
-## 2️⃣ Agent 和 Workflow 的本质区别
-
-👉 面试一句话：
-
-> Workflow = predefined graph  
-> Agent = dynamic decision-making system
-
----
-
-## 3️⃣ Agent 为什么更强？
-
-因为可以：
-
-- 不知道路径 → 自己探索
-    
-- 不知道数据 → 自己查
-    
-- 不知道工具 → 自己选
-    
-
----
-
-## 4️⃣ 但为什么企业还用 Non-agentic？
-
-👉 很关键（面试加分）
-
-|原因|说明|
+|类型|说明|
 |---|---|
-|可控|agent 不可预测|
-|成本|agent 会多次调用|
-|稳定性|agent 可能走错|
-|审计|agent难追踪|
-
-👉 所以现实是：
-
-> 80% 系统 = workflow  
-> 20% = agent增强
+|Episodic|发生过的事情|
+|Semantic|知识|
+|Procedural|如何做|
 
 ---
 
-# 四、结合你背景（重点理解）
+### 实际实现：
 
-你现在做的数据/测试，本质是：
+- vector DB（RAG）
+    
+- DB / cache
+    
+- file / knowledge base
+    
 
-👉 **Non-agentic system**
+---
+
+### 面试一句话：
+
+> Memory enables the agent to maintain context and improve decision-making over time.
+
+---
+
+---
+
+# 三、图右侧结构（必须能讲）
+
+图右边其实是：
+
+```text
+User Request
+    ↓
+   Agent（核心）
+    ├── LLM（决策）
+    ├── Tools（执行）
+    ├── Planning（拆任务）
+    └── Memory（记住）
+```
+
+👉 关键点：
+
+> 所有组件围绕 LLM 运转
+
+---
+
+# 四、真正的考点（高级）
+
+---
+
+## 1️⃣ Agent执行循环（超高频）
+
+你必须能说出这个：
+
+```text
+1. Understand task
+2. Plan
+3. Choose tool
+4. Execute
+5. Observe result
+6. Repeat
+```
+
+👉 也叫：
+
+> **Agent loop**
+
+---
+
+## 2️⃣ 和传统系统区别
+
+|传统系统|Agent|
+|---|---|
+|流程写死|动态|
+|无记忆|有 memory|
+|无决策|有 planning|
+|无工具选择|自动 tool calling|
+
+---
+
+## 3️⃣ 为什么要Memory？
+
+👉 没memory会发生：
+
+- 每次都重新理解
+    
+- 无法连续任务
+    
+- 无法个性化
+    
+
+---
+
+## 4️⃣ Tool + Planning = Agent核心能力
+
+👉 记住一句话：
+
+> 没有tool的agent = chatbot  
+> 没有planning的agent = workflow
+
+---
+
+# 五、结合你当前背景（重点）
+
+你现在可以直接升级的方向：
+
+---
+
+## 🔥 把你的数据测试系统 Agent化
 
 例如：
 
-- schema check
-    
-- reconciliation
-    
-- pipeline validation
-    
+### 现在（Non-agentic）
 
----
-
-未来升级方向：
-
-👉 Agent化：
-
-比如：
-
-- 自动发现数据异常
+- 写SQL做对账
     
-- 自动生成测试SQL
-    
-- 自动决定验证路径
+- 写规则做validation
     
 
 ---
 
-# 五、面试可能直接问的问题
+### 升级（Agent）
 
-### ❓Q1：什么是Agent？
+```text
+User: “检查这个数据是否有问题”
 
-👉
-
-> An agent is an AI system that can plan, decide actions, and iteratively execute tasks using tools.
-
----
-
-### ❓Q2：Agent vs workflow区别？
-
-👉
-
-> Workflow is predefined, while agent dynamically decides actions.
+Agent:
+1. 理解schema
+2. 自动生成测试SQL
+3. 执行SQL（tool）
+4. 分析结果
+5. 输出问题
+```
 
 ---
 
-### ❓Q3：Agent核心组件？
+👉 你可以做：
+
+- 自动生成 dbt tests
+    
+- 自动数据对账
+    
+- 自动异常分析
+    
+
+---
+
+# 六、面试直接可能问的题
+
+---
+
+### ❓Q1：Agent有哪些核心组件？
 
 👉
 
@@ -305,55 +369,57 @@ Agent
     
 - Tools
     
+- Planning
+    
 - Memory
     
-- Planning loop
-    
 
 ---
 
-### ❓Q4：什么时候不用Agent？
+### ❓Q2：Planning的作用？
 
 👉
 
-- 需要稳定性
-    
-- 流程固定
-    
-- 可预测性要求高
-    
+> Break down complex tasks into smaller steps.
 
 ---
 
-### ❓Q5：Agent的风险？
+### ❓Q3：Memory分哪几种？
 
 👉
 
-- hallucination
+- Short-term
     
-- tool misuse
-    
-- cost explosion
-    
-- unpredictability
+- Long-term（episodic / semantic / procedural）
     
 
 ---
 
-# 六、一句话总结（记住这个就够了）
+### ❓Q4：Tool calling为什么重要？
 
-> Non-agentic = “我告诉AI怎么做”  
-> Agentic = “AI自己决定怎么做”
+👉
+
+> Because LLM alone cannot interact with external systems.
 
 ---
 
-如果你要，我可以帮你把这个延伸成：
+### ❓Q5：Agent loop是什么？
 
-- **系统设计面试答案（高级版）**
-    
-- **结合你PADP数据测试 → Agent方案设计**
-    
-- 或者 **OpenClaw / 多Agent架构怎么落地**
-    
+👉
 
-这个图其实已经是你转AI Engineer最核心的一步了。
+> Plan → Act → Observe → Repeat
+
+---
+
+# 七、一句话总结（记住这个）
+
+> Agent = 会思考（LLM）+ 会用工具（Tools）+ 会拆任务（Planning）+ 会记忆（Memory）
+
+---
+
+如果你要下一步，我可以帮你：
+
+👉 设计一个 **“Databricks + dbt + Agent”完整架构（直接可写进简历）**  
+👉 或者做一个 **面试用 system design 答案（高级版）**
+
+你现在这套理解，已经可以开始冲 AI Engineer 了。
