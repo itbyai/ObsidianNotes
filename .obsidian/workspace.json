@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "AI Databricks Cert/Untitled 1.md",
-                "mode": "preview",
+                "file": "AI Databricks Cert/考题.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Untitled 1"
+              "title": "考题"
             }
           }
         ],
@@ -141,13 +141,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "AI Databricks Cert/Untitled 1.md",
+                "file": "AI Databricks Cert/考题.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Untitled 1"
+              "title": "Outline of 考题"
             }
           }
         ],
@@ -174,11 +174,23 @@
   },
   "active": "15cf25c7aac0d93a",
   "lastOpenFiles": [
-    "AI Databricks Cert/Untitled.md",
-    "AI Databricks Cert/study guide.md",
-    "AI Databricks Cert/Untitled 1.md",
-    "AI Databricks Cert/5. Governance.md",
+    "AI Databricks Cert/0. 总体大纲.md",
+    "AI Databricks Cert/1. Design Application.md",
     "AI Databricks Cert/2. Data Preparation.md",
+    "AI Databricks Cert/3. Application Development.md",
+    "AI Databricks Cert/4. Assembling and Deploying Applications.md",
+    "AI Databricks Cert/5. Governance.md",
+    "AI Databricks Cert/AIcertification学习要领 - 中文.md",
+    "AI Databricks Cert/Databricks AI 证书.md",
+    "AI Databricks Cert/Databricks Certified Generative AI Engineer Associate.md",
+    "AI Databricks Cert/study guide.md",
+    "AI Databricks Cert/关键词.md",
+    "AI Databricks Cert/内容提取工具大全.md",
+    "AI Databricks Cert/学习要领英文.md",
+    "AI Databricks Cert/思维导图例子.md",
+    "AI Databricks Cert/思维导图.md",
+    "AI Databricks Cert/考题.md",
+    "AI Databricks Cert/真题.md",
     "修房/如何弯头防水.md",
     "Test Cases/Schema Evolution & Rollback Drills.md",
     "Test Cases/Large-scale Data Quality.md",
@@ -188,18 +200,6 @@
     "Test Cases/Cross-Model - Cross-Domain Reconciliation with databricks.md",
     "Test Cases/Contract-to-Warehouse Alignment.md",
     "Test Cases/Compare source target schemas.md",
-    "Terminology/Untitled.md",
-    "Terminology/Summary.md",
-    "Terminology/Reconciliation.md",
-    "Terminology/Foreign Key.md",
-    "Terminology/Code sets.md",
-    "SQL/SQL语句的核心执行顺序.md",
-    "SQL/SQL的核心技术概念.md",
-    "SQL/SQL Execution Order.md",
-    "SQL/Group by.md",
-    "QLD Health Related/数据建模的一般流程.md",
-    "QLD Health Related/如何读懂data element requirements.md",
-    "QLD Health Related/Untitled.md",
     "DBT/Detailed pages",
     "assets/Pasted image 20260209100715.png",
     "assets/Pasted image 20260203162600.png",
