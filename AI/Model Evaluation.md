@@ -2196,3 +2196,333 @@ Synthetic data 有风险：
 用于模型比较和回归测试
 → Benchmark / Agent Evaluation
 ```
+
+
+![[Pasted image 20260427230445.png]]
+
+这页讲的是 **Cyclic Evaluation（循环评估 / 周期性评估）**。
+
+核心意思是：
+
+> GenAI 系统不是评估一次就结束，而是要在开发、上线、监控、改进的过程中反复评估，形成一个持续迭代循环。
+
+---
+
+## Cyclic Evaluation 是什么？
+
+**Cyclic** = 循环的、周期性的。  
+**Evaluation** = 评估。
+
+所以 **Cyclic Evaluation** 可以理解为：
+
+> 对 GenAI / RAG / Agent 系统进行持续、反复的质量评估和改进。
+
+不是这样：
+
+```text
+开发模型
+→ 测一次
+→ 上线
+→ 结束
+```
+
+而是这样：
+
+```text
+开发
+→ 评估
+→ 发现问题
+→ 改 prompt / 改模型 / 改 RAG / 改工具
+→ 再评估
+→ 上线
+→ 监控真实表现
+→ 收集失败案例
+→ 加入 evaluation set
+→ 再优化
+```
+
+---
+
+## 为什么 GenAI 需要循环评估？
+
+因为 GenAI 系统不是完全确定性的。
+
+它可能因为很多因素变化而变差：
+
+- 模型版本更新
+    
+- prompt 修改
+    
+- 文档内容更新
+    
+- chunking 策略变化
+    
+- embedding model 变化
+    
+- vector search top-k 改变
+    
+- 用户问题变复杂
+    
+- 企业知识库过期
+    
+- Agent tool 调用失败
+    
+- 生产数据分布变化
+    
+
+所以不能只在上线前测一次。
+
+考试重点：
+
+> **Evaluation should be continuous, not one-time.**
+
+---
+
+## 一个 RAG 的循环评估例子
+
+假设你做一个公司政策问答系统。
+
+### 第 1 轮
+
+你先准备 evaluation dataset：
+
+```text
+Question: How many days is the refund period?
+Expected answer: 30 days
+```
+
+运行 RAG 系统后发现：
+
+```text
+模型回答：60 days
+```
+
+评估结果：
+
+```text
+Correctness: Failed
+Groundedness: Failed
+```
+
+---
+
+### 第 2 轮
+
+你检查原因，发现 retrieval 找错了 chunk。
+
+于是你调整：
+
+- chunk size
+    
+- chunk overlap
+    
+- embedding model
+    
+- vector search top-k
+    
+- reranker
+    
+- prompt instruction
+    
+
+然后重新跑 evaluation。
+
+---
+
+### 第 3 轮
+
+这次模型回答对了，但太慢。
+
+于是你优化：
+
+- 减少 retrieved chunks
+    
+- 换更小模型
+    
+- 缩短 prompt
+    
+- 限制 output tokens
+    
+
+然后继续评估：
+
+```text
+quality 是否还够？
+latency 是否下降？
+cost 是否降低？
+```
+
+这就是 cyclic evaluation。
+
+---
+
+## Cyclic Evaluation 通常包含哪些步骤？
+
+可以这样记：
+
+```text
+1. Build evaluation dataset
+2. Run model / RAG / Agent
+3. Evaluate outputs
+4. Analyze failures
+5. Improve system
+6. Re-run evaluation
+7. Deploy
+8. Monitor production
+9. Add new real-world failures back to test set
+```
+
+中文：
+
+```text
+建测试集
+→ 跑系统
+→ 评估输出
+→ 分析失败
+→ 优化系统
+→ 重新评估
+→ 上线
+→ 监控生产
+→ 把线上失败案例加入测试集
+```
+
+---
+
+## 它和前面几个 Evaluation 方法的关系
+
+前面讲过：
+
+|方法|作用|
+|---|---|
+|**Human-in-the-loop**|人工确认，高风险场景最可靠|
+|**LLM-as-Judge**|自动评分，适合大规模评估|
+|**Benchmark Evaluation**|固定测试集，做 baseline 和 regression testing|
+|**Synthetic Data Generation**|快速生成 evaluation dataset|
+
+而 **Cyclic Evaluation** 是把这些方法串起来，形成持续改进流程。
+
+比如：
+
+```text
+Synthetic Data 生成初始测试集
+→ Benchmark Evaluation 建 baseline
+→ LLM-as-Judge 批量评分
+→ Human-in-the-loop 审核高风险/低分样本
+→ 优化系统
+→ 再跑 benchmark
+→ 上线后持续收集真实失败案例
+```
+
+---
+
+## 在 Databricks 考试里的考点
+
+### 考点 1：不是一次性评估
+
+如果题目问：
+
+> When should you evaluate a GenAI application?
+
+不要只选：
+
+> before deployment
+
+更完整的是：
+
+> during development, before deployment, after deployment, and continuously during monitoring.
+
+中文：
+
+> 开发时、上线前、上线后、生产监控中都要评估。
+
+---
+
+### 考点 2：失败案例要回流到测试集
+
+这点很重要。
+
+如果生产环境中发现用户问了一个问题，模型答错了，你不应该只是手动修一次。
+
+正确做法是：
+
+```text
+把这个失败案例加入 evaluation dataset
+以后每次改 prompt / 模型 / RAG 都重新测试它
+```
+
+这类似自动化测试里的 regression test。
+
+---
+
+### 考点 3：每次改动都要重新评估
+
+这些改动都需要重新评估：
+
+- 换模型
+    
+- 改 prompt
+    
+- 改 chunk size
+    
+- 改 embedding model
+    
+- 改 vector index
+    
+- 改 retrieval top-k
+    
+- 加 reranker
+    
+- 改 agent tool
+    
+- 改 system instruction
+    
+- 改 guardrail
+    
+- 更新文档数据源
+    
+
+考试里看到 **iteration / monitoring / feedback loop / continuous improvement**，基本就是 cyclic evaluation。
+
+---
+
+## 和普通软件测试很像
+
+你可以把它类比成 QA regression testing：
+
+|软件测试|GenAI Evaluation|
+|---|---|
+|测试用例|Evaluation dataset|
+|预期结果|Ground truth / gold standard|
+|自动化回归测试|Benchmark evaluation|
+|缺陷分析|Failure analysis|
+|修 bug|改 prompt / RAG / model / tool|
+|CI/CD gate|Deployment quality threshold|
+|生产监控|Online evaluation / feedback|
+
+所以 cyclic evaluation 本质上就是：
+
+> GenAI 系统的持续质量保障机制。
+
+---
+
+## 这页一句话背诵
+
+> **Cyclic Evaluation means continuously evaluating, improving, and re-evaluating a GenAI system using feedback from tests and production usage.**
+
+中文记法：
+
+> **循环评估 = 评估 → 发现问题 → 优化 → 再评估 → 上线监控 → 把真实失败案例加入测试集 → 持续迭代。**
+
+考试口诀：
+
+```text
+Evaluation is not one-time.
+
+Build test set
+→ Evaluate
+→ Fix failures
+→ Re-evaluate
+→ Monitor production
+→ Add failures back to benchmark
+→ Repeat
+```
