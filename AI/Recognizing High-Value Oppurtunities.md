@@ -1247,3 +1247,371 @@ single clear invoice → simple LLM extraction
 50 legal contracts + compare against corporate standard + flag pages
 → agent-ready workflow / high-stakes extraction
 ```
+
+
+![[Pasted image 20260427223815.png]]
+
+这页是 **GenAI Tool Selection Decision Tree：选择 GenAI 工具/方案的决策树**。
+
+核心不是背具体工具，而是学会判断：
+
+> 这个任务到底适不适合用 GenAI？  
+> 如果适合，是用普通 LLM、RAG、Agent，还是传统规则/SQL/ML 更合适？
+
+---
+
+## 这页 5 个问题逐个解释
+
+### 1. Can output quality be measured clearly?
+
+中文：
+
+> 输出质量能不能被清楚衡量？
+
+这是第一步。
+
+如果你做一个 GenAI 应用，必须能判断它好不好。比如：
+
+|任务|能否衡量|
+|---|---|
+|从发票抽取金额|可以，对比真实金额|
+|总结会议纪要|可以，用人工评分或 LLM judge|
+|回答政策问题|可以，看是否 grounded、correct|
+|写一篇“更有创意”的文章|比较难衡量，但可以用人工标准|
+
+考试重点：
+
+> 如果质量无法衡量，就很难上线生产。  
+> GenAI 项目需要 evaluation。
+
+常见 evaluation 指标包括：
+
+- correctness：答案是否正确
+    
+- groundedness：是否基于资料回答
+    
+- relevance：是否回答了问题
+    
+- completeness：是否完整
+    
+- safety：是否安全
+    
+- latency：响应速度
+    
+- cost：成本
+    
+
+---
+
+### 2. Does the task require deterministic accuracy?
+
+中文：
+
+> 这个任务是否要求确定性准确？
+
+**Deterministic accuracy** 的意思是：
+
+> 每次都必须得到完全确定、完全准确的结果。
+
+比如：
+
+|任务|是否需要 deterministic accuracy|
+|---|---|
+|计算 GST 金额|是|
+|判断订单是否超过信用额度|是|
+|数据库 join / count / sum|是|
+|发票金额字段抽取|比较需要|
+|写营销文案|不需要|
+|总结客户反馈|不完全需要|
+
+考试重点：
+
+> 如果任务需要 100% 精确、可重复、可验证，通常优先用 SQL、规则、传统代码，而不是让 LLM 自由生成。
+
+例如：
+
+```text
+计算 total_sales = quantity * price
+```
+
+这个不应该让 LLM 来“猜”，应该用 SQL / Python / business rule。
+
+但 LLM 可以用来：
+
+```text
+解释为什么 total_sales 下降
+总结销售异常原因
+把结果写成业务报告
+```
+
+所以：
+
+> 计算用传统工具，解释和生成用 GenAI。
+
+---
+
+### 3. Does the task involve language understanding or generation?
+
+中文：
+
+> 这个任务是否涉及语言理解或语言生成？
+
+这是判断是否适合 GenAI 的关键。
+
+如果任务包括：
+
+- 读文档
+    
+- 理解自然语言问题
+    
+- 总结内容
+    
+- 写邮件
+    
+- 翻译
+    
+- 改写
+    
+- 抽取文本信息
+    
+- 生成解释
+    
+- 和用户对话
+    
+
+那就很适合 LLM。
+
+例如：
+
+|任务|适合工具|
+|---|---|
+|写客户邮件|LLM|
+|总结会议记录|LLM|
+|从合同里找责任条款|LLM / RAG|
+|查询数据库销售额|SQL|
+|根据销售额写分析说明|LLM|
+
+考试判断：
+
+> 涉及自然语言理解或生成 → LLM 有价值。  
+> 纯数字计算、纯规则判断 → 不一定需要 LLM。
+
+---
+
+### 4. Does the task require synthesis or open-ended output?
+
+中文：
+
+> 这个任务是否需要综合分析，或者开放式输出？
+
+**Synthesis** 是“综合、归纳、整合”。
+
+比如：
+
+```text
+阅读 10 篇文章，综合出市场趋势。
+```
+
+这不是简单抽取，而是要：
+
+- 阅读多个来源
+    
+- 找共同点
+    
+- 比较差异
+    
+- 组织观点
+    
+- 生成结论
+    
+
+**Open-ended output** 是开放式输出，比如：
+
+- 写一篇报告
+    
+- 生成建议
+    
+- 起草白皮书
+    
+- 总结项目演进
+    
+- 给出风险分析
+    
+
+考试重点：
+
+> 如果任务需要综合多个信息源并生成开放式内容，GenAI 很适合。  
+> 如果还需要搜索、调用工具、多步骤执行，那可能需要 Agent。
+
+比如：
+
+|场景|类型|
+|---|---|
+|根据一个 brief 写博客|Simple LLM task|
+|搜索 10 个网站后写白皮书|Agent-ready workflow|
+|总结一个 PDF|Simple LLM task|
+|扫描 shared drive 找项目资料并总结 6 个月变化|Agentic workflow|
+
+---
+
+### 5. Does the task depend on proprietary enterprise knowledge?
+
+中文：
+
+> 这个任务是否依赖企业内部专有知识？
+
+**Proprietary enterprise knowledge** 指公司内部知识，比如：
+
+- 内部政策
+    
+- 产品文档
+    
+- 合同模板
+    
+- SOP
+    
+- 数据字典
+    
+- 客户资料
+    
+- 项目文档
+    
+- 会议纪要
+    
+- 业务规则
+    
+- Databricks 表结构和字段定义
+    
+
+如果任务依赖这些内部知识，单靠基础模型不够。
+
+这时通常需要：
+
+> **RAG / Vector Search / governed data access**
+
+也就是：
+
+```text
+企业文档
+→ chunk
+→ embedding
+→ vector index
+→ retrieve relevant chunks
+→ LLM answer
+```
+
+考试重点：
+
+> 问内部知识，不是直接换更大模型，而是用 RAG。
+
+比如：
+
+> “我们公司 PADP Phase 2b Power BI validation 要测什么？”
+
+模型本身不知道你们内部文档，所以需要 RAG 找相关文档，再回答。
+
+---
+
+## 这页背后的决策逻辑
+
+可以这样理解：
+
+```text
+1. 质量能不能衡量？
+   不能 → 不适合直接上线，需要先定义 evaluation
+
+2. 是否要求确定性准确？
+   是 → 优先 SQL / rules / code / traditional ML
+   否 → 可以考虑 LLM
+
+3. 是否涉及语言理解或生成？
+   是 → LLM 有价值
+
+4. 是否需要综合分析或开放式输出？
+   是 → LLM / Agent 更有价值
+
+5. 是否依赖企业内部知识？
+   是 → RAG / Vector Search / governed data source
+```
+
+---
+
+## 和 Databricks 工具怎么对应？
+
+|判断结果|可能选择的 Databricks 方案|
+|---|---|
+|简单文本生成|Foundation Model / Model Serving|
+|批量抽取、总结|AI Functions / batch inference|
+|内部文档问答|Vector Search + RAG|
+|复杂多步骤任务|Agent Framework / tool calling|
+|需要质量验证|MLflow Evaluation / Agent Evaluation|
+|需要权限治理|Unity Catalog|
+|需要生产部署|Model Serving / provisioned throughput|
+
+---
+
+## 考试最常见陷阱
+
+### 陷阱 1：所有任务都用 LLM
+
+错。
+
+如果是确定性计算，比如：
+
+```sql
+select sum(revenue) from sales
+```
+
+应该用 SQL，不是 LLM。
+
+---
+
+### 陷阱 2：内部知识问答直接用更大模型
+
+错。
+
+如果模型缺少企业内部知识，应优先考虑：
+
+> RAG，而不是单纯换 frontier model。
+
+---
+
+### 陷阱 3：Agent 用在简单任务上
+
+错。
+
+如果只是：
+
+```text
+把这个 PDF 总结成 5 点
+```
+
+普通 LLM 就够了，不需要 Agent。
+
+---
+
+### 陷阱 4：没有 evaluation 就上线
+
+错。
+
+GenAI 应用需要能衡量质量，否则无法判断是否满足业务要求。
+
+---
+
+## 这页一句话背诵
+
+> **先判断任务是否可评估；如果需要确定性准确，用传统工具；如果涉及语言理解/生成，用 LLM；如果需要内部知识，用 RAG；如果需要多步骤搜索、判断、执行，用 Agent。**
+
+考试口诀：
+
+```text
+确定性计算 → SQL / Rules / Code
+
+语言理解和生成 → LLM
+
+企业内部知识 → RAG
+
+多步骤 + 工具调用 + 自主执行 → Agent
+
+质量验证 → Evaluation
+```
