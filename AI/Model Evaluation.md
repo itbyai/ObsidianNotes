@@ -1874,3 +1874,325 @@ Benchmark Evaluation
 
 
 ![[Pasted image 20260427225929.png]]
+
+
+这页讲的是 **Synthetic Data Generation（合成数据生成）**，在 Databricks GenAI 考试里，重点通常放在：
+
+> **用 AI 自动生成 evaluation dataset / test cases，用来评估 RAG 或 Agent 的质量。**
+
+Databricks 官方文档里也把它放在 **Agent Evaluation / Evaluation dataset** 相关内容下：可以从文档中自动生成有代表性的 evaluation set，帮助快速评估 agent，并覆盖更多测试场景。([Databricks Documentation](https://docs.databricks.com/aws/en/generative-ai/agent-evaluation/synthesize-evaluation-set?utm_source=chatgpt.com "Synthesize evaluation sets | Databricks on AWS"))
+
+---
+
+## 这页内容翻译
+
+标题：
+
+> **Synthetic Data Generation**  
+> 合成数据生成
+
+副标题：
+
+> **Databricks Synthetic Data Generation API**  
+> Databricks 合成数据生成 API
+
+右边四个点：
+
+|英文|中文|解释|
+|---|---|---|
+|**Rapid dataset creation**|快速创建数据集|快速生成测试问题、标准答案、对话样本等|
+|**Proprietary grounding**|基于企业专有知识生成|根据公司内部文档、知识库、业务资料生成测试数据|
+|**SME optimization**|领域专家优化|Subject Matter Expert 可以审核、改进生成的数据|
+|**Seamless integration**|无缝集成|和 Databricks Agent Evaluation / MLflow evaluation workflow 集成|
+
+---
+
+## Synthetic Data 是什么？
+
+**Synthetic data** 就是：
+
+> 不是从真实用户那里直接收集来的数据，而是由系统或模型“生成出来”的数据。
+
+在 GenAI 评估里，最常见的是生成：
+
+- 测试问题
+    
+- 标准答案
+    
+- 多轮对话
+    
+- 用户意图
+    
+- 边界场景
+    
+- RAG 问答样本
+    
+- Agent 任务样本
+    
+
+例如你有一批公司政策文档，系统可以自动生成类似这样的 evaluation set：
+
+```text
+Document: Refund Policy
+
+Synthetic Question:
+What is the refund period for online purchases?
+
+Expected Answer:
+Customers can request a refund within 30 days of purchase.
+```
+
+这样你就不用人工从零开始写 100 个测试问题。
+
+---
+
+## 重点 1：Rapid dataset creation
+
+这是最直接的好处：
+
+> 快速生成 evaluation dataset。
+
+以前要人工做评估集，需要业务专家一条条写：
+
+```text
+问题
+标准答案
+相关文档
+评分标准
+```
+
+非常慢。
+
+Synthetic Data Generation 可以根据已有文档自动生成一批测试样本。
+
+这对考试很重要，因为前面一直说：
+
+> GenAI 不能只靠感觉上线，必须有 evaluation。
+
+但 evaluation 需要数据集。Synthetic data 就是帮助你快速构建这个数据集。
+
+---
+
+## 重点 2：Proprietary grounding
+
+**Proprietary** 是“企业专有的”。  
+**Grounding** 是“基于可靠上下文”。
+
+**Proprietary grounding** 的意思是：
+
+> 合成数据不是凭空乱编，而是基于企业自己的文档、知识库、业务规则来生成。
+
+比如你公司有：
+
+- HR policy
+    
+- legal contract templates
+    
+- product manuals
+    
+- internal SOP
+    
+- project documents
+    
+- clinical / finance / supply chain business rules
+    
+
+系统可以从这些文档里生成测试问题和答案。
+
+这很适合 RAG/Agent 评估，因为你的 GenAI 应用本来就是要回答这些内部知识问题。
+
+---
+
+## 重点 3：SME optimization
+
+**SME = Subject Matter Expert**  
+中文是：
+
+> 领域专家 / 业务专家
+
+比如：
+
+|领域|SME 可能是谁|
+|---|---|
+|法律合同|Legal counsel|
+|医疗数据|Clinician / clinical analyst|
+|供应链|Supply planner / demand planner|
+|财务|Finance manager|
+|数据平台|Data owner / BA / QA lead|
+
+Synthetic data 生成后，不代表一定完美。SME 可以：
+
+- 审核问题是否真实
+    
+- 修改标准答案
+    
+- 增加边界场景
+    
+- 删除不合理问题
+    
+- 标注高风险场景
+    
+- 把 synthetic data 变成更可靠的 gold standard
+    
+
+所以它不是完全替代人工，而是：
+
+> AI 先生成草稿，SME 再优化。
+
+---
+
+## 重点 4：Seamless integration
+
+这里指它可以和 Databricks 的 GenAI evaluation workflow 结合。
+
+比如流程可以是：
+
+```text
+内部文档
+→ Synthetic Data Generation
+→ Evaluation Dataset
+→ 用来测试 RAG / Agent
+→ MLflow / Agent Evaluation 记录结果
+→ 比较模型、prompt、retrieval 配置
+```
+
+Databricks 文档也提到，synthetic generation API 和 Agent Evaluation 集成，用来生成代表性的 evaluation set，从而减少完全人工标注的成本。([Databricks Documentation](https://docs.databricks.com/aws/en/release-notes/product/2024/december?utm_source=chatgpt.com "December 2024 | Databricks on AWS"))
+
+---
+
+## 考试重点：Synthetic Data 主要解决什么问题？
+
+它主要解决：
+
+> evaluation dataset 不够的问题。
+
+很多 GenAI 项目失败，不是因为没有模型，而是因为：
+
+- 没有测试集
+    
+- 没有标准答案
+    
+- 不知道模型回答好不好
+    
+- 没有办法比较模型 A 和模型 B
+    
+- 没有办法做 regression testing
+    
+
+Synthetic Data Generation 可以快速生成一批初始测试数据，让你开始评估。
+
+---
+
+## 和前面 Evaluation 的关系
+
+你可以这样串起来记：
+
+```text
+Human-in-the-loop
+→ 人工评估，最可信，但慢、贵
+
+LLM-as-Judge
+→ 自动评分，快、便宜、可扩展
+
+Benchmark Evaluation
+→ 固定测试集，做 baseline 和 regression testing
+
+Synthetic Data Generation
+→ 快速生成 benchmark / evaluation dataset
+```
+
+也就是说：
+
+> Synthetic Data Generation 是 evaluation 的“数据来源之一”。
+
+---
+
+## 但要注意：Synthetic Data 不等于真实数据
+
+考试可能会考缺点。
+
+Synthetic data 有风险：
+
+|风险|说明|
+|---|---|
+|不够真实|生成的问题可能不像真实用户会问的问题|
+|偏向文档表面内容|可能只生成简单问题，覆盖不到复杂场景|
+|可能遗漏边界场景|比如异常输入、冲突文档、权限问题|
+|可能继承模型偏见|生成数据的模型本身可能有 bias|
+|不能完全替代人工|高风险场景仍需 SME / human review|
+
+所以正确说法不是：
+
+> 有 synthetic data 就够了。
+
+而是：
+
+> synthetic data 可以快速启动 evaluation，但需要 SME 审核，并最好结合真实 production traces / real user questions。
+
+---
+
+## 考试常见问法
+
+### 问法 1
+
+> Why use synthetic data generation for GenAI evaluation?
+
+答案：
+
+> To rapidly create evaluation datasets, especially when manually labeled data is limited or expensive.
+
+---
+
+### 问法 2
+
+> What does proprietary grounding mean?
+
+答案：
+
+> Synthetic questions and answers are generated from enterprise-specific documents or knowledge sources, not generic public data.
+
+---
+
+### 问法 3
+
+> Does synthetic data replace human evaluation?
+
+答案：
+
+> No. It helps create datasets quickly, but SMEs should review and refine them, especially for high-stakes use cases.
+
+---
+
+### 问法 4
+
+> Where does synthetic data fit in the evaluation workflow?
+
+答案：
+
+> It can be used to build benchmark/evaluation datasets for testing RAG or Agent applications, then combined with LLM-as-judge, human review, and regression testing.
+
+---
+
+## 这页一句话背诵
+
+> **Synthetic Data Generation helps quickly create evaluation datasets grounded in enterprise knowledge, which SMEs can refine and Databricks can integrate into the evaluation workflow.**
+
+中文记法：
+
+> **合成数据生成 = 根据企业文档快速生成测试问题和标准答案，用来评估 RAG / Agent；但需要业务专家审核，不能盲信。**
+
+考试口诀：
+
+```text
+没有 evaluation dataset
+→ 用 Synthetic Data Generation 快速生成
+
+企业内部文档
+→ proprietary grounding
+
+专家审核优化
+→ SME optimization
+
+用于模型比较和回归测试
+→ Benchmark / Agent Evaluation
+```
