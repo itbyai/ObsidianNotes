@@ -638,3 +638,282 @@ Company documents
 复杂推理 / 多步骤任务 → large model
 最高难度 / 关键业务 → frontier model
 ```
+
+![[Pasted image 20260427215922.png]]
+
+这页讲的是 **Frontier Models（前沿模型 / 最先进模型）**。
+
+它的考试重点是：
+
+> **Frontier model 不是日常默认选择，而是用于高风险、高复杂度、质量优先于成本的场景。**
+
+---
+
+## 这页内容翻译
+
+**Frontier Models**
+
+意思是：
+
+> **State-of-the-art**  
+> 当前最先进、最强的一类模型
+
+最适合：
+
+> **High-stakes scenarios where quality outweighs cost**  
+> 高风险场景，并且回答质量比成本更重要
+
+---
+
+## Frontier Models 是什么？
+
+Frontier models 可以理解为：
+
+> 当前能力最强的一批模型，比如推理、理解、代码、复杂规划、多模态能力都非常强。
+
+它们通常比 large model 还强，但也通常：
+
+- 成本最高
+    
+- 延迟更高
+    
+- 调用更贵
+    
+- 治理要求更高
+    
+- 需要更严格的评估和监控
+    
+
+所以考试里不要理解成：
+
+> frontier model = 永远最好的选择
+
+更准确是：
+
+> frontier model = 当质量、安全性、复杂推理能力比成本更重要时才用。
+
+---
+
+## 什么是 High-stakes scenarios？
+
+**High-stakes** 的意思是：**高风险 / 高影响 / 不能轻易出错的场景**。
+
+比如：
+
+|场景|为什么是 high-stakes|
+|---|---|
+|医疗建议辅助|错误可能影响病人安全|
+|金融风险分析|错误可能造成重大损失|
+|法律合同分析|错误可能带来法律风险|
+|安全事件响应|错误判断可能扩大事故|
+|企业高层决策支持|影响战略和资金投入|
+|复杂代码迁移|错误可能影响生产系统|
+|复杂 agent 自动执行任务|错误工具调用可能造成严重后果|
+
+---
+
+## Frontier Model 适合什么任务？
+
+### 1. 复杂推理
+
+例如：
+
+> 根据多个政策文件、历史案例和业务规则，判断这个特殊案例是否应该批准。
+
+这不是简单找答案，而是要做：
+
+- 多文档理解
+    
+- 条件判断
+    
+- 风险分析
+    
+- 逻辑推理
+    
+- 解释原因
+    
+
+---
+
+### 2. 复杂 Agent Planning
+
+Agent 场景里，模型可能需要决定：
+
+- 下一步做什么
+    
+- 调用哪个工具
+    
+- 什么时候查询数据
+    
+- 什么时候让人确认
+    
+- 如何处理异常结果
+    
+
+这种情况下，如果任务复杂、风险高，frontier model 更合适。
+
+---
+
+### 3. LLM Judge / Evaluation
+
+考试里也可能问：
+
+> 用什么模型评估其他模型输出质量？
+
+通常可以用更强的模型作为 **judge model**，也就是让 frontier / strong model 来评估：
+
+- correctness
+    
+- groundedness
+    
+- relevance
+    
+- safety
+    
+- completeness
+    
+
+因为 judge 本身需要很强的理解和判断能力。
+
+---
+
+## 关键词：quality outweighs cost
+
+这句话很重要。
+
+**Outweighs** 的意思是：
+
+> 比……更重要 / 权重大于……
+
+所以：
+
+> quality outweighs cost
+
+意思是：
+
+> 质量比成本更重要。
+
+比如普通客服机器人，成本很重要，不一定用 frontier model。
+
+但如果是医疗、法律、金融、生产事故排查，错误代价很高，这时：
+
+> 多花钱用更强模型是合理的。
+
+---
+
+## 考试常见判断
+
+看到这些关键词，要想到 **Frontier Models**：
+
+- state-of-the-art
+    
+- high-stakes
+    
+- mission-critical
+    
+- quality outweighs cost
+    
+- highest accuracy required
+    
+- complex reasoning
+    
+- complex agent
+    
+- safety-critical
+    
+- legal / medical / financial
+    
+- judge model
+    
+- very ambiguous or sensitive task
+    
+
+---
+
+## 和 Large Models 的区别
+
+Large model 已经可以处理复杂任务。
+
+Frontier model 更强调：
+
+> **最强能力 + 高质量要求 + 高风险场景。**
+
+|类型|适合|
+|---|---|
+|Large Model|复杂任务、模糊任务、多步骤推理|
+|Frontier Model|高风险、高价值、质量必须优先的复杂任务|
+
+举例：
+
+|场景|更适合|
+|---|---|
+|普通多文档总结|Large|
+|内部知识库复杂问答|Large|
+|医疗/法律/金融高风险分析|Frontier|
+|生产事故自动诊断建议|Frontier|
+|作为 LLM judge 评估其他模型答案|Frontier|
+|普通客服回复|Medium，不一定用 Frontier|
+
+---
+
+## 考试陷阱
+
+### 陷阱 1：看到“最先进”就选它
+
+不一定。
+
+如果题目强调：
+
+- low cost
+    
+- high volume
+    
+- simple extraction
+    
+- formatting
+    
+- low latency
+    
+
+那 frontier model 反而不是最佳选择。
+
+---
+
+### 陷阱 2：只靠 frontier model 解决知识问题
+
+如果模型不知道公司内部知识，换成 frontier model 也不一定能解决。
+
+比如：
+
+> 问公司内部政策、合同、数据库字段定义。
+
+更正确的是：
+
+> 用 RAG，把内部文档作为 context 给模型。
+
+也就是：
+
+```text
+知识缺口 → RAG
+能力缺口 → 更强模型
+质量要求极高 → Frontier + Evaluation
+```
+
+---
+
+## 这页可以这样背
+
+> **Frontier models = state-of-the-art models for high-stakes tasks where quality matters more than cost.**
+
+中文记法：
+
+> **前沿模型 = 当前最强模型，用在高风险、高价值、质量优先于成本的场景。**
+
+考试口诀：
+
+```text
+简单抽取 → Small
+普通客服 / 内容生成 → Medium
+复杂推理 / 模糊任务 → Large
+高风险 / 质量压倒成本 → Frontier
+```
