@@ -1584,3 +1584,290 @@ LLM-as-Judge 缺点：
 高风险最终判断：
 Human-in-the-loop
 ```
+
+
+![[Pasted image 20260427225203.png]]
+
+这页讲的是 **Benchmark Evaluations（基准评估 / 基准测试）**。
+
+核心意思是：
+
+> 用一套固定的测试集和指标，给模型或 GenAI 应用建立一个“客观基线”，方便比较、回归测试和优化成本/延迟。
+
+---
+
+## 这页内容翻译
+
+### Benchmark evaluations 可以帮助你：
+
+|英文|中文|含义|
+|---|---|---|
+|**Establish an objective baseline**|建立客观基线|先知道当前模型表现是多少分|
+|**Identify critical weaknesses**|识别关键弱点|找出模型在哪些任务上表现差|
+
+### 优点 Pros：
+
+|英文|中文|含义|
+|---|---|---|
+|**Rapid regression testing**|快速回归测试|模型、prompt、RAG 改动后快速验证有没有变差|
+|**Cost and latency optimization**|成本和延迟优化|比较不同模型是否更便宜、更快且质量还能接受|
+|**Operational consistency**|运营一致性|用固定标准持续评估，保证生产质量稳定|
+
+---
+
+## 什么是 Benchmark Evaluation？
+
+**Benchmark evaluation** 就是：
+
+> 用固定问题、固定答案、固定评分方式，来评估模型表现。
+
+比如你有一个 RAG 问答系统，你准备 100 个标准问题：
+
+```text
+Question 1: What is the refund policy?
+Expected answer: Refunds are allowed within 30 days.
+
+Question 2: How do employees request annual leave?
+Expected answer: Through the HR portal.
+```
+
+然后每次模型或 prompt 改动后，都跑这 100 个问题，看结果有没有变好或变差。
+
+---
+
+## 重点 1：Establish an objective baseline
+
+**Objective baseline** 可以理解为：
+
+> 一个客观的起点分数 / 当前表现基准。
+
+比如你第一次测试系统：
+
+|指标|当前结果|
+|---|--:|
+|Correctness|82%|
+|Groundedness|88%|
+|Average latency|2.5 秒|
+|Average cost|$0.03 / request|
+
+这就是 baseline。
+
+以后你换模型、改 prompt、改 chunk size、改 top-k retrieval，都要和这个 baseline 比。
+
+---
+
+## 重点 2：Identify critical weaknesses
+
+Benchmark 可以帮你发现模型的薄弱点。
+
+比如整体正确率是 85%，看起来还行，但细分后发现：
+
+|问题类型|正确率|
+|---|--:|
+|简单 FAQ|95%|
+|政策问答|88%|
+|多文档比较|60%|
+|数字计算|45%|
+
+这说明模型不是所有地方都差，而是：
+
+> 多文档比较和数字计算是 critical weaknesses。
+
+考试里要知道：
+
+> Benchmark 不只是给一个总分，更重要是帮助你发现具体哪里不行。
+
+---
+
+## 重点 3：Rapid regression testing
+
+这个特别像你做 QA automation 的概念。
+
+**Regression testing** 就是：
+
+> 系统改动后，确认原来能工作的功能没有坏掉。
+
+在 GenAI 里，改动可能包括：
+
+- 换模型
+    
+- 改 prompt
+    
+- 改 system instruction
+    
+- 改 chunk size
+    
+- 改 embedding model
+    
+- 改 vector search top-k
+    
+- 改 reranker
+    
+- 改 temperature
+    
+- 改 serving endpoint
+    
+
+每次改完都跑 benchmark，看质量有没有下降。
+
+比如：
+
+```text
+Before prompt change:
+Correctness = 86%
+
+After prompt change:
+Correctness = 78%
+```
+
+这说明 prompt 改坏了。
+
+所以 benchmark evaluation 可以作为 GenAI 系统的自动化回归测试。
+
+---
+
+## 重点 4：Cost and latency optimization
+
+Benchmark 不只是看质量，也可以帮你优化成本和速度。
+
+比如你测试三个模型：
+
+|模型|Correctness|Latency|Cost|
+|---|--:|--:|--:|
+|Frontier model|96%|4 秒|高|
+|Large model|94%|2 秒|中|
+|Medium model|91%|1 秒|低|
+
+如果业务要求是：
+
+> Correctness ≥ 90%
+
+那 medium model 就可能是最佳选择，因为它满足质量要求，同时成本低、速度快。
+
+这和前面那句连起来：
+
+> **Choose the smallest model that meets the quality requirement.**
+
+没有 benchmark，你就没有证据证明可以降级模型。
+
+---
+
+## 重点 5：Operational consistency
+
+**Operational consistency** 是生产环境里很重要的概念。
+
+意思是：
+
+> 不是今天测一下就结束，而是要持续用同一套标准监控模型表现。
+
+比如每次上线前都跑：
+
+```text
+Benchmark test suite
+↓
+Correctness >= 90%
+Groundedness >= 90%
+Latency <= 2 seconds
+Cost <= target threshold
+```
+
+如果低于阈值，就不能上线。
+
+这就把 GenAI 系统变成一个可管理、可测试、可监控的生产系统。
+
+---
+
+## Benchmark Evaluation 的局限
+
+虽然 slide 这页讲的是优点，但考试也可能考缺点。
+
+Benchmark 的问题是：
+
+|局限|说明|
+|---|---|
+|可能不贴合真实业务|通用 benchmark 不一定代表你的 workflow|
+|容易被过度优化|模型可能只在测试集上表现好|
+|不能完全评价开放式输出|文案、创意、复杂判断很难只靠固定答案|
+|可能忽略上下文变化|企业知识和业务规则会变|
+|不能完全替代人工评估|高风险场景还要 human-in-the-loop|
+
+所以 benchmark 很有用，但不能单独依赖。
+
+---
+
+## 和前面三种 Evaluation 的关系
+
+|方法|最适合|
+|---|---|
+|**Human-in-the-loop**|高风险、专家判断、建立 gold standard|
+|**LLM-as-Judge**|大规模自动评分、解释性评估|
+|**Benchmark Evaluation**|固定测试集、回归测试、模型比较、成本延迟优化|
+
+可以组合使用：
+
+```text
+Human experts 创建 gold standard
+↓
+Benchmark test set 固定下来
+↓
+LLM-as-Judge 批量评分
+↓
+每次模型/prompt/RAG 改动都做 regression test
+```
+
+---
+
+## Databricks 考试重点
+
+这页常见考法：
+
+### 问法 1
+
+> 为什么要做 benchmark evaluation？
+
+答案：
+
+> 建立客观 baseline，发现关键弱点，并支持快速回归测试、成本和延迟优化、生产一致性。
+
+---
+
+### 问法 2
+
+> 换了更便宜的模型后，如何确认质量没有下降？
+
+答案：
+
+> 用 benchmark evaluation / regression test 比较新旧模型在固定测试集上的表现。
+
+---
+
+### 问法 3
+
+> 为什么不能只看 generic benchmark？
+
+答案：
+
+> 因为通用 benchmark 不一定反映具体业务 workflow，应该建立业务相关的 benchmark 和 metrics。
+
+---
+
+## 这页一句话背诵
+
+> **Benchmark evaluation uses a fixed test set to establish a baseline, find weaknesses, and support fast regression testing, cost optimization, latency optimization, and operational consistency.**
+
+中文记法：
+
+> **Benchmark Evaluation = 固定测试集 + 客观基线 + 快速回归测试 + 成本/延迟优化 + 生产稳定性。**
+
+考试口诀：
+
+```text
+Human-in-the-loop
+→ 最可信，但慢、贵
+
+LLM-as-Judge
+→ 可扩展、自动评分
+
+Benchmark Evaluation
+→ 固定测试集、建 baseline、做 regression testing
+```
