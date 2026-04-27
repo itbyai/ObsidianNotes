@@ -917,3 +917,361 @@ Frontier model 更强调：
 复杂推理 / 模糊任务 → Large
 高风险 / 质量压倒成本 → Frontier
 ```
+
+
+![[Pasted image 20260427220606.png]]
+
+
+这页是前面几页的总结：**如何选择模型**。
+
+核心意思是：
+
+> 选模型不是直接选最强的，而是按优先级逐层判断：  
+> **先看任务复杂度和质量要求，再看成本和延迟，最后看隐私和部署限制。**
+
+---
+
+## 这页内容翻译
+
+标题：
+
+> **Model Selection Considerations**  
+> 模型选择时要考虑的因素
+
+### Minimum level：最低要求 / 第一层考虑
+
+- **Complexity of the task**  
+    任务复杂度
+    
+- **Quality needs**  
+    质量要求
+    
+
+### Second level：第二层考虑
+
+- **Cost**  
+    成本
+    
+- **Latency**  
+    延迟 / 响应速度
+    
+
+### The “Deal Breaker”：一票否决因素
+
+- **Privacy**  
+    隐私
+    
+- **Deployment constraints**  
+    部署限制
+    
+
+---
+
+## 重点 1：Minimum level 是先判断“能不能完成任务”
+
+这里的 **minimum level** 不是“最低级模型”，而是说：
+
+> 首先要选一个至少能完成任务、达到质量要求的模型级别。
+
+比如：
+
+|任务|可能最低可用模型|
+|---|---|
+|抽取字段、格式转换|Small|
+|普通客服问答、内容生成|Medium|
+|复杂推理、多文档分析|Large|
+|高风险、质量压倒成本|Frontier|
+
+考试里经常考这个逻辑：
+
+> 不要一上来选最强模型，而是选 **minimum capable model**。  
+> 也就是“能满足质量要求的最小模型”。
+
+---
+
+## 重点 2：Complexity of the task 任务复杂度
+
+任务越复杂，需要的模型越强。
+
+### 简单任务
+
+例如：
+
+- 提取姓名、日期、金额
+    
+- 判断评论是 positive 还是 negative
+    
+- 把文本转换成 JSON
+    
+- 简单 Q&A
+    
+
+适合：
+
+> **Small model**
+
+---
+
+### 中等任务
+
+例如：
+
+- 普通客服机器人
+    
+- HR 政策问答
+    
+- 总结一段文档
+    
+- 写邮件、写产品介绍
+    
+
+适合：
+
+> **Medium model**
+
+---
+
+### 复杂任务
+
+例如：
+
+- 多文档比较
+    
+- 复杂业务规则判断
+    
+- 复杂 RAG
+    
+- agent 规划下一步
+    
+- 代码生成
+    
+- 模糊问题分析
+    
+
+适合：
+
+> **Large model**
+
+---
+
+### 高风险任务
+
+例如：
+
+- 医疗、法律、金融
+    
+- 生产事故诊断
+    
+- 高层决策支持
+    
+- 关键系统自动化 agent
+    
+
+适合：
+
+> **Frontier model**
+
+---
+
+## 重点 3：Quality needs 质量要求
+
+同样的任务，如果质量要求不同，模型选择也不同。
+
+比如都是客服：
+
+|场景|模型选择|
+|---|---|
+|普通 FAQ，错了也可以人工纠正|Medium|
+|VIP 客户投诉处理，错误会影响公司声誉|Large / Frontier|
+|法律合规类回答，不能乱说|Frontier + RAG + Evaluation|
+
+所以考试里看到：
+
+- high accuracy required
+    
+- quality is more important than cost
+    
+- high-stakes
+    
+- mission critical
+    
+
+就要考虑更强模型。
+
+---
+
+## 重点 4：Cost 成本是第二层考虑
+
+当几个模型都能满足质量要求时，再比较成本。
+
+比如：
+
+Small、Medium、Large 都能完成一个简单分类任务，那么应该优先选：
+
+> **Small model**
+
+因为它：
+
+- 更便宜
+    
+- 更快
+    
+- 更适合大批量处理
+    
+
+考试里这句话很重要：
+
+> **Choose the smallest model that meets the quality requirement.**
+
+中文就是：
+
+> 选择能满足质量要求的最小模型。
+
+---
+
+## 重点 5：Latency 延迟也是第二层考虑
+
+**Latency** 就是响应速度。
+
+比如用户问一句话，模型多久返回答案。
+
+|场景|延迟要求|
+|---|---|
+|实时客服聊天|要低延迟|
+|用户点击页面生成推荐|要低延迟|
+|夜间批量总结 100 万条评论|可以慢一点|
+|后台离线分析|延迟不太重要|
+
+如果题目说：
+
+- real-time
+    
+- interactive
+    
+- low latency
+    
+- high throughput
+    
+
+通常不要选太大的模型，除非质量必须如此。
+
+---
+
+## 重点 6：Deal Breaker 是“一票否决”
+
+这页最重要的词是：
+
+> **Deal Breaker**
+
+意思是：
+
+> 即使模型质量好、成本能接受，只要违反这个条件，就不能用。
+
+这里有两个一票否决因素：
+
+### 1. Privacy 隐私
+
+如果数据很敏感，比如：
+
+- 医疗数据
+    
+- 个人身份信息 PII
+    
+- 财务数据
+    
+- 公司机密
+    
+- 法律合同
+    
+- 内部商业数据
+    
+
+那你不能随便把数据发给外部模型。
+
+考试里如果看到：
+
+> Data cannot leave the company environment.
+
+或者：
+
+> Sensitive customer data must remain within Databricks governance boundary.
+
+那模型选择要考虑：
+
+- 是否可以用 Databricks-hosted model
+    
+- 是否需要私有部署
+    
+- 是否需要 Unity Catalog 权限控制
+    
+- 是否不能使用 external model
+    
+
+---
+
+### 2. Deployment constraints 部署限制
+
+Deployment constraints 就是部署上的限制，比如：
+
+- 公司只能用某些 approved models
+    
+- 不能调用外部 API
+    
+- 必须部署在特定 cloud region
+    
+- 必须满足数据驻留要求
+    
+- 必须用 provisioned throughput
+    
+- 必须支持高并发
+    
+- 必须符合安全审计要求
+    
+
+比如：
+
+> 公司政策禁止把数据发送到第三方 API。
+
+那即使 frontier model 效果最好，也不能选外部 frontier model。
+
+这就是 **deal breaker**。
+
+---
+
+## 考试答题顺序
+
+看到模型选择题，可以按这个顺序判断：
+
+```text
+1. 任务复杂吗？
+2. 质量要求高吗？
+3. 有没有内部知识？如果有，是否需要 RAG？
+4. 哪个最小模型能满足质量？
+5. 在满足质量的模型里，哪个成本更低？
+6. 延迟是否满足要求？
+7. 是否有隐私、合规、部署限制？
+```
+
+---
+
+## 这页可以这样背
+
+> **First: task complexity and quality.  
+> Second: cost and latency.  
+> Deal breaker: privacy and deployment constraints.**
+
+中文记法：
+
+> **先看能不能做好，再看贵不贵、快不快，最后看能不能合规部署。**
+
+考试口诀：
+
+```text
+简单任务 → Small
+普通业务 → Medium
+复杂推理 → Large
+高风险质量优先 → Frontier
+
+但最终还要检查：
+成本、延迟、隐私、部署限制
+```
