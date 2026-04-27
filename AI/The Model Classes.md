@@ -1275,3 +1275,268 @@ Deployment constraints 就是部署上的限制，比如：
 但最终还要检查：
 成本、延迟、隐私、部署限制
 ```
+
+
+![[Pasted image 20260427221334.png]]
+这页讲的是 **Model Cost Comparison：模型成本对比**。
+
+核心考点是：
+
+> **同样的请求量、同样的 token 数量，换不同模型，成本可能差很多。**
+
+---
+
+## 这页在比较什么？
+
+图里左边和右边的使用量几乎一样：
+
+|项目|数值|
+|---|---|
+|Input tokens per request|3500|
+|Output tokens per request|300|
+|Queries per minute|12|
+|Requests per month|518,400|
+|Total tokens per month|1,969,920,000|
+
+但是模型不同：
+
+|左边|右边|
+|---|---|
+|gpt-5-global|gpt-5-nano-global|
+|每月约 $3,823.18|每月约 $152.89|
+
+差距大约是：
+
+> **25 倍左右**
+
+所以这页想表达：
+
+> 模型越强，不一定越适合。成本会随着模型等级大幅上升。
+
+---
+
+## 这里的 Cost of Ownership 是什么意思？
+
+**Cost of Ownership** 可以理解为：
+
+> 使用这个模型的总体成本。
+
+在 Databricks 里，模型成本可能和这些因素有关：
+
+- 选择哪个模型
+    
+- 每次请求输入多少 token
+    
+- 每次请求输出多少 token
+    
+- 每分钟多少请求
+    
+- 每月请求量
+    
+- cloud region
+    
+- serving 方式
+    
+- DBU usage
+    
+
+---
+
+## 什么是 input tokens / output tokens？
+
+### Input tokens
+
+就是你发给模型的内容，包括：
+
+- 用户问题
+    
+- system prompt
+    
+- instruction
+    
+- retrieved chunks
+    
+- chat history
+    
+- metadata
+    
+- formatting examples
+    
+
+在 RAG 里，**retrieved chunks 会明显增加 input tokens**。
+
+例如：
+
+```text
+用户问题：100 tokens
+系统提示词：500 tokens
+RAG retrieved chunks：3000 tokens
+```
+
+那么 input tokens 可能就是 3600 左右。
+
+---
+
+### Output tokens
+
+就是模型生成的答案。
+
+比如模型回答得越长，output tokens 越多。
+
+```text
+短答案 → output tokens 少
+长报告 → output tokens 多
+代码生成 → output tokens 可能很多
+```
+
+考试里要知道：
+
+> **输入越长、输出越长，成本越高。**
+
+---
+
+## 这页最重要的考试点
+
+### 1. 不要默认选最强模型
+
+如果任务只是：
+
+- 简单抽取
+    
+- 格式转换
+    
+- 简单分类
+    
+- 简单问答
+    
+
+用 expensive model 会浪费钱。
+
+正确思路是：
+
+> **Choose the smallest model that meets the quality requirement.**
+
+中文：
+
+> 选择能满足质量要求的最小模型。
+
+---
+
+### 2. RAG 会增加成本
+
+RAG 不是免费的。
+
+因为 RAG 会把 retrieved chunks 放进 prompt，导致 input tokens 增加。
+
+比如：
+
+```text
+没有 RAG：
+用户问题 100 tokens
+
+有 RAG：
+用户问题 100 tokens
++ retrieved chunks 3000 tokens
+= 3100 input tokens
+```
+
+所以 RAG 成本优化也很重要：
+
+- chunk 不要太大
+    
+- top-k 不要取太多
+    
+- retrieved context 要相关
+    
+- prompt 不要太长
+    
+- 不要把整份文档都塞进去
+    
+
+---
+
+### 3. Output tokens 也会影响成本
+
+如果你让模型每次生成很长答案：
+
+```text
+Please provide a detailed 2000-word explanation...
+```
+
+成本会比短答案高很多。
+
+所以生产系统里通常会限制：
+
+- max tokens
+    
+- answer length
+    
+- response format
+    
+- summarisation level
+    
+
+---
+
+### 4. 请求量越大，模型选择越关键
+
+如果只是每天 100 次调用，成本可能还好。
+
+但如果是：
+
+- 每分钟 12 次
+    
+- 每月 50 万次请求
+    
+- 每次几千 tokens
+    
+
+那模型选择会直接影响预算。
+
+这就是这页图的重点：
+
+> 同样的 traffic，用大模型和 nano/small model，月成本可能差几十倍。
+
+---
+
+## 考试里怎么判断？
+
+如果题目说：
+
+> 公司有大量请求，需要控制成本，同时任务比较简单。
+
+答案通常是：
+
+> 使用 small / nano model，而不是 large / frontier model。
+
+如果题目说：
+
+> 高风险场景，质量比成本更重要。
+
+答案才可能是：
+
+> 使用 frontier model，并配合 evaluation 和 governance。
+
+---
+
+## 结合前面几页的口诀
+
+```text
+简单任务 + 大量请求 + 成本敏感
+→ Small / Nano model
+
+普通业务支持 + 内容生成
+→ Medium model
+
+复杂推理 / 多文档分析
+→ Large model
+
+高风险 / 质量压倒成本
+→ Frontier model
+```
+
+这页可以这样背：
+
+> **模型成本 = 模型价格 × token 用量 × 请求量。  
+> RAG 会增加 input tokens，长答案会增加 output tokens。  
+> 所以生产中要用最小可用模型，并控制 prompt、chunk 和输出长度。**
