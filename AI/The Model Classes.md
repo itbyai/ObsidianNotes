@@ -141,3 +141,6 @@ Databricks 推荐关注 RAG/GenAI 的质量、成本和延迟指标，包括 ret
 考试最核心的一句话：
 
 > **Choose the smallest model that meets quality requirements, validate with evaluation, and deploy with the right Databricks serving/governance pattern.**
+
+
+![[Pasted image 20260427214432.png]]
