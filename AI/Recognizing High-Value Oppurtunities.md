@@ -574,3 +574,198 @@ LLM
 搜索竞品 / 分析舆情 / 合规审查 / 生成修改建议
 → Agentic Content Generation
 ```
+
+
+![[Pasted image 20260427221917.png]]
+这页是在讲：**同一个 GenAI 应用方向，比如 Summarization / Content Generation，可以有简单版，也可以有 Agent 版。**
+
+核心考点是：
+
+> **判断一个任务到底是 simple LLM task，还是 agent-ready workflow。**
+
+---
+
+## 这页内容翻译
+
+标题：
+
+> **Example High-Value GenAI Opportunities**  
+> 高价值 GenAI 应用机会示例
+
+### 1. Task category
+
+任务类别：
+
+> **Summarization**  
+> 总结 / 摘要
+
+也就是说，这一类任务本质上属于“把信息读完后总结出来”。
+
+---
+
+### 2. Simple LLM task
+
+简单 LLM 任务：
+
+> **Drafting a single blog post based on a provided brief.**  
+> 根据一个已经提供好的 brief，起草一篇博客文章。
+
+这个任务很简单，因为：
+
+- 用户已经提供了内容方向
+    
+- 不需要搜索外部资料
+    
+- 不需要调用工具
+    
+- 不需要多步骤规划
+    
+- 模型直接根据输入生成输出
+    
+
+所以它是 **non-agentic**，普通 LLM 就可以做。
+
+---
+
+### 3. Agent-ready workflow
+
+适合 Agent 的工作流：
+
+> **Researching a topic across 10 websites, synthesizing findings, and drafting a multi-part whitepaper.**  
+> 跨 10 个网站研究一个主题，综合发现，然后起草一份多部分的白皮书。
+
+这个就明显更复杂，因为它需要：
+
+1. 决定要搜索哪些网站
+    
+2. 阅读多个信息源
+    
+3. 提取重点
+    
+4. 比较不同来源
+    
+5. 综合结论
+    
+6. 组织成多部分 whitepaper
+    
+7. 可能还要引用来源、检查冲突信息
+    
+
+所以这个是 **agent-ready workflow**。
+
+---
+
+## Simple LLM Task vs Agent-ready Workflow
+
+|对比|Simple LLM Task|Agent-ready Workflow|
+|---|---|---|
+|任务步骤|单步|多步骤|
+|输入材料|已经给好了|需要自己去找|
+|工具调用|通常不需要|可能需要搜索、检索、数据库、API|
+|推理复杂度|低到中等|中到高|
+|例子|根据 brief 写一篇博客|调研 10 个网站后写白皮书|
+|模型选择|Medium 常常够用|Large / Frontier 更合适|
+|应用类型|Non-agentic|Agentic / Agent-ready|
+
+---
+
+## 什么叫 Agent-ready？
+
+**Agent-ready** 不是说它一定已经是 agent，而是说：
+
+> 这个任务很适合被设计成 agent 工作流。
+
+因为它可以拆成多个步骤，并且每一步都可以由模型或工具完成。
+
+比如这个 whitepaper 任务可以拆成：
+
+```text
+Step 1: Search websites
+Step 2: Extract useful information
+Step 3: Compare and synthesize findings
+Step 4: Draft outline
+Step 5: Write each section
+Step 6: Review and refine
+```
+
+这就是 agent 的典型模式：
+
+> **plan → use tools → gather information → reason → generate output**
+
+---
+
+## 考试重点 1：看是否需要外部信息
+
+如果题目说：
+
+> based on a provided brief
+
+一般是 simple LLM task。
+
+如果题目说：
+
+> research across websites / query databases / search documents / cross-reference sources
+
+一般就是 agent-ready 或 RAG/agentic workflow。
+
+---
+
+## 考试重点 2：看是否多步骤
+
+单步：
+
+```text
+输入 brief → 输出 blog post
+```
+
+多步骤：
+
+```text
+搜索 → 阅读 → 总结 → 综合 → 写 whitepaper → 审查
+```
+
+多步骤通常更偏 agent。
+
+---
+
+## 考试重点 3：模型选择不同
+
+### 简单博客生成
+
+可能用：
+
+> **Medium model**
+
+因为它属于普通内容生成，质量和成本平衡即可。
+
+### 多网站调研 + 白皮书
+
+可能用：
+
+> **Large model / Frontier model**
+
+因为它需要复杂理解、综合分析、多步骤规划。
+
+如果是高风险行业，比如法律、医疗、金融，还需要：
+
+> **RAG / tools + evaluation + governance + human review**
+
+---
+
+## 这页可以这样背
+
+> **Same category, different complexity.**
+
+中文就是：
+
+> 同样是“总结/内容生成”，简单任务可以直接 LLM 完成；复杂任务需要 agent workflow。
+
+考试口诀：
+
+```text
+provided brief → single output
+= Simple LLM task
+
+research multiple sources → synthesize → multi-part output
+= Agent-ready workflow
+```
