@@ -769,3 +769,210 @@ provided brief → single output
 research multiple sources → synthesize → multi-part output
 = Agent-ready workflow
 ```
+
+![[Pasted image 20260427222759.png]]
+
+这页继续讲 **High-Value GenAI Opportunities**，重点是区分：
+
+> **简单 LLM 任务** vs **适合 Agent 的工作流**
+
+虽然 slide 上的 **Task category** 写的是 **Content generation**，但里面的例子其实更偏 **summarization / content generation combined**，也就是“读材料 → 总结 → 生成结构化内容”。
+
+---
+
+## 这页内容翻译
+
+### Task category
+
+任务类别：
+
+> **Content generation**  
+> 内容生成
+
+---
+
+### Simple LLM task
+
+简单 LLM 任务：
+
+> **Condensing a single 20-page PDF or a specific meeting transcript into five bullet points**  
+> 把一份 20 页 PDF，或者一份指定的会议记录，总结成 5 个 bullet points。
+
+这个是简单任务，因为：
+
+- 输入文件是明确的
+    
+- 只处理一个 PDF 或一个 transcript
+    
+- 输出格式明确：5 个 bullet points
+    
+- 不需要自己找资料
+    
+- 不需要跨系统搜索
+    
+- 不需要判断多个团队的历史进展
+    
+
+所以这是 **non-agentic / simple LLM task**。
+
+---
+
+### Agent-ready workflow
+
+适合 Agent 的工作流：
+
+> **Scanning a shared drive for all documents related to "Project X", summarizing the evolution of the project over six months, and highlighting unresolved action items across different teams.**
+
+中文意思是：
+
+> 扫描共享盘里所有和 “Project X” 相关的文档，总结这个项目过去 6 个月的发展过程，并找出不同团队之间还没有解决的 action items。
+
+这个任务明显更复杂。
+
+---
+
+## 为什么第二个是 Agent-ready？
+
+因为它不是“给你一个文件，让你总结”。
+
+它需要 agent 自己完成多个步骤：
+
+```text
+1. 去 shared drive 里搜索 Project X 相关文件
+2. 判断哪些文件真的相关
+3. 按时间顺序理解项目变化
+4. 总结 6 个月内项目如何演进
+5. 找出不同团队的 action items
+6. 判断哪些 action items 已经完成，哪些 unresolved
+7. 生成最终总结
+```
+
+这里面有：
+
+- search / retrieval
+    
+- multi-document reasoning
+    
+- timeline synthesis
+    
+- cross-team comparison
+    
+- unresolved item detection
+    
+- structured output generation
+    
+
+所以这是典型的 **agent-ready workflow**。
+
+---
+
+## 考试重点 1：单个文件总结 = simple LLM task
+
+如果题目说：
+
+> Summarize this single PDF into five bullets.
+
+或者：
+
+> Summarize this meeting transcript.
+
+通常不需要 agent。  
+一个普通 LLM / medium model 就可能够了。
+
+因为它是：
+
+```text
+Single input → single summary output
+```
+
+---
+
+## 考试重点 2：扫描 shared drive = agentic / agent-ready
+
+如果题目说：
+
+> Scan a shared drive  
+> Search across documents  
+> Find all documents related to Project X  
+> Summarize project evolution over time  
+> Identify unresolved action items across teams
+
+这些关键词都说明它不是简单总结，而是一个多步骤工作流。
+
+它需要：
+
+```text
+LLM + retrieval/search tool + document access + reasoning + summarization
+```
+
+在 Databricks 语境下，很可能关联：
+
+- Vector Search
+    
+- RAG
+    
+- Unity Catalog 权限控制
+    
+- Model Serving
+    
+- Agent Framework
+    
+- evaluation
+    
+- governance
+    
+
+---
+
+## Simple vs Agent-ready 对比
+
+|对比点|Simple LLM Task|Agent-ready Workflow|
+|---|---|---|
+|数据来源|一个指定 PDF / transcript|shared drive 里很多文件|
+|是否需要搜索|不需要|需要|
+|是否多文档|通常不是|是|
+|是否跨时间线|不需要|需要总结 6 个月演进|
+|是否跨团队|不需要|需要|
+|是否判断 unresolved items|不需要|需要|
+|应用类型|Non-agentic|Agentic / Agent-ready|
+|模型选择|Medium 常常够|Large / Frontier 更可能|
+
+---
+
+## 这页最容易考的点
+
+考试可能会问：
+
+> A user wants to summarize a single meeting transcript into five bullet points. What type of task is this?
+
+答案：
+
+> **Simple LLM task / non-agentic summarization**
+
+---
+
+也可能问：
+
+> A user wants an AI system to scan a shared drive, find all Project X documents, summarize six months of progress, and identify unresolved action items. What type of application is this?
+
+答案：
+
+> **Agent-ready workflow / agentic application**
+
+因为它需要搜索、筛选、多文档总结、跨团队 action item 分析。
+
+---
+
+## 这页一句话背诵
+
+> **一个文件总结 = simple LLM task；  
+> 多文件搜索 + 时间线总结 + unresolved action items = agent-ready workflow。**
+
+考试口诀：
+
+```text
+single PDF / transcript → simple summarization
+
+shared drive + all related docs + six-month evolution + unresolved action items
+→ agent-ready workflow
+```
