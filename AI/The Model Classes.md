@@ -144,3 +144,239 @@ Databricks 推荐关注 RAG/GenAI 的质量、成本和延迟指标，包括 ret
 
 
 ![[Pasted image 20260427214432.png]]
+
+这页讲的是 **Small Models 小模型**。在 Databricks GenAI 考试里，这个点主要考：**什么时候应该用小模型，而不是一上来就用大模型 / frontier model。**
+
+## 这页内容翻译
+
+**Small Models**
+
+参数数量：
+
+> 大约 **7B–13B parameters**
+
+特点：
+
+> **Fast**：速度快  
+> **Inexpensive**：成本低
+
+适合：
+
+> **Extraction**：信息抽取  
+> **Formatting**：格式整理  
+> **Simple Q&A**：简单问答
+
+---
+
+## 什么是 parameters？
+
+**Parameters = 模型参数**，可以简单理解为模型“学到的内部权重”。
+
+参数越多，一般代表模型容量越大，理解和推理能力可能更强，但通常也会：
+
+- 更贵
+    
+- 更慢
+    
+- 需要更多计算资源
+    
+- 部署成本更高
+    
+
+这里的 **7B–13B** 里的 **B = Billion = 十亿**。
+
+所以：
+
+|写法|含义|
+|---|---|
+|7B|70 亿参数|
+|13B|130 亿参数|
+
+小模型不是说“很弱”，而是说它适合做**任务明确、逻辑简单、格式稳定**的工作。
+
+---
+
+## Small Models 适合什么场景？
+
+### 1. Extraction 信息抽取
+
+比如从文本里抽取字段：
+
+```text
+Customer name: John Smith
+Order ID: 12345
+Delivery date: 2026-05-01
+```
+
+你让模型输出：
+
+```json
+{
+  "customer_name": "John Smith",
+  "order_id": "12345",
+  "delivery_date": "2026-05-01"
+}
+```
+
+这种任务不需要很强推理，用小模型就够了。
+
+---
+
+### 2. Formatting 格式转换
+
+比如把自然语言转成固定格式：
+
+原文：
+
+```text
+Please book a meeting with David next Monday at 10am.
+```
+
+输出：
+
+```json
+{
+  "action": "book_meeting",
+  "person": "David",
+  "date": "next Monday",
+  "time": "10am"
+}
+```
+
+或者把一段内容改成 Markdown、JSON、SQL template、email format。
+
+这种也是小模型常见用途。
+
+---
+
+### 3. Simple Q&A 简单问答
+
+比如：
+
+> What is the capital of France?
+
+或者基于很短的一段上下文回答：
+
+```text
+The refund period is 30 days.
+```
+
+问题：
+
+> How long is the refund period?
+
+答案：
+
+> 30 days.
+
+这种简单问答不需要 frontier model。
+
+---
+
+## 考试最容易考的点
+
+### 考点 1：小模型的优势是 cost + latency
+
+看到题里出现这些关键词，要想到 small model：
+
+- high volume
+    
+- low latency
+    
+- cost-sensitive
+    
+- simple task
+    
+- structured extraction
+    
+- formatting
+    
+- classification
+    
+- routing
+    
+- simple Q&A
+    
+
+比如题目问：
+
+> 公司每天要处理几百万条日志，只需要判断是否包含错误类型，应该选什么模型？
+
+答案倾向：
+
+> Small model，因为任务简单、数据量大、需要低成本和高速度。
+
+---
+
+### 考点 2：不要用大模型浪费成本
+
+考试很可能会考这种陷阱：
+
+> 为了提高系统效果，是否应该直接使用 frontier model？
+
+不一定。
+
+正确思路通常是：
+
+> 先选择能满足质量要求的最小模型，然后用 evaluation 验证效果。
+
+也就是：
+
+```text
+small model 能达到质量要求
+→ 用 small model
+
+small model 不够
+→ 再考虑 medium / large / frontier
+```
+
+---
+
+### 考点 3：小模型不适合复杂推理
+
+小模型不太适合：
+
+- 多步骤复杂 reasoning
+    
+- 复杂 agent planning
+    
+- 复杂代码生成
+    
+- 复杂法律/医疗/金融分析
+    
+- 长上下文复杂总结
+    
+- 需要深度理解多个文档的 RAG
+    
+
+这些场景更可能需要 **large model** 或 **frontier model**。
+
+---
+
+## 和 RAG 的关系
+
+在 RAG 里，小模型也可以用，但要看任务复杂度。
+
+例如：
+
+|RAG 场景|小模型是否合适|
+|---|---|
+|从 retrieved chunks 里抽取日期、名字、金额|合适|
+|根据短 chunk 回答简单问题|合适|
+|多文档比较、复杂总结、冲突判断|可能不够|
+|法律合同复杂推理|通常需要更大模型|
+
+所以考试里不要看到 RAG 就一定选大模型。  
+关键还是看：
+
+> retrieved context 是否简单？问题是否简单？答案是否容易从 chunk 中直接找到？
+
+---
+
+## 这页可以这样背
+
+**Small models = fast, cheap, good for simple structured tasks.**
+
+中文就是：
+
+> 小模型速度快、成本低，适合抽取、格式化、分类、简单问答；但不适合复杂推理和复杂 agent。
