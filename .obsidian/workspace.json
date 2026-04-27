@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "AI/AI Model Classes.md",
-                "mode": "preview",
+                "file": "AI/The Model Classes.md",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "AI Model Classes"
+              "title": "The Model Classes"
             }
           }
         ],
@@ -141,13 +141,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "AI/AI Model Classes.md",
+                "file": "AI/The Model Classes.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of AI Model Classes"
+              "title": "Outline of The Model Classes"
             }
           }
         ],
@@ -174,9 +174,11 @@
   },
   "active": "15cf25c7aac0d93a",
   "lastOpenFiles": [
+    "Pasted image 20260427170638.png",
+    "AI/AI Model Classes.md",
+    "AI/The Model Classes.md",
     "Pasted image 20260426092540.png",
     "AI/Untitled.md",
-    "AI/AI Model Classes.md",
     "Pasted image 20260426092311.png",
     "AI/AI Agent Use Cases.md",
     "Pasted image 20260426092253.png",
@@ -207,10 +209,8 @@
     "AI Databricks Cert/AIcertification学习要领 - 中文.md",
     "AI Databricks Cert/Databricks AI 证书.md",
     "AI Databricks Cert/Databricks Certified Generative AI Engineer Associate.md",
-    "AI Databricks Cert/study guide.md",
     "DBT/Detailed pages",
     "assets/Pasted image 20260209100715.png",
-    "assets/Pasted image 20260203162600.png",
     "Test Cases",
     "Terminology",
     "SQL",
