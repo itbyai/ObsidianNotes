@@ -270,3 +270,307 @@ This 34-inch WQHD IPS monitor is designed for productivity, offering wide-screen
 → Non-Agentic
 → 通常 Medium Model 就够
 ```
+
+
+![[Pasted image 20260427221741.png]]
+
+这页和上一页是对比关系：
+
+上一页是 **Content Generation - Non-Agentic Applications**  
+这一页是 **Content Generation - Agentic Applications**
+
+核心区别是：
+
+> 这页的内容生成，不只是“给我一个输入，我生成一段文字”，而是模型需要**自己规划步骤、查询信息、调用工具、交叉验证、再生成结果**。  
+> 所以它属于 **Agentic Applications 智能体应用**。
+
+---
+
+## 这页内容翻译
+
+标题：
+
+> **High-Value GenAI Opportunities**  
+> 高价值 GenAI 机会
+
+分类：
+
+> **Content Generation**  
+> 内容生成
+
+但底部写的是：
+
+> **Agentic Applications**  
+> 智能体型应用
+
+这页有三个例子：
+
+|应用|中文|说明|
+|---|---|---|
+|**Hyper-Personalized Outreach**|高度个性化外联邮件|根据某个人的职业经历，生成定制化三封邮件序列|
+|**Autonomous Competitor Research**|自动化竞争对手研究|搜索网页、分析竞品发布、综合社交舆情、生成 sales battlecard|
+|**Compliance-Aware Content Review**|合规感知内容审查|批量审查营销材料，对照法律数据库，生成修改建议|
+
+---
+
+## 重点 1：为什么这页是 Agentic？
+
+因为它们不是简单生成文本，而是有明显的 **多步骤任务链**。
+
+比如 **Autonomous Competitor Research**：
+
+```text
+1. 搜索竞品产品发布信息
+2. 搜索社交媒体或市场反馈
+3. 整理竞品优势和劣势
+4. 总结客户情绪
+5. 生成 sales battlecard
+```
+
+这里模型不只是“写一篇文章”，而是要：
+
+- decide what to search
+    
+- call tools
+    
+- gather evidence
+    
+- synthesize information
+    
+- produce final content
+    
+
+这就是 agentic。
+
+---
+
+## 重点 2：Agentic Application 的典型特征
+
+考试里看到这些关键词，就要想到 **Agentic Application**：
+
+|关键词|含义|
+|---|---|
+|autonomous|自动执行|
+|multi-step|多步骤|
+|tool use|调用工具|
+|search the web|搜索网页|
+|cross-reference|交叉比对|
+|synthesize|综合分析|
+|draft revisions|起草修改建议|
+|plan and execute|规划并执行|
+|interact with systems|和外部系统交互|
+
+一句话：
+
+> **如果模型需要自己决定下一步、调用工具、处理多个信息源，这就是 agentic。**
+
+---
+
+## 例子 1：Hyper-Personalized Outreach
+
+这不是普通邮件生成。
+
+普通邮件生成是：
+
+```text
+根据这个 brief 写一封邮件
+```
+
+这是 non-agentic。
+
+但这页的例子是：
+
+```text
+根据某个人的 career history，生成三段式个性化 email sequence
+```
+
+它可能需要：
+
+- 读取候选人的履历
+    
+- 找出职业亮点
+    
+- 判断对方可能感兴趣的内容
+    
+- 设计三封邮件的顺序
+    
+- 每封邮件语气和重点不同
+    
+
+所以它更像一个销售/招聘外联 agent。
+
+---
+
+## 例子 2：Autonomous Competitor Research
+
+这个最典型是 Agentic。
+
+因为它明确写了：
+
+> **Searches the web**  
+> 搜索网页
+
+> **Synthesizes social sentiment**  
+> 综合社交舆情
+
+> **Drafts a sales battlecard**  
+> 起草销售战卡
+
+这说明模型要调用外部工具或检索系统，不是只靠自己生成。
+
+**Sales battlecard** 是销售团队用来对比竞争对手的材料，通常包括：
+
+- 竞争对手产品特点
+    
+- 我们的优势
+    
+- 对方的弱点
+    
+- 客户常见异议
+    
+- 销售应答话术
+    
+- 定价或市场定位对比
+    
+
+考试如果问这个场景需要什么，答案通常会偏向：
+
+> Agent + tools + retrieval/search + evaluation + governance
+
+---
+
+## 例子 3：Compliance-Aware Content Review
+
+这个也很典型。
+
+它不是简单让模型“改一下文案”，而是：
+
+```text
+1. 审查一批 marketing assets
+2. 对照 legal database
+3. 找出不合规内容
+4. 生成修改建议
+5. 给 creative team 使用
+```
+
+这里有两个重点：
+
+### 第一，它需要外部知识源
+
+比如法律数据库、合规政策、公司内部规则。
+
+所以可能需要：
+
+> RAG / Vector Search / governed data source
+
+### 第二，它是 high-stakes 场景
+
+因为合规审查出错可能带来法律风险。
+
+所以模型选择可能不是 small/medium，而更可能是：
+
+> Large / Frontier model + strict evaluation + human review
+
+---
+
+## 这页和上一页的关键区别
+
+|对比点|Non-Agentic Content Generation|Agentic Content Generation|
+|---|---|---|
+|输入|用户直接给材料|可能需要自己查资料|
+|步骤|单步|多步骤|
+|工具调用|通常不需要|经常需要|
+|规划能力|不重要|很重要|
+|例子|写邮件、翻译、产品描述|竞品研究、合规审查、个性化营销序列|
+|模型选择|Medium 常常够用|Large / Frontier 更常见|
+|风险|较低|更高，需要监控和评估|
+
+---
+
+## Databricks 考试怎么考？
+
+### 题型 1：判断是不是 Agentic
+
+如果题目说：
+
+> A system searches the web, gathers competitor information, summarizes customer sentiment, and drafts a sales battlecard.
+
+答案：
+
+> **Agentic application**
+
+因为它有搜索、综合、多步骤、生成最终内容。
+
+---
+
+### 题型 2：选择模型
+
+如果只是：
+
+> Generate a product description from provided specifications.
+
+可能是：
+
+> Medium model，non-agentic content generation。
+
+但如果是：
+
+> Search competitor websites, analyze sentiment, compare positioning, and generate a sales battlecard.
+
+更可能是：
+
+> Large model / Frontier model，agentic application。
+
+---
+
+### 题型 3：选择架构
+
+这种 agentic content generation 通常需要：
+
+```text
+LLM
++ tools
++ retrieval/search
++ external/internal data sources
++ evaluation
++ governance
++ human-in-the-loop when high risk
+```
+
+在 Databricks 语境下，可能关联：
+
+- Model Serving
+    
+- Vector Search
+    
+- Unity Catalog governance
+    
+- MLflow / Agent Evaluation
+    
+- Mosaic AI Agent Framework
+    
+- tool calling
+    
+- governed data access
+    
+
+---
+
+## 这页可以这样背
+
+> **Agentic content generation = 内容生成 + 自主执行 + 多步骤 + 工具调用。**
+
+中文记法：
+
+> 如果只是写内容，是 non-agentic。  
+> 如果要自己查资料、分析、判断、调用工具、再写内容，就是 agentic。
+
+考试口诀：
+
+```text
+写邮件 / 翻译 / 产品描述
+→ Non-Agentic Content Generation
+
+搜索竞品 / 分析舆情 / 合规审查 / 生成修改建议
+→ Agentic Content Generation
+```
