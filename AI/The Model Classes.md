@@ -380,3 +380,261 @@ small model 不够
 中文就是：
 
 > 小模型速度快、成本低，适合抽取、格式化、分类、简单问答；但不适合复杂推理和复杂 agent。
+
+
+![[Pasted image 20260427214754.png]]
+
+
+这页讲的是 **Medium Models（中等模型）**。它在考试里重点考：**质量和成本的平衡**。
+
+## 这页内容翻译
+
+**Medium Models**
+
+参数数量：
+
+> 大约 **30B–70B parameters**
+
+特点：
+
+> **Balance quality and cost**  
+> 在回答质量和使用成本之间取得平衡
+
+适合：
+
+> **Support**：客服支持、业务支持、内部知识问答  
+> **Content generation**：内容生成，比如邮件、总结、文案、说明文字
+
+---
+
+## Medium Models 是什么水平？
+
+可以理解为：
+
+> **比 small model 更聪明，但还没有 large/frontier model 那么贵。**
+
+它不是最强的模型，但已经可以处理很多实际业务场景。
+
+比如：
+
+|模型类型|特点|
+|---|---|
+|Small Models|快、便宜，适合简单任务|
+|Medium Models|质量和成本平衡，适合一般企业应用|
+|Large Models|更强推理，适合复杂任务|
+|Frontier Models|当前最强，但贵、慢、治理要求高|
+
+---
+
+## Medium Models 适合什么场景？
+
+### 1. Support 支持类场景
+
+这里的 **support** 通常可以理解为：
+
+- customer support 客服
+    
+- IT support 内部技术支持
+    
+- HR support 人力资源问答
+    
+- business support 业务支持
+    
+- knowledge base Q&A 知识库问答
+    
+
+比如员工问：
+
+> How do I request annual leave?
+
+系统从公司政策里找答案，然后回答。
+
+这种场景比简单 Q&A 复杂一点，因为可能需要：
+
+- 理解用户问题
+    
+- 从文档中找相关内容
+    
+- 总结成自然语言
+    
+- 保持语气清楚、专业
+    
+
+所以 medium model 比 small model 更合适。
+
+---
+
+### 2. Content generation 内容生成
+
+比如：
+
+- 写邮件
+    
+- 写产品介绍
+    
+- 写 FAQ
+    
+- 总结会议纪要
+    
+- 改写文本
+    
+- 生成客服回复
+    
+- 生成知识库文章
+    
+
+例如你给它一些要点：
+
+```text
+Product delay: 2 weeks
+Reason: supplier issue
+Customer impact: minimal
+```
+
+让它生成一封英文邮件：
+
+```text
+Hi customer,
+
+We would like to inform you that the delivery will be delayed by approximately two weeks due to a supplier-related issue...
+```
+
+这种内容生成任务通常需要比 small model 更好的语言组织能力，所以 medium model 比较合适。
+
+---
+
+## 考试重点 1：Medium model = balanced choice
+
+看到题里出现这些关键词，要想到 **medium model**：
+
+- balance quality and cost
+    
+- general-purpose business task
+    
+- support chatbot
+    
+- customer service
+    
+- content generation
+    
+- summarisation
+    
+- internal knowledge assistant
+    
+- not too simple, not highly complex
+    
+
+比如题目说：
+
+> 公司想做一个内部 HR 问答助手，要求回答质量不错，但成本也要控制。应该选什么模型？
+
+答案倾向：
+
+> Medium model。
+
+因为它比 small model 更能理解自然语言，也比 frontier model 成本低。
+
+---
+
+## 考试重点 2：Medium model 常用于普通 RAG
+
+普通企业 RAG 应用里，medium model 很常见。
+
+例如：
+
+```text
+Company documents
+→ chunks
+→ embeddings
+→ vector search
+→ retrieve relevant chunks
+→ medium model generates answer
+```
+
+如果问题是：
+
+> What is the refund policy?
+
+或者：
+
+> Summarise the onboarding steps for new employees.
+
+这种通常不需要 frontier model。
+
+但是如果是：
+
+> Compare three legal contracts, identify contradictions, and recommend negotiation risks.
+
+那 medium model 可能不够，需要 large 或 frontier model。
+
+---
+
+## 考试重点 3：Medium 不一定比 Small 永远好
+
+这是考试常见陷阱。
+
+如果任务只是：
+
+- 分类
+    
+- 抽取字段
+    
+- 格式转换
+    
+- 简单判断 yes/no
+    
+
+那 small model 可能就够了。
+
+比如：
+
+> 从 100 万条订单评论里提取 order number 和 delivery date。
+
+这个用 small model 更合理，因为：
+
+- 任务简单
+    
+- 数据量大
+    
+- 成本敏感
+    
+- 不需要复杂推理
+    
+
+所以不要看到 medium 更强就一定选 medium。
+
+---
+
+## Small vs Medium 怎么区分？
+
+|场景|更适合|
+|---|---|
+|抽取字段|Small|
+|格式转换|Small|
+|简单分类|Small|
+|简单 Q&A|Small|
+|客服机器人|Medium|
+|内部知识库问答|Medium|
+|邮件生成|Medium|
+|普通总结|Medium|
+|普通 RAG 回答|Medium|
+|复杂推理、多步骤 agent|Large / Frontier|
+
+---
+
+## 这页可以这样背
+
+> **Medium models = balance between quality and cost.**
+
+中文记法：
+
+> **中等模型 = 不太贵，效果也不错，适合普通企业级问答、客服支持和内容生成。**
+
+考试答题时可以这样想：
+
+```text
+任务太简单 → small model
+普通业务问答 / 内容生成 → medium model
+复杂推理 / 多步骤任务 → large model
+最高难度 / 关键业务 → frontier model
+```
