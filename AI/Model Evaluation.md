@@ -1871,3 +1871,6 @@ LLM-as-Judge
 Benchmark Evaluation
 → 固定测试集、建 baseline、做 regression testing
 ```
+
+
+![[Pasted image 20260427225929.png]]
