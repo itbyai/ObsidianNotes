@@ -976,3 +976,274 @@ single PDF / transcript → simple summarization
 shared drive + all related docs + six-month evolution + unresolved action items
 → agent-ready workflow
 ```
+
+
+![[Pasted image 20260427223113.png]]
+
+
+
+这页讲的是另一个高价值 GenAI 场景：
+
+> **Unstructured Extraction 非结构化信息抽取**
+
+核心考点是：
+
+> **从文本、PDF、合同、发票、邮件等非结构化内容里抽取信息。**  
+> 但要区分：简单抽取是 simple LLM task；复杂批量抽取 + 判断 + 标记页面，就变成 agent-ready workflow。
+
+---
+
+## 这页内容翻译
+
+### Task category
+
+任务类别：
+
+> **Unstructured extraction**  
+> 非结构化抽取
+
+意思是从没有固定表格结构的内容里抽取关键信息。
+
+比如：
+
+- PDF
+    
+- invoice 发票
+    
+- legal contract 合同
+    
+- email
+    
+- meeting transcript
+    
+- scanned document
+    
+- policy document
+    
+- customer complaint
+    
+
+---
+
+## Simple LLM task
+
+简单 LLM 任务：
+
+> **Pulling a specific name, date, and total amount from a clearly formatted invoice**
+
+中文意思是：
+
+> 从一张格式清晰的发票里，抽取指定的姓名、日期和总金额。
+
+这个很简单，因为：
+
+- 只有一个文件
+    
+- 格式清楚
+    
+- 要抽取的字段明确
+    
+- 不需要复杂判断
+    
+- 不需要跨多个文档比较
+    
+- 不需要调用很多工具
+    
+
+比如输入是一张 invoice：
+
+```text
+Customer Name: John Smith
+Invoice Date: 2026-04-20
+Total Amount: $1,250.00
+```
+
+输出：
+
+```json
+{
+  "name": "John Smith",
+  "date": "2026-04-20",
+  "total_amount": "$1,250.00"
+}
+```
+
+这种通常 **small model** 就可能够了，因为它是 extraction task。
+
+---
+
+## Agent-ready workflow
+
+适合 Agent 的工作流：
+
+> **Extracting all liability clauses from a batch of 50 legal contracts, identifying which ones deviate from the corporate standard, and flagging those specific pages for legal review**
+
+中文意思是：
+
+> 从 50 份法律合同中抽取所有 liability clauses 责任条款，判断哪些条款偏离公司标准，并标记出具体页面，交给法律团队审查。
+
+这个就复杂很多。
+
+它不是简单抽字段，而是要做：
+
+```text
+1. 读取 50 份合同
+2. 找出每份合同里的 liability clauses
+3. 和公司标准条款进行比较
+4. 判断哪些条款有偏离
+5. 找到偏离条款所在的具体页面
+6. 生成法律审查清单
+```
+
+所以这是 **agent-ready workflow**。
+
+---
+
+## 为什么第二个是 Agent-ready？
+
+因为它有几个明显特征：
+
+|特征|说明|
+|---|---|
+|多文档|50 份合同|
+|专业领域|法律合同|
+|需要判断|是否 deviates from corporate standard|
+|需要比较|合同条款 vs 公司标准|
+|需要定位证据|flag specific pages|
+|高风险|需要 legal review|
+|可能需要工具|文档搜索、OCR、RAG、页码定位、标准库查询|
+
+这就不只是 LLM 生成答案，而是一个完整工作流。
+
+---
+
+## 考试重点 1：Unstructured extraction 是什么
+
+**Unstructured extraction** 的重点是：
+
+> 从非结构化文本中抽取结构化字段。
+
+比如：
+
+|非结构化输入|结构化输出|
+|---|---|
+|发票 PDF|name, date, amount|
+|合同|clauses, obligations, dates|
+|邮件|sender, intent, due date|
+|简历|name, skills, experience|
+|医疗记录|diagnosis, medication, date|
+
+考试里如果看到：
+
+> extract fields from documents  
+> pull information from PDFs  
+> extract clauses from contracts  
+> convert unstructured text into structured data
+
+就要想到 **unstructured extraction**。
+
+---
+
+## 考试重点 2：简单抽取 vs 复杂抽取
+
+### 简单抽取
+
+比如：
+
+> 从一张发票里抽取 name、date、total amount。
+
+特点：
+
+```text
+single document
+clear format
+specific fields
+low risk
+```
+
+模型选择：
+
+> **Small model / Medium model**
+
+---
+
+### 复杂抽取
+
+比如：
+
+> 从 50 份合同中抽取责任条款，比较公司标准，标记异常页面。
+
+特点：
+
+```text
+multiple documents
+domain-specific
+requires comparison
+requires judgment
+requires evidence
+high-stakes
+```
+
+模型选择：
+
+> **Large / Frontier model 更可能合适**
+
+架构上可能需要：
+
+```text
+LLM + RAG + Vector Search + document parser + evaluation + human review
+```
+
+---
+
+## 考试重点 3：法律合同属于 high-stakes
+
+这页里的 **legal contracts** 很关键。
+
+法律场景通常属于 high-stakes，因为错误可能导致：
+
+- 合同风险
+    
+- 合规风险
+    
+- 财务损失
+    
+- 法律责任
+    
+
+所以这种场景不应该完全自动化放行，通常需要：
+
+> **human-in-the-loop**
+
+也就是 AI 先帮忙找出风险和页面，但最后由法律人员确认。
+
+---
+
+## Simple vs Agent-ready 对比
+
+|对比点|Simple LLM Task|Agent-ready Workflow|
+|---|---|---|
+|例子|从一张发票抽取姓名、日期、金额|从 50 份合同抽取责任条款并比较标准|
+|文件数量|单个文件|多个文件|
+|格式|清晰格式|复杂合同文本|
+|是否需要判断|基本不需要|需要判断偏离标准|
+|是否需要外部标准|不需要|需要 corporate standard|
+|风险|低|高|
+|模型|Small / Medium|Large / Frontier|
+|是否需要人工复核|不一定|通常需要|
+
+---
+
+## 这页一句话背诵
+
+> **单张发票抽字段 = simple extraction；  
+> 多份合同抽条款 + 对比标准 + 标记风险页面 = agent-ready workflow。**
+
+考试口诀：
+
+```text
+single clear invoice → simple LLM extraction
+
+50 legal contracts + compare against corporate standard + flag pages
+→ agent-ready workflow / high-stakes extraction
+```
