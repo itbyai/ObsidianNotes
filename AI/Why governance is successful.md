@@ -1181,3 +1181,330 @@ Quality
 Versioning
 → 模型/prompt/RAG 配置能否追踪、比较、回滚
 ```
+
+
+![[Pasted image 20260429074405.png]]
+这页是上一页 **Why Governance?** 里面的第一个点：
+
+> **Tracks Lineage：追踪数据血缘 / 追踪处理链路**
+
+核心意思是：
+
+> 企业级 AI 系统必须能够追踪：数据从哪里来，经过了哪些处理，被哪个模型使用，产生了什么结果，以及这些过程是否可以被审计和验证。
+
+---
+
+## 这页内容翻译
+
+标题：
+
+> **Tracks Lineage**  
+> 追踪数据血缘
+
+右边四个点：
+
+|英文|中文|含义|
+|---|---|---|
+|**Implement a continuous paper trail**|建立连续的记录链|每一步都有记录，可追溯|
+|**Regulatory & audit readiness**|满足监管和审计准备|面对审计时能拿出证据|
+|**Verifiable data provenance**|可验证的数据来源|能证明数据从哪里来、是否可信|
+|**Accountability & risk mitigation**|责任归属和风险降低|出问题时能查清责任、降低风险|
+
+---
+
+## 1. Continuous paper trail 是什么？
+
+**Paper trail** 字面是“纸质记录链”，在系统里可以理解为：
+
+> 每一步都有日志、有证据、有记录。
+
+比如一个 GenAI / RAG 系统回答了一个问题，你需要知道：
+
+```text
+1. 用户问了什么
+2. 系统检索了哪些文档
+3. 哪些 chunks 被放进 prompt
+4. 使用了哪个模型版本
+5. 使用了哪个 prompt 版本
+6. 模型生成了什么答案
+7. 有没有经过 guardrail / evaluation
+8. 最终答案有没有被用户看到
+```
+
+这就是 continuous paper trail。
+
+考试里看到：
+
+> trace、audit trail、logging、record、evidence、monitoring
+
+都要想到 **lineage / auditability / governance**。
+
+---
+
+## 2. Regulatory & audit readiness 是什么？
+
+意思是：
+
+> 当监管机构、审计人员、合规团队来查时，你的系统已经准备好提供证据。
+
+比如在医疗、金融、政府、法律场景中，不能只说：
+
+> AI 是这样回答的。
+
+你必须能证明：
+
+```text
+这个回答用了哪些数据？
+这些数据是否来自 approved source？
+用户是否有权限访问？
+模型是否是 approved model？
+是否有审计日志？
+是否符合隐私和合规要求？
+```
+
+所以 lineage 不是技术细节，而是合规要求的一部分。
+
+---
+
+## 3. Verifiable data provenance 是什么？
+
+**Provenance** 是“来源、出处、来历”。
+
+**Verifiable data provenance** 就是：
+
+> 能验证数据来源是否可信。
+
+比如 AI 回答：
+
+> 退款周期是 30 天。
+
+你要能追溯：
+
+```text
+这个 30 天来自哪个文档？
+文档版本是多少？
+文档什么时候更新？
+谁批准的？
+这个 chunk 是怎么生成的？
+有没有被修改过？
+```
+
+在 RAG 中，这非常关键。
+
+如果模型答案不能追溯到文档来源，就很难证明它不是 hallucination。
+
+---
+
+## 4. Accountability & risk mitigation 是什么？
+
+**Accountability** = 责任归属。  
+**Risk mitigation** = 风险降低。
+
+意思是：
+
+> 如果 AI 出错，要能查清楚问题发生在哪一步，并采取措施。
+
+比如 AI 给了错误答案，可能原因有很多：
+
+|可能原因|Lineage 怎么帮助排查|
+|---|---|
+|原始文档过期|查文档版本和更新时间|
+|chunk 切分错误|查 chunking pipeline|
+|retrieval 找错内容|查 retrieved chunks|
+|prompt 写得不好|查 prompt version|
+|模型版本变化|查 model version|
+|用户无权限访问|查 access control logs|
+|输出没有被过滤|查 guardrail / evaluation logs|
+
+如果没有 lineage，你只能猜。  
+有了 lineage，你可以定位问题、修复问题、证明过程。
+
+---
+
+## 这页图里的流程怎么理解？
+
+图里大概表达的是：
+
+```text
+Raw Data
+→ Pre-processing
+→ Training & Deployment
+→ Lineage Tracking
+→ Audit Trail / Evidence
+→ Regulatory Compliance
+→ Legal & Reputational Risk Management
+```
+
+中文：
+
+```text
+原始数据
+→ 预处理
+→ 训练和部署
+→ 血缘追踪
+→ 审计记录和证据
+→ 满足监管合规
+→ 降低法律和声誉风险
+```
+
+也就是说，治理要覆盖 AI 生命周期的每一环，而不是只管模型上线那一刻。
+
+---
+
+## 和 MLflow 的关系
+
+图上写了 **Powered by MLflow**。
+
+在 Databricks 里，MLflow 常用于记录和管理：
+
+- experiment runs
+    
+- model versions
+    
+- parameters
+    
+- metrics
+    
+- artifacts
+    
+- evaluation results
+    
+- model registry
+    
+- deployment tracking
+    
+
+所以在考试里，看到：
+
+> model tracking、experiment tracking、model registry、evaluation metrics、model versioning
+
+可以联想到 **MLflow**。
+
+而看到：
+
+> data permissions、tables、views、lineage、access control
+
+更多联想到 **Unity Catalog**。
+
+简单记：
+
+```text
+MLflow
+→ 跟踪模型、实验、指标、版本
+
+Unity Catalog
+→ 管理数据、权限、血缘、治理
+```
+
+---
+
+## 在 RAG 里 Tracks Lineage 应该追踪什么？
+
+一个企业 RAG 系统至少要追踪：
+
+```text
+1. 原始文档来源
+2. 文档版本
+3. chunk ID
+4. embedding model
+5. vector index version
+6. retrieval query
+7. returned chunks
+8. prompt version
+9. model version
+10. generated answer
+11. evaluation score
+12. user permissions
+```
+
+这样才能回答：
+
+> 这个答案到底是基于什么生成的？
+
+---
+
+## 在 Agent 里 Tracks Lineage 应该追踪什么？
+
+Agent 比 RAG 更复杂，因为它可能会调用工具。
+
+需要追踪：
+
+```text
+1. agent 收到的任务
+2. agent 的 planning steps
+3. 调用了哪些 tools
+4. tool input 是什么
+5. tool output 是什么
+6. 是否调用了数据库 / API / 文件
+7. 是否经过 human approval
+8. 最终执行了什么动作
+```
+
+例如 Agent 自动发邮件或更新系统时，审计要求会更高。
+
+---
+
+## 考试常见问法
+
+### 问法 1
+
+> Why is lineage important in GenAI governance?
+
+答案：
+
+> Because it provides a traceable record of data sources, transformations, model usage, and outputs, supporting auditability, compliance, and risk mitigation.
+
+---
+
+### 问法 2
+
+> What does “verifiable data provenance” mean?
+
+答案：
+
+> It means the origin and lifecycle of data can be traced and verified.
+
+---
+
+### 问法 3
+
+> A model output is wrong. You need to determine which source document and model version caused it. What governance capability helps?
+
+答案：
+
+> **Lineage tracking**
+
+---
+
+### 问法 4
+
+> What tools are associated with tracking experiments and model versions in Databricks?
+
+答案：
+
+> **MLflow**
+
+如果问数据权限和数据血缘，通常是：
+
+> **Unity Catalog**
+
+---
+
+## 这页一句话背诵
+
+> **Lineage tracking creates a continuous paper trail from raw data to model output, enabling audit readiness, verifiable data provenance, accountability, and risk mitigation.**
+
+中文记法：
+
+> **数据血缘追踪 = 从原始数据到模型输出，全流程留痕；为了审计、合规、证明来源、定位责任和降低风险。**
+
+考试口诀：
+
+```text
+Tracks Lineage
+→ 数据从哪里来
+→ 经过了什么处理
+→ 被哪个模型用
+→ 产生了什么输出
+→ 出问题能不能查清楚
+```
