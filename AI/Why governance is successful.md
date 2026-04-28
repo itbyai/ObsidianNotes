@@ -524,7 +524,7 @@ Slide 里提到：
     
 - **audit logs**：审计谁访问了什么
     
-- **PII masking / redaction**：敏感字段脱敏
+- **PII masking / redaction**：敏感字段[[脱敏]]
     
 - **approved models / external model governance**：控制哪些模型可以用
     
@@ -592,3 +592,300 @@ prompt、RAG、training data、evaluation data、logs、model output
 脱敏 + 权限控制 + 审计 + approved models + governance
 ```
 
+
+![[Pasted image 20260428223726.png]]
+
+
+这页讲的是 **Compliance Requirements（合规要求）**，重点是两个词：
+
+> **Auditability 可审计性**  
+> **Lineage 数据血缘 / 追踪链路**
+
+这是企业级 GenAI / Databricks 考试里非常重要的治理考点。
+
+---
+
+## 1. Auditability 是什么？
+
+Slide 上的定义大意是：
+
+> AI 系统的决策过程、数据输入、运行行为，能够被监控、记录，并被独立第三方验证的程度。
+
+中文可以理解为：
+
+> **出了问题以后，能不能查清楚：谁问了什么、系统用了什么数据、模型怎么回答、为什么这样回答。**
+
+---
+
+## Auditability 要记录什么？
+
+在 GenAI 系统里，通常需要记录：
+
+|要记录的内容|例子|
+|---|---|
+|用户输入|用户问了什么问题|
+|Prompt|system prompt、user prompt|
+|Retrieved context|RAG 找到了哪些 chunks|
+|模型版本|用的是哪个 model|
+|参数|temperature、top-k、max tokens|
+|输出结果|模型回答了什么|
+|工具调用|Agent 调用了哪些 tools|
+|权限信息|用户有没有权限看相关文档|
+|时间戳|什么时候发生|
+|评估结果|correctness、groundedness、safety 等分数|
+
+考试里看到这些词，要想到 **auditability**：
+
+```text
+monitor
+record
+verify
+audit log
+trace
+decision-making process
+operational behavior
+independent review
+```
+
+---
+
+## 举个例子
+
+用户问：
+
+> 这个病人的 discharge summary 是什么？
+
+AI 回答了一段病人信息。
+
+如果后来出现隐私或错误问题，系统必须能查：
+
+```text
+1. 谁问的？
+2. 用户是否有权限？
+3. AI 检索了哪些文档？
+4. 哪些 chunks 被放进 prompt？
+5. 用了哪个模型？
+6. 模型输出了什么？
+7. 有没有 PII leakage？
+8. 是否通过 evaluation / guardrail？
+```
+
+这就是 **auditability**。
+
+---
+
+## 2. Lineage 是什么？
+
+Slide 上的定义大意是：
+
+> 追踪和记录一个数据资产从来源到最终被使用的整个生命周期。
+
+中文就是：
+
+> **数据从哪里来，经过了哪些处理，最后被谁用在了哪里。**
+
+---
+
+## Lineage 关注什么？
+
+比如一个 RAG 系统里，lineage 要能追踪：
+
+```text
+原始 PDF
+→ 文档解析
+→ chunk 切分
+→ embedding 生成
+→ vector index
+→ 用户查询
+→ retrieved chunks
+→ prompt
+→ model response
+```
+
+在数据平台里也类似：
+
+```text
+ODS
+→ staging
+→ business view
+→ fact/dim
+→ semantic layer
+→ Power BI / AI application
+```
+
+你之前 PADP 项目里的数据链路，其实就是典型 lineage。
+
+---
+
+## Auditability vs Lineage 区别
+
+|对比|Auditability|Lineage|
+|---|---|---|
+|中文|可审计性|数据血缘|
+|关注点|系统行为是否可查、可验证|数据从哪里来、怎么流动|
+|问题类型|谁问了什么？模型怎么答的？|这个答案用了哪些数据来源？|
+|典型对象|prompt、response、logs、model trace|table、view、document、chunk、embedding|
+|目的|合规审计、责任追踪|数据可信、影响分析、问题定位|
+
+一句话区分：
+
+> **Auditability 查“系统做了什么”；Lineage 查“数据从哪里来、到哪里去”。**
+
+---
+
+## 为什么 GenAI 特别需要这两个？
+
+因为 GenAI 有风险：
+
+- 模型可能 hallucinate
+    
+- RAG 可能检索错文档
+    
+- Agent 可能调用错工具
+    
+- 用户可能拿到无权限数据
+    
+- 输出可能泄露 PII
+    
+- 模型版本变化可能导致结果不同
+    
+
+所以企业不能只说：
+
+> AI 是这么回答的。
+
+而要能证明：
+
+> AI 为什么这么回答，用了什么数据，谁有权限，过程有没有被记录，是否可以审计。
+
+---
+
+## Databricks 考试里怎么理解？
+
+在 Databricks 语境下，这页通常会关联到：
+
+|合规能力|Databricks 相关概念|
+|---|---|
+|数据权限控制|Unity Catalog|
+|数据血缘|Lineage|
+|审计日志|Audit logs|
+|模型治理|Model Registry / MLflow|
+|评估记录|MLflow evaluation / Agent Evaluation|
+|RAG 数据来源追踪|Vector Search + source metadata|
+|生产监控|Model Serving logs / traces|
+|隐私保护|PII masking / access control|
+
+---
+
+## RAG 里的合规要求
+
+如果是 RAG 系统，考试特别容易考：
+
+> 模型回答必须能够追溯到 retrieved context。
+
+也就是说，最好能知道：
+
+```text
+回答里的这句话
+来自哪个文档
+哪个 chunk
+哪个版本
+用户当时有没有权限访问
+```
+
+这和 **groundedness** 也有关。
+
+如果模型回答不能追溯来源，就很难审计，也很难证明它不是 hallucination。
+
+---
+
+## Agent 里的合规要求
+
+如果是 Agent 系统，更需要 auditability，因为 Agent 会执行动作。
+
+例如 Agent 做了这些事：
+
+```text
+1. 查询客户数据
+2. 调用 CRM API
+3. 发送邮件
+4. 更新 ticket
+```
+
+那系统必须记录：
+
+```text
+Agent 为什么调用这个工具？
+调用时传了什么参数？
+返回了什么结果？
+是否经过权限检查？
+是否需要 human approval？
+```
+
+高风险 Agent 一般还需要：
+
+> **human-in-the-loop approval**
+
+---
+
+## 考试常见问法
+
+### 问法 1
+
+> What is auditability in an AI system?
+
+答案：
+
+> 能够监控、记录和验证 AI 系统的决策过程、数据输入和运行行为。
+
+---
+
+### 问法 2
+
+> What is lineage?
+
+答案：
+
+> 追踪数据资产从来源、转换、处理到最终消费的完整生命周期。
+
+---
+
+### 问法 3
+
+> Why is lineage important for RAG?
+
+答案：
+
+> 因为需要知道模型答案基于哪些文档和 chunks，方便验证、审计、排查错误和满足合规要求。
+
+---
+
+### 问法 4
+
+> What should be logged for auditability?
+
+答案：
+
+> 用户输入、retrieved context、模型版本、prompt、response、工具调用、权限检查、评估结果和时间戳。
+
+---
+
+## 这页一句话背诵
+
+> **Auditability = 能查清 AI 系统做了什么。  
+> Lineage = 能查清数据从哪里来、经过什么处理、最后到哪里去。**
+
+考试口诀：
+
+```text
+Auditability
+→ monitor, record, verify AI behavior
+
+Lineage
+→ track data from source to consumption
+
+GenAI 合规核心：
+谁用了什么数据？
+模型为什么这样回答？
+结果能不能追溯和审计？
+```
