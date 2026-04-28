@@ -591,3 +591,4 @@ prompt、RAG、training data、evaluation data、logs、model output
 解决方向：
 脱敏 + 权限控制 + 审计 + approved models + governance
 ```
+
