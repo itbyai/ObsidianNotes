@@ -889,3 +889,295 @@ GenAI 合规核心：
 模型为什么这样回答？
 结果能不能追溯和审计？
 ```
+
+
+![[Pasted image 20260428225249.png]]
+
+
+这页讲的是：**为什么 GenAI / ML 项目需要 Governance（治理）**。
+
+核心意思是：
+
+> 治理不是为了增加流程，而是为了让 AI 系统在企业里做到：**可追踪、可验证、可控、可回滚、可审计。**
+
+这页有三个重点：
+
+```text
+1. Tracks Lineage
+2. Ensures Data & Model Quality
+3. Provides Model Versioning
+```
+
+---
+
+## 1. Tracks Lineage：追踪数据血缘
+
+**Lineage = 数据血缘 / 处理链路追踪**
+
+意思是：
+
+> 能知道数据从哪里来，经过了哪些处理，最后被哪个模型、哪个 RAG、哪个 dashboard 或哪个 AI 应用使用。
+
+比如一个 RAG 系统：
+
+```text
+原始 PDF / 表 / 文档
+→ 解析
+→ chunk 切分
+→ embedding
+→ vector index
+→ retrieved chunks
+→ prompt
+→ model response
+```
+
+治理要能追踪这些链路。
+
+考试里常见问题：
+
+> 为什么 lineage 很重要？
+
+答案：
+
+> 因为当模型回答错了、泄露数据了、或者业务质疑结果时，你可以追溯它用了哪些数据、哪个版本、哪个处理步骤。
+
+结合你之前 PADP 项目，也可以理解成：
+
+```text
+ODS
+→ staging
+→ business view
+→ fact/dim
+→ semantic layer
+→ Power BI / AI application
+```
+
+如果没有 lineage，出了问题就不知道是 ODS 源头错、transform 错、business view 错，还是 semantic layer 错。
+
+---
+
+## 2. Ensures Data & Model Quality：保证数据和模型质量
+
+治理不仅管数据权限，也管质量。
+
+### Data Quality
+
+数据质量包括：
+
+- 字段是否完整
+    
+- schema 是否一致
+    
+- null 是否合理
+    
+- 主键是否唯一
+    
+- 业务规则是否满足
+    
+- 数据是否过期
+    
+- 数据是否有重复
+    
+- 是否包含未经处理的 PII
+    
+
+比如 RAG 的文档库如果是旧版本政策，那模型即使很强，也会回答旧答案。
+
+所以治理要保证：
+
+> AI 用的数据是可信、最新、合规、可访问的。
+
+---
+
+### Model Quality
+
+模型质量包括：
+
+- correctness：答案是否正确
+    
+- groundedness：是否基于 context
+    
+- relevance：是否回答用户问题
+    
+- safety：是否安全
+    
+- latency：是否满足响应要求
+    
+- cost：是否可接受
+    
+- hallucination rate：幻觉率是否可控
+    
+
+考试重点：
+
+> Governance 不是只管数据，也管模型表现和模型风险。
+
+---
+
+## 3. Provides Model Versioning：提供模型版本管理
+
+**Model Versioning = 模型版本管理**
+
+意思是：
+
+> 能清楚知道当前生产环境用的是哪个模型、哪个 prompt、哪个参数、哪个 embedding model、哪个 RAG 配置。
+
+比如：
+
+```text
+Model v1
+→ 使用 medium model
+→ chunk size = 500
+→ top_k = 3
+→ prompt v1
+
+Model v2
+→ 使用 large model
+→ chunk size = 800
+→ top_k = 5
+→ prompt v2
+```
+
+如果 v2 上线后效果变差，你可以：
+
+```text
+1. 比较 v1 和 v2 的 evaluation 结果
+2. 找出是哪项变化导致质量下降
+3. 必要时 rollback 回 v1
+```
+
+这就是 model versioning 的价值。
+
+---
+
+## 为什么 Model Versioning 很重要？
+
+因为 GenAI 系统不是只有“模型”一个东西变。
+
+变化可能来自：
+
+- base model 变了
+    
+- prompt 变了
+    
+- system instruction 变了
+    
+- embedding model 变了
+    
+- vector index 变了
+    
+- chunking 策略变了
+    
+- retrieval top-k 变了
+    
+- reranker 变了
+    
+- tools 变了
+    
+- evaluation set 变了
+    
+
+所以治理要能记录：
+
+```text
+哪个版本
+什么时候上线
+谁批准的
+评估结果是多少
+有没有 rollback 方案
+```
+
+考试里看到：
+
+> reproducibility  
+> rollback  
+> model registry  
+> model version  
+> production deployment  
+> audit trail
+
+都要想到 **model versioning / governance**。
+
+---
+
+## 这页的三个点怎么串起来？
+
+可以这样理解：
+
+```text
+Lineage
+→ 这个答案用了什么数据？
+
+Data & Model Quality
+→ 这些数据和模型结果可靠吗？
+
+Model Versioning
+→ 当前用的是哪个模型版本？能不能比较和回滚？
+```
+
+这三个合起来，就是企业 AI 治理的核心。
+
+---
+
+## 考试常见判断
+
+### 场景 1
+
+> 模型回答错了，需要知道它用了哪个文档和哪个 chunk。
+
+答案关联：
+
+> **Lineage**
+
+---
+
+### 场景 2
+
+> 公司要确保模型输出符合质量门槛，比如 groundedness > 90%。
+
+答案关联：
+
+> **Data & Model Quality / Evaluation / Governance**
+
+---
+
+### 场景 3
+
+> 新模型上线后效果变差，需要回到旧版本。
+
+答案关联：
+
+> **Model Versioning**
+
+---
+
+### 场景 4
+
+> 法务要求证明某个 AI 决策用了什么数据、谁访问过、系统怎么处理的。
+
+答案关联：
+
+> **Governance + Auditability + Lineage**
+
+---
+
+## 一句话背诵
+
+> **Governance helps track lineage, ensure data and model quality, and manage model versions for auditability, reproducibility, and safe production deployment.**
+
+中文记法：
+
+> **治理的作用 = 查得清数据来源，控得住质量，管得住模型版本。**
+
+考试口诀：
+
+```text
+Lineage
+→ 数据从哪里来
+
+Quality
+→ 数据和模型结果是否可靠
+
+Versioning
+→ 模型/prompt/RAG 配置能否追踪、比较、回滚
+```
