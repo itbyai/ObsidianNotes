@@ -1508,3 +1508,342 @@ Tracks Lineage
 → 产生了什么输出
 → 出问题能不能查清楚
 ```
+
+![[Pasted image 20260430224856.png]]
+
+这页讲的是 **Ensures Data Quality（确保数据质量）**。
+
+核心意思：
+
+> GenAI / RAG / Agent 系统的输出质量，很大程度取决于输入数据质量。  
+> 如果数据本身不准、不完整、过期、有偏差，模型再强也可能输出错误答案。
+
+---
+
+## 这页内容翻译
+
+标题：
+
+> **Ensures Data Quality**  
+> 确保数据质量
+
+右边三个点：
+
+|英文|中文|含义|
+|---|---|---|
+|**Accurate, representative, and high-fidelity**|准确、有代表性、高保真|数据要真实、能代表业务场景、不能失真|
+|**Data profiling and validation checks**|数据剖析和验证检查|检查数据结构、分布、缺失、异常、重复等|
+|**Fostering organizational trust**|建立组织信任|让业务方相信 AI 系统的结果可靠|
+
+---
+
+## 1. Accurate 是什么？
+
+**Accurate = 准确**
+
+意思是数据本身要对。
+
+比如客户政策文档里写：
+
+```text
+Refund period = 30 days
+```
+
+但如果知识库里旧文档写的是：
+
+```text
+Refund period = 60 days
+```
+
+RAG 检索到旧文档后，模型就可能回答 60 days。
+
+这不是模型本身的问题，而是：
+
+> **数据源不准确 / 数据过期。**
+
+考试里要记住：
+
+> Garbage in, garbage out.  
+> 输入数据差，AI 输出也会差。
+
+---
+
+## 2. Representative 是什么？
+
+**Representative = 有代表性**
+
+意思是数据要能覆盖真实业务场景。
+
+比如你做客服机器人，只用非常标准的问题做测试：
+
+```text
+What is the refund period?
+How do I reset my password?
+```
+
+但真实用户可能会问：
+
+```text
+I bought this last month and changed my mind. Can I still get my money back?
+```
+
+如果训练/评估数据只覆盖标准问题，不覆盖真实用户表达，模型上线后表现可能很差。
+
+所以 representative data 要包含：
+
+- 常见问题
+    
+- 边界情况
+    
+- 模糊问题
+    
+- 不同表达方式
+    
+- 不同用户群体
+    
+- 异常输入
+    
+- 真实业务数据分布
+    
+
+---
+
+## 3. High-fidelity 是什么？
+
+**High-fidelity = 高保真 / 高真实度**
+
+意思是数据要尽量接近真实生产环境。
+
+比如你做合同审查，如果测试数据都是简化版合同片段：
+
+```text
+Clause A: liability is limited.
+```
+
+但真实合同是 80 页 PDF，里面有复杂格式、附录、交叉引用、扫描图片。
+
+那测试表现好，不代表生产表现好。
+
+高保真数据应该接近真实场景：
+
+```text
+真实 PDF
+真实格式
+真实字段
+真实业务规则
+真实文档版本
+真实用户问题
+```
+
+---
+
+## 4. Data profiling 是什么？
+
+**Data profiling = 数据剖析 / 数据画像**
+
+意思是先了解数据长什么样。
+
+比如检查：
+
+|检查项|示例|
+|---|---|
+|row count|表里有多少行|
+|null rate|某字段有多少空值|
+|duplicate rate|是否有重复记录|
+|value distribution|状态码、类别值分布是否正常|
+|min / max|日期、金额范围是否合理|
+|schema|字段名、类型是否符合预期|
+|freshness|数据是否最新|
+|outliers|是否有异常值|
+
+比如 Databricks / EDW 测试里，你会检查：
+
+```sql
+select count(*) from table;
+select count(*) where important_field is null;
+select status_code, count(*) from table group by status_code;
+```
+
+这就是 data profiling 的思想。
+
+---
+
+## 5. Validation checks 是什么？
+
+**Validation checks = 验证检查 / 数据质量规则**
+
+这是把数据质量要求变成明确规则。
+
+比如：
+
+|类型|例子|
+|---|---|
+|Schema validation|字段必须存在，类型必须正确|
+|Completeness|关键字段不能为空|
+|Uniqueness|主键不能重复|
+|Referential integrity|foreign key 必须能连到 dimension|
+|Range check|日期不能在未来，金额不能为负|
+|Accepted values|status 只能是 Active / Inactive|
+|Freshness check|数据必须在过去 24 小时内更新|
+|Business rule check|discharge_date >= admission_date|
+
+在 GenAI / RAG 场景里，也可以检查：
+
+|RAG 数据质量检查|例子|
+|---|---|
+|Document freshness|是否使用最新政策文档|
+|Chunk quality|chunk 是否过长、过短、断句|
+|Metadata completeness|每个 chunk 是否有 source、version、date|
+|Duplicate documents|是否重复 index 旧文档和新文档|
+|Access control metadata|chunk 是否带权限标签|
+|PII check|是否包含未脱敏敏感信息|
+
+---
+
+## 6. 为什么 Data Quality 对 GenAI 很重要？
+
+因为 GenAI 很依赖上下文。
+
+### 对 RAG
+
+如果 RAG 的文档库质量差：
+
+```text
+文档过期
+chunk 切错
+metadata 缺失
+重复文档太多
+权限标签错误
+```
+
+模型就可能：
+
+- hallucinate
+    
+- 用旧知识回答
+    
+- 引用错误文档
+    
+- 泄露无权限信息
+    
+- 回答不一致
+    
+
+---
+
+### 对 Agent
+
+如果 Agent 调用的数据源质量差，比如库存数据不准，Agent 就可能做错决策：
+
+```text
+库存实际不足
+但数据源显示库存充足
+→ Agent 错误建议继续接单
+```
+
+所以 Agent 不只是要模型强，还要工具和数据源可信。
+
+---
+
+## 7. Fostering organizational trust 是什么？
+
+**Fostering organizational trust = 建立组织信任**
+
+意思是：
+
+> 当业务方知道数据经过质量检查、来源可追踪、版本可控，他们才会信任 AI 输出。
+
+企业里推广 AI 最大的问题之一不是技术，而是信任：
+
+```text
+这个答案从哪里来的？
+用的是不是最新数据？
+有没有泄露敏感信息？
+能不能审计？
+错了谁负责？
+```
+
+Data quality + governance 可以回答这些问题。
+
+---
+
+## 和前面的 Governance 怎么串起来？
+
+这页是 governance 的第二个重点：
+
+```text
+Tracks Lineage
+→ 知道数据从哪里来
+
+Ensures Data Quality
+→ 确保数据可靠、准确、最新
+
+Provides Model Versioning
+→ 知道用的是哪个模型/配置版本
+```
+
+三者合起来，才能让企业级 GenAI 系统可信。
+
+---
+
+## 考试常见问法
+
+### 问法 1
+
+> Why is data quality important for GenAI applications?
+
+答案：
+
+> Because model outputs depend on the quality of input data. Poor, stale, incomplete, or unrepresentative data can lead to inaccurate, hallucinated, or untrusted outputs.
+
+---
+
+### 问法 2
+
+> What does representative data mean?
+
+答案：
+
+> 数据要能覆盖真实业务场景和真实用户问题，而不是只覆盖理想化测试样本。
+
+---
+
+### 问法 3
+
+> What are data profiling and validation checks?
+
+答案：
+
+> Data profiling analyzes data structure, distribution, completeness, and anomalies. Validation checks enforce rules such as schema, nullability, uniqueness, freshness, and business constraints.
+
+---
+
+### 问法 4
+
+> How does data quality support organizational trust?
+
+答案：
+
+> It gives users confidence that AI outputs are based on accurate, validated, traceable, and governed data.
+
+---
+
+## 这页一句话背诵
+
+> **Data quality ensures that AI systems use accurate, representative, and high-fidelity data, supported by profiling and validation checks, so the organization can trust the outputs.**
+
+中文记法：
+
+> **数据质量 = 数据要准、有代表性、接近真实场景，并通过 profiling 和 validation 检查，才能让业务信任 AI 结果。**
+
+考试口诀：
+
+```text
+数据不准 → AI 答案不准
+
+数据不代表真实场景 → 上线后表现差
+
+数据不检查 → 组织不信任
+
+Data Quality = accuracy + representativeness + validation + trust
+```
