@@ -45,3 +45,184 @@ MLflow 就是用来解决这些问题的。官方把它的核心能力分成几�
 它对传统 ML 很有用，对现在的 LLM / Agent 也同样适用。([MLflow AI Platform](https://mlflow.org/?utm_source=chatgpt.com "MLflow - Open Source AI Platform for Agents, LLMs & Models"))
 
 如果你愿意，我可以下一条继续给你讲：**MLflow Tracking、PyFunc、Registry 三者到底分别是干什么的**。
+
+
+**MLflow** 可以理解为一个 **AI / ML 项目的“实验记录 + 模型管理 + 评估 + 部署追踪”平台**。
+
+在 Databricks 考试语境里，你重点记：
+
+> **MLflow 用来跟踪模型实验、记录参数和指标、管理模型版本、评估模型表现，并支持生产部署治理。**
+
+官方现在也把 MLflow 定位为面向 **agents、LLMs 和 ML models** 的开源 AI engineering platform，用于 debug、evaluate、monitor 和 optimize 生产级 AI 应用。([MLflow AI Platform](https://mlflow.org/?utm_source=chatgpt.com "MLflow - Open Source AI Platform for Agents, LLMs & Models")) Databricks 文档里也说，MLflow on Databricks 提供 experiment tracking、model evaluation、production model registry 和 model deployment tools。([Databricks Documentation](https://docs.databricks.com/aws/en/mlflow/?utm_source=chatgpt.com "MLflow on Databricks"))
+
+---
+
+## 用一句话理解
+
+假设你训练/测试了很多模型：
+
+```text
+Model A: accuracy 86%, cost low
+Model B: accuracy 91%, cost medium
+Model C: accuracy 94%, cost high
+```
+
+如果没有 MLflow，你可能靠 Excel、截图、notebook 注释记录。
+
+有了 MLflow，它可以帮你记录：
+
+```text
+这次实验用了什么数据
+用了什么模型
+用了什么参数
+结果指标是多少
+生成了哪些 artifacts
+模型版本是多少
+谁批准上线
+上线后表现如何
+```
+
+---
+
+## MLflow 主要管什么？
+
+### 1. Experiment Tracking：实验跟踪
+
+记录每次实验的：
+
+|内容|例子|
+|---|---|
+|Parameters|learning rate、temperature、top_k、chunk_size|
+|Metrics|accuracy、loss、correctness、groundedness、latency|
+|Artifacts|模型文件、图表、评估报告、prompt 文件|
+|Code version|哪个 notebook / script 产生的结果|
+
+比如你改了 RAG 的 chunk size：
+
+```text
+Run 1: chunk_size = 500, correctness = 82%
+Run 2: chunk_size = 800, correctness = 88%
+Run 3: chunk_size = 1200, correctness = 85%
+```
+
+MLflow 可以把这些 run 记录下来，方便比较。
+
+---
+
+### 2. Model Registry：模型注册和版本管理
+
+**Model Registry** 是 MLflow 很重要的一部分。
+
+它是一个集中式模型仓库，用来管理模型生命周期，包括 lineage、versioning、aliasing、metadata tagging 等。([MLflow AI Platform](https://mlflow.org/docs/latest/ml/model-registry/?utm_source=chatgpt.com "ML Model Registry"))
+
+你可以理解成：
+
+```text
+Customer_Churn_Model
+  ├── Version 1
+  ├── Version 2
+  ├── Version 3
+  └── Production alias → Version 3
+```
+
+它解决的问题是：
+
+> 生产环境到底用的是哪个模型？  
+> 新模型效果不好能不能 rollback？  
+> 谁注册的？谁批准的？指标是多少？
+
+---
+
+### 3. Model Evaluation：模型评估
+
+MLflow 可以记录模型评估结果，比如：
+
+|GenAI / RAG 指标|含义|
+|---|---|
+|correctness|答案是否正确|
+|groundedness|是否基于 context|
+|relevance|是否回答问题|
+|safety|是否安全|
+|latency|响应速度|
+|cost|成本|
+
+这和前面讲的 **Evaluation / Benchmark / LLM-as-Judge** 是连起来的。
+
+---
+
+### 4. Deployment Tracking：部署追踪
+
+模型上线后，MLflow 可以帮助管理：
+
+```text
+哪个模型版本上线
+什么时候上线
+谁批准
+部署到哪个 endpoint
+线上指标如何
+是否需要 rollback
+```
+
+---
+
+## MLflow 和 Unity Catalog 怎么区别？
+
+这个考试容易混。
+
+|工具|主要管什么|
+|---|---|
+|**MLflow**|模型、实验、评估、版本、部署|
+|**Unity Catalog**|数据、权限、表、文件、lineage、governance|
+
+简单记：
+
+```text
+MLflow 管模型生命周期
+Unity Catalog 管数据治理和访问控制
+```
+
+在 Databricks 里两者可以结合起来：Unity Catalog 负责统一治理数据和 AI assets，MLflow 负责模型开发、评估和部署生命周期。([Databricks Documentation](https://docs.databricks.com/aws/en/mlflow/?utm_source=chatgpt.com "MLflow on Databricks"))
+
+---
+
+## 和你这页课件的关系
+
+课件说 **Tracks Lineage**，图上写了 **Powered by MLflow**。
+
+这里的意思是：
+
+> MLflow 可以记录模型实验、参数、指标、artifacts、模型版本和部署信息，从而形成 audit trail。
+
+比如出了问题，你可以查：
+
+```text
+这个模型是哪次实验产生的？
+当时用了什么参数？
+评估结果是多少？
+模型版本是多少？
+谁把它推到 production？
+```
+
+---
+
+## 考试怎么记
+
+```text
+MLflow = experiment tracking + model evaluation + model registry + deployment tracking
+```
+
+中文口诀：
+
+> **MLflow 管模型：记录实验、比较指标、注册模型、管理版本、支持上线追踪。**
+
+如果题目问：
+
+- 记录模型实验参数和指标 → **MLflow Tracking**
+    
+- 管理模型版本和生命周期 → **MLflow Model Registry**
+    
+- 比较不同模型表现 → **MLflow Evaluation / Experiments**
+    
+- 追踪模型从开发到生产 → **MLflow + Model Registry**
+    
+- 管数据权限、表权限、数据血缘 → **Unity Catalog**
