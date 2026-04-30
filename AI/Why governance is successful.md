@@ -1529,11 +1529,11 @@ Tracks Lineage
 
 右边三个点：
 
-|英文|中文|含义|
-|---|---|---|
-|**Accurate, representative, and high-fidelity**|准确、有代表性、高保真|数据要真实、能代表业务场景、不能失真|
-|**Data profiling and validation checks**|数据剖析和验证检查|检查数据结构、分布、缺失、异常、重复等|
-|**Fostering organizational trust**|建立组织信任|让业务方相信 AI 系统的结果可靠|
+| 英文                                              | 中文          | 含义                  |
+| ----------------------------------------------- | ----------- | ------------------- |
+| **Accurate, representative, and high-fidelity** | 准确、有代表性、高保真 | 数据要真实、能代表业务场景、不能失真  |
+| **Data profiling and validation checks**        | 数据剖析和验证检查   | 检查数据结构、分布、缺失、异常、重复等 |
+| **Fostering organizational trust**              | 建立组织信任      | 让业务方相信 AI 系统的结果可靠   |
 
 ---
 
