@@ -2535,7 +2535,7 @@ RAG 通常不是重新训练模型，而是：
 
 而不是：
 
-> fine-tune model。
+> [[fine-tune model]]。
 
 ---
 
