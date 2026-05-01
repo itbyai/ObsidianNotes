@@ -2156,3 +2156,197 @@ Model v3 correctness = 89%
 有版本管理
 → 可比较、可测试、可上线、可回滚、可审计
 ```
+
+![[Pasted image 20260501224540.png]]
+
+
+这页是在强调 **Grounding 的安全价值**：
+
+> **把模型接到公司可信数据上，不只是为了回答更具体，也是为了降低 hallucination 和 stale data 风险。**
+
+---
+
+## 这页核心意思
+
+左边：
+
+> **GenAI Brain = general knowledge**  
+> 通用模型，只有通用知识。
+
+问题是它容易输出：
+
+> **Vague & Generic Output**  
+> 泛泛而谈、不够具体、不一定适合你公司。
+
+中间：
+
+> **Grounding Process + Company Data**  
+> 通过公司数据给模型提供上下文。
+
+右边：
+
+> **Grounded AI Brain = specialized value**  
+> 基于公司数据增强后的模型。
+
+结果是：
+
+> **Specific & Trusted Output**  
+> 更具体、更可信、更符合企业实际情况的回答。
+
+---
+
+## 底部这句话很重要
+
+> **Safety: Mitigates hallucinations & stale data**
+
+中文：
+
+> **安全性：缓解幻觉和过时数据问题。**
+
+这里的 **mitigates** 是“缓解、降低风险”，不是“完全消除”。
+
+也就是说：
+
+> Grounding 可以减少模型胡说和使用旧知识，但不能 100% 保证永远正确。
+
+---
+
+## 1. Grounding 如何减少 hallucination？
+
+**Hallucination** 是模型自信地说错。
+
+没有 grounding 时，模型可能凭通用知识猜：
+
+```text
+公司退款政策一般是 30 天、60 天或 90 天……
+```
+
+但它不知道你公司的真实政策。
+
+有 grounding 后，系统先从公司文档里检索相关内容：
+
+```text
+Refund Policy v3.2:
+Customers may request a refund within 30 days of purchase.
+```
+
+然后模型基于这个 context 回答：
+
+```text
+根据公司 Refund Policy v3.2，退款期限是购买后 30 天。
+```
+
+这就比模型自己猜安全很多。
+
+---
+
+## 2. Grounding 如何减少 stale data？
+
+**Stale data / stale knowledge** 是过时知识。
+
+比如模型训练数据截止在某个时间，它不知道你公司最近刚改了政策。
+
+旧政策：
+
+```text
+Refund period = 60 days
+```
+
+新政策：
+
+```text
+Refund period = 30 days
+```
+
+如果只靠模型通用知识，它可能答旧的或乱猜。
+
+如果用 grounding / RAG，系统可以检索最新公司文档，让模型基于最新资料回答。
+
+所以：
+
+> **模型知识过期 → 用最新数据 grounding。**
+
+---
+
+## 但是要注意：Grounding 不是万能
+
+Grounding 只能基于你给它的数据。如果公司数据本身有问题，AI 也会错。
+
+比如：
+
+|问题|后果|
+|---|---|
+|文档库里有旧版本政策|模型可能答旧答案|
+|chunk 切分不好|模型拿不到完整上下文|
+|retrieval 找错 chunk|模型基于错误资料回答|
+|metadata 缺失|无法判断文档版本|
+|权限控制不好|可能泄露敏感数据|
+|没有 evaluation|不知道系统是否真的答对|
+
+所以 grounding 要配合：
+
+```text
+Data Quality
++ Lineage
++ Access Control
++ Evaluation
++ Monitoring
+```
+
+---
+
+## 这页和 RAG 的关系
+
+在考试里，这页基本可以和 RAG 关联起来：
+
+```text
+Company Data
+→ Chunk
+→ Embedding
+→ Vector Search
+→ Retrieve relevant context
+→ LLM generates grounded answer
+```
+
+RAG 的目的之一就是：
+
+> 让模型基于企业数据回答，而不是只靠训练时的通用知识。
+
+---
+
+## 考试重点
+
+看到这些关键词，要想到 **Grounding / RAG**：
+
+|题目关键词|应该想到|
+|---|---|
+|vague generic output|缺少 grounding|
+|company-specific answer|需要 grounding|
+|trusted output|grounding with trusted data|
+|hallucination|grounding + evaluation|
+|stale knowledge / stale data|retrieval 最新数据|
+|proprietary enterprise data|RAG / governed data access|
+|internal documents|RAG|
+
+---
+
+## 一句话背诵
+
+> **Grounding connects a general model to trusted company data so it can produce specific, reliable outputs and reduce hallucinations and stale knowledge.**
+
+中文记法：
+
+> **Grounding = 让模型基于公司可信数据回答，从泛泛而谈变成具体可信，同时降低幻觉和过时知识风险。**
+
+考试口诀：
+
+```text
+缺企业知识 → Grounding / RAG
+
+模型乱编 → Grounding + Evaluation
+
+知识过期 → 检索最新公司数据
+
+但数据本身也要治理：
+Data Quality + Lineage + Access Control
+```
