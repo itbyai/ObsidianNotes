@@ -2350,3 +2350,546 @@ RAG 的目的之一就是：
 但数据本身也要治理：
 Data Quality + Lineage + Access Control
 ```
+
+![[Pasted image 20260501224847.png]]
+这页正式进入 **RAG：Retrieval-Augmented Generation**。
+
+中文可以叫：
+
+> **检索增强生成**
+
+核心意思是：
+
+> 用户提问后，系统先去知识库里检索相关资料，再把这些资料和用户问题一起交给 LLM，让模型基于资料生成答案。
+
+---
+
+## 这页图在讲什么？
+
+图里的流程是：
+
+```text
+User Query
+用户问题
+↓
+Knowledge Base & Retrieval
+去知识库检索相关内容
+↓
+Large Language Model
+把用户问题 + 检索到的内容交给大模型
+↓
+Augmented Response
+生成增强后的回答
+```
+
+也就是说，LLM 不是只靠自己脑子里的通用知识回答，而是先拿到外部知识，再基于这些知识回答。
+
+---
+
+## RAG 三个关键词
+
+RAG = **Retrieval-Augmented Generation**
+
+|部分|中文|含义|
+|---|---|---|
+|**Retrieval**|检索|从知识库、文档、数据库里找相关内容|
+|**Augmented**|增强|把检索到的内容加入 prompt，增强模型上下文|
+|**Generation**|生成|LLM 基于问题和上下文生成答案|
+
+一句话：
+
+> **RAG = 先查资料，再让模型回答。**
+
+---
+
+## 一个简单例子
+
+用户问：
+
+> Phase 2b Power BI validation 要测试什么？
+
+普通 LLM 可能不知道你们公司的内部项目，只能泛泛回答：
+
+```text
+应该测试 dashboard、visuals、refresh、security 等。
+```
+
+RAG 会先从知识库里找相关文档，比如找到了：
+
+```text
+Phase 2b has no in-scope Power BI reports.
+Validation focuses on semantic model tables, fields, relationships, DAX measures, RLS and refresh currency.
+```
+
+然后 LLM 基于这个 context 回答：
+
+```text
+Phase 2b 不测试具体 reports，重点是验证 Power BI semantic model，包括 tables、fields、relationships、DAX measures、RLS 和 refresh currency。
+```
+
+这就是 **augmented response**。
+
+---
+
+## 为什么需要 RAG？
+
+主要解决三个问题：
+
+### 1. 解决模型不知道公司内部知识的问题
+
+LLM 本身不知道你的：
+
+- 公司政策
+    
+- 内部文档
+    
+- 项目资料
+    
+- 合同模板
+    
+- 数据字典
+    
+- SOP
+    
+- 产品手册
+    
+
+所以需要 RAG 把这些内部知识提供给模型。
+
+---
+
+### 2. 减少 hallucination
+
+没有 RAG 时，模型可能乱猜。
+
+有 RAG 后，模型可以基于 retrieved context 回答，减少“自信地说错”。
+
+---
+
+### 3. 解决 stale knowledge
+
+模型训练数据有 cutoff date，可能不知道最新信息。
+
+RAG 可以连接最新的企业知识库、文档或数据库，让模型基于最新资料回答。
+
+---
+
+## RAG 和普通 LLM 的区别
+
+|对比|普通 LLM|RAG|
+|---|---|---|
+|知识来源|模型训练时学到的通用知识|外部知识库 + 模型|
+|是否知道企业内部数据|通常不知道|可以知道|
+|是否容易过时|容易|可以接最新数据|
+|是否可追溯来源|较难|可以追溯到文档/chunk|
+|幻觉风险|较高|较低，但不是零|
+|典型用途|普通问答、写作、总结|企业知识问答、政策问答、文档助手|
+
+---
+
+## RAG 的典型架构
+
+考试里可以这样记：
+
+```text
+Documents / Tables / Knowledge Base
+↓
+Chunking
+↓
+Embedding
+↓
+Vector Index
+↓
+User Query
+↓
+Retrieve relevant chunks
+↓
+Prompt = query + retrieved context
+↓
+LLM
+↓
+Grounded answer
+```
+
+之前你问过的 **chunk** 就是在这里出现的：
+
+> chunk = 文档被切分后的片段，是 RAG 检索和喂给模型的基本单位。
+
+---
+
+## 这页的考试重点
+
+### 考点 1：RAG 不是训练模型
+
+RAG 通常不是重新训练模型，而是：
+
+> 在回答时检索外部知识，把知识作为 context 提供给模型。
+
+所以如果题目问：
+
+> 模型不知道公司最新政策，应该怎么办？
+
+优先答案通常是：
+
+> Use RAG / retrieval over enterprise documents.
+
+而不是：
+
+> fine-tune model。
+
+---
+
+### 考点 2：RAG 用于 proprietary enterprise knowledge
+
+如果题目出现：
+
+- proprietary data
+    
+- enterprise knowledge
+    
+- internal documents
+    
+- company policies
+    
+- knowledge base
+    
+- up-to-date information
+    
+- reduce hallucination
+    
+- grounded answer
+    
+
+基本都要想到 RAG。
+
+---
+
+### 考点 3：RAG 输出叫 augmented response
+
+图里最后写的是：
+
+> **Augmented Response**
+
+意思是：
+
+> 这个回答不是模型纯生成的，而是被检索内容增强过的回答。
+
+---
+
+## 一句话背诵
+
+> **RAG retrieves relevant information from a knowledge base and provides it as context to an LLM so the model can generate a more accurate, grounded, and company-specific response.**
+
+中文记法：
+
+> **RAG = 先从知识库找相关资料，再让大模型基于资料回答。**
+
+考试口诀：
+
+```text
+模型不知道内部知识 → RAG
+
+模型容易幻觉 → RAG + grounding
+
+模型知识过期 → RAG 检索最新资料
+
+RAG 三步：
+Retrieve → Augment → Generate
+```
+
+
+
+![[Pasted image 20260501224904.png]]
+
+这页讲的是 RAG 里的第一步核心能力：
+
+> **Document Retrieval：文档检索**
+
+也就是：
+
+> 用户提问后，系统先从企业内部知识库里找到相关文档片段，再把这些片段加到 prompt 里，让 LLM 基于这些资料回答。
+
+---
+
+## 这页图的流程
+
+可以按这个顺序理解：
+
+```text
+User question
+用户问题
+↓
+Internal Repositories
+企业内部资料库
+↓
+Document Retrieval
+检索相关文档片段
+↓
+Prompt Augmentation
+把相关片段 + 原始问题组合成 prompt
+↓
+LLM
+大模型生成答案
+↓
+Generated Answer
+最终回答
+```
+
+---
+
+## Internal Repositories 是什么？
+
+图里写的是：
+
+> **Internal Repositories / Enterprise Data**
+
+意思是企业内部资料库，比如：
+
+|类型|例子|
+|---|---|
+|PDF|政策文档、合同、手册|
+|表格|Excel、数据库表、数据字典|
+|数据库|customer data、product data、clinical data|
+|文档库|SharePoint、Confluence、Google Drive|
+|项目资料|meeting notes、BRD、SOP、requirements|
+
+这些就是 RAG 的知识来源。
+
+---
+
+## Document Retrieval 是什么？
+
+**Document Retrieval = 从知识库里找相关内容。**
+
+比如用户问：
+
+> How do I request annual leave?
+
+系统不会把整个 HR 手册都给模型，而是先检索相关片段，比如：
+
+```text
+Annual leave must be requested through the HR portal.
+Employees should submit requests at least two weeks in advance.
+```
+
+然后把这个片段给 LLM。
+
+所以 retrieval 的目标是：
+
+> **找到和用户问题最相关的 document snippets / chunks。**
+
+---
+
+## Relevant Document Snippets 是什么？
+
+图里写的是：
+
+> **Relevant Document Snippets**
+
+中文就是：
+
+> 相关文档片段
+
+也就是我们之前说的 **chunk**。
+
+例如一份 50 页 PDF 会被切成很多 chunks：
+
+```text
+Chunk 1: Introduction
+Chunk 2: Leave policy
+Chunk 3: Annual leave request process
+Chunk 4: Sick leave policy
+...
+```
+
+用户问 annual leave，系统应该检索到 Chunk 3，而不是把整份 PDF 塞给模型。
+
+---
+
+## Prompt Augmentation 是什么？
+
+**Prompt Augmentation = Prompt 增强**
+
+意思是把两个东西合在一起：
+
+```text
+1. Original User Prompt
+用户原始问题
+
+2. Relevant Document Snippets
+检索到的相关文档片段
+```
+
+组合成一个增强后的 prompt：
+
+```text
+Use the following context to answer the user's question.
+
+Context:
+Annual leave must be requested through the HR portal.
+Employees should submit requests at least two weeks in advance.
+
+User question:
+How do I request annual leave?
+```
+
+然后 LLM 基于这个增强 prompt 回答。
+
+这就是 RAG 里的 **Augmented**。
+
+---
+
+## 为什么不直接让 LLM 回答？
+
+因为普通 LLM 可能不知道企业内部流程。
+
+如果没有 retrieval，模型可能泛泛回答：
+
+```text
+You can request annual leave by contacting your manager or HR department.
+```
+
+这可能不符合公司实际流程。
+
+有 retrieval 后，它可以回答：
+
+```text
+You should request annual leave through the HR portal and submit the request at least two weeks in advance.
+```
+
+这个答案更具体、更可信。
+
+---
+
+## 考试重点 1：RAG 不是把所有文档都塞给模型
+
+RAG 的关键是：
+
+> **只检索最相关的 snippets/chunks。**
+
+因为如果把全部文档都放进 prompt，会有几个问题：
+
+- token 成本高
+    
+- latency 高
+    
+- context 太长
+    
+- 噪音太多
+    
+- 模型可能抓错重点
+    
+
+所以 retrieval 的质量非常重要。
+
+---
+
+## 考试重点 2：Retrieval 错了，答案也会错
+
+RAG 的质量很大程度取决于 retrieval。
+
+如果系统找到了错误 chunk：
+
+```text
+Sick leave policy
+```
+
+但用户问的是：
+
+```text
+Annual leave policy
+```
+
+那模型即使很强，也可能答错。
+
+所以 RAG 评估不只评估最终答案，还要评估：
+
+|指标|含义|
+|---|---|
+|retrieval precision|检索出来的 chunk 是否相关|
+|document recall|应该找回的文档有没有找回来|
+|groundedness|回答是否基于检索内容|
+|correctness|答案是否正确|
+|relevance|是否回答了用户问题|
+
+---
+
+## 考试重点 3：Document Retrieval 和 Grounding 的关系
+
+这页其实是在解释：
+
+> RAG 如何实现 grounding。
+
+流程是：
+
+```text
+企业内部数据
+→ 检索相关片段
+→ 加入 prompt
+→ 模型基于 context 回答
+```
+
+这就让模型从：
+
+```text
+generic answer
+```
+
+变成：
+
+```text
+grounded answer
+```
+
+也就是基于企业数据的答案。
+
+---
+
+## 考试重点 4：需要考虑权限和隐私
+
+因为这里检索的是 **Internal Repositories / Enterprise Data**，所以必须注意：
+
+```text
+用户是否有权限看这些文档？
+检索出来的 chunk 是否包含 PII？
+是否会泄露敏感数据？
+```
+
+正确的企业级 RAG 需要：
+
+- document-level access control
+    
+- row-level / column-level security
+    
+- PII masking
+    
+- audit logs
+    
+- source metadata
+    
+- lineage tracking
+    
+
+否则用户可能通过问问题拿到本来无权访问的内容。
+
+---
+
+## 一句话背诵
+
+> **Document Retrieval retrieves relevant snippets from internal enterprise data and adds them to the user prompt so the LLM can generate a grounded answer.**
+
+中文记法：
+
+> **Document Retrieval = 从企业知识库里找相关文档片段，把它们加到 prompt 里，让模型基于资料回答。**
+
+考试口诀：
+
+```text
+User question
+→ Retrieve relevant chunks
+→ Add chunks to prompt
+→ LLM generates grounded answer
+
+检索对了，答案才可能对；
+检索错了，模型再强也可能答错。
+```
