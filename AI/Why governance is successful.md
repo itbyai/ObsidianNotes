@@ -1847,3 +1847,312 @@ Provides Model Versioning
 
 Data Quality = accuracy + representativeness + validation + trust
 ```
+
+
+![[Pasted image 20260501215402.png]]
+这页讲的是 **Provides Model Versioning（提供模型版本管理）**。
+
+核心意思：
+
+> 企业级 AI 不能靠“随便试模型、随便改 prompt、随便上线”。  
+> 必须清楚记录每个模型版本、配置版本、评估结果，并且新版本出问题时可以快速 rollback。
+
+---
+
+## 这页内容翻译
+
+标题：
+
+> **Provides Model Versioning**  
+> 提供模型版本管理
+
+右边三个点：
+
+|英文|中文|含义|
+|---|---|---|
+|**Move beyond chaotic experimentation**|摆脱混乱实验|不再靠手工记录、截图、记忆管理模型|
+|**Seamless rollback**|无缝回滚|新版本出问题，可以快速回到旧版本|
+|**Operational stability, testing, meeting legal requirements**|运营稳定、测试、满足法律要求|保证生产系统稳定，可测试、可审计、可合规|
+
+---
+
+## 1. 什么是 Model Versioning？
+
+**Model Versioning = 模型版本管理**
+
+就是给模型和相关配置建立版本号，比如：
+
+```text
+Model v1
+Model v2
+Model v3
+Model v4
+```
+
+每个版本都要知道：
+
+```text
+用的是什么 base model
+训练/微调数据是什么
+prompt 是哪个版本
+参数是什么
+评估结果是多少
+什么时候上线
+谁批准上线
+当前生产环境用的是哪个版本
+```
+
+---
+
+## 2. 为什么不是只记录“模型”？
+
+在 GenAI / RAG 里，影响结果的不只是模型本身。
+
+这些东西都可能改变输出：
+
+|组件|示例|
+|---|---|
+|Base model|GPT-5、Claude、Llama、DBRX 等|
+|Prompt|system prompt / user prompt template|
+|RAG 配置|chunk size、chunk overlap、top-k|
+|Embedding model|用哪个 embedding 模型|
+|Vector index|文档索引版本|
+|Reranker|是否使用 reranker|
+|Tools|Agent 可调用哪些工具|
+|Parameters|temperature、max tokens|
+|Guardrails|输出过滤规则|
+|Evaluation dataset|用哪套测试集|
+
+所以严格说，企业要版本化的不只是 model，而是：
+
+> **整个 AI application configuration。**
+
+考试里通常会简化成 **model versioning**。
+
+---
+
+## 3. Move beyond chaotic experimentation 是什么意思？
+
+意思是：
+
+> 不要让 AI 实验变成混乱状态。
+
+混乱状态可能是这样：
+
+```text
+昨天试了一个 prompt，不知道谁改的
+今天换了一个模型，没人记录
+上周评估结果找不到
+生产环境到底用哪个版本不清楚
+新版本效果变差，不知道怎么回滚
+```
+
+有了 model versioning 后，可以变成：
+
+```text
+Version 1: medium model + prompt v1 + top_k=3
+Version 2: large model + prompt v2 + top_k=5
+Version 3: medium model + prompt v3 + reranker
+```
+
+每个版本都有记录和评估结果。
+
+---
+
+## 4. Seamless rollback 是什么？
+
+**Rollback = 回滚**
+
+意思是：
+
+> 新版本上线后如果出问题，可以快速切回旧版本。
+
+比如：
+
+```text
+Production 当前使用 Model v3
+上线 Model v4 后发现 hallucination 增加
+马上 rollback 回 Model v3
+```
+
+这在生产环境非常重要。
+
+没有版本管理，出问题时你可能不知道：
+
+- 旧版本是什么
+    
+- 旧 prompt 是什么
+    
+- 旧参数是什么
+    
+- 旧 vector index 是哪个
+    
+- 怎么恢复
+    
+
+有版本管理，就可以快速恢复稳定版本。
+
+---
+
+## 5. Operational stability 是什么？
+
+**Operational stability = 运营稳定性 / 生产稳定性**
+
+意思是：
+
+> AI 系统上线后要稳定、可控、可监控，而不是每次改动都造成不可预期的结果。
+
+比如 RAG 系统里，如果你改了 chunk size：
+
+```text
+chunk_size: 500 → 1000
+```
+
+可能导致：
+
+- 检索结果变化
+    
+- input token 增加
+    
+- 成本增加
+    
+- latency 增加
+    
+- 答案质量变化
+    
+- groundedness 下降
+    
+
+所以每次改动都要版本化，并重新评估。
+
+---
+
+## 6. Testing 和 Model Versioning 的关系
+
+版本管理和测试是连在一起的。
+
+每个新版本上线前，都应该跑 benchmark / evaluation：
+
+```text
+Model v1 correctness = 86%
+Model v2 correctness = 91%
+Model v3 correctness = 89%
+```
+
+如果 v3 成本更低、延迟更快，而且 correctness 仍然满足要求，那可以上线。
+
+如果 v3 质量下降，就不能上线，或者需要继续优化。
+
+这和自动化测试很像：
+
+```text
+新版本
+→ 跑 evaluation test suite
+→ 通过质量门槛
+→ 才允许上线
+```
+
+---
+
+## 7. Meeting legal requirements 是什么？
+
+在法律、医疗、金融、政府等场景中，系统必须能证明：
+
+```text
+这个 AI 输出是由哪个模型版本产生的？
+当时用的是什么数据？
+有没有通过评估？
+谁批准上线？
+是否可以复现？
+出了问题能否回滚？
+```
+
+这就是合规要求。
+
+所以 model versioning 不只是工程管理，也是合规治理的一部分。
+
+---
+
+## 和 MLflow 的关系
+
+在 Databricks 里，**MLflow** 常用于：
+
+```text
+记录实验
+记录参数
+记录指标
+记录 artifacts
+注册模型
+管理模型版本
+追踪 deployment
+```
+
+可以理解为：
+
+> **MLflow 帮你管理模型实验和模型版本。**
+
+而 **Unity Catalog** 更多是：
+
+> 管数据、权限、lineage、governance。
+
+---
+
+## 考试常见问法
+
+### 问法 1
+
+> 为什么需要 model versioning？
+
+答案：
+
+> 为了摆脱混乱实验，支持模型比较、测试、回滚、审计和生产稳定性。
+
+---
+
+### 问法 2
+
+> 新模型上线后效果变差，应该依赖什么能力？
+
+答案：
+
+> **Model versioning / rollback**
+
+---
+
+### 问法 3
+
+> 要知道某个生产输出来自哪个模型版本，属于什么治理能力？
+
+答案：
+
+> **Model versioning + auditability**
+
+---
+
+### 问法 4
+
+> 在 Databricks 中，哪个工具常用于记录模型实验和模型版本？
+
+答案：
+
+> **MLflow**
+
+---
+
+## 这页一句话背诵
+
+> **Model versioning lets teams track, test, compare, deploy, and roll back model versions, improving operational stability and compliance.**
+
+中文记法：
+
+> **模型版本管理 = 记录每个模型/配置版本，支持测试、比较、上线和回滚，让 AI 系统更稳定、更可审计、更合规。**
+
+考试口诀：
+
+```text
+没有版本管理
+→ 实验混乱，出错难查，无法回滚
+
+有版本管理
+→ 可比较、可测试、可上线、可回滚、可审计
+```
