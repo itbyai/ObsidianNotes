@@ -2893,3 +2893,485 @@ User question
 检索对了，答案才可能对；
 检索错了，模型再强也可能答错。
 ```
+
+
+![[Pasted image 20260501232137.png]]
+
+
+这页讲的是 **Benefits of RAG：RAG 的好处**。
+
+核心意思：
+
+> RAG 可以让模型基于最新、可信、企业内部的数据回答问题，所以它比单纯 LLM 更准确、更可信，也更不容易 hallucinate。
+
+---
+
+## 这页四个点翻译
+
+|英文|中文|解释|
+|---|---|---|
+|**Updates instantly when data changes**|数据变化后可以快速更新|更新知识库/索引后，模型能用最新资料回答|
+|**Improves accuracy**|提高准确性|回答基于检索到的真实资料，而不是凭模型记忆猜|
+|**Reduces hallucinations**|减少幻觉|模型有 context 支撑，不容易一本正经地胡说|
+|**Enhances trust**|增强信任|答案可以追溯到文档、chunk、数据来源|
+
+---
+
+## 1. Updates instantly when data changes
+
+这点是 RAG 和 fine-tuning 的重要区别。
+
+如果公司政策变了：
+
+```text
+退款期限从 60 天改成 30 天
+```
+
+### 如果用 Fine-tuning
+
+你可能需要：
+
+```text
+重新准备训练数据
+→ 重新 fine-tune
+→ 重新评估
+→ 重新部署模型
+```
+
+比较麻烦。
+
+### 如果用 RAG
+
+你只需要：
+
+```text
+更新知识库文档
+→ 重新 index / refresh vector index
+→ 模型检索到新内容
+→ 基于新政策回答
+```
+
+所以 RAG 更适合：
+
+- 最新公司政策
+    
+- 最新产品文档
+    
+- 最新价格
+    
+- 最新项目资料
+    
+- 最新法规
+    
+- 经常变化的数据
+    
+
+注意一点：slide 说 **updates instantly**，考试里可以理解为“比 fine-tuning 更新快很多”。实际项目中是否真的 instant，要看知识库同步和 vector index refresh 的频率。
+
+---
+
+## 2. Improves accuracy
+
+RAG 提高准确性，是因为模型不再只靠训练时学到的通用知识。
+
+比如用户问：
+
+> 我们公司 annual leave 怎么申请？
+
+普通 LLM 可能回答：
+
+```text
+请联系 HR 或你的 manager。
+```
+
+但这可能不是你公司的真实流程。
+
+RAG 检索到公司 HR 文档后，可以回答：
+
+```text
+Annual leave must be submitted through the HR portal at least two weeks in advance.
+```
+
+这个答案更准确，因为它基于公司内部文档。
+
+---
+
+## 3. Reduces hallucinations
+
+**Hallucination** 是模型自信地说错。
+
+RAG 可以减少 hallucination，因为它给模型提供了 grounded context。
+
+典型 prompt 会这样写：
+
+```text
+Use only the provided context to answer the question.
+If the answer is not in the context, say you do not know.
+```
+
+这样模型更不容易乱编。
+
+但要注意：
+
+> RAG 是减少 hallucination，不是完全消除 hallucination。
+
+如果检索错了 chunk，或者文档本身是旧的，模型仍然可能答错。
+
+---
+
+## 4. Enhances trust
+
+RAG 增强信任，是因为答案可以追溯来源。
+
+例如：
+
+```text
+答案来自 HR Policy v3.2，Annual Leave section。
+```
+
+这对企业很重要，因为业务方会问：
+
+```text
+这个答案从哪里来的？
+用的是不是最新文档？
+有没有权限访问？
+能不能审计？
+```
+
+RAG 可以通过 source metadata、chunk ID、document version、lineage 来增强信任。
+
+---
+
+## RAG 的优势总结
+
+|问题|RAG 如何解决|
+|---|---|
+|模型不知道公司内部知识|检索企业文档|
+|模型知识过期|使用最新知识库|
+|模型容易乱编|用 context grounding|
+|用户不信任答案|提供来源和可追溯性|
+|文档频繁变化|更新知识库比重新训练快|
+
+---
+
+## 考试最容易考的点
+
+如果题目说：
+
+> 公司知识经常变化，模型需要回答最新政策。
+
+答案通常是：
+
+> **Use RAG, not fine-tuning.**
+
+如果题目说：
+
+> 模型回答太 generic，不知道企业内部流程。
+
+答案通常是：
+
+> **Ground the model with enterprise data using RAG.**
+
+如果题目说：
+
+> 如何降低 hallucination？
+
+答案通常是：
+
+> **Use RAG with trusted data, grounding, evaluation, and source tracking.**
+
+---
+
+## 一句话背诵
+
+> **RAG improves accuracy and trust by retrieving up-to-date, relevant enterprise data and grounding the model’s response in that context.**
+
+中文记法：
+
+> **RAG = 用最新、相关、可信的数据增强模型回答，所以能提高准确性、减少幻觉、增强信任。**
+
+![[Pasted image 20260501232243.png]]
+
+这页讲的是 **Uses of RAG：RAG 的典型应用场景**。
+
+核心意思：
+
+> 只要任务需要依赖企业内部知识、最新文档、政策、合规资料或技术文档，RAG 就很适合。
+
+这页列了 4 类典型用途：
+
+```text
+1. Customer support & technical troubleshooting
+2. Legal, risk, and compliance
+3. Internal search & knowledge management
+4. HR and operational policy inquiries
+```
+
+---
+
+## 1. Customer support & technical troubleshooting
+
+中文：
+
+> 客服支持和技术故障排查
+
+比如客户问：
+
+```text
+Why is my device not connecting to Wi-Fi?
+```
+
+普通 LLM 可能只会泛泛回答：
+
+```text
+Please restart your router and check your internet connection.
+```
+
+但 RAG 可以从公司产品手册、FAQ、troubleshooting guide 里检索具体步骤：
+
+```text
+For Model X200, hold the reset button for 10 seconds, then reconnect using the mobile app.
+```
+
+所以 RAG 适合：
+
+- 产品 FAQ
+    
+- 技术支持文档
+    
+- troubleshooting guide
+    
+- ticket resolution
+    
+- support knowledge base
+    
+- internal helpdesk
+    
+
+考试看到：
+
+> technical documentation, support knowledge base, troubleshooting steps
+
+就可以想到 RAG。
+
+---
+
+## 2. Legal, risk, and compliance
+
+中文：
+
+> 法律、风险和合规
+
+比如用户问：
+
+```text
+Does this marketing claim comply with our advertising policy?
+```
+
+RAG 可以检索：
+
+- 法律条款
+    
+- 合规政策
+    
+- 公司标准模板
+    
+- 风险控制文档
+    
+- 合同条款库
+    
+- regulatory guidance
+    
+
+然后让模型基于这些资料回答。
+
+不过这个场景是 **high-stakes**，所以不能只靠 RAG 自动决定，通常还需要：
+
+```text
+RAG + LLM-as-Judge + Human-in-the-loop
+```
+
+尤其是法律、风险、合规类，最后最好有人审核。
+
+考试重点：
+
+> Legal / compliance 场景可以用 RAG 查资料和辅助分析，但高风险输出需要人工复核。
+
+---
+
+## 3. Internal search & knowledge management
+
+中文：
+
+> 内部搜索和知识管理
+
+这是 RAG 最经典的企业场景。
+
+比如员工问：
+
+```text
+Where can I find the Phase 2b test strategy?
+```
+
+或者：
+
+```text
+What does the DER say about this data element?
+```
+
+RAG 可以从公司内部文档库、SharePoint、Confluence、Google Drive、Databricks tables、PDF 里检索相关内容，然后总结回答。
+
+适合：
+
+- 公司内部文档搜索
+    
+- 项目知识库
+    
+- SOP 查询
+    
+- 数据字典问答
+    
+- 技术文档助手
+    
+- meeting notes 总结
+    
+- onboarding knowledge assistant
+    
+
+这类场景最明显的特征是：
+
+> 模型本身不知道这些内部知识，所以必须用 RAG。
+
+---
+
+## 4. HR and operational policy inquiries
+
+中文：
+
+> HR 和运营政策问答
+
+比如员工问：
+
+```text
+How do I apply for annual leave?
+```
+
+或者：
+
+```text
+What is the work-from-home policy?
+```
+
+或者：
+
+```text
+How many days of sick leave am I entitled to?
+```
+
+RAG 可以从 HR policy、employee handbook、operational SOP 里检索最新政策，然后回答。
+
+这类场景很适合 RAG，因为：
+
+- 政策经常更新
+    
+- 员工问题很重复
+    
+- 答案必须基于公司实际规定
+    
+- 需要减少 HR 人工重复回答
+    
+- 最好能引用 policy source
+    
+
+---
+
+## 这页的考试重点
+
+看到这些关键词，要想到 RAG：
+
+|关键词|原因|
+|---|---|
+|customer support|需要产品知识库|
+|technical troubleshooting|需要技术文档|
+|legal / risk / compliance|需要政策、法规、合同资料|
+|internal search|需要企业内部文档|
+|knowledge management|需要知识库检索|
+|HR policy|需要公司内部政策|
+|operational policy|需要 SOP / 运营规则|
+|company-specific answers|需要 grounding|
+
+---
+
+## RAG 不只是“搜索”
+
+RAG 和普通搜索不同。
+
+普通搜索：
+
+```text
+返回一堆文档链接
+```
+
+RAG：
+
+```text
+检索相关 chunks
+→ 放进 prompt
+→ LLM 总结成自然语言答案
+→ 最好带 source / citation
+```
+
+所以 RAG 的价值是：
+
+> 不只是找到资料，而是基于资料生成可读、具体、可信的回答。
+
+---
+
+## 但这些场景也要注意 governance
+
+因为这些都是企业内部知识，必须考虑：
+
+```text
+1. 用户有没有权限看这些文档？
+2. 检索出来的 chunk 是否含 PII？
+3. 答案能不能追溯来源？
+4. 文档是不是最新版本？
+5. 高风险回答是否需要人工审核？
+```
+
+所以企业级 RAG 通常要配合：
+
+```text
+Unity Catalog / permissions
+Lineage
+Audit logs
+Data quality
+Evaluation
+Human-in-the-loop
+```
+
+---
+
+## 一句话背诵
+
+> **RAG is useful when answers must be grounded in enterprise knowledge, such as support documentation, legal/compliance policies, internal knowledge bases, and HR/operational procedures.**
+
+中文记法：
+
+> **RAG 适合所有需要“查公司内部资料再回答”的场景。**
+
+考试口诀：
+
+```text
+客服技术支持 → RAG
+法律合规风险 → RAG + 人工审核
+内部知识搜索 → RAG
+HR / 运营政策问答 → RAG
+
+核心原因：
+答案必须基于企业内部可信数据
+```
+
+
+![[Pasted image 20260501232444.png]]
+
