@@ -2390,11 +2390,11 @@ Augmented Response
 
 RAG = **Retrieval-Augmented Generation**
 
-|部分|中文|含义|
-|---|---|---|
-|**Retrieval**|检索|从知识库、文档、数据库里找相关内容|
-|**Augmented**|增强|把检索到的内容加入 prompt，增强模型上下文|
-|**Generation**|生成|LLM 基于问题和上下文生成答案|
+| 部分             | 中文  | 含义                       |
+| -------------- | --- | ------------------------ |
+| **Retrieval**  | 检索  | 从知识库、文档、数据库里找相关内容        |
+| **Augmented**  | 增强  | 把检索到的内容加入 prompt，增强模型上下文 |
+| **Generation** | 生成  | LLM 基于问题和上下文生成答案         |
 
 一句话：
 
