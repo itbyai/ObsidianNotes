@@ -6501,3 +6501,6 @@ structured output
 中文记法：
 
 > **Information Extraction = 从文档里自动抽取关键信息，变成结构化数据，并通过 Unity Catalog 和 MLflow 做治理与质量管理。**
+
+
+![[Pasted image 20260504225035.png]]
