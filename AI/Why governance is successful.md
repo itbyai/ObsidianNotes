@@ -3375,3 +3375,282 @@ HR / 运营政策问答 → RAG
 
 ![[Pasted image 20260501232444.png]]
 
+
+这页讲的是 **Databricks Data Intelligence Platform** 在 GenAI / RAG / AI 应用开发里的价值。
+
+核心意思：
+
+> Databricks 不只是一个跑 Spark / SQL 的数据平台，它现在强调的是：  
+> **把 data、AI、GenAI、governance、model serving、evaluation 放在一个统一平台里做。**
+
+---
+
+## 这页四个点翻译
+
+|英文|中文|含义|
+|---|---|---|
+|**Unified platform for data + genAI**|数据 + 生成式 AI 的统一平台|数据处理、RAG、模型调用、评估、部署都在同一个平台里完成|
+|**Model flexibility & side-by-side comparison**|模型灵活选择和并排比较|可以比较不同模型的效果、成本、延迟|
+|**Integrated governance with Unity Catalog**|通过 Unity Catalog 做统一治理|管数据权限、lineage、审计、访问控制|
+|**End-to-end development & fast iteration**|端到端开发和快速迭代|从数据准备到模型评估、部署、监控都能快速循环|
+
+---
+
+## 1. Unified platform for data + genAI
+
+意思是：
+
+> Databricks 把数据工程、数据治理、机器学习、GenAI 应用开发放在一个平台里。
+
+比如做一个 RAG 应用，不需要到处拼工具：
+
+```text
+数据源 / 文档
+→ 数据清洗
+→ chunking
+→ embedding
+→ vector search
+→ LLM serving
+→ evaluation
+→ monitoring
+→ governance
+```
+
+这些都可以在 Databricks 生态里做。
+
+考试里看到：
+
+> unified platform  
+> data + AI  
+> lakehouse + GenAI  
+> end-to-end GenAI app development
+
+可以想到 **Databricks Data Intelligence Platform**。
+
+---
+
+## 2. Model flexibility & side-by-side comparison
+
+这个很重要。
+
+意思是 Databricks 支持你灵活选择不同模型，并且比较它们。
+
+比如你可以比较：
+
+```text
+Model A: small model
+Model B: medium model
+Model C: frontier model
+```
+
+比较指标包括：
+
+|指标|说明|
+|---|---|
+|correctness|答案是否正确|
+|groundedness|是否基于 context|
+|latency|响应速度|
+|cost|成本|
+|safety|是否安全|
+|hallucination rate|幻觉率|
+
+这和前面讲的 **model selection trade-off** 连起来：
+
+> 不是直接选最强模型，而是用 evaluation 比较不同模型，选择满足质量要求且成本/延迟合适的模型。
+
+考试口诀：
+
+```text
+不要靠感觉选模型
+→ side-by-side evaluation
+→ 比较质量、成本、延迟
+→ 选择最小可用模型
+```
+
+---
+
+## 3. Integrated governance with Unity Catalog
+
+这是考试高频点。
+
+**Unity Catalog** 是 Databricks 里的统一治理层。
+
+它主要管：
+
+```text
+数据权限
+表和文件访问控制
+lineage
+audit
+catalog / schema / table 管理
+数据资产治理
+```
+
+在 GenAI/RAG 里尤其重要，因为 RAG 会访问企业内部文档和数据。
+
+如果没有治理，可能出现：
+
+```text
+用户没有权限看某份 HR 文档
+但 RAG 检索到了该文档 chunk
+然后模型把内容回答给用户
+```
+
+这就是 privacy leakage。
+
+所以企业级 RAG 必须考虑：
+
+- 用户权限
+    
+- 文档权限
+    
+- PII 脱敏
+    
+- lineage
+    
+- audit logs
+    
+- access control
+    
+- approved data sources
+    
+
+一句话：
+
+> **Unity Catalog 让 AI 应用只能访问被授权、被治理、可追踪的数据。**
+
+---
+
+## 4. End-to-end development & fast iteration
+
+意思是 Databricks 支持从开发到生产的完整流程，并且能快速迭代。
+
+一个 GenAI / RAG 项目通常要反复改：
+
+```text
+prompt
+chunk size
+top-k
+embedding model
+retriever
+reranker
+LLM model
+guardrails
+evaluation dataset
+```
+
+每次改完都要重新评估。
+
+Databricks 的价值是让你可以做：
+
+```text
+开发
+→ 评估
+→ 比较模型
+→ 部署
+→ 监控
+→ 回收失败案例
+→ 再优化
+```
+
+这和前面讲的 **Cyclic Evaluation** 是一套逻辑。
+
+---
+
+## 这页和前面内容怎么串起来？
+
+前面讲了很多概念：
+
+```text
+RAG
+Grounding
+Evaluation
+Human-in-the-loop
+LLM-as-Judge
+Benchmark
+Synthetic Data
+Governance
+Lineage
+Model Versioning
+```
+
+这页想说的是：
+
+> Databricks Data Intelligence Platform 提供一个统一环境，把这些能力串起来。
+
+比如：
+
+|需求|Databricks 对应能力|
+|---|---|
+|企业数据处理|Lakehouse / Delta / SQL / Spark|
+|权限治理|Unity Catalog|
+|数据血缘|Lineage|
+|RAG 检索|Vector Search|
+|模型调用|Model Serving / Foundation Model APIs|
+|模型实验记录|MLflow|
+|模型比较|Evaluation / MLflow metrics|
+|模型版本管理|MLflow Model Registry|
+|快速迭代|notebooks / workflows / evaluation loop|
+
+---
+
+## 考试常见问法
+
+### 问法 1
+
+> Why use Databricks Data Intelligence Platform for GenAI?
+
+答案：
+
+> Because it provides a unified platform for data and GenAI, supports model flexibility and comparison, integrates governance through Unity Catalog, and enables end-to-end development and fast iteration.
+
+---
+
+### 问法 2
+
+> Which Databricks component provides governance and access control?
+
+答案：
+
+> **Unity Catalog**
+
+---
+
+### 问法 3
+
+> How do you decide which model to use?
+
+答案：
+
+> Use side-by-side evaluation to compare quality, cost, latency, and safety, then choose the smallest model that meets the quality requirement.
+
+---
+
+### 问法 4
+
+> Why is Databricks useful for RAG?
+
+答案：
+
+> Because RAG depends on enterprise data, retrieval, governance, lineage, model serving, and evaluation, all of which can be managed in one platform.
+
+---
+
+## 一句话背诵
+
+> **Databricks Data Intelligence Platform is a unified platform for building governed, evaluated, and production-ready data + GenAI applications.**
+
+中文记法：
+
+> **Databricks Data Intelligence Platform = 把数据、GenAI、模型比较、治理、评估、部署放在一起的企业 AI 平台。**
+
+考试口诀：
+
+```text
+Databricks 平台价值：
+
+Data + GenAI 一体化
+模型可比较
+Unity Catalog 做治理
+端到端开发和快速迭代
+```
