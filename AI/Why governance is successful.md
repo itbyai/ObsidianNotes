@@ -5014,3 +5014,332 @@ Agent-as-a-Judge
 Judge Builder
 → 可视化创建 judge，管理 judge 生命周期
 ```
+
+这页讲的是 **Trace Based Debugging（基于 Trace 的调试）**。
+
+核心意思：
+
+> GenAI / Agent / RAG 系统不能只看最终答案，要能看到中间每一步发生了什么，这样才能定位问题根因。
+
+---
+
+## Trace Based Debugging 是什么？
+
+**Trace** 可以理解为：
+
+> 一次 GenAI 调用的完整执行轨迹。
+
+比如用户问：
+
+```text
+How do I request annual leave?
+```
+
+一个 RAG 系统背后可能做了这些步骤：
+
+```text
+1. 接收用户问题
+2. 生成 query embedding
+3. 去 Vector Search 检索 chunks
+4. 返回 top-k documents
+5. 组装 prompt
+6. 调用 LLM
+7. 生成答案
+8. 做 output evaluation
+9. 返回给用户
+```
+
+这些步骤串起来，就是一个 **trace**。
+
+---
+
+## 1. MLflow tracing
+
+**MLflow tracing** 就是用 MLflow 记录 GenAI workflow 的执行过程。
+
+它可以记录：
+
+```text
+输入是什么
+检索了哪些 chunks
+调用了哪个模型
+prompt 是什么
+模型返回了什么
+调用了哪些 tools
+每一步花了多久
+每一步有没有报错
+```
+
+所以 MLflow 不只是记录模型版本，也可以帮助你 debug GenAI 应用。
+
+---
+
+## 2. Opens the “black box”
+
+LLM / Agent 很容易像一个黑盒：
+
+```text
+用户问问题
+→ AI 给答案
+```
+
+但你不知道中间发生了什么。
+
+Trace 的作用就是：
+
+> 打开黑盒，让你看到 AI 系统每一步是怎么做的。
+
+比如最终答案错了，你可以查：
+
+```text
+是 retrieval 找错了？
+是 prompt 拼错了？
+是模型没用 context？
+是 tool call 参数错了？
+是 agent 调用了错误工具？
+是数据源本身旧了？
+```
+
+这就是 **opens the black box**。
+
+---
+
+## 3. Span 是什么？
+
+这页里最重要的词是：
+
+> **Span**
+
+Slide 定义：
+
+> **Span represents a single unit of work or a discrete step within a larger Generative AI workflow.**
+
+中文：
+
+> Span 表示大型 GenAI workflow 里的一个单独步骤 / 一个工作单元。
+
+---
+
+## Span 举例
+
+一次完整 trace 里可以包含多个 spans。
+
+例如 RAG：
+
+```text
+Trace: 用户问 annual leave policy
+
+Span 1: receive_user_query
+Span 2: create_embedding
+Span 3: vector_search
+Span 4: retrieve_documents
+Span 5: build_prompt
+Span 6: call_llm
+Span 7: evaluate_answer
+Span 8: return_response
+```
+
+每个 span 可以记录：
+
+```text
+start time
+end time
+input
+output
+latency
+error
+metadata
+```
+
+所以：
+
+> **Trace 是完整轨迹；Span 是轨迹里的每一步。**
+
+---
+
+## 4. Root cause analysis
+
+**Root cause analysis = 根因分析**
+
+当模型回答错了，trace 可以帮助你找根因。
+
+比如最终答案错了：
+
+### 情况 A：retrieval 错了
+
+Trace 显示检索到的是 sick leave 文档，但用户问 annual leave。
+
+根因：
+
+```text
+Vector Search / retrieval issue
+```
+
+---
+
+### 情况 B：retrieval 对了，但模型没用 context
+
+Trace 显示 context 里明明有正确答案，但模型回答错了。
+
+根因：
+
+```text
+Prompt / LLM generation issue
+```
+
+---
+
+### 情况 C：Agent tool call 参数错了
+
+Trace 显示 agent 调用了正确 tool，但传错了 customer_id。
+
+根因：
+
+```text
+Tool argument validity issue
+```
+
+---
+
+### 情况 D：数据源旧了
+
+Trace 显示模型基于旧政策文档回答。
+
+根因：
+
+```text
+Data freshness / data quality issue
+```
+
+这就是 trace-based debugging 的价值。
+
+---
+
+## 5. OpenTelemetry 是什么？
+
+**OpenTelemetry** 是一种通用的 observability 标准，用来记录：
+
+```text
+traces
+metrics
+logs
+```
+
+在 GenAI / Agent 系统里，它可以帮助把不同组件的执行轨迹统一记录下来。
+
+比如：
+
+```text
+Retriever span
+LLM call span
+Tool call span
+Database query span
+Evaluation span
+```
+
+考试里你不用深入实现，记住：
+
+> **OpenTelemetry 是用于 tracing / observability 的标准。**
+
+---
+
+## 6. Agent Bricks Custom Agents
+
+这点和 Databricks Agent 开发有关。
+
+意思是：
+
+> 对自定义 Agent，也可以用 trace 来观察和调试它的执行过程。
+
+Agent 比普通 RAG 更需要 tracing，因为 Agent 会多步执行：
+
+```text
+plan
+choose tool
+call tool
+read result
+decide next action
+call another tool
+final answer
+```
+
+如果没有 trace，很难知道 agent 为什么做错。
+
+---
+
+## Trace 对 Agent 特别重要
+
+比如用户问：
+
+```text
+Find the latest contract and check whether the liability clause is compliant.
+```
+
+Agent 可能做：
+
+```text
+1. Search document repository
+2. Retrieve contract
+3. Search corporate standard clause
+4. Compare clauses
+5. Generate compliance summary
+```
+
+Trace 可以告诉你：
+
+```text
+它有没有找对合同？
+有没有找对标准条款？
+有没有调用正确工具？
+有没有重复调用？
+参数有没有错？
+最终判断是否有依据？
+```
+
+这和前一页 **Agent-as-a-Judge** 是连起来的。
+
+---
+
+## 考试常见考点
+
+### Trace 是什么？
+
+> 一次 GenAI / RAG / Agent workflow 的完整执行记录。
+
+### Span 是什么？
+
+> Trace 中的一个单独步骤或工作单元。
+
+### 为什么需要 trace-based debugging？
+
+> 为了打开黑盒，定位错误根因，调试 retrieval、prompt、LLM、tool calls 和 agent behavior。
+
+### MLflow tracing 用来做什么？
+
+> 记录 GenAI workflow 的输入、输出、中间步骤、模型调用、工具调用和延迟，支持 debugging 和 evaluation。
+
+---
+
+## 一句话背诵
+
+> **Trace-based debugging uses MLflow tracing to open the black box of GenAI workflows. A trace records the full execution path, while a span represents one step inside that workflow.**
+
+中文记法：
+
+> **Trace = 一次完整执行轨迹；Span = 轨迹里的一个步骤。Trace-based debugging 用来定位 RAG/Agent 出错的根因。**
+
+考试口诀：
+
+```text
+Trace
+→ 完整执行路径
+
+Span
+→ 单个步骤
+
+MLflow tracing
+→ 打开黑盒，记录中间过程
+
+Root cause analysis
+→ 找出到底是 retrieval、prompt、model、tool 还是 data 出了问题
+```
