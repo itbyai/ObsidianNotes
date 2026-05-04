@@ -5015,6 +5015,9 @@ Judge Builder
 → 可视化创建 judge，管理 judge 生命周期
 ```
 
+
+![[Pasted image 20260504223621.png]]
+
 这页讲的是 **Trace Based Debugging（基于 Trace 的调试）**。
 
 核心意思：
@@ -5345,3 +5348,664 @@ Root cause analysis
 ```
 
 ![[Pasted image 20260504223419.png]]
+这页讲的是 **Human Review Apps（人工审核应用）**。
+
+核心意思：
+
+> 在 GenAI / RAG / Agent 应用里，要让业务专家参与审核模型输出，收集反馈，用来判断模型是否可以上线、需要优化，还是应该下线。
+
+---
+
+## 这页内容翻译
+
+### Human Review Apps
+
+人工审核应用 / 人工评审应用
+
+右边三个重点：
+
+|英文|中文|含义|
+|---|---|---|
+|**Capture feedback from subject matter experts (SMEs)**|收集领域专家反馈|让业务专家评价模型输出|
+|**Align the whole application or the LLM judges being used to evaluate the application**|对齐整个应用或 LLM judge|用人的判断校准模型或 judge|
+|**Can help to signal when a model is ready for production, needs refinement, or should be retired**|帮助判断模型状态|判断模型能否上线、是否要优化、是否该淘汰|
+
+---
+
+## 1. SMEs 是什么？
+
+**SME = Subject Matter Expert**
+
+中文是：
+
+> **领域专家 / 业务专家**
+
+比如：
+
+|场景|SME 是谁|
+|---|---|
+|法律合同审查|Legal counsel / 法务|
+|医疗文档总结|医生、临床专家|
+|金融风险判断|风控专家|
+|HR 政策问答|HR specialist|
+|数据平台问答|Data owner / BA / QA lead|
+|合规文案审核|Compliance officer|
+
+SME 的作用是：
+
+> 判断模型输出是否真的符合业务、法规、上下文和专业标准。
+
+---
+
+## 2. Human Review App 做什么？
+
+它是一个给人看的审核界面，通常会展示：
+
+```text
+用户问题
+检索到的 context / chunks
+模型回答
+模型版本
+LLM-as-Judge 打分
+trace / tool calls
+人工评分按钮
+人工评论框
+是否 approve / reject
+```
+
+比如法务看到模型说：
+
+> 这份合同 liability clause 没有风险。
+
+法务可以在 Human Review App 里标记：
+
+```text
+Incorrect
+Reason: This clause deviates from the corporate standard.
+Needs legal review.
+```
+
+这些反馈会被保存下来，用于后续 evaluation 和模型改进。
+
+---
+
+## 3. Align the application 是什么意思？
+
+**Align** 在这里可以理解为：
+
+> 让系统输出和业务专家的判断标准一致。
+
+比如模型回答看起来没错，但业务专家认为：
+
+- 语气不符合公司风格
+    
+- 合规风险没识别出来
+    
+- 答案太绝对
+    
+- 解释不够完整
+    
+- 引用了错误文档
+    
+- 对高风险问题没有建议人工复核
+    
+
+这些都可以通过人工反馈来调整系统。
+
+调整的对象可能包括：
+
+```text
+prompt
+retrieval strategy
+chunking
+model choice
+guardrails
+evaluation rubric
+LLM judge instructions
+```
+
+---
+
+## 4. Align LLM judges 是什么意思？
+
+前面讲过 **LLM-as-Judge**，就是让模型当裁判给答案打分。
+
+但 LLM judge 自己也可能打错分。
+
+比如 judge 给某个营销文案打高分，但合规专家认为它有 regulatory risk。
+
+这时可以用 Human Review App 收集专家反馈，然后调整 judge：
+
+```text
+Judge v1: 没有识别夸大宣传
+↓
+SME feedback: 这种表达不合规
+↓
+更新 rubric / judge instruction
+↓
+Judge v2: 能正确扣分
+```
+
+所以 Human Review App 不只是审核最终模型，也可以用来校准 **LLM-as-Judge**。
+
+---
+
+## 5. 判断模型是否 ready for production
+
+这页最后一个点很重要。
+
+Human Review Apps 可以帮助判断模型处于哪种状态：
+
+### Ready for production
+
+模型可以上线。
+
+通常意味着：
+
+```text
+正确率达到要求
+groundedness 达标
+合规风险可控
+SME 认可
+关键场景通过测试
+```
+
+---
+
+### Needs refinement
+
+模型还需要优化。
+
+可能问题是：
+
+```text
+检索经常找错 chunk
+回答不完整
+格式不稳定
+某些场景 hallucination
+LLM judge 和人类判断不一致
+```
+
+这时要继续改 prompt、RAG、模型或 evaluation。
+
+---
+
+### Should be retired
+
+模型应该下线或淘汰。
+
+比如：
+
+```text
+持续质量下降
+成本太高
+延迟太高
+新模型明显更好
+不再符合合规要求
+无法通过人工审核
+```
+
+这和前面讲的 **model versioning / lifecycle management** 是连起来的。
+
+---
+
+## 和 Human-in-the-loop 的关系
+
+Human Review Apps 是实现 **Human-in-the-loop** 的一种工具。
+
+前面讲 Human-in-the-loop 是概念：
+
+```text
+人来 review / edit / validate
+```
+
+这页讲的是产品形态：
+
+```text
+用一个审核应用收集专家反馈
+```
+
+所以可以这样记：
+
+> **Human Review App = Human-in-the-loop 的实际操作界面。**
+
+---
+
+## 和 Evaluation 的关系
+
+完整评估闭环可以是：
+
+```text
+模型生成答案
+↓
+LLM-as-Judge 自动打分
+↓
+Human Review App 收集 SME 反馈
+↓
+对齐 judge / prompt / RAG / model
+↓
+更新 benchmark dataset
+↓
+重新评估
+↓
+决定上线、优化或下线
+```
+
+这就是 **Cyclic Evaluation** 的一部分。
+
+---
+
+## 考试常见问法
+
+### 问法 1
+
+> What are Human Review Apps used for?
+
+答案：
+
+> To collect feedback from SMEs, align application behavior or LLM judges, and determine whether a model is production-ready, needs refinement, or should be retired.
+
+---
+
+### 问法 2
+
+> Why involve SMEs?
+
+答案：
+
+> Because SMEs understand domain-specific nuance, compliance requirements, and business context better than automated judges alone.
+
+---
+
+### 问法 3
+
+> How can human feedback improve LLM-as-Judge?
+
+答案：
+
+> Human feedback can be used to align or tune the judge’s rubric so its scores better match expert judgment.
+
+---
+
+## 一句话背诵
+
+> **Human Review Apps collect expert feedback to align GenAI applications and LLM judges, helping decide whether a model is ready for production, needs refinement, or should be retired.**
+
+中文记法：
+
+> **Human Review App = 让业务专家审核 AI 输出，收集反馈，校准模型和 judge，并决定模型能不能上线。**
+
+考试口诀：
+
+```text
+SME feedback
+→ 校准应用和 LLM judge
+
+Human Review App
+→ 判断模型是否：
+ready for production
+needs refinement
+should be retired
+```
+
+![[Pasted image 20260504223748.png]]
+
+这页讲的是 **Continuous Monitoring（持续监控）**。
+
+核心意思：
+
+> GenAI / RAG / Agent 应用上线后不能 “deploy & forget”，不能部署完就不管了。  
+> 要持续监控输入、输出、数据质量、用户问题变化、模型表现变化，并不断改进。
+
+---
+
+## 这页内容翻译
+
+|英文|中文|
+|---|---|
+|**Moving from “deploy & forget” to perpetual improvement**|从“部署完就忘了”转向持续改进|
+|**Inference tables**|推理表 / 推理日志表|
+|**Captures the inputs to, and outputs from, an application**|记录应用的输入和输出|
+|**Data Quality Monitoring**|数据质量监控|
+|**Anomaly detection**|异常检测|
+|**Data profiling**|数据画像 / 数据剖析|
+|**Semantic drift**|语义漂移|
+|**User queries or model output shifts over time**|用户问题或模型输出随时间发生变化|
+|**Integrates with Databricks SQL Alerts and Dashboards**|可与 Databricks SQL 告警和仪表板集成|
+
+---
+
+## 1. Deploy & forget 是什么？
+
+**Deploy & forget** 就是：
+
+```text
+模型上线
+→ 不再持续检查
+→ 出问题才发现
+```
+
+这在 GenAI 里风险很大，因为上线后可能发生：
+
+- 用户问题变了
+    
+- 文档变旧了
+    
+- 数据源变化了
+    
+- 检索质量下降了
+    
+- 模型输出开始漂移
+    
+- hallucination 增加
+    
+- latency 增加
+    
+- cost 增加
+    
+- 出现 privacy leakage
+    
+
+所以正确做法是：
+
+```text
+Deploy
+→ Monitor
+→ Evaluate
+→ Debug
+→ Improve
+→ Re-deploy
+→ Continue monitoring
+```
+
+也就是持续改进。
+
+---
+
+## 2. Inference Tables 是什么？
+
+**Inference table** 可以理解为：
+
+> 记录模型调用输入和输出的表。
+
+比如一个 RAG chatbot，每次用户提问和模型回答都可以记录下来：
+
+|字段|示例|
+|---|---|
+|request_id|abc123|
+|timestamp|2026-05-04 10:30|
+|user_query|How do I request annual leave?|
+|retrieved_chunks|chunk_12, chunk_15|
+|model_response|Submit through HR portal...|
+|model_name|model_v3|
+|latency|1.8s|
+|cost|$0.002|
+|evaluation_score|groundedness = 4.8|
+|feedback|thumbs up / thumbs down|
+
+这样你就可以分析：
+
+```text
+用户问了什么？
+模型答了什么？
+有没有答错？
+哪些问题最常见？
+哪个模型版本表现下降？
+```
+
+考试重点：
+
+> **Inference tables capture inputs and outputs from the application for monitoring, evaluation, debugging, and improvement.**
+
+---
+
+## 3. Data Quality Monitoring
+
+这里说的数据质量监控包括两个点：
+
+```text
+Anomaly detection
+Data profiling
+```
+
+### Anomaly detection
+
+意思是检测异常。
+
+比如：
+
+|异常|示例|
+|---|---|
+|查询量突然增加|chatbot 请求量从每天 1,000 变成 50,000|
+|latency 突然变高|平均响应从 2 秒变成 10 秒|
+|hallucination rate 上升|groundedness 分数突然下降|
+|cost 激增|token 使用量突然增加|
+|检索异常|top-k chunks 经常为空|
+|错误率增加|model serving error 增多|
+
+---
+
+### Data profiling
+
+意思是持续分析数据分布。
+
+例如监控：
+
+```text
+用户问题类型分布
+输入长度分布
+输出长度分布
+retrieved chunk 数量
+各文档被检索频率
+feedback 正负比例
+模型分数趋势
+```
+
+这可以帮助你发现系统是否在变差。
+
+---
+
+## 4. Semantic Drift 是什么？
+
+这页最重要的词是：
+
+> **Semantic drift**
+
+中文可以叫：
+
+> **语义漂移**
+
+意思是：
+
+> 用户问题的含义、主题、表达方式，或者模型输出的内容风格，随着时间发生变化。
+
+---
+
+## Semantic Drift 举例
+
+一开始用户主要问 HR 政策：
+
+```text
+How do I apply for annual leave?
+What is the sick leave policy?
+```
+
+后来用户开始大量问 IT 问题：
+
+```text
+How do I reset VPN?
+Why is my Databricks cluster failing?
+```
+
+这说明：
+
+> 用户 query 分布发生了变化。
+
+这就是 semantic drift。
+
+---
+
+再比如模型输出原来很简洁：
+
+```text
+Submit your leave request through the HR portal.
+```
+
+后来模型变得越来越啰嗦、越来越不稳定：
+
+```text
+There are many ways an employee may consider requesting leave depending on organizational circumstances...
+```
+
+这也可以看作 output drift。
+
+---
+
+## 为什么 Semantic Drift 重要？
+
+因为你的 evaluation dataset 可能只覆盖旧问题。
+
+如果用户问题变了，原来的测试集不再代表生产环境。
+
+所以你要：
+
+```text
+监控真实用户 query
+发现新问题类型
+把失败案例加入 evaluation dataset
+更新 RAG 文档或 prompt
+重新评估模型
+```
+
+这和前面讲的 **Cyclic Evaluation** 是一套逻辑。
+
+---
+
+## 5. Databricks SQL Alerts and Dashboards
+
+这表示监控结果可以通过 Databricks SQL 做：
+
+```text
+Dashboard
+Alert
+Trend monitoring
+Quality report
+```
+
+比如你可以建 dashboard 看：
+
+|监控指标|例子|
+|---|---|
+|daily request count|每日调用量|
+|avg latency|平均响应时间|
+|avg groundedness score|平均 groundedness|
+|failed retrieval rate|检索失败率|
+|hallucination risk|幻觉风险|
+|cost per day|每日成本|
+|user negative feedback rate|用户差评率|
+
+然后设置 alert：
+
+```text
+如果 groundedness < 80%
+→ 发告警
+
+如果 latency > 5 秒
+→ 发告警
+
+如果 cost suddenly spikes
+→ 发告警
+```
+
+---
+
+## 这页和前面内容怎么串起来？
+
+完整生命周期是：
+
+```text
+开发 RAG / Agent
+→ Evaluation
+→ Deploy
+→ Inference Tables 记录输入输出
+→ Monitoring 发现问题
+→ Trace Debugging 找根因
+→ Human Review 收集专家反馈
+→ 更新 benchmark
+→ 改进系统
+→ 再部署
+```
+
+这就是：
+
+> **持续监控 + 循环评估 + 持续改进。**
+
+---
+
+## 考试常见问法
+
+### 问法 1
+
+> What are inference tables used for?
+
+答案：
+
+> To capture inputs and outputs of an application so teams can monitor, evaluate, debug, and improve the model over time.
+
+---
+
+### 问法 2
+
+> What is semantic drift?
+
+答案：
+
+> Semantic drift occurs when user queries or model outputs shift in meaning, topic, or distribution over time.
+
+---
+
+### 问法 3
+
+> Why is continuous monitoring important?
+
+答案：
+
+> Because GenAI applications can degrade after deployment due to changing data, user behavior, model outputs, retrieval quality, latency, cost, or safety risks.
+
+---
+
+### 问法 4
+
+> How can Databricks support monitoring?
+
+答案：
+
+> Through inference tables, data quality monitoring, anomaly detection, profiling, and integration with SQL alerts and dashboards.
+
+---
+
+## 一句话背诵
+
+> **Continuous monitoring captures production inputs and outputs, detects data quality issues and semantic drift, and supports ongoing improvement through dashboards and alerts.**
+
+中文记法：
+
+> **持续监控 = 上线后持续记录输入输出，监控质量、异常、语义漂移、成本和延迟，用于持续改进。**
+
+考试口诀：
+
+```text
+不要 deploy & forget
+
+Inference tables
+→ 记录输入输出
+
+Data quality monitoring
+→ 查异常和数据分布
+
+Semantic drift
+→ 用户问题或模型输出随时间变了
+
+SQL alerts / dashboards
+→ 发现问题及时告警
+```
