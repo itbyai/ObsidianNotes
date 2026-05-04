@@ -4582,3 +4582,435 @@ Custom judge
 ```
 
 ![[Pasted image 20260504222205.png]]
+这页继续讲 **LLM-as-Judge on Databricks**，但比上一页更进一步：它不只是“用一个 LLM 打分”，而是讲 Databricks / MLflow 里更高级的评估能力。
+
+核心意思：
+
+> Databricks 里的 LLM-as-Judge 可以被调教、可以评估 Agent 的 tool calling，也可以用 Judge Builder 做可视化构建和生命周期管理。
+
+---
+
+## 这页三个重点
+
+```text
+1. Tunable Judges
+2. Agent-as-a-Judge
+3. Judge Builder
+```
+
+---
+
+# 1. Tunable Judges：可调节的 Judge
+
+**Tunable Judges** 可以理解为：
+
+> 你可以根据自己的业务标准，调整 judge 的评估方式。
+
+不是所有应用都只看：
+
+```text
+correctness
+groundedness
+relevance
+```
+
+有些业务还要看：
+
+```text
+是否符合品牌语气
+是否合规
+是否礼貌
+是否过度承诺
+是否包含敏感信息
+是否符合公司写作风格
+```
+
+---
+
+## Natural language instructions
+
+意思是：
+
+> 你可以用自然语言告诉 judge 应该怎么评估。
+
+比如：
+
+```text
+Evaluate whether the answer is concise, professional, and aligned with our brand voice.
+Do not reward overly verbose responses.
+Penalize answers that make unsupported claims.
+```
+
+中文就是：
+
+> 用普通语言写评分规则，让 Judge 按这些标准判断。
+
+这和我们前面讲的 **rubric** 很像。
+
+---
+
+## Human-in-the-loop
+
+这里意思是：
+
+> 人可以参与调整和校准 judge。
+
+比如：
+
+1. Judge 先自动评分
+    
+2. 人类专家检查一部分结果
+    
+3. 如果发现 judge 打分不符合业务标准，就调整 judge instruction / rubric
+    
+4. 再继续评估
+    
+
+这叫 **alignment**，也就是让 judge 的判断标准和人类专家标准对齐。
+
+---
+
+## Alignment
+
+**Alignment** 在这里不是训练大模型那种大概念，而是指：
+
+> 让 judge 的评分结果尽量符合你的业务专家判断。
+
+比如法务人员认为某种措辞有合规风险，但 judge 没扣分，你就要调整 judge 的评估规则。
+
+---
+
+# 2. Agent-as-a-Judge：用 Judge 评估 Agent 行为
+
+这个很重要，因为 Agent 不只是生成一句话，它还会：
+
+```text
+plan
+call tools
+pass arguments
+read tool results
+decide next step
+generate final answer
+```
+
+所以评估 Agent，不能只看最终答案，还要看中间过程。
+
+---
+
+## Automated trace intelligence
+
+**Trace** 是 Agent 执行过程的记录。
+
+例如 Agent 做了一个任务：
+
+```text
+User asks: Check customer refund eligibility.
+
+Agent trace:
+1. Query customer profile tool
+2. Query order history tool
+3. Query refund policy document
+4. Compare order date against policy
+5. Generate final answer
+```
+
+**Automated trace intelligence** 就是：
+
+> 自动分析 Agent 的执行轨迹，判断它每一步做得是否合理。
+
+---
+
+## Evaluates tool call correctness
+
+意思是：
+
+> Judge 会评估 Agent 调用工具是否正确。
+
+比如用户问：
+
+```text
+What is the refund policy?
+```
+
+Agent 应该调用：
+
+```text
+policy_search_tool
+```
+
+而不是调用：
+
+```text
+customer_payment_tool
+```
+
+如果调用错工具，Judge 可以扣分。
+
+---
+
+## Argument validity
+
+意思是：
+
+> Judge 会检查工具调用参数是否有效。
+
+例如 Agent 调用数据库工具：
+
+```json
+{
+  "customer_id": "12345",
+  "date_range": "last_30_days"
+}
+```
+
+Judge 要判断：
+
+- 参数是否完整
+    
+- 参数格式是否正确
+    
+- 是否传错 ID
+    
+- 是否传了不该传的敏感信息
+    
+- 是否符合工具 schema
+    
+
+比如工具需要 `order_id`，Agent 却传了 `customer_name`，这就是 argument invalid。
+
+---
+
+## Redundancy
+
+意思是：
+
+> Judge 会判断 Agent 是否做了多余、重复、不必要的工具调用。
+
+例如：
+
+```text
+1. Search refund policy
+2. Search refund policy again
+3. Search refund policy third time
+```
+
+如果每次结果一样，那就是 redundant tool calls。
+
+这会导致：
+
+- 成本增加
+    
+- latency 增加
+    
+- 系统效率变差
+    
+- trace 更复杂
+    
+
+所以 Agent-as-a-Judge 不只评估答案质量，也评估执行效率。
+
+---
+
+# 3. Judge Builder：构建 Judge 的工具
+
+**Judge Builder** 可以理解为：
+
+> 一个帮助你创建、配置、管理自定义 judge 的工具。
+
+它有两个关键词：
+
+```text
+Visual Workflow
+Lifecycle Management
+```
+
+---
+
+## Visual Workflow
+
+意思是：
+
+> 可以用可视化方式配置 judge，而不是完全靠手写代码。
+
+比如你可以定义：
+
+```text
+输入：question + context + answer
+评估维度：groundedness, correctness, brand voice
+评分范围：1-5
+失败条件：unsupported claim, compliance risk
+输出：score + explanation
+```
+
+这对业务团队、QA、合规人员更友好。
+
+---
+
+## Lifecycle Management
+
+意思是：
+
+> Judge 本身也要被管理版本。
+
+因为 judge 的规则会变。
+
+例如：
+
+```text
+Judge v1: 只评估 correctness
+Judge v2: 增加 groundedness
+Judge v3: 增加 regulatory compliance
+Judge v4: 调整 brand voice rubric
+```
+
+每个 judge 版本都应该记录：
+
+- 谁创建的
+    
+- 规则是什么
+    
+- 适用场景是什么
+    
+- 什么时候上线
+    
+- 评估结果如何
+    
+- 是否被替换或回滚
+    
+
+这就和前面讲的 **model versioning / governance / MLflow** 连起来了。
+
+---
+
+## 这页考试重点
+
+这页最容易考三类问题。
+
+### 1. 如果要根据业务标准调整 Judge，选什么？
+
+答案：
+
+> **Tunable Judges**
+
+因为它支持 natural language instructions、human-in-the-loop 和 alignment。
+
+---
+
+### 2. 如果要评估 Agent 的工具调用过程，选什么？
+
+答案：
+
+> **Agent-as-a-Judge**
+
+它可以分析 trace，评估：
+
+```text
+tool call correctness
+argument validity
+redundancy
+```
+
+---
+
+### 3. 如果要可视化创建和管理 Judge，选什么？
+
+答案：
+
+> **Judge Builder**
+
+它支持：
+
+```text
+visual workflow
+lifecycle management
+```
+
+---
+
+## 和上一页的关系
+
+上一页讲基础质量指标：
+
+```text
+Groundedness
+Relevance
+Correctness
+Custom judges
+```
+
+这一页讲更高级能力：
+
+```text
+Tunable Judges
+→ 让 judge 更贴合业务标准
+
+Agent-as-a-Judge
+→ 评估 agent 执行过程和工具调用
+
+Judge Builder
+→ 可视化构建和管理 judge
+```
+
+---
+
+## 一个具体例子
+
+假设你做一个合规审查 Agent。
+
+用户问：
+
+```text
+Review this marketing email for compliance risk.
+```
+
+Agent 做了：
+
+```text
+1. 调用 policy search tool
+2. 检索 advertising compliance policy
+3. 调用 legal database tool
+4. 比较营销文案
+5. 输出修改建议
+```
+
+评估时不能只看最后答案，还要看：
+
+```text
+它有没有检索正确政策？
+有没有调用不该调用的工具？
+传入工具的参数对不对？
+有没有重复查询？
+最终建议是否 grounded？
+是否符合 regulatory compliance？
+```
+
+这就需要：
+
+```text
+Agent-as-a-Judge
++ Custom compliance judge
++ Human-in-the-loop for high-risk cases
+```
+
+---
+
+## 一句话背诵
+
+> **LLM-as-Judge on Databricks can be tuned with business-specific instructions, used to evaluate agent traces and tool calls, and managed through Judge Builder for visual workflow and lifecycle control.**
+
+中文记法：
+
+> **Databricks 的 LLM-as-Judge 不只是打分，还可以调标准、评估 Agent 工具调用，并管理 Judge 的版本和生命周期。**
+
+考试口诀：
+
+```text
+Tunable Judges
+→ 调整评估标准，让 judge 和业务专家对齐
+
+Agent-as-a-Judge
+→ 评估 agent trace、tool call、参数和冗余
+
+Judge Builder
+→ 可视化创建 judge，管理 judge 生命周期
+```
