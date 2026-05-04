@@ -5343,3 +5343,5 @@ MLflow tracing
 Root cause analysis
 → 找出到底是 retrieval、prompt、model、tool 还是 data 出了问题
 ```
+
+![[Pasted image 20260504223419.png]]
