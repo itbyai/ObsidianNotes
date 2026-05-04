@@ -4580,3 +4580,5 @@ Correctness
 Custom judge
 → 业务自己的质量标准，比如品牌语气、合规
 ```
+
+![[Pasted image 20260504222205.png]]
