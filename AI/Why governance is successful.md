@@ -3654,3 +3654,232 @@ Data + GenAI 一体化
 Unity Catalog 做治理
 端到端开发和快速迭代
 ```
+
+![[Pasted image 20260504221156.png]]
+
+这页讲的是 Databricks 的一个核心卖点：
+
+> **Databricks Brings AI to Your Data**  
+> 不是把数据搬出去给 AI，而是把 AI 带到你的数据环境里。
+
+这对企业 GenAI/RAG 很重要，因为企业数据通常敏感、分散、受权限和合规约束。
+
+---
+
+## 这页图在表达什么？
+
+图上方是 Databricks 平台，里面可以接入或服务多种模型：
+
+```text
+OpenAI / Anthropic / Gemini / Meta / Custom Models
+```
+
+图下方是企业各种数据源，例如：
+
+```text
+Salesforce
+ServiceNow
+Oracle
+Google Drive
+SharePoint
+Jira
+Confluence
+Snowflake
+MySQL
+Postgres
+S3
+SQL Server
+Workday
+Google Analytics
+```
+
+右边两句话：
+
+> **Natively serve frontier models and custom models in your environment**  
+> 在你的环境里原生服务 frontier models 和自定义模型。
+
+> **Easily connect to all of your data**  
+> 方便连接你所有的数据源。
+
+---
+
+## 重点 1：AI to your data，不是 data to AI
+
+这句话很关键。
+
+普通做法可能是：
+
+```text
+把企业数据复制出去
+→ 发给外部 AI 服务
+→ 得到答案
+```
+
+风险是：
+
+- 数据泄露
+    
+- 权限不好控制
+    
+- lineage 不清楚
+    
+- 审计困难
+    
+- 合规风险高
+    
+
+Databricks 的思路是：
+
+```text
+企业数据留在受治理环境
+→ AI/模型在 Databricks 里访问被授权的数据
+→ 用 Unity Catalog 管权限和审计
+→ 用 Model Serving / RAG / Evaluation 管模型应用
+```
+
+也就是：
+
+> **数据不乱跑，AI 在数据旁边工作。**
+
+---
+
+## 重点 2：支持多模型选择
+
+这页图里有 OpenAI、Anthropic、Gemini、Meta 这些模型生态，意思是：
+
+> Databricks 不强迫你只用一个模型，而是支持不同模型并排比较和使用。
+
+比如你可以比较：
+
+|模型|适合场景|
+|---|---|
+|Small model|简单抽取、分类、低成本|
+|Medium model|普通客服、内容生成|
+|Large model|复杂 RAG、多文档分析|
+|Frontier model|高风险、高质量要求|
+|Custom model|公司自己训练或 fine-tuned 的模型|
+
+这和前面讲的 **model selection trade-off** 连起来：
+
+> 用 evaluation 比较质量、成本、延迟，然后选择最合适的模型。
+
+---
+
+## 重点 3：Custom models 也可以服务
+
+图里说：
+
+> **frontier models and custom models**
+
+说明不只是外部大模型，也可以部署公司自己的模型，比如：
+
+- fine-tuned model
+    
+- open-source model
+    
+- custom ML model
+    
+- domain-specific model
+    
+- LoRA/adapter model
+    
+
+考试里如果问：
+
+> 企业想同时使用第三方 frontier model 和自己训练的模型，Databricks 的价值是什么？
+
+可以答：
+
+> Databricks 提供统一平台来服务、比较、治理和监控这些模型。
+
+---
+
+## 重点 4：连接所有企业数据
+
+下方很多 logo 表示企业数据可能分散在很多系统里：
+
+- CRM：Salesforce
+    
+- ITSM：ServiceNow
+    
+- HR：Workday
+    
+- 文档：SharePoint、Google Drive、Confluence
+    
+- 项目管理：Jira
+    
+- 数据库：Oracle、SQL Server、MySQL、Postgres、Snowflake
+    
+- Cloud storage：S3 等
+    
+
+RAG/Agent 经常需要跨这些系统检索知识。
+
+比如：
+
+```text
+用户问一个客户问题
+→ 查 Salesforce 客户记录
+→ 查 ServiceNow ticket
+→ 查 SharePoint 合同
+→ 查产品知识库
+→ LLM 汇总回答
+```
+
+这就是企业级 GenAI 的价值。
+
+---
+
+## 和 RAG 的关系
+
+这页和 RAG 很相关。
+
+RAG 需要：
+
+```text
+企业数据源
+→ 连接/摄取
+→ 清洗
+→ chunk
+→ embedding
+→ vector index
+→ retrieval
+→ LLM answer
+```
+
+Databricks 的卖点是：
+
+> 数据源、治理、检索、模型服务、评估、监控可以在统一平台里完成。
+
+---
+
+## 考试重点
+
+看到这类题要想到：
+
+```text
+Databricks Data Intelligence Platform
+= unified data + AI platform
+= connect enterprise data
+= serve multiple models
+= governed by Unity Catalog
+= support RAG / model serving / evaluation / iteration
+```
+
+如果题目说：
+
+> 公司数据分散在多个系统中，又希望安全地用 GenAI 回答企业问题。
+
+答案方向通常是：
+
+> 用 Databricks 连接和治理企业数据，并通过 RAG / Model Serving 把模型带到数据旁边，而不是把数据随意发送出去。
+
+---
+
+## 一句话背诵
+
+> **Databricks brings AI to your data by connecting enterprise data sources, serving frontier/custom models, and governing the whole workflow in one platform.**
+
+中文记法：
+
+> **Databricks 的价值 = 数据留在受治理环境里，AI 来访问数据；支持多模型、多数据源、统一治理和端到端 GenAI 开发。**
