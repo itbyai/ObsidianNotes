@@ -6009,3 +6009,211 @@ Semantic drift
 SQL alerts / dashboards
 → 发现问题及时告警
 ```
+
+![[Pasted image 20260504224112.png]]
+
+这页讲的是 **Agent Bricks**，可以理解为 Databricks 用来帮助企业构建、优化和持续改进 **AI Agent 系统** 的能力。
+
+核心意思：
+
+> 你告诉 Databricks：我的问题是什么、我的数据在哪里、我要完成什么任务；  
+> Agent Bricks 帮你构建一个在质量、成本之间最优的 Agent，并通过人类反馈持续改进。
+
+---
+
+## 这页三个重点
+
+### 1. Specify your problem
+
+中文：
+
+> 明确你的问题。
+
+Slide 上写的是：
+
+> **Give us your data and tell us the task**
+
+意思是：
+
+你需要告诉系统：
+
+```text
+这是我的企业数据
+这是我要解决的任务
+这是我希望 Agent 完成的目标
+```
+
+比如：
+
+```text
+任务：帮员工回答 HR policy 问题
+数据：HR policy PDFs + employee handbook
+目标：给出准确答案，并引用来源
+```
+
+或者：
+
+```text
+任务：审查合同 liability clause
+数据：合同库 + 公司标准条款
+目标：找出偏离标准的条款，并标记给法务审核
+```
+
+---
+
+## 2. Optimize on your enterprise data
+
+中文：
+
+> 基于你的企业数据进行优化。
+
+Slide 上写的是：
+
+> **We build you the best agent system on quality vs cost**
+
+意思是：
+
+Agent Bricks 不只是随便选一个大模型，而是会围绕你的数据和任务，在这些因素之间做优化：
+
+```text
+质量
+成本
+延迟
+模型选择
+工具调用
+RAG 检索效果
+Agent workflow
+```
+
+这和前面讲的 **model selection trade-off** 是一样的：
+
+> 不一定选最强、最贵的 frontier model，而是选满足质量要求、成本合理的方案。
+
+比如：
+
+|方案|质量|成本|
+|---|--:|--:|
+|Frontier model agent|高|高|
+|Medium model + RAG|中高|中|
+|Small model + good retrieval|够用|低|
+
+Agent Bricks 的目标是帮你找到更合适的组合。
+
+---
+
+## 3. Continuously improve
+
+中文：
+
+> 持续改进。
+
+Slide 上写的是：
+
+> **Agent Learning on Human Feedback (ALHF)**
+
+这个可以理解为：
+
+> Agent 根据人类反馈不断变好。
+
+它和前面讲的 **Human Review Apps / Human-in-the-loop / Cyclic Evaluation** 是连起来的。
+
+流程大概是：
+
+```text
+Agent 生成答案或执行任务
+↓
+SME / 人类专家审核
+↓
+指出哪里错、哪里不完整、哪里不合规
+↓
+系统根据反馈改进 prompt、retrieval、tool call、judge 或 agent behavior
+↓
+再次评估
+↓
+持续优化
+```
+
+---
+
+## ALHF 是什么？
+
+**ALHF = Agent Learning on Human Feedback**
+
+可以先简单记成：
+
+> **用人类反馈来改进 Agent。**
+
+和普通 LLM-as-Judge 不同，ALHF 更强调：
+
+```text
+Agent 做任务
+人类给反馈
+Agent 系统根据反馈优化
+```
+
+比如一个合同审查 Agent：
+
+```text
+Agent: 这份合同没有 liability risk。
+法务反馈: 错，这一页责任上限条款偏离公司标准。
+系统学习: 下次遇到类似条款要标记风险。
+```
+
+---
+
+## Agent Bricks 和普通 RAG 的区别
+
+普通 RAG 主要是：
+
+```text
+检索资料
+→ 给 LLM
+→ 生成答案
+```
+
+Agent Bricks 更偏 Agent 系统构建和优化：
+
+```text
+理解任务
+→ 选择模型
+→ 设计工具调用
+→ 使用企业数据
+→ 评估质量
+→ 接收人类反馈
+→ 持续优化 Agent
+```
+
+所以它比普通 RAG 更像是：
+
+> 帮你搭一个能执行复杂任务、可评估、可优化的企业 Agent 系统。
+
+---
+
+## 考试怎么记？
+
+看到 **Agent Bricks**，你可以记这三个关键词：
+
+```text
+Specify problem
+Optimize on enterprise data
+Continuously improve with human feedback
+```
+
+中文口诀：
+
+```text
+说清任务
+给出数据
+优化质量和成本
+用人类反馈持续改进
+```
+
+---
+
+## 一句话背诵
+
+> **Agent Bricks helps build and optimize enterprise AI agents using your data, balancing quality and cost, and continuously improving through human feedback.**
+
+中文记法：
+
+> **Agent Bricks = 基于企业数据自动/半自动构建和优化 Agent，并通过人工反馈持续提升质量。**
