@@ -3387,12 +3387,12 @@ HR / 运营政策问答 → RAG
 
 ## 这页四个点翻译
 
-|英文|中文|含义|
-|---|---|---|
-|**Unified platform for data + genAI**|数据 + 生成式 AI 的统一平台|数据处理、RAG、模型调用、评估、部署都在同一个平台里完成|
-|**Model flexibility & side-by-side comparison**|模型灵活选择和并排比较|可以比较不同模型的效果、成本、延迟|
-|**Integrated governance with Unity Catalog**|通过 Unity Catalog 做统一治理|管数据权限、lineage、审计、访问控制|
-|**End-to-end development & fast iteration**|端到端开发和快速迭代|从数据准备到模型评估、部署、监控都能快速循环|
+| 英文                                              | 中文                     | 含义                            |
+| ----------------------------------------------- | ---------------------- | ----------------------------- |
+| **Unified platform for data + genAI**           | 数据 + 生成式 AI 的统一平台      | 数据处理、RAG、模型调用、评估、部署都在同一个平台里完成 |
+| **Model flexibility & side-by-side comparison** | 模型灵活选择和并排比较            | 可以比较不同模型的效果、成本、延迟             |
+| **Integrated governance with Unity Catalog**    | 通过 Unity Catalog 做统一治理 | 管数据权限、lineage、审计、访问控制         |
+| **End-to-end development & fast iteration**     | 端到端开发和快速迭代             | 从数据准备到模型评估、部署、监控都能快速循环        |
 
 ---
 
