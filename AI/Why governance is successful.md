@@ -4216,3 +4216,367 @@ Model Serving 部署
 ```
 
 ![[Pasted image 20260504221928.png]]
+
+这页讲的是 **LLM-as-Judge on Databricks**，也就是：
+
+> 在 Databricks 上，用一个更强的 LLM 当“评审员”，自动评估你的 RAG / GenAI 应用输出质量。
+
+核心作用：
+
+```text
+模型生成答案
+→ Judge LLM 按标准打分
+→ 输出 quality metrics
+→ 帮你判断模型回答好不好
+```
+
+---
+
+## 这页内容翻译
+
+### 1. High-reasoning models
+
+中文：
+
+> 高推理能力模型
+
+意思是，做 judge 的模型通常不能太弱。  
+因为它要判断别的模型回答得对不对、有没有基于 context、有没有遗漏、有没有幻觉。
+
+所以 LLM-as-Judge 通常会用：
+
+```text
+large model / frontier model / high-reasoning model
+```
+
+原因是 judge 本身需要较强的理解和判断能力。
+
+---
+
+## 2. Key quality metrics
+
+这页列了三个核心质量指标：
+
+```text
+Groundedness
+Relevance
+Correctness
+```
+
+这三个非常重要，尤其是 RAG 考试高频点。
+
+---
+
+# Groundedness
+
+中文可以叫：
+
+> **有依据性 / 基于上下文程度**
+
+意思是：
+
+> 模型的答案是否基于 retrieved context，而不是自己编的。
+
+例如 context 里写：
+
+```text
+Refund period is 30 days.
+```
+
+模型回答：
+
+```text
+The refund period is 30 days.
+```
+
+这个 groundedness 高。
+
+但如果模型回答：
+
+```text
+The refund period is 60 days.
+```
+
+那就是没有基于 context，groundedness 低。
+
+考试记法：
+
+> **Groundedness = 答案有没有根据提供的资料。**
+
+---
+
+# Relevance
+
+中文：
+
+> **相关性**
+
+意思是：
+
+> 模型回答是否和用户问题相关。
+
+例如用户问：
+
+```text
+How do I apply for annual leave?
+```
+
+模型回答：
+
+```text
+Annual leave can be requested through the HR portal.
+```
+
+这是 relevant。
+
+但如果模型回答：
+
+```text
+Sick leave requires a medical certificate.
+```
+
+虽然可能是真的，但没有回答 annual leave，所以 relevance 低。
+
+考试记法：
+
+> **Relevance = 是否回答了用户真正问的问题。**
+
+---
+
+# Correctness
+
+中文：
+
+> **正确性**
+
+意思是：
+
+> 答案事实是否正确。
+
+例如用户问：
+
+```text
+What is the refund period?
+```
+
+正确答案是：
+
+```text
+30 days
+```
+
+模型回答 30 days，correctness 高。  
+模型回答 60 days，correctness 低。
+
+注意：
+
+> **Groundedness 和 Correctness 不完全一样。**
+
+比如 context 本身是旧的，写着 60 days，模型基于 context 回答 60 days：
+
+|指标|结果|
+|---|---|
+|Groundedness|高，因为它基于 context|
+|Correctness|可能低，因为真实政策已经改成 30 days|
+
+所以还需要 data quality 和 freshness。
+
+---
+
+## 3. Custom judges
+
+中文：
+
+> 自定义评审器 / 自定义 judge
+
+意思是：
+
+> 除了通用指标，你也可以定义自己的评估标准。
+
+这页给的例子是：
+
+```text
+Brand voice
+Regulatory compliance
+```
+
+---
+
+## Brand voice judge
+
+意思是判断模型输出是否符合公司品牌语气。
+
+比如公司要求客服回复：
+
+```text
+friendly, concise, professional, empathetic
+```
+
+Judge 可以评估：
+
+```text
+这封邮件是否太冷淡？
+是否太啰嗦？
+是否符合品牌风格？
+是否用了不该用的词？
+```
+
+这类评估不是简单 correctness，而是业务风格质量。
+
+---
+
+## Regulatory compliance judge
+
+意思是判断输出是否符合监管、法律、合规要求。
+
+例如营销文案：
+
+```text
+This product guarantees 100% cure.
+```
+
+如果行业不允许这种绝对化承诺，compliance judge 应该标记风险。
+
+适合：
+
+- 法律
+    
+- 医疗
+    
+- 金融
+    
+- 保险
+    
+- 政府
+    
+- 合规审查
+    
+- 营销内容审核
+    
+
+---
+
+## 这页和前面 Evaluation 的关系
+
+前面讲过三种 evaluation：
+
+```text
+Human-in-the-loop
+LLM-as-Judge
+Benchmark Evaluation
+```
+
+这页就是在讲 Databricks 里如何用 **LLM-as-Judge** 自动评估。
+
+典型流程：
+
+```text
+RAG app 生成答案
+↓
+Judge LLM 读取：
+- user question
+- retrieved context
+- model answer
+- evaluation rubric
+↓
+Judge 输出分数：
+- groundedness
+- relevance
+- correctness
+- custom metrics
+↓
+MLflow / Evaluation 记录结果
+```
+
+---
+
+## 考试重点
+
+看到这些关键词，要想到 **LLM-as-Judge**：
+
+|关键词|说明|
+|---|---|
+|automated evaluation|自动评估|
+|scalable evaluation|大规模评估|
+|judge model|裁判模型|
+|rubric|评分标准|
+|groundedness|是否基于 context|
+|relevance|是否相关|
+|correctness|是否正确|
+|custom judge|自定义评估标准|
+
+---
+
+## 一个例子
+
+用户问题：
+
+```text
+How do I request annual leave?
+```
+
+Retrieved context：
+
+```text
+Annual leave must be requested through the HR portal at least two weeks in advance.
+```
+
+模型回答：
+
+```text
+You can request annual leave through the HR portal. Submit it at least two weeks before the leave date.
+```
+
+Judge 可能打分：
+
+```json
+{
+  "groundedness": 5,
+  "relevance": 5,
+  "correctness": 5,
+  "reason": "The answer is directly supported by the retrieved context and answers the user's question."
+}
+```
+
+如果模型回答：
+
+```text
+Ask your manager by email.
+```
+
+Judge 可能打分：
+
+```json
+{
+  "groundedness": 1,
+  "relevance": 3,
+  "correctness": 1,
+  "reason": "The answer is related to leave requests but is not supported by the retrieved context and contradicts the HR portal process."
+}
+```
+
+---
+
+## 一句话背诵
+
+> **LLM-as-Judge on Databricks uses high-reasoning models to automatically evaluate GenAI outputs using metrics like groundedness, relevance, correctness, and custom business-specific judges.**
+
+中文记法：
+
+> **LLM-as-Judge = 用强模型当裁判，自动判断 RAG/GenAI 答案是否有依据、是否相关、是否正确，也可以加品牌语气和合规等自定义评估。**
+
+考试口诀：
+
+```text
+Groundedness
+→ 有没有基于 context
+
+Relevance
+→ 有没有回答用户问题
+
+Correctness
+→ 答案事实对不对
+
+Custom judge
+→ 业务自己的质量标准，比如品牌语气、合规
+```
