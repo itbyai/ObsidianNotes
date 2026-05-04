@@ -3883,3 +3883,334 @@ Databricks Data Intelligence Platform
 中文记法：
 
 > **Databricks 的价值 = 数据留在受治理环境里，AI 来访问数据；支持多模型、多数据源、统一治理和端到端 GenAI 开发。**
+
+
+![[Pasted image 20260504221621.png]]
+这页是把前面所有概念串起来：**在 Databricks 上做一个 GenAI / RAG 应用的完整工作流**。
+
+核心流程是：
+
+```text
+准备数据
+→ 建 vector index
+→ RAG 检索上下文
+→ 生成 grounded answer
+→ 注册模型/应用
+→ 部署
+→ 持续评估和调试
+```
+
+---
+
+# 1. Prepare & govern data
+
+对应工具：
+
+> **Unity Catalog + Delta Lake**
+
+这一步是准备和治理数据。
+
+数据来源可能是：
+
+- PDF
+    
+- 表格
+    
+- 文档
+    
+- Delta tables
+    
+- 企业知识库
+    
+- 业务数据
+    
+
+这里重点不是直接拿来用，而是要先保证：
+
+```text
+数据有权限控制
+数据质量可靠
+PII 已脱敏
+数据来源可追踪
+文档版本清楚
+```
+
+考试重点：
+
+> 企业级 GenAI 不能绕过 governance。  
+> Unity Catalog 用于数据治理、权限、lineage、audit。
+
+---
+
+# 2. Create vector indices
+
+对应工具：
+
+> **Databricks Vector Search**
+
+这一步是创建向量索引。
+
+流程大概是：
+
+```text
+文档
+→ chunk 切分
+→ embedding
+→ vector index
+```
+
+为什么要 vector index？
+
+因为用户提问时，系统需要快速找到最相关的 chunks。
+
+比如用户问：
+
+> How do I request annual leave?
+
+系统要能从 HR policy 文档里找到 annual leave 相关片段。
+
+考试重点：
+
+> Vector index 是 RAG 检索的基础。  
+> 没有好的 vector index，retrieval 质量会差，最终答案也会差。
+
+---
+
+# 3. Retrieve context via RAG
+
+对应工具：
+
+> **Databricks Vector Search**
+
+这一步是 RAG 的 **Retrieval**。
+
+用户提问后，系统去 vector index 里找相关内容：
+
+```text
+User query
+→ vector search
+→ relevant chunks
+```
+
+找到的内容叫：
+
+```text
+retrieved context
+relevant snippets
+chunks
+```
+
+考试重点：
+
+> RAG 不是把所有文档都塞给模型，而是检索最相关的 chunks。
+
+如果 retrieval 找错 chunk，LLM 再强也可能答错。
+
+---
+
+# 4. Generate grounded outputs
+
+对应：
+
+> **mlflow.predict()**
+
+这一步是生成答案。
+
+系统把两部分组合起来：
+
+```text
+1. 用户原始问题
+2. 检索到的相关 context
+```
+
+然后给 LLM：
+
+```text
+Prompt = user question + retrieved context
+→ LLM
+→ grounded answer
+```
+
+这里的 **grounded output** 意思是：
+
+> 基于检索到的公司数据生成的答案，而不是模型自己乱猜。
+
+考试重点：
+
+> grounded output 可以减少 hallucination 和 stale knowledge。
+
+---
+
+# 5. Register the model
+
+对应工具：
+
+> **MLflow + Unity Catalog**
+
+这一步是注册模型或 GenAI 应用。
+
+这里的 “model” 不一定只是一个单独 LLM，也可能是整个 GenAI chain，例如：
+
+```text
+retriever
++ prompt template
++ LLM
++ output parser
++ guardrails
+```
+
+注册的目的：
+
+```text
+记录版本
+记录参数
+记录 evaluation 结果
+支持审计
+支持 rollback
+```
+
+考试重点：
+
+> MLflow 用于 experiment tracking、model registry、model versioning、evaluation 记录。  
+> Unity Catalog 用于治理和权限。
+
+---
+
+# 6. Deploy
+
+对应工具：
+
+> **Databricks Model Serving**  
+> **AI Gateway**  
+> **Lakebase Postgres**  
+> **Databricks Apps**
+
+这一步是把 GenAI 应用部署出来，让用户或系统可以调用。
+
+### Databricks Model Serving
+
+用于部署模型 endpoint。
+
+例如：
+
+```text
+用户请求
+→ serving endpoint
+→ RAG chain / model
+→ 返回答案
+```
+
+### AI Gateway
+
+用于统一管理模型调用，比如：
+
+- rate limit
+    
+- usage tracking
+    
+- model routing
+    
+- cost control
+    
+- governance
+    
+- access policy
+    
+
+### Lakebase Postgres
+
+可以作为应用数据库或 operational database，用来存应用状态、用户会话、反馈、业务数据等。
+
+### Databricks Apps
+
+用于构建和部署应用界面，比如 internal chatbot、RAG assistant。
+
+考试重点：
+
+> 部署不是最后一步，部署后还要监控、评估、调试。
+
+---
+
+# 7. Evaluate & Debug
+
+对应工具：
+
+> **MLflow**
+
+这一步是循环的，不是最后才做一次。
+
+你要持续评估：
+
+```text
+retrieval 是否找对 chunk
+answer 是否正确
+answer 是否 grounded
+latency 是否达标
+cost 是否可接受
+有没有 hallucination
+有没有 privacy leakage
+```
+
+如果发现问题，要回到前面的步骤调整：
+
+|问题|回到哪一步|
+|---|---|
+|检索不到正确文档|调整 chunking / vector index|
+|回答不基于 context|改 prompt / guardrail|
+|成本太高|换小模型 / 减少 top-k / 缩短 prompt|
+|延迟太高|优化 retrieval / model serving|
+|答案质量差|换模型 / reranker / evaluation set|
+|泄露敏感信息|加强 Unity Catalog 权限、脱敏、output filtering|
+
+这就是前面讲的：
+
+> **Cyclic Evaluation 循环评估**
+
+---
+
+## 这页最重要的考试理解
+
+这不是单纯的 RAG 流程，而是 **Databricks 上企业级 GenAI 的完整生命周期**。
+
+```text
+Data governance
+→ Vector Search
+→ RAG retrieval
+→ Grounded generation
+→ MLflow registration
+→ Model serving deployment
+→ Evaluation and debugging
+→ Iterate
+```
+
+---
+
+## 每个工具一句话记忆
+
+|工具|作用|
+|---|---|
+|**Unity Catalog**|管数据权限、治理、lineage、audit|
+|**Delta Lake**|存储可靠的数据表|
+|**Vector Search**|建向量索引并检索相关 chunks|
+|**MLflow**|记录实验、评估、注册模型、版本管理|
+|**Model Serving**|部署模型或 GenAI app endpoint|
+|**AI Gateway**|管模型调用、路由、成本、访问策略|
+|**Databricks Apps**|构建和部署应用界面|
+
+---
+
+## 一句话背诵
+
+> **Databricks GenAI workflow = govern data, create vector indexes, retrieve context with RAG, generate grounded outputs, register with MLflow/Unity Catalog, deploy with Model Serving, and continuously evaluate/debug.**
+
+中文口诀：
+
+```text
+先治理数据
+再建向量索引
+RAG 检索上下文
+LLM 生成 grounded answer
+MLflow 注册和版本管理
+Model Serving 部署
+持续 Evaluation & Debug
+```
