@@ -6217,3 +6217,287 @@ Continuously improve with human feedback
 中文记法：
 
 > **Agent Bricks = 基于企业数据自动/半自动构建和优化 Agent，并通过人工反馈持续提升质量。**
+
+![[Pasted image 20260504224402.png]]
+
+
+这页讲的是 **Information Extraction（信息抽取）**，也就是：
+
+> 从非结构化或半结构化文档中，把关键信息自动提取出来，并整理成结构化数据。
+
+比如从 PDF、合同、发票、邮件、报告里提取字段、条款、日期、金额、责任人、风险点等。
+
+---
+
+## 这页的核心意思
+
+以前人要手动读文档、复制字段、整理表格。  
+现在 GenAI / Agent 可以自动做：
+
+```text
+文档 / PDF / 邮件 / 合同
+→ 识别关键信息
+→ 抽取字段
+→ 转成结构化数据
+→ 存入表格 / Delta table / downstream workflow
+```
+
+例如：
+
+```text
+Invoice PDF
+→ supplier_name
+→ invoice_date
+→ total_amount
+→ purchase_order_number
+```
+
+或者：
+
+```text
+Legal contract
+→ liability clause
+→ termination clause
+→ renewal date
+→ risk deviation
+```
+
+---
+
+## 1. Automated data structuring
+
+中文：
+
+> 自动化数据结构化
+
+意思是把原本不规则的文本变成可分析、可查询的数据。
+
+例如原文是：
+
+```text
+The contract will terminate on 31 December 2026 unless renewed by both parties.
+```
+
+抽取后变成：
+
+```json
+{
+  "clause_type": "termination",
+  "termination_date": "2026-12-31",
+  "renewal_condition": "renewed by both parties"
+}
+```
+
+这就是 **information extraction** 的典型用途。
+
+---
+
+## 2. Optimized for complexity and scale
+
+中文：
+
+> 针对复杂度和规模进行优化
+
+意思是 Agent Bricks / Databricks 不只是处理一两个简单文件，而是适合企业批量处理复杂文档。
+
+比如：
+
+```text
+10 张发票 → 简单抽取
+5000 张发票 → 需要规模化
+50 份合同 → 需要复杂判断
+10 万封客户邮件 → 需要自动分类和抽取
+```
+
+复杂度体现在：
+
+- 文档格式不统一
+    
+- 字段位置不固定
+    
+- 有表格、段落、附件
+    
+- 有专业术语
+    
+- 需要跨页理解
+    
+- 需要判断上下文
+    
+- 需要抽取多个字段
+    
+- 需要输出成固定 schema
+    
+
+---
+
+## 3. Enterprise-grade governance & quality
+
+中文：
+
+> 企业级治理和质量保障
+
+这里提到两个工具：
+
+```text
+Unity Catalog integration
+MLflow
+```
+
+### Unity Catalog integration
+
+主要用于：
+
+```text
+权限控制
+数据治理
+lineage
+audit
+PII / 敏感数据保护
+```
+
+比如抽取合同或医疗文档时，不能让无权限用户访问敏感字段。
+
+---
+
+### MLflow
+
+主要用于：
+
+```text
+记录实验
+记录模型版本
+记录抽取结果质量
+记录评估指标
+支持回滚和审计
+```
+
+比如你做了两个抽取模型：
+
+```text
+Extractor v1: accuracy 86%
+Extractor v2: accuracy 92%
+```
+
+MLflow 可以帮你记录、比较、注册和管理版本。
+
+---
+
+## 4. Rapid assessment
+
+中文：
+
+> 快速评估 / 快速判断效果
+
+意思是你可以快速评估这个信息抽取系统表现好不好。
+
+常见评估指标包括：
+
+|指标|含义|
+|---|---|
+|Field accuracy|字段抽取是否正确|
+|Completeness|有没有漏字段|
+|Format validity|输出 JSON/schema 是否正确|
+|Groundedness|抽取结果是否能在原文中找到依据|
+|Precision|抽出来的是不是对的|
+|Recall|应该抽的有没有都抽出来|
+|Latency|处理速度|
+|Cost|处理成本|
+
+例如发票抽取：
+
+```text
+应抽字段：invoice_date, supplier, total_amount
+实际结果：supplier 正确，date 正确，amount 错误
+```
+
+这就可以用于评估和改进。
+
+---
+
+## 这页和前面内容怎么连起来？
+
+前面讲过：
+
+```text
+RAG = 查资料后回答问题
+Agent = 多步骤执行任务
+Evaluation = 评估质量
+Governance = 管权限和可追溯
+```
+
+这页的 **Information Extraction** 是 Agent Bricks 的一个典型应用：
+
+```text
+给它一批企业文档
+→ 自动抽取结构化信息
+→ 用 MLflow 评估质量
+→ 用 Unity Catalog 管治理
+→ 批量生产可用数据
+```
+
+---
+
+## 简单例子：合同抽取
+
+任务：
+
+```text
+从 50 份合同里抽取 liability clauses，并判断是否偏离公司标准。
+```
+
+Agent 可能做：
+
+```text
+1. 读取合同
+2. 找到 liability clause
+3. 抽取条款内容
+4. 对比公司标准条款
+5. 标记偏离点
+6. 输出 structured table
+7. 给法务审核
+```
+
+输出可能是：
+
+|contract_id|clause_type|extracted_text|deviation|page|
+|---|---|---|---|---|
+|C001|liability|...|yes|12|
+|C002|liability|...|no|8|
+
+这就是复杂的 information extraction。
+
+---
+
+## 考试重点
+
+看到这些关键词，要想到 **Information Extraction**：
+
+```text
+extract fields
+extract clauses
+unstructured documents
+convert text to structured data
+automated data structuring
+invoice extraction
+contract extraction
+PDF extraction
+structured output
+```
+
+如果题目说：
+
+> 从文档里抽取字段并写入结构化表格
+
+答案方向就是：
+
+> **Information extraction / automated data structuring**
+
+---
+
+## 一句话背诵
+
+> **Information Extraction uses GenAI/agents to automatically convert unstructured enterprise documents into structured, governed, and quality-assessed data.**
+
+中文记法：
+
+> **Information Extraction = 从文档里自动抽取关键信息，变成结构化数据，并通过 Unity Catalog 和 MLflow 做治理与质量管理。**
