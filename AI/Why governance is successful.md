@@ -4214,3 +4214,5 @@ MLflow 注册和版本管理
 Model Serving 部署
 持续 Evaluation & Debug
 ```
+
+![[Pasted image 20260504221928.png]]
