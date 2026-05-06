@@ -7078,3 +7078,155 @@ scalable and maintainable
 中文记法：
 
 > **Supervisor Agent = 总调度 Agent，负责理解用户意图，把任务分配给合适的专业 Agent，并协调它们完成复杂任务。**
+
+
+测试题目 **10 道题目的英文原文 + 全部选项**：
+
+---
+
+## Question 1 of 10
+
+**In model evaluation, what is a documented "con" of using the "LLM as Judge" technique?**
+
+- It cannot provide a written rationale for the scores it gives.
+    
+- It is significantly more expensive than hiring human experts.
+    
+- It is slower than human review and cannot scale.
+    
+- It may exhibit "verbosity bias," favoring longer responses regardless of accuracy.
+    
+
+---
+
+## Question 2 of 10
+
+**What is the primary factor that separates successful organizations from their competitors in the GenAI landscape?**
+
+- High computational power and server clusters.
+    
+- Access to the largest and newest frontier models.
+    
+- Connecting GenAI to unique, proprietary data and domain expertise.
+    
+- Using non-deterministic models for all customer-facing tasks.
+    
+
+---
+
+## Question 3 of 10
+
+**What occurs when a model reaches the limit of its "context window"?**
+
+- The model automatically switches from a Small Language Model (SLM) to a Frontier model.
+    
+- The model requires a system reboot.
+    
+- The model begins to charge a higher API fee for the overflow.
+    
+- The model drops the earliest information to make room for new data, potentially leading to hallucinations.
+    
+
+---
+
+## Question 4 of 10
+
+**Which model class would be most appropriate for a high-volume, repetitive task where low latency (speed) is the priority over deep reasoning?**
+
+- Large Language Models (LLMs)
+    
+- Reasoning-focused Models
+    
+- Small Language Models (SLMs)
+    
+- Frontier Models
+    
+
+---
+
+## Question 5 of 10
+
+**What does "Grounding" accomplish in an enterprise AI solution?**
+
+- It ensures the model is hosted on a public cloud rather than a private one.
+    
+- It anchors the model's responses in specific, verified organizational data to reduce hallucinations.
+    
+- It prevents the model from using any tokens during the reasoning phase.
+    
+- It limits the model's creativity to ensure it only writes in code.
+    
+
+---
+
+## Question 6 of 10
+
+**What is the fundamental distinction between a standard GenAI model and an AI Agent?**
+
+- GenAI is for single-step generation, while agents use reasoning for multi-step, adaptive workflows.
+    
+- AI agents are always cheaper to run than standalone LLMs.
+    
+- GenAI requires a context window, whereas AI agents do not.
+    
+- GenAI models use tokens, while AI agents use full words only.
+    
+
+---
+
+## Question 7 of 10
+
+**Which component of the Agent Bricks suite is specifically designed to act as an intelligent router, directing user requests to specialized sub-agents?**
+
+- Knowledge Assistant Brick
+    
+- Supervisor Agent Brick
+    
+- AI Gateway
+    
+- Information Extraction Brick
+    
+
+---
+
+## Question 8 of 10
+
+**How does the "Brilliant Intern" analogy describe the behavior of an LLM?**
+
+- It is a worker that performs slowly but with 100% deterministic accuracy.
+    
+- It is highly knowledgeable but takes instructions extremely literally and lacks specific business context.
+    
+- It is a system that only functions correctly when given vague, open-ended prompts.
+    
+- It is a creative genius that understands business context intuitively.
+    
+
+---
+
+## Question 9 of 10
+
+**How does Retrieval Augmented Generation (RAG) improve upon a "vanilla" LLM?**
+
+- It allows the model to look up real-time information from external trusted sources before generating an answer.
+    
+- It retrains the entire foundation model every time a user submits a query.
+    
+- It reduces the context window to save on computational costs.
+    
+- It eliminates the need for tokenization.
+    
+
+---
+
+## Question 10 of 10
+
+**In the context of Large Language Models (LLMs), what are "parameters"?**
+
+- The maximum number of words a model can output in one response.
+    
+- The specific documents used during the grounding process.
+    
+- Internal weights and settings that define the model's structure and intelligence.
+    
+- The speed at which a model generates a single token.
