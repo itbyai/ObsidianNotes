@@ -6840,3 +6840,241 @@ Instructed Retrieval
 中文记法：
 
 > **Knowledge Assistant = 企业级 RAG 知识助手；用 Instructed Retrieval 做更精准检索，用 Unity Catalog 管权限，用 MLflow tracing 做追踪和审计。**
+
+![[Pasted image 20260506203652.png]]
+这页讲的是 **Supervisor Agent（监督/协调型 Agent）**。
+
+核心意思：
+
+> Supervisor Agent 本身不一定亲自完成所有任务，它更像一个“项目经理 / 调度员”，负责理解用户意图，然后把任务分配给合适的专业 Agent。
+
+---
+
+## Supervisor Agent 是什么？
+
+可以理解成：
+
+```text
+一个总控 Agent
+→ 判断用户想做什么
+→ 选择合适的子 Agent
+→ 协调多个 Agent 完成任务
+→ 汇总结果返回用户
+```
+
+比如你有三个专业 Agent：
+
+```text
+HR Policy Agent
+Legal Review Agent
+Data Analysis Agent
+```
+
+用户问：
+
+> Can you check if this contract clause is compliant?
+
+Supervisor Agent 会判断：
+
+```text
+这是 legal / compliance 任务
+→ 转给 Legal Review Agent
+```
+
+如果用户问：
+
+> What is our annual leave policy?
+
+它会转给：
+
+```text
+HR Policy Agent
+```
+
+---
+
+## 1. Advanced orchestration
+
+**Orchestration = 编排 / 调度 / 协调**
+
+意思是：
+
+> Supervisor Agent 负责组织多个步骤、多个工具、多个 Agent 的协作。
+
+它不是简单回答一句话，而是决定：
+
+```text
+谁来处理？
+先做哪一步？
+需要调用哪个工具？
+是否需要另一个 Agent 继续处理？
+什么时候汇总结果？
+```
+
+这就是高级编排。
+
+---
+
+## 2. Coordinates multiple specialized AI agents
+
+中文：
+
+> 协调多个专业 AI Agent。
+
+比如一个企业系统里可能有：
+
+|Agent|负责什么|
+|---|---|
+|Knowledge Assistant|查询内部知识库|
+|Information Extraction Agent|从文档抽取字段|
+|Compliance Agent|检查合规风险|
+|SQL Agent|查询数据库|
+|Customer Support Agent|处理客服问题|
+|Report Agent|生成总结报告|
+
+Supervisor Agent 负责把任务发给正确的 Agent。
+
+---
+
+## 3. Routes by analyzing user intent
+
+这句是考试重点。
+
+**Route = 路由 / 分流**
+
+意思是：
+
+> Supervisor Agent 会分析用户意图，然后把请求转给合适的 Agent。
+
+例如用户说：
+
+```text
+Summarize this PDF and extract the key dates.
+```
+
+Supervisor Agent 可能判断：
+
+```text
+需要两个能力：
+1. Summarization Agent
+2. Information Extraction Agent
+```
+
+然后它会安排：
+
+```text
+先让 Extraction Agent 抽取日期
+再让 Summarization Agent 总结
+最后自己汇总结果
+```
+
+---
+
+## 4. Scalable and maintainable
+
+中文：
+
+> 可扩展、可维护。
+
+为什么？
+
+因为不用让一个超级 Agent 做所有事情，而是拆成多个专业 Agent。
+
+### Develop separate agents
+
+每个 Agent 单独开发：
+
+```text
+HR Agent 只管 HR
+Legal Agent 只管 Legal
+SQL Agent 只管 SQL
+```
+
+这样更清晰、更容易维护。
+
+### Optimize independently
+
+每个 Agent 可以单独优化：
+
+```text
+HR Agent 检索不准 → 优化 HR 知识库和 prompt
+
+SQL Agent 查询慢 → 优化 SQL 生成和权限控制
+
+Legal Agent 风险判断差 → 加 human review 和 compliance judge
+```
+
+不用每次都改整个系统。
+
+---
+
+## Supervisor Agent 的好处
+
+|好处|解释|
+|---|---|
+|任务分流|自动判断该找哪个 Agent|
+|更专业|每个 Agent 负责自己擅长的领域|
+|更容易维护|子 Agent 可以单独开发和测试|
+|更容易扩展|新增一个 Agent，不一定要重写整体系统|
+|更适合复杂任务|可以协调多个 Agent 分步完成|
+
+---
+
+## 一个完整例子
+
+用户问：
+
+```text
+Please review this contract, extract the liability clause, compare it with our standard, and summarize the risk.
+```
+
+Supervisor Agent 可能这样安排：
+
+```text
+1. Document Extraction Agent
+   → 找出 liability clause
+
+2. Knowledge Assistant
+   → 检索公司标准 liability clause
+
+3. Compliance Agent
+   → 比较差异和风险
+
+4. Supervisor Agent
+   → 汇总最终结果
+```
+
+这就是 multi-agent orchestration。
+
+---
+
+## 考试重点
+
+如果题目出现这些词，要想到 **Supervisor Agent**：
+
+```text
+orchestration
+routes requests
+analyzes user intent
+coordinates multiple agents
+specialized agents
+scalable and maintainable
+```
+
+尤其是：
+
+> 用户请求有多种类型，需要自动分配给不同专业 Agent。
+
+答案通常就是：
+
+> **Supervisor Agent / routing agent / orchestrator agent**
+
+---
+
+## 一句话背诵
+
+> **A Supervisor Agent orchestrates multiple specialized agents by analyzing user intent, routing requests, and coordinating their work in a scalable and maintainable way.**
+
+中文记法：
+
+> **Supervisor Agent = 总调度 Agent，负责理解用户意图，把任务分配给合适的专业 Agent，并协调它们完成复杂任务。**
