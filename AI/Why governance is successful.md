@@ -6504,3 +6504,339 @@ structured output
 
 
 ![[Pasted image 20260504225035.png]]
+
+这页讲的是 **Knowledge Assistant（知识助手）**，本质上是一个更高级的企业 RAG 应用。
+
+核心意思：
+
+> Knowledge Assistant 不只是普通搜索文档，而是用更智能的检索方式，从企业知识库里找出更准确、更有上下文、更可引用的内容，然后生成可信答案。
+
+---
+
+## 这页两个重点
+
+```text
+1. Advanced Grounding with Instructed Retrieval
+2. Integrated with Unity Catalog and MLflow tracing
+```
+
+---
+
+# 1. Advanced Grounding with “Instructed Retrieval”
+
+普通 RAG 是：
+
+```text
+用户问题
+→ 根据相似度找相关 chunks
+→ 放进 prompt
+→ LLM 回答
+```
+
+但 **Instructed Retrieval** 更进一步。
+
+它不是简单地“找相似文本”，而是带着任务指令去检索。
+
+可以理解成：
+
+> 检索器知道“你要找什么类型的信息、为什么要找、应该如何判断相关性”。
+
+---
+
+## 普通 retrieval vs instructed retrieval
+
+### 普通 retrieval
+
+用户问：
+
+```text
+What is the leave policy for contractors?
+```
+
+系统可能只按关键词找：
+
+```text
+leave
+policy
+contractor
+```
+
+可能检索到很多不完全相关的内容。
+
+---
+
+### Instructed Retrieval
+
+系统会理解任务意图：
+
+```text
+我要找的是 contractor 适用的 leave policy，
+不是 permanent employee 的 leave policy，
+也不是 general HR leave overview。
+```
+
+所以它更可能找出真正相关的片段。
+
+---
+
+## More accurate
+
+中文：
+
+> 更准确。
+
+因为 instructed retrieval 不只是关键词匹配，也不是单纯向量相似度，而是更贴近用户意图和任务目标。
+
+例如用户问：
+
+```text
+Which policy applies to temporary staff working remotely?
+```
+
+普通检索可能找 remote work policy。  
+更好的 instructed retrieval 可能同时找：
+
+```text
+temporary staff policy
+remote work policy
+employment category rules
+```
+
+这样答案更准确。
+
+---
+
+## Context-aware
+
+中文：
+
+> 有上下文意识。
+
+意思是它会考虑上下文，而不是孤立地看问题。
+
+比如用户前面问了：
+
+```text
+Tell me about annual leave.
+```
+
+然后又问：
+
+```text
+Does this apply to contractors?
+```
+
+Context-aware retrieval 能理解：
+
+> “this” 指的是 annual leave policy。
+
+所以它会检索 contractor + annual leave 的相关内容，而不是单独搜索 “this apply contractors”。
+
+---
+
+## Reliable citations
+
+中文：
+
+> 可靠引用。
+
+这点对企业 RAG 很重要。
+
+Knowledge Assistant 不只是回答：
+
+```text
+Yes, contractors are excluded.
+```
+
+而是最好能告诉你：
+
+```text
+根据 HR Policy v3.2，Section 4.1，contractors are not eligible for paid annual leave.
+```
+
+这和前面讲的：
+
+```text
+groundedness
+lineage
+auditability
+trust
+```
+
+是连在一起的。
+
+考试里看到 **citations / source references / grounded answers**，要想到 RAG、grounding、lineage。
+
+---
+
+# 2. Integrated with Unity Catalog and MLflow tracing
+
+这句话意思是：
+
+> Knowledge Assistant 不只是一个聊天机器人，它还接入了 Databricks 的治理和追踪能力。
+
+---
+
+## Unity Catalog 的作用
+
+Unity Catalog 主要管：
+
+```text
+权限
+数据治理
+lineage
+audit
+访问控制
+```
+
+在 Knowledge Assistant 里，它确保：
+
+```text
+用户只能检索自己有权限访问的文档或数据
+敏感数据受控
+数据来源可追踪
+```
+
+比如：
+
+|用户|能看到什么|
+|---|---|
+|HR manager|HR policy + employee data|
+|普通员工|公开 HR policy|
+|Contractor|contractor policy only|
+|无权限用户|不能通过 AI 问出敏感内容|
+
+所以 Unity Catalog 让 Knowledge Assistant 是：
+
+```text
+Governed
+```
+
+也就是被治理的。
+
+---
+
+## MLflow tracing 的作用
+
+MLflow tracing 用来记录一次回答背后的执行过程。
+
+比如用户问了一个问题，系统会记录：
+
+```text
+用户问题是什么
+检索了哪些 chunks
+用了哪个 prompt
+调用了哪个模型
+模型回答是什么
+每一步耗时多少
+有没有错误
+```
+
+这让系统变得：
+
+```text
+Transparent
+Auditable
+```
+
+也就是透明、可审计。
+
+---
+
+## Governed / Transparent / Auditable
+
+这三个词很重要。
+
+|词|中文|含义|
+|---|---|---|
+|**Governed**|被治理|有权限控制、数据安全、合规约束|
+|**Transparent**|透明|能看到系统用了什么数据、怎么生成答案|
+|**Auditable**|可审计|出问题时能追踪记录、验证过程|
+
+---
+
+## Knowledge Assistant 和普通 Chatbot 的区别
+
+|普通 Chatbot|Knowledge Assistant|
+|---|---|
+|靠模型通用知识|基于企业知识库|
+|容易泛泛回答|输出更具体|
+|来源不清楚|有 citations|
+|权限控制弱|Unity Catalog 治理|
+|调试困难|MLflow tracing|
+|难审计|可追踪、可审计|
+
+---
+
+## 和 RAG 的关系
+
+Knowledge Assistant 可以理解为：
+
+> 一个企业级、更受治理、更可追踪的 RAG 应用。
+
+它包含：
+
+```text
+企业知识库
+→ Instructed Retrieval
+→ Grounded answer
+→ Reliable citations
+→ Unity Catalog governance
+→ MLflow tracing
+```
+
+---
+
+## 考试重点
+
+看到这些关键词，可以这样判断：
+
+### 如果题目说：
+
+> 需要企业内部知识问答，并且答案要有来源引用。
+
+答案方向：
+
+```text
+Knowledge Assistant / RAG with citations
+```
+
+### 如果题目说：
+
+> 用户只能看到自己有权限访问的数据。
+
+答案方向：
+
+```text
+Unity Catalog governance
+```
+
+### 如果题目说：
+
+> 要调试一次回答为什么错了，查看检索了哪些 chunk。
+
+答案方向：
+
+```text
+MLflow tracing
+```
+
+### 如果题目说：
+
+> 检索需要更准确、更理解上下文。
+
+答案方向：
+
+```text
+Instructed Retrieval
+```
+
+---
+
+## 一句话背诵
+
+> **Knowledge Assistant uses instructed retrieval to provide more accurate, context-aware, and citation-backed answers, while Unity Catalog and MLflow tracing make the system governed, transparent, and auditable.**
+
+中文记法：
+
+> **Knowledge Assistant = 企业级 RAG 知识助手；用 Instructed Retrieval 做更精准检索，用 Unity Catalog 管权限，用 MLflow tracing 做追踪和审计。**
