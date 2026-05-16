@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "AI/Retrieval Agents and Context Engineering.md",
+                "file": "Stocks/美股分析行业估值.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Retrieval Agents and Context Engineering"
+              "title": "美股分析行业估值"
             }
           }
         ],
@@ -141,13 +141,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "AI/Retrieval Agents and Context Engineering.md",
+                "file": "Stocks/美股分析行业估值.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Retrieval Agents and Context Engineering"
+              "title": "Outline of 美股分析行业估值"
             }
           }
         ],
@@ -174,8 +174,9 @@
   },
   "active": "15cf25c7aac0d93a",
   "lastOpenFiles": [
-    "AI/1、大语言模型文件的内容LLAMA为例.md",
     "AI/Retrieval Agents and Context Engineering.md",
+    "Stocks/美股分析行业估值.md",
+    "AI/1、大语言模型文件的内容LLAMA为例.md",
     "AI/最有用的ai证书.md",
     "AI/学习资料.md",
     "AI/多头注意力机制.md",
@@ -209,7 +210,6 @@
     "AI/A simple Agentic Example.md",
     "AI/AI Agent Systems.md",
     "AI/AI Agent and non-agentic.md",
-    "AI/From GenAI to AI Agents.md",
     "DBT/Detailed pages",
     "Test Cases",
     "Terminology",
