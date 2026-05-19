@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Grammar/Untitled.md",
+                "file": "AI/Building Retrieval Agents on databricks.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Untitled"
+              "title": "Building Retrieval Agents on databricks"
             }
           }
         ],
@@ -141,13 +141,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Grammar/Untitled.md",
+                "file": "AI/Building Retrieval Agents on databricks.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Untitled"
+              "title": "Outline of Building Retrieval Agents on databricks"
             }
           }
         ],
@@ -174,10 +174,12 @@
   },
   "active": "15cf25c7aac0d93a",
   "lastOpenFiles": [
-    "Stocks/美股分析行业估值.md",
-    "Grammar/Untitled.md",
-    "Grammar",
+    "AI/The Agentic Toolkit.md",
+    "AI/Building Retrieval Agents on databricks.md",
     "AI/Retrieval Agents and Context Engineering.md",
+    "Grammar/Untitled.md",
+    "Stocks/美股分析行业估值.md",
+    "Grammar",
     "AI/1、大语言模型文件的内容LLAMA为例.md",
     "AI/最有用的ai证书.md",
     "AI/学习资料.md",
@@ -209,8 +211,6 @@
     "AI/AI Model Classes.md",
     "AI/Untitled.md",
     "AI/AI Agent Use Cases.md",
-    "AI/A simple Agentic Example.md",
-    "AI/AI Agent Systems.md",
     "DBT/Detailed pages",
     "Test Cases",
     "Terminology",
