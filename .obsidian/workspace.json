@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "AI/Building Retrieval Agents on databricks.md",
+                "file": "AI/Retrieval Agents and Context Engineering.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Building Retrieval Agents on databricks"
+              "title": "Retrieval Agents and Context Engineering"
             }
           }
         ],
@@ -141,13 +141,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "AI/Building Retrieval Agents on databricks.md",
+                "file": "AI/Retrieval Agents and Context Engineering.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Building Retrieval Agents on databricks"
+              "title": "Outline of Retrieval Agents and Context Engineering"
             }
           }
         ],
