@@ -995,14 +995,14 @@ Cost control
 
 ## 推荐学习顺序
 
-|顺序|课程 / 视频|必学程度|你要重点看什么|
-|---|--:|--:|---|
-|0|**Get Started with Databricks for Generative AI**|可选，但建议先看|Mosaic AI、Vector Search、Agent Framework、MLflow GenAI 能力|
-|1|**Building Retrieval Agents On Databricks**|最高优先级|RAG、document parsing、chunking、embedding、Vector Search、MLflow、Agent Bricks|
-|2|**Building Single-Agent Applications on Databricks**|最高优先级|Agent、tools、Unity Catalog functions、LangChain、MLflow tracing、Agent Bricks|
-|3|**Generative AI Application Evaluation and Governance**|必学|evaluation、governance、guardrails、security、quality metrics|
-|4|**Generative AI Application Deployment and Monitoring**|必学|Model Serving、batch inference、real-time serving、Lakehouse Monitoring、LLMOps|
-|5|Databricks Docs hands-on tutorials|必做|RAG、AI agents、Vector Search、deployment、monitoring|
+| 顺序  |                                                 课程 / 视频 |     必学程度 | 你要重点看什么                                                                     |
+| --- | ------------------------------------------------------: | -------: | --------------------------------------------------------------------------- |
+| 0   |       **Get Started with Databricks for Generative AI** | 可选，但建议先看 | Mosaic AI、Vector Search、Agent Framework、MLflow GenAI 能力                     |
+| 1   |             **Building Retrieval Agents On Databricks** |    最高优先级 | RAG、document parsing、chunking、embedding、Vector Search、MLflow、Agent Bricks   |
+| 2   |    **Building Single-Agent Applications on Databricks** |    最高优先级 | Agent、tools、Unity Catalog functions、LangChain、MLflow tracing、Agent Bricks   |
+| 3   | **Generative AI Application Evaluation and Governance** |       必学 | evaluation、governance、guardrails、security、quality metrics                   |
+| 4   | **Generative AI Application Deployment and Monitoring** |       必学 | Model Serving、batch inference、real-time serving、Lakehouse Monitoring、LLMOps |
+| 5   |                      Databricks Docs hands-on tutorials |       必做 | RAG、AI agents、Vector Search、deployment、monitoring                           |
 
 ---
 
