@@ -989,3 +989,309 @@ Cost control
 一句话：
 
 **从业务需求出发，在 Databricks 上构建一个安全、可部署、可评估、可监控的 RAG/Agent 应用。**
+
+
+你应该优先学 **Databricks Academy 官方课程**，不要先去看零散 YouTube。因为这个考试明显是围绕 Databricks 自己的 **Mosaic AI / Vector Search / MLflow / Model Serving / Unity Catalog / Agent Framework** 来考的。官方考试页也明确说考试评估的是用 Databricks 设计和实现 LLM 应用，包括 AI Search、Model Serving、MLflow、Unity Catalog，并且考试权重最高的是 **Application Development 30%** 和 **Assembling and Deploying Apps 22%**。([Databricks](https://www.databricks.com/learn/certification/genai-engineer-associate "Databricks Certified Generative AI Engineer Associate | Databricks"))
+
+## 推荐学习顺序
+
+|顺序|课程 / 视频|必学程度|你要重点看什么|
+|---|--:|--:|---|
+|0|**Get Started with Databricks for Generative AI**|可选，但建议先看|Mosaic AI、Vector Search、Agent Framework、MLflow GenAI 能力|
+|1|**Building Retrieval Agents On Databricks**|最高优先级|RAG、document parsing、chunking、embedding、Vector Search、MLflow、Agent Bricks|
+|2|**Building Single-Agent Applications on Databricks**|最高优先级|Agent、tools、Unity Catalog functions、LangChain、MLflow tracing、Agent Bricks|
+|3|**Generative AI Application Evaluation and Governance**|必学|evaluation、governance、guardrails、security、quality metrics|
+|4|**Generative AI Application Deployment and Monitoring**|必学|Model Serving、batch inference、real-time serving、Lakehouse Monitoring、LLMOps|
+|5|Databricks Docs hands-on tutorials|必做|RAG、AI agents、Vector Search、deployment、monitoring|
+
+---
+
+# 1. 先看：Get Started with Databricks for Generative AI
+
+这个适合你先建立全局认识。官方说明这个课程会介绍 Mosaic AI 平台，以及 Vector Search、Agent Framework、MLflow 的 GenAI 能力，目标是让学习者能够设计、部署和监控常见的 GenAI 应用。([Databricks](https://www.databricks.com/training/catalog/get-started-with-databricks-for-generative-ai-2724?utm_source=chatgpt.com "Get Started with Databricks for Generative AI"))
+
+你重点看：
+
+```text
+Mosaic AI 是什么
+Vector Search 是什么
+Agent Framework 是什么
+MLflow 在 GenAI 里做什么
+Databricks 如何部署和监控 GenAI 应用
+```
+
+这个不是最核心考试内容，但适合打底。
+
+---
+
+# 2. 第一核心：Building Retrieval Agents On Databricks
+
+这是最重要的课程之一。官方说明这个课程覆盖：
+
+- unstructured document parsing
+    
+- transform and chunk content
+    
+- retrieval workflow
+    
+- vector search solution
+    
+- MLflow
+    
+- Agent Bricks
+    
+- production-ready agents
+    
+
+课程大纲包括 **Document Parsing and Chunking、Vector Search for Retrieval、Building and Logging Retrieval Agents、Agent Bricks**。([Databricks](https://www.databricks.com/training/catalog/building-retrieval-agents-on-databricks-2662?itm_category=training&itm_component=general-asset-card&itm_location=body&itm_offer=building-retrieval-agents-on-databricks-2662&itm_page=machine-learning-with-databricks-2422&itm_source=www "Building Retrieval Agents On Databricks | Databricks"))
+
+你要重点学：
+
+```text
+1. 文档怎么解析
+2. 文档怎么 chunk
+3. embedding 怎么生成
+4. Delta table 怎么存 chunk
+5. Vector Search index 怎么建
+6. Retriever 怎么查
+7. RAG agent 怎么接 LLM
+8. MLflow 怎么 log agent
+9. Agent Bricks 什么时候用
+```
+
+这个对应考试里的：
+
+```text
+Section 1: Design Applications
+Section 2: Data Preparation
+Section 3: Application Development
+Section 4: Assembling and Deploying Applications
+```
+
+尤其是 **chunking、Vector Search、retrieval evaluation、RAG agent**，这些是高频考点。
+
+---
+
+# 3. 第二核心：Building Single-Agent Applications on Databricks
+
+这个也是必学。官方说明这个课程教你在 Databricks 上构建 single-agent applications，包括：
+
+- 用 Unity Catalog functions 作为 tools
+    
+- 用 MLflow 做 tracing 和 monitoring
+    
+- 用 LangChain 等传统框架
+    
+- 用 Agent Bricks
+    
+- 从 AI Playground 到 production deployment 的完整生命周期
+    
+
+官方页面也说明这是 Generative AI Engineering with Databricks 系列的第二门课，之前叫 **Generative AI Application Development**。([Databricks](https://www.databricks.com/training/catalog/building-single-agent-applications-on-databricks-2716 "Building Single-Agent Applications on Databricks | Databricks"))
+
+你重点看：
+
+```text
+1. Agent 和普通 RAG chain 的区别
+2. Tool calling 是怎么设计的
+3. Unity Catalog function 怎么作为 tool
+4. LangChain 在 Databricks 里怎么用
+5. MLflow tracing 如何看 agent 每一步
+6. Agent Bricks 适合什么场景
+7. single-agent 如何部署和监控
+```
+
+这个对应考试里的：
+
+```text
+Section 1: Design Applications
+Section 3: Application Development
+Section 4: Assembling and Deploying Applications
+Section 6: Evaluation and Monitoring
+```
+
+这个对你转 **AI Engineer / GenAI QA / Databricks AI Engineer** 很关键。
+
+---
+
+# 4. 第三核心：Generative AI Application Evaluation and Governance
+
+这个一定要学。官方说明这个课程介绍如何评估和治理 GenAI 系统，包括 evaluation techniques、governance/security systems，以及如何在 Databricks Data Intelligence Platform 上连接 evaluation 和 governance。课程时长是 2 小时。([Databricks](https://www.databricks.com/training/catalog/generative-ai-application-evaluation-and-governance-2717?utm_source=chatgpt.com "Generative AI Application Evaluation and Governance"))
+
+你重点看：
+
+```text
+1. 如何评价 RAG answer quality
+2. 如何评价 retrieval quality
+3. groundedness 是什么
+4. relevance 是什么
+5. safety / toxicity 怎么评估
+6. guardrails 怎么设计
+7. Unity Catalog 在 governance 里做什么
+8. PII masking / access control 怎么做
+9. 哪些 evaluation judge 需要 ground truth
+```
+
+这个对应考试里的：
+
+```text
+Section 5: Governance
+Section 6: Evaluation and Monitoring
+```
+
+考试会经常问：
+
+```text
+哪个 metric 最适合判断答案是否基于上下文？
+哪个 guardrail 可以防 prompt injection？
+什么情况下需要 ground truth？
+如何避免敏感信息泄露？
+```
+
+---
+
+# 5. 第四核心：Generative AI Application Deployment and Monitoring
+
+这个也必须看。官方说明这个课程目标是让你会部署、运行和监控 GenAI 应用，重点包括 Model Serving、recommended architecture、Lakehouse Monitoring。([Databricks](https://www.databricks.com/training/catalog/generative-ai-application-deployment-and-monitoring-2713?utm_source=chatgpt.com "Generative AI Application Deployment and Monitoring"))
+
+另一个官方课程页列出的 outline 包括：
+
+```text
+Model Deployment Fundamentals
+Batch Deployment
+Real-Time Deployment
+AI System Monitoring
+LLMOps Concepts
+```
+
+([Databricks](https://www.databricks.com/training/catalog/generative-ai-application-deployment-and-monitoring-2673?utm_source=chatgpt.com "Generative AI Application Deployment and Monitoring"))
+
+你重点看：
+
+```text
+1. MLflow model 怎么 register 到 Unity Catalog
+2. Model Serving endpoint 怎么部署
+3. Batch inference 和 real-time serving 区别
+4. ai_query() 什么时候用
+5. Foundation Model APIs 怎么接
+6. Inference tables 记录什么
+7. Usage tables 记录什么
+8. Lakehouse Monitoring 看什么
+9. LLMOps / CI/CD 怎么做
+10. prompt lifecycle 怎么管理
+```
+
+这个对应考试里的：
+
+```text
+Section 4: Assembling and Deploying Applications
+Section 6: Evaluation and Monitoring
+```
+
+这部分分数很高，因为 **Assembling and Deploying Apps 占 22%**。([Databricks](https://www.databricks.com/learn/certification/genai-engineer-associate "Databricks Certified Generative AI Engineer Associate | Databricks"))
+
+---
+
+# 6. 必做配套 Docs / Tutorial
+
+除了 Academy 视频/课程，建议你至少过一遍官方文档里的两个主题。
+
+## RAG 文档
+
+Databricks 官方 RAG 文档把 RAG 分成：
+
+```text
+Retrieval
+Augmentation
+Generation
+```
+
+并说明 Databricks 上 RAG 涉及 Delta Lake、AI Search、Model Serving、Gen AI evaluation、Gen AI monitoring、AI Gateway 等组件。([Databricks Documentation](https://docs.databricks.com/aws/en/generative-ai/retrieval-augmented-generation "RAG (Retrieval Augmented Generation) on Databricks | Databricks on AWS"))
+
+你重点看：
+
+```text
+RAG architecture
+AI Search / Vector Search
+evaluation & monitoring
+RAG on Databricks
+```
+
+## AI Agent quickstart
+
+官方 AI agents tutorial 说明可以用 Databricks Apps template 创建和部署 agent，并包含 conversational REST API、chat UI、MLflow evaluation，以及通过 ResponsesAgent interface 接入 Databricks 的 evaluation 和 deployment 能力。([Databricks Documentation](https://docs.databricks.com/aws/en/generative-ai/tutorials/agent-framework-notebook "Get started with AI agents | Databricks on AWS"))
+
+你重点看：
+
+```text
+Databricks Apps
+AgentServer
+ResponsesAgent
+MLflow tracing
+MCP servers
+Agent evaluation
+```
+
+---
+
+# 最省时间版本
+
+如果你时间有限，只看这 4 个：
+
+```text
+1. Building Retrieval Agents On Databricks
+2. Building Single-Agent Applications on Databricks
+3. Generative AI Application Evaluation and Governance
+4. Generative AI Application Deployment and Monitoring
+```
+
+顺序不要反。先 RAG，再 Agent，再 Evaluation/Governance，最后 Deployment/Monitoring。
+
+---
+
+# 对你来说的重点排序
+
+结合你现在做 Databricks / Data Testing / QH 项目，我建议你这样分配精力：
+
+|主题|重要性|原因|
+|---|--:|---|
+|RAG + Vector Search|最高|考试核心，也是企业 GenAI 最常见落地方式|
+|Chunking + Data Preparation|最高|很容易出场景题|
+|MLflow + Agent tracing|最高|Databricks 特色，高频|
+|Model Serving + UC registration|高|部署题核心|
+|Evaluation metrics|高|很多题考 groundedness、relevance、safety|
+|Governance / Guardrails|高|企业场景必考|
+|LangChain / Tools / Agent|中高|要懂组件选择，不一定大量写代码|
+|MCP / Multi-agent|中|新内容，理解应用场景即可|
+|Hugging Face / Transformers|中低|了解 model card、metadata、模型选择即可|
+
+---
+
+# 我的建议
+
+你就按这个计划学：
+
+```text
+Day 1:
+Get Started with Databricks for Generative AI
++ Building Retrieval Agents 前半部分：document parsing / chunking
+
+Day 2:
+Building Retrieval Agents 后半部分：Vector Search / RAG agent / MLflow / Agent Bricks
+
+Day 3:
+Building Single-Agent Applications：tools / Unity Catalog functions / LangChain / tracing
+
+Day 4:
+Evaluation and Governance：metrics / guardrails / security / evaluation judges
+
+Day 5:
+Deployment and Monitoring：MLflow register / Model Serving / ai_query / inference tables / monitoring
+
+Day 6:
+只复习考试大纲，把每个 bullet 对应到 Databricks 功能
+```
+
+最重要一句话：
+
+**先把 Building Retrieval Agents 和 Building Single-Agent Applications 学透，这两个是主干；Evaluation/Governance 和 Deployment/Monitoring 是考试提分项。**
