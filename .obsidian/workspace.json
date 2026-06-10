@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "修房/屋顶.md",
+                "file": "AI/Databricks AI证书学习.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "屋顶"
+              "title": "Databricks AI证书学习"
             }
           }
         ],
@@ -141,13 +141,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "修房/屋顶.md",
+                "file": "AI/Databricks AI证书学习.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 屋顶"
+              "title": "Outline of Databricks AI证书学习"
             }
           }
         ],
@@ -174,24 +174,33 @@
   },
   "active": "15cf25c7aac0d93a",
   "lastOpenFiles": [
-    "修房/如何弯头防水.md",
+    "AI/Grounding.md",
+    "AI/Databricks AI证书学习.md",
+    "AI/Generative AI as Intern.md",
+    "AI/From GenAI to AI Agents.md",
+    "AI/databricks ai centification.md",
+    "AI/Building Retrieval Agents on databricks.md",
+    "AI/AI Model Classes.md",
+    "AI/AI Agent Use Cases.md",
+    "AI/AI Agent Systems.md",
+    "AI/AI Agent and non-agentic.md",
+    "AI/A simple Agentic Example.md",
+    "AI/2、Chatgpt如何理解语意.md",
+    "AI/1、大语言模型文件的内容LLAMA为例.md",
+    "AI/Untitled.md",
     "修房/屋顶.md",
+    "修房/如何弯头防水.md",
     "AI/Retrieval Agents and Context Engineering.md",
     "AI/The Agentic Toolkit.md",
-    "AI/Building Retrieval Agents on databricks.md",
     "Grammar/Untitled.md",
     "Stocks/美股分析行业估值.md",
     "Grammar",
-    "AI/1、大语言模型文件的内容LLAMA为例.md",
     "AI/最有用的ai证书.md",
     "AI/学习资料.md",
     "AI/多头注意力机制.md",
     "AI/企业级的AI.md",
     "Stocks/2026-05-16.md",
     "Stocks/2026-05-12.md",
-    "Stocks/2026-05-08.md",
-    "AI/Why governance is successful.md",
-    "AI/MCP.md",
     "Pasted image 20260506203652.png",
     "Pasted image 20260504225035.png",
     "Pasted image 20260504224402.png",
@@ -202,15 +211,6 @@
     "Pasted image 20260504222205.png",
     "Pasted image 20260504221928.png",
     "Pasted image 20260504221621.png",
-    "AI/Layer Norm的作用.md",
-    "fine-tune model.md",
-    "MLflow.md",
-    "脱敏.md",
-    "AI/Model Evaluation.md",
-    "AI/Recognizing High-Value Oppurtunities.md",
-    "AI/The Model Classes.md",
-    "AI/AI Model Classes.md",
-    "AI/Untitled.md",
     "DBT/Detailed pages",
     "Test Cases",
     "Terminology",
