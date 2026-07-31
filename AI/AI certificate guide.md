@@ -125,3 +125,34 @@ For the remaining rows, I would learn both the guide wording and the current ter
 12. **Evaluation versus monitoring:** Understand that evaluation measures application quality during development or testing, while monitoring tracks its behaviour after deployment.
     
 13. **Multi-agent data access:** Allow a multi-agent system to use Genie Agents—called Genie Spaces in the guide—or the conversational API to retrieve governed business data.
+### Section 4: Assembling and Deploying Applications
+
+1. **Custom model packaging:** Build an MLflow `pyfunc` model that runs preprocessing before the main chain and post-processing after it.
+    
+2. **Endpoint security:** Control which users, service principals, and applications can access the resources used by a model serving endpoint.
+    
+3. **Basic chain implementation:** Write a straightforward sequence of model and processing steps that meets the stated requirements.
+    
+4. **RAG components:** Identify the model format, embedding model, retriever, dependencies, sample inputs, and model signature needed to package a RAG application.
+    
+5. **Model registration:** Use MLflow to register a model in Unity Catalog so it can be governed, versioned, and deployed.
+    
+6. **Search index usage:** Create and query a Databricks AI Search index, called a Vector Search index in the guide, to retrieve relevant information.
+    
+7. **Serving with Foundation Model APIs:** Know how to expose an LLM application that calls Databricks Foundation Model APIs.
+    
+8. **AI Search concepts:** Understand the main parts of Databricks AI Search, called Mosaic AI Vector Search in the guide, and how they work together.
+    
+9. **Batch inference:** Recognize workloads that should process many records together and know when to use the SQL `ai_query()` function.
+    
+10. **Search configuration:** Choose an AI Search setup based on data size, update frequency, response-time requirements, and cost.
+    
+11. **Persistent state:** Set up durable storage for information an application must remember or reuse between processing steps or conversations.
+    
+12. **CI/CD:** Automate safe testing and promotion of search indexes, prompts, and individual agent components across environments.
+    
+13. **MCP integration:** Choose and connect managed, external, or custom Model Context Protocol servers according to the application’s tool and data-access requirements.
+    
+14. **Prompt lifecycle:** Version prompts, track their history, and manage how they are tested, promoted, and rolled back.
+    
+15. **User interface:** Choose an appropriate interactive front end—such as a Databricks App, Slack, or Teams—through which users can work with the agent.
