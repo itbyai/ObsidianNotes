@@ -66,3 +66,18 @@ The most important exam translation is:
 > **Genie Spaces → Genie Agents**
 
 For the remaining rows, I would learn both the guide wording and the current terminology because the guide may still test concepts using transitional names.
+
+
+### Section 1: Design Applications
+
+1. **Prompt design:** Write instructions that make the model return information in the exact structure or format the application needs.
+    
+2. **Model task selection:** Decide which AI task—such as summarisation, classification, extraction, or generation—best meets the business requirement.
+    
+3. **Chain design:** Choose and connect the right components so that each step transforms the input into the required final output.
+    
+4. **Requirements translation:** Convert a business goal into a clear definition of what data the AI pipeline receives and what result it must produce.
+    
+5. **Tool orchestration:** Decide which tools an agent needs and the order in which it should use them to gather information, reason through the task, or take actions.
+    
+6. **Agent Bricks selection:** Know when to use Agent Bricks capabilities such as Knowledge Assistant, Supervisor Agent—called “Multiagent Supervisor” in the guide—or Information Extraction instead of building everything manually.
