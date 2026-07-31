@@ -81,3 +81,20 @@ For the remaining rows, I would learn both the guide wording and the current ter
 5. **Tool orchestration:** Decide which tools an agent needs and the order in which it should use them to gather information, reason through the task, or take actions.
     
 6. **Agent Bricks selection:** Know when to use Agent Bricks capabilities such as Knowledge Assistant, Supervisor Agent—called “Multiagent Supervisor” in the guide—or Information Extraction instead of building everything manually.
+### Section 2: Data Preparation
+
+1. **Chunking:** Choose how to split documents into smaller pieces based on the document structure and the model’s token or context limits.
+    
+2. **Content cleaning:** Remove irrelevant or low-quality material that could confuse retrieval and reduce the accuracy of a RAG application.
+    
+3. **Document extraction:** Select the right Python library for reading text and content from the source file format you are given.
+    
+4. **Preparing Delta tables:** Know the steps and correct order for storing chunked text in Delta Lake tables governed by Unity Catalog.
+    
+5. **Source selection:** Identify which documents contain the reliable and relevant knowledge needed by the RAG application.
+    
+6. **Retrieval evaluation:** Use appropriate tools and metrics to measure whether the retriever is returning useful and relevant information.
+    
+7. **Advanced chunking:** Design more sophisticated chunking approaches when basic fixed-size splitting is not enough for the document structure or retrieval needs.
+    
+8. **Reranking:** Understand how reranking reorders initially retrieved results so that the most relevant items are placed first.
