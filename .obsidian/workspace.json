@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "AI/Databricks AI证书学习.md",
+                "file": "AI/Grounding.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Databricks AI证书学习"
+              "title": "Grounding"
             }
           }
         ],
@@ -141,13 +141,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "AI/Databricks AI证书学习.md",
+                "file": "AI/Grounding.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Databricks AI证书学习"
+              "title": "Outline of Grounding"
             }
           }
         ],
@@ -174,8 +174,9 @@
   },
   "active": "15cf25c7aac0d93a",
   "lastOpenFiles": [
-    "AI/Grounding.md",
+    "AI/1、大语言模型文件的内容LLAMA为例.md",
     "AI/Databricks AI证书学习.md",
+    "AI/Grounding.md",
     "AI/Generative AI as Intern.md",
     "AI/From GenAI to AI Agents.md",
     "AI/databricks ai centification.md",
@@ -186,7 +187,6 @@
     "AI/AI Agent and non-agentic.md",
     "AI/A simple Agentic Example.md",
     "AI/2、Chatgpt如何理解语意.md",
-    "AI/1、大语言模型文件的内容LLAMA为例.md",
     "AI/Untitled.md",
     "修房/屋顶.md",
     "修房/如何弯头防水.md",
