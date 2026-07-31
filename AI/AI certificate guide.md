@@ -166,3 +166,25 @@ For the remaining rows, I would learn both the guide wording and the current ter
 3. **Legal and licensing compliance:** Check that source data can legally be used for the application and follow any copyright, licence, or usage restrictions.
     
 4. **Problematic source-content mitigation:** Recommend a safer way to remove, replace, filter, or otherwise handle harmful or unsuitable text before it enters the GenAI application.
+
+### Section 6: Evaluation and Monitoring
+
+1. **Model selection:** Use numerical evaluation results to choose an LLM with the right size and architecture for the application.
+    
+2. **Monitoring metrics:** Choose the most useful production metrics for the specific way the LLM is deployed and used.
+    
+3. **Agent evaluation:** Use MLflow scoring and tracing to measure how well an agent completes tasks and to understand what happened during each run.
+    
+4. **Inference logging:** Record production requests and responses so you can assess the quality and behaviour of a deployed RAG application.
+    
+5. **Cost control:** Use Databricks capabilities to measure, limit, and optimise the cost of running LLM applications.
+    
+6. **Live endpoint tracking:** Use inference tables and the monitoring capability named **Agent Monitoring** in the guide to observe an LLM endpoint after deployment.
+    
+7. **Ground-truth requirements:** Know which automated evaluation judges need a known correct answer or reference response in order to calculate a score.
+    
+8. **AI Gateway monitoring:** Use AI Gateway features such as inference tables, usage tables, and rate limits to track and control a deployed LLM or agent.
+    
+9. **Custom scorers:** Create Databricks custom scorers when the built-in evaluation measures do not cover the application’s specific quality requirements.
+    
+10. **Expert feedback:** Collect and use feedback from subject-matter experts to identify weaknesses and improve agent performance over time.
