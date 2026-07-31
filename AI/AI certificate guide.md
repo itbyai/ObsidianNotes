@@ -98,3 +98,30 @@ For the remaining rows, I would learn both the guide wording and the current ter
 7. **Advanced chunking:** Design more sophisticated chunking approaches when basic fixed-size splitting is not enough for the document structure or retrieval needs.
     
 8. **Reranking:** Understand how reranking reorders initially retrieved results so that the most relevant items are placed first.
+### Section 3: Application Development
+
+1. **Framework selection:** Choose an appropriate development framework, such as LangChain or a similar tool, for building the generative AI application.
+    
+2. **Response review:** Examine model answers for common quality and safety problems, such as incorrect, irrelevant, harmful, or poorly written responses.
+    
+3. **Chunking improvement:** Adjust the document chunking strategy based on the results of model and retrieval evaluations.
+    
+4. **Prompt enrichment:** Add relevant context to a prompt by identifying important fields, terms, and user intent in the input.
+    
+5. **Prompt optimisation:** Rewrite or refine a prompt so that the model’s output moves from its current baseline toward the desired result.
+    
+6. **Guardrails:** Add controls that reduce the risk of unsafe, harmful, inappropriate, or otherwise undesirable model behaviour.
+    
+7. **LLM selection:** Choose the language model whose capabilities, size, cost, latency, and other characteristics best fit the application.
+    
+8. **Embedding context length:** Choose an embedding model that can handle the expected document chunks and queries while meeting the application’s quality, cost, and performance goals.
+    
+9. **Model-card selection:** Use model metadata and model cards in a model hub or marketplace to decide whether a model is suitable for a particular task.
+    
+10. **Metric-based comparison:** Compare experimental metrics to determine which candidate model performs best for the required task.
+    
+11. **Agent development:** Use MLflow and Databricks agent-development capabilities to build, trace, evaluate, and manage agentic systems.
+    
+12. **Evaluation versus monitoring:** Understand that evaluation measures application quality during development or testing, while monitoring tracks its behaviour after deployment.
+    
+13. **Multi-agent data access:** Allow a multi-agent system to use Genie Agents—called Genie Spaces in the guide—or the conversational API to retrieve governed business data.
