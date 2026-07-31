@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "AI/Grounding.md",
+                "file": "AI/AI certificate guide.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Grounding"
+              "title": "AI certificate guide"
             }
           }
         ],
@@ -141,13 +141,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "AI/Grounding.md",
+                "file": "AI/AI certificate guide.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of Grounding"
+              "title": "Outline of AI certificate guide"
             }
           }
         ],
@@ -174,9 +174,10 @@
   },
   "active": "15cf25c7aac0d93a",
   "lastOpenFiles": [
+    "AI/Grounding.md",
+    "AI/AI certificate guide.md",
     "AI/1、大语言模型文件的内容LLAMA为例.md",
     "AI/Databricks AI证书学习.md",
-    "AI/Grounding.md",
     "AI/Generative AI as Intern.md",
     "AI/From GenAI to AI Agents.md",
     "AI/databricks ai centification.md",
@@ -200,7 +201,6 @@
     "AI/多头注意力机制.md",
     "AI/企业级的AI.md",
     "Stocks/2026-05-16.md",
-    "Stocks/2026-05-12.md",
     "Pasted image 20260506203652.png",
     "Pasted image 20260504225035.png",
     "Pasted image 20260504224402.png",
