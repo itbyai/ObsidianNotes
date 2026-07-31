@@ -156,3 +156,13 @@ For the remaining rows, I would learn both the guide wording and the current ter
 14. **Prompt lifecycle:** Version prompts, track their history, and manage how they are tested, promoted, and rolled back.
     
 15. **User interface:** Choose an appropriate interactive front end—such as a Databricks App, Slack, or Teams—through which users can work with the agent.
+
+### Section 5: Governance
+
+1. **Masking sensitive information:** Use data-masking techniques to hide or replace sensitive content without unnecessarily reducing application performance.
+    
+2. **Protection from malicious input:** Choose guardrails that detect or block attacks such as prompt injection, harmful instructions, or attempts to bypass application controls.
+    
+3. **Legal and licensing compliance:** Check that source data can legally be used for the application and follow any copyright, licence, or usage restrictions.
+    
+4. **Problematic source-content mitigation:** Recommend a safer way to remove, replace, filter, or otherwise handle harmful or unsuitable text before it enters the GenAI application.
