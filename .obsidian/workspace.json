@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "AI/AI certificate guide.md",
+                "file": "Stocks/美股分析思路.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "AI certificate guide"
+              "title": "美股分析思路"
             }
           }
         ],
@@ -141,13 +141,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "AI/AI certificate guide.md",
+                "file": "Stocks/美股分析思路.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of AI certificate guide"
+              "title": "Outline of 美股分析思路"
             }
           }
         ],
@@ -174,8 +174,9 @@
   },
   "active": "15cf25c7aac0d93a",
   "lastOpenFiles": [
-    "AI/Grounding.md",
     "AI/AI certificate guide.md",
+    "Stocks/美股分析思路.md",
+    "AI/Grounding.md",
     "AI/1、大语言模型文件的内容LLAMA为例.md",
     "AI/Databricks AI证书学习.md",
     "AI/Generative AI as Intern.md",
@@ -200,7 +201,6 @@
     "AI/学习资料.md",
     "AI/多头注意力机制.md",
     "AI/企业级的AI.md",
-    "Stocks/2026-05-16.md",
     "Pasted image 20260506203652.png",
     "Pasted image 20260504225035.png",
     "Pasted image 20260504224402.png",
