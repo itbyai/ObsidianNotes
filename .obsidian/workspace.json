@@ -20,8 +20,21 @@
               "icon": "lucide-file",
               "title": "美股分析思路"
             }
+          },
+          {
+            "id": "fcb7d7cd392b7193",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.13.7"
+              },
+              "icon": "lucide-book-up",
+              "title": "Release Notes 1.13.7"
+            }
           }
         ],
+        "currentTab": 1,
         "stacked": true
       }
     ],
@@ -42,7 +55,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -141,13 +156,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Stocks/美股分析思路.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 美股分析思路"
+              "title": "Outline"
             }
           }
         ],
@@ -172,7 +186,7 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "15cf25c7aac0d93a",
+  "active": "fcb7d7cd392b7193",
   "lastOpenFiles": [
     "AI/AI certificate guide.md",
     "Stocks/美股分析思路.md",
