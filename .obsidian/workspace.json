@@ -36,7 +36,6 @@
             }
           }
         ],
-        "currentTab": 1,
         "stacked": true
       }
     ],
@@ -158,7 +157,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "AI Databricks Cert/AI考证辅导.md",
+                "file": "Stocks/美股分析思路.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
@@ -176,10 +175,6 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "obsidian-git:Open Git source control": false,
-      "edge-tts:Read note aloud": false,
-      "handwritten-notes:Create empty handwritten note": false,
-      "card-note:Search Notes": false,
       "bases:Create new base": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
@@ -189,10 +184,10 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "fcb7d7cd392b7193",
+  "active": "15cf25c7aac0d93a",
   "lastOpenFiles": [
-    "AI/多头注意力机制.md",
     "AI Databricks Cert/AI考证辅导.md",
+    "AI/多头注意力机制.md",
     "AI/学习资料.md",
     "AI/最有用的ai证书.md",
     "AI/A simple Agentic Example.md",
